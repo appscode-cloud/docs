@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { defineAsyncComponent } from 'vue';
+import { defineAsyncComponent } from 'vue'
 
 const Navbar = defineAsyncComponent(() => import('@appscode/design-system/vue-components/v3/navbar/Navbar.vue'))
-
 </script>
+
 <template>
   <navbar modifier-classes="is-light" :full-width="true">
     <template #navbar-brand-logo>
@@ -24,7 +24,7 @@ const Navbar = defineAsyncComponent(() => import('@appscode/design-system/vue-co
     font-size: 15px;
     font-weight: 500;
     color: $primary-20;
-    font-family: Roboto;
+    font-family: Roboto, Arial, Helvetica, sans-serif;
   }
 }
 </style>

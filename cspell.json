@@ -1,0 +1,18 @@
+{
+  "version": "0.2",
+  "ignorePaths": [],
+  "dictionaryDefinitions": [],
+  "dictionaries": [],
+  "words": [
+    "antfu",
+    "bulma",
+    "nihal",
+    "unplugin",
+    "Vite",
+    "vueuse",
+    "vuex",
+    "vitepress"
+  ],
+  "ignoreWords": [],
+  "import": []
+}

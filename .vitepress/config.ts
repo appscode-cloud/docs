@@ -1,10 +1,12 @@
 import { defineConfig } from 'vitepress'
+import AutoImport from 'unplugin-auto-import/vite'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Bytebuilders Docs",
-  description: "A documentation website for Bytebuilders Platform.",
+  title: 'Bytebuilders Docs',
+  description: 'A documentation website for Bytebuilders Platform.',
   vite: {
+    plugins: [AutoImport()],
     css: {
       preprocessorOptions: {
         scss: {
@@ -20,5 +22,5 @@ export default defineConfig({
       host: '0.0.0.0',
       port: 5997,
     },
-  }
+  },
 })

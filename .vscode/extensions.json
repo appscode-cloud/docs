@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "vue.volar",
+    "usernamehw.errorlens",
+    "streetsidesoftware.code-spell-checker",
+    "naumovs.color-highlight",
+    "richie5um2.vscode-sort-json",
+    "unional.vscode-sort-package-json",
+    "znck.grammarly",
+    "antfu.file-nesting",
+    "reliutg.bulma-css-class-completion",
+    "stylelint.vscode-stylelint"
+  ]
+}
