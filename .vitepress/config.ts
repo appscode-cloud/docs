@@ -1,10 +1,13 @@
 import { defineConfig } from 'vitepress'
 import AutoImport from 'unplugin-auto-import/vite'
+import HeaderLinks from './header-links'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'Bytebuilders Docs',
+  titleTemplate: 'Bytebuilders',
   description: 'A documentation website for Bytebuilders Platform.',
+  head: HeaderLinks.map((hl) => ['link', hl]),
   vite: {
     plugins: [AutoImport()],
     css: {
