@@ -1,13 +1,15 @@
 {
   "extends": ["@vue/tsconfig/tsconfig.dom.json", "@tsconfig/node18/tsconfig.json"],
-  "include": ["env.d.ts", "./**/*", "./**/*.vue", "./**/*.ts", "./**/*.d.ts", "./**/*.tsx", "./**/*.vue", "./*.vue"],
+  "include": ["env.d.ts", "./src/**/*", "./src/**/*.vue", "./src/**/*.ts", "./src/**/*.d.ts", "./src/**/*.tsx", "./src/**/*.vue", "./src/*.vue", "./.vitepress/theme/*", "./.vitepress/theme/*.ts", "./.vitepress/theme/*.d.ts", "./.vitepress/theme/*.tsx", "./vitepress/theme/*.vue"],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,
+    "moduleResolution": "node",
+    "lib": ["DOM", "ESNext"],
     "module": "ESNext",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./src/*"]
     }
   }
 }

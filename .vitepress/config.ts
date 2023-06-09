@@ -7,7 +7,9 @@ export default defineConfig({
   title: 'Bytebuilders Docs',
   titleTemplate: 'Bytebuilders',
   description: 'A documentation website for Bytebuilders Platform.',
-  head: HeaderLinks.map((hl) => ['link', hl]),
+  head: HeaderLinks.map(hl => ['link', hl]),
+  srcDir: 'src',
+  srcExclude: ['**/README.md', '**/TODO.md'],
   vite: {
     plugins: [AutoImport()],
     css: {

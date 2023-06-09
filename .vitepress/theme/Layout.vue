@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useData } from 'vitepress'
-import Navbar from '../../components/Navbar.vue'
+import Navbar from '../../src/components/Navbar.vue'
 
 // https://vitepress.dev/reference/runtime-api#usedata
 const { site, frontmatter } = useData()
@@ -9,9 +9,8 @@ const { site, frontmatter } = useData()
 <template>
   <div v-if="frontmatter.home">
     <navbar />
-  </div>
-  <div v-else>
-    <a href="/">Home</a>
-    <Content />
+    <div class="ac-system-body is-terminal">
+      <Content />
+    </div>
   </div>
 </template>
