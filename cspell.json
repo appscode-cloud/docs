@@ -6,12 +6,15 @@
   "words": [
     "antfu",
     "bulma",
+    "kubedb",
     "nihal",
+    "nuxt",
+    "pinia",
     "unplugin",
     "Vite",
+    "vitepress",
     "vueuse",
-    "vuex",
-    "vitepress"
+    "vuex"
   ],
   "ignoreWords": [],
   "import": []
