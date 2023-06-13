@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useData } from 'vitepress'
-import Navbar from '../../src/components/Navbar.vue'
+import Navbar from './components/Navbar.vue'
 
 // https://vitepress.dev/reference/runtime-api#usedata
 const { site, frontmatter } = useData()
