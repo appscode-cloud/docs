@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { defineAsyncComponent } from 'vue'
+import { useFetch } from '../plugins/fetch'
 
 const Navbar = defineAsyncComponent(() => import('@appscode/design-system/vue-components/v3/navbar/Navbar.vue'))
+
+const { isFetching, data, error } = useFetch('user')
 </script>
 
 <template>
@@ -14,6 +17,9 @@ const Navbar = defineAsyncComponent(() => import('@appscode/design-system/vue-co
         Docs
       </span>
     </template>
+    {{ isFetching }}
+    {{ data }}
+    {{ error }}
   </navbar>
 </template>
 

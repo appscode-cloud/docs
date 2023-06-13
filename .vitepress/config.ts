@@ -28,4 +28,11 @@ export default defineConfig({
       port: 5997,
     },
   },
+  vue: {
+    template: {
+      compilerOptions: {
+        isCustomElement: (tag) => (tag.includes('nuxt-link') || tag.includes('router-link')),
+      },
+    },
+  }
 })

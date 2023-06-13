@@ -1,13 +1,41 @@
 {
-  "hash": "07b477b9",
-  "browserHash": "f7a3e7ec",
+  "hash": "92e78ab5",
+  "browserHash": "8610b20d",
   "optimized": {
     "vue": {
       "src": "../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "d078dabb",
+      "fileHash": "a46d005a",
+      "needsInterop": false
+    },
+    "pinia": {
+      "src": "../../../node_modules/pinia/dist/pinia.mjs",
+      "file": "pinia.js",
+      "fileHash": "c812fc8f",
+      "needsInterop": false
+    },
+    "@vueuse/core": {
+      "src": "../../../node_modules/@vueuse/core/index.mjs",
+      "file": "@vueuse_core.js",
+      "fileHash": "5965391f",
+      "needsInterop": false
+    },
+    "@vueuse/integrations/useCookies": {
+      "src": "../../../node_modules/@vueuse/integrations/useCookies.mjs",
+      "file": "@vueuse_integrations_useCookies.js",
+      "fileHash": "53b08744",
       "needsInterop": false
     }
   },
-  "chunks": {}
+  "chunks": {
+    "chunk-ELX3RWXK": {
+      "file": "chunk-ELX3RWXK.js"
+    },
+    "chunk-VFKD4RIN": {
+      "file": "chunk-VFKD4RIN.js"
+    },
+    "chunk-WOJZQ77Y": {
+      "file": "chunk-WOJZQ77Y.js"
+    }
+  }
 }
