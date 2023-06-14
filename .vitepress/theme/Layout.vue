@@ -7,10 +7,12 @@ const { site, frontmatter } = useData()
 </script>
 
 <template>
-  <div v-if="frontmatter.home">
+  <div>
     <navbar />
     <div class="ac-system-body is-terminal">
-      <Content />
+      <div v-if="frontmatter.home">
+        <Content />
+      </div>
     </div>
   </div>
 </template>

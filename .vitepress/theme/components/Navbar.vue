@@ -1,25 +1,22 @@
 <script setup lang="ts">
+import { defineClientComponent } from 'vitepress'
 import { defineAsyncComponent } from 'vue'
-import { useFetch } from '../plugins/fetch'
 
 const Navbar = defineAsyncComponent(() => import('@appscode/design-system/vue-components/v3/navbar/Navbar.vue'))
-
-const { isFetching, data, error } = useFetch('user')
+const NavbarUser = defineClientComponent(() => import('./NavbarUser.vue')).setup()
 </script>
 
 <template>
   <navbar modifier-classes="is-light" :full-width="true">
     <template #navbar-brand-logo>
-      <router-link to="/">
+      <a href="/">
         <img src="https://cdn.appscode.com/images/products/bytebuilders/bytebuilders.png" alt="Bytebuilders Logo">
-      </router-link>
+      </a>
       <span class="brand-extension">
         Docs
       </span>
     </template>
-    {{ isFetching }}
-    {{ data }}
-    {{ error }}
+    <navbar-user />
   </navbar>
 </template>
 

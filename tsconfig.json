@@ -1,11 +1,11 @@
 {
   "extends": ["@vue/tsconfig/tsconfig.dom.json", "@tsconfig/node18/tsconfig.json"],
-  "include": ["env.d.ts", "./src/**/*", "./src/**/*.vue", "./src/**/*.ts", "./src/**/*.d.ts", "./src/**/*.tsx", "./src/**/*.vue", "./src/*.vue", "./.vitepress/theme/*", "./.vitepress/theme/*.ts", "./.vitepress/theme/*.d.ts", "./.vitepress/theme/*.tsx", "./vitepress/theme/*.vue", "./vitepress/theme/**/*.vue", "./vitepress/theme/**/*.ts"],
+  "include": ["env.d.ts", "./src/**/*", "./src/**/*.vue", "./src/**/*.ts", "./src/**/*.d.ts", "./src/**/*.tsx", "./src/**/*.vue", "./src/*.vue", "./.vitepress/theme/*", "./.vitepress/theme/*.ts", "./.vitepress/theme/*.d.ts", "./.vitepress/theme/*.tsx", "./.vitepress/theme/*.vue", "./.vitepress/theme/**/*.vue", "./.vitepress/theme/**/*.ts"],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,
     "moduleResolution": "node",
-    "lib": ["DOM", "ESNext"],
+    "lib": ["ES2016", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "baseUrl": ".",
     "paths": {
