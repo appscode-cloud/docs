@@ -1,17 +1,50 @@
-import { defineConfig } from 'vitepress'
+import { Theme, defineConfigWithTheme } from 'vitepress'
 import AutoImport from 'unplugin-auto-import/vite'
 import HeaderLinks from './header-links'
+import { ThemeConfig } from './theme/index'
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+export default defineConfigWithTheme<ThemeConfig>({
   title: 'Bytebuilders Docs',
   titleTemplate: 'Bytebuilders',
   description: 'A documentation website for Bytebuilders Platform.',
   head: HeaderLinks.map(hl => ['link', hl]),
   srcDir: 'src',
   srcExclude: ['**/README.md', '**/TODO.md'],
+  locales: {
+    en: {
+      label: 'English',
+      lang: 'en',
+    },
+    bn: {
+      label: 'বাংলা',
+      lang: 'bn'
+    }
+  },
+  themeConfig: {
+    i18n: {
+      locale: 'en',
+      fallbackLocale: 'en',
+      messages: {
+        en: {
+          hello: 'Hello'
+        },
+        bn: {
+          hello: 'হ্যালো'
+        }
+      }
+    }
+  },
   vite: {
     plugins: [AutoImport()],
+    resolve: {
+      alias: [
+        {
+          find: 'vue-i18n',
+          replacement: 'vue-i18n/dist/vue-i18n.cjs.js',
+        }
+      ]
+    },
     css: {
       preprocessorOptions: {
         scss: {
