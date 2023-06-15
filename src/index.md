@@ -1,5 +1,6 @@
 ---
 home: true
+lang: en
 ---
 
 <script setup lang="ts">

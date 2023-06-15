@@ -2,7 +2,7 @@ import {
   isVue2,
   isVue3,
   set
-} from "./chunk-VFKD4RIN.js";
+} from "./chunk-ZFZDHDD6.js";
 import {
   computed,
   customRef,
@@ -29,7 +29,7 @@ import {
   version,
   watch,
   watchEffect
-} from "./chunk-WOJZQ77Y.js";
+} from "./chunk-VKO2E4DJ.js";
 
 // node_modules/@vueuse/shared/index.mjs
 var __defProp$b = Object.defineProperty;
@@ -1850,4 +1850,4 @@ export {
   watchTriggerable,
   whenever
 };
-//# sourceMappingURL=chunk-ELX3RWXK.js.map
+//# sourceMappingURL=chunk-PJTJIJND.js.map

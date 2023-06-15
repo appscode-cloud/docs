@@ -4,6 +4,7 @@ import { defineAsyncComponent } from 'vue'
 
 const Navbar = defineAsyncComponent(() => import('@appscode/design-system/vue-components/v3/navbar/Navbar.vue'))
 const NavbarUser = defineClientComponent(() => import('./NavbarUser.vue')).setup()
+const NavbarLanguageSwitcher = defineClientComponent(() => import('./NavbarLanguageSwitcher.vue')).setup()
 </script>
 
 <template>
@@ -16,6 +17,7 @@ const NavbarUser = defineClientComponent(() => import('./NavbarUser.vue')).setup
         Docs
       </span>
     </template>
+    <navbar-language-switcher />
     <navbar-user />
   </navbar>
 </template>

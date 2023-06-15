@@ -1,4 +1,10 @@
+import {
+  init_vue_runtime_esm_bundler
+} from "./chunk-VKO2E4DJ.js";
+
 // node_modules/vue-demi/lib/index.mjs
+init_vue_runtime_esm_bundler();
+init_vue_runtime_esm_bundler();
 var isVue2 = false;
 var isVue3 = true;
 function set(target, key, val) {
@@ -24,4 +30,4 @@ export {
   set,
   del
 };
-//# sourceMappingURL=chunk-VFKD4RIN.js.map
+//# sourceMappingURL=chunk-ZFZDHDD6.js.map
