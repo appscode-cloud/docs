@@ -33,6 +33,48 @@ export default defineConfigWithTheme<ThemeConfig>({
           hello: 'হ্যালো'
         }
       }
+    },
+    guide: {
+      sidebar: [
+        {
+          title: "Getting Started",
+          link: '/getting-started'
+        },
+        {
+          title: "Credentials",
+          sections: [
+            {
+              title: "What are credentials in Bytebuilders?",
+              link: ""
+            },
+            {
+              title: "How does it work?",
+              link: ""
+            },
+            {
+              title: "Adding a credential to your profile",
+              link: ""
+            }
+          ]
+        },
+        {
+          title: "Import Cluster",
+          sections: [
+            {
+              title: "Import managed cluster",
+              link: ""
+            },
+            {
+              title: "Import private cluster",
+              link: ""
+            },
+            {
+              title: "Import public cluster",
+              link: ""
+            }
+          ]
+        }
+      ]
     }
   },
   vite: {

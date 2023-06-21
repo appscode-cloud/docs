@@ -19,7 +19,7 @@ function getLink(lang: string) {
 </script>
 
 <template>
-  <div class="navbar-item has-dropdown is-hoverable lang-dropdown">
+  <div v-if="activeLang" class="navbar-item has-dropdown is-hoverable lang-dropdown">
     <a class="navbar-link is-arrowless">
       <span>
         {{ activeLang.label }}

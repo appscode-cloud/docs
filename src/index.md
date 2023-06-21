@@ -1,5 +1,5 @@
 ---
-home: true
+layout: home
 lang: en
 ---
 
@@ -9,8 +9,4 @@ lang: en
 </script>
 
 # Bytebuilders
-hi, this is bytebuilders
-
-```json-vue
-{{ userStore.user }}
-```
+[Get Started](/en/getting-started)
