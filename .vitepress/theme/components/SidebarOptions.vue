@@ -1,9 +1,18 @@
 <script setup lang="ts">
+import { useData } from 'vitepress'
 import type { SidebarConfig } from '../typings/sidebar'
+import { useLang } from '../composables/lang'
 
 defineProps<{
   options: SidebarConfig
 }>()
+
+const { activeLinkWithoutLang, wrapLinkWithLang } = useLang()
+
+const { page } = useData()
+function isActiveLink(link: string) {
+  return `/${activeLinkWithoutLang.value}` === link
+}
 </script>
 
 <template>
@@ -18,7 +27,7 @@ defineProps<{
         </ul>
       </template>
       <li v-else>
-        <a :href="item.link">{{ item.title }}</a>
+        <a :href="wrapLinkWithLang(item.link)" :class="{ 'is-active': isActiveLink(item.link) }">{{ item.title }}</a>
       </li>
     </template>
   </aside>

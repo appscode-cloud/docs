@@ -1,21 +1,11 @@
 <script setup lang="ts">
-import { computed, defineAsyncComponent } from 'vue'
 import { useData } from 'vitepress'
+import { useLang } from '../composables/lang'
 
-const NavbarItem = defineAsyncComponent(() => import('@appscode/design-system/vue-components/v3/navbar/NavbarItem.vue'))
-const NavbarItemContent = defineAsyncComponent(() => import('@appscode/design-system/vue-components/v3/navbar/NavbarItemContent.vue'))
-
-const { site, page } = useData()
-
+const { site } = useData()
 const { locales } = site.value
-const activeLang = computed(() => {
-  return site.value.locales[site.value.localeIndex as string]
-})
 
-function getLink(lang: string) {
-  const [link] = page.value.relativePath.split('.')
-  return `/${link.replace(activeLang.value.lang || '', locales[lang].lang || '')}`
-}
+const { wrapCurrentPageWithLang, activeLang } = useLang()
 </script>
 
 <template>
@@ -27,7 +17,7 @@ function getLink(lang: string) {
     </a>
 
     <div class="navbar-dropdown is-boxed is-right">
-      <a v-for="locale in Object.keys(locales)" :key="locale" class="navbar-item" :href="getLink(locale)" @click="$i18n.locale = locale">
+      <a v-for="locale in Object.keys(locales)" :key="locale" class="navbar-item" :href="wrapCurrentPageWithLang(locale)" @click="$i18n.locale = locale">
         <span>{{ locales[locale].label }}</span>
       </a>
     </div>
