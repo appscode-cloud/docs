@@ -7,4 +7,4 @@ export interface SidebarItemWithSections extends SidebarItem {
 export interface SidebarItemWithLink extends SidebarItem {
   link: string
 }
-export interface SidebarConfig extends Array<SidebarItemWithSections & SidebarItemWithLink> {}
+export interface SidebarConfig extends Array<SidebarItemWithSections | SidebarItemWithLink> {}

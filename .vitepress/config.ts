@@ -45,11 +45,11 @@ export default defineConfigWithTheme<ThemeConfig>({
           sections: [
             {
               title: "What are credentials in Bytebuilders?",
-              link: ""
+              link: "/credentials/what-are-credentials-bytebuilders"
             },
             {
               title: "How does it work?",
-              link: ""
+              link: "/credentials/how-does-it-work"
             },
             {
               title: "Adding a credential to your profile",

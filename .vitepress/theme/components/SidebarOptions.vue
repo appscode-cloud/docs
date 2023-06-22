@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { useData } from 'vitepress'
-import type { SidebarConfig } from '../typings/sidebar'
+import type { SidebarConfig, SidebarItemWithLink, SidebarItemWithSections } from '../typings/sidebar'
 import { useLang } from '../composables/lang'
 
 defineProps<{
@@ -9,7 +8,6 @@ defineProps<{
 
 const { activeLinkWithoutLang, wrapLinkWithLang } = useLang()
 
-const { page } = useData()
 function isActiveLink(link: string) {
   return `/${activeLinkWithoutLang.value}` === link
 }
@@ -18,17 +16,25 @@ function isActiveLink(link: string) {
 <template>
   <aside class="menu">
     <template v-for="item in options" :key="item.title">
-      <template v-if="item.sections">
-        <p class="menu-label">
+      <template v-if="(item as SidebarItemWithSections).sections">
+        <p class="menu-label ac-menu-label">
           {{ item.title }}
         </p>
         <ul class="menu-list">
-          <sidebar-options :options="item.sections" />
+          <sidebar-options :options="(item as SidebarItemWithSections).sections" />
         </ul>
       </template>
       <li v-else>
-        <a :href="wrapLinkWithLang(item.link)" :class="{ 'is-active': isActiveLink(item.link) }">{{ item.title }}</a>
+        <a :href="wrapLinkWithLang((item as SidebarItemWithLink).link)" :class="{ 'is-active': isActiveLink((item as SidebarItemWithLink).link) }">{{ item.title }}</a>
       </li>
     </template>
   </aside>
 </template>
+
+<style lang="scss" scoped>
+.ac-menu-label {
+  padding-left: 20px;
+  font-size: 14px;
+  color: #bbb;
+}
+</style>

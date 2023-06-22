@@ -10,12 +10,12 @@ export function useLang() {
   })
   const activeLinkWithoutLang = computed(() => {
     const [link] = page.value.relativePath.split('.')
-    const [, linkWithoutLang] = link.split('/')
-    return linkWithoutLang
+    const [, ...linkWithoutLang] = link.split('/')
+    return linkWithoutLang.join('/')
   })
 
   function wrapLinkWithLang(link: string) {
-    return `/${activeLang.value.lang}/${link.startsWith('/') ? link.split('/')[1] : link}`
+    return `/${activeLang.value.lang}/${link.startsWith('/') ? link.slice(1) : link}`
   }
   function wrapCurrentPageWithLang(lang: string) {
     return `/${locales[lang].lang || ''}/${activeLinkWithoutLang.value}`

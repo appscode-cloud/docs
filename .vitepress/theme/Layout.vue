@@ -24,7 +24,9 @@ locale.value = lang
   <div v-else-if="frontmatter.layout === 'guide'" class="ac-system-body is-terminal">
     <sidebar />
     <div class="ac-system-content">
-      <content />
+      <div class="p-20">
+        <content />
+      </div>
     </div>
   </div>
 </template>
