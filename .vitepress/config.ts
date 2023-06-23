@@ -21,6 +21,9 @@ export default defineConfigWithTheme<ThemeConfig>({
       lang: 'bn'
     }
   },
+  markdown: {
+    headers: true
+  },
   themeConfig: {
     i18n: {
       locale: 'en',
