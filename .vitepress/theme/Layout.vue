@@ -27,7 +27,7 @@ locale.value = lang
     <div class="ac-system-content">
       <div class="p-20">
         <div class="columns is-multiline">
-          <div class="column is-9">
+          <div class="column is-9 content">
             <content />
           </div>
           <div class="column is-3">
