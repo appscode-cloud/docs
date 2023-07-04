@@ -78,6 +78,9 @@ export default defineConfigWithTheme<ThemeConfig>({
           ]
         }
       ]
+    },
+    meilisearch: {
+      index: "kubedb"
     }
   },
   vite: {
