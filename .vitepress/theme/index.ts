@@ -9,6 +9,9 @@ import './main.scss'
 export interface ThemeConfig {
   i18n: VueI18nOptions
   guide: GuideLayoutOptions
+  meilisearch?: {
+    index: string
+  }
 }
 
 export default {
