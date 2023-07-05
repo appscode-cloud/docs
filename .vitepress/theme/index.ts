@@ -2,13 +2,13 @@
 import { createPinia } from 'pinia'
 import type { VueI18nOptions } from 'vue-i18n'
 import { createI18n } from 'vue-i18n'
-import type { GuideLayoutOptions } from './typings/guide'
+import type { NavigationLayoutOptions } from './typings/navigation'
 import Layout from './Layout.vue'
 import './main.scss'
 
 export interface ThemeConfig {
   i18n: VueI18nOptions
-  guide: GuideLayoutOptions
+  navigation: NavigationLayoutOptions
   meilisearch?: {
     index: string
   }

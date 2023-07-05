@@ -6,6 +6,7 @@ import Navbar from './components/Navbar.vue'
 
 const Sidebar = defineAsyncComponent(() => import('./components/Sidebar.vue'))
 const DocOutline = defineAsyncComponent(() => import('./components/DocOutline.vue'))
+const DocFooter = defineAsyncComponent(() => import('./components/DocFooter.vue'))
 // https://vitepress.dev/reference/runtime-api#usedata
 const { frontmatter } = useData()
 // set i18n local from path
@@ -29,6 +30,7 @@ locale.value = lang
         <div class="columns is-multiline">
           <div class="column is-9 content">
             <content />
+            <doc-footer />
           </div>
           <div class="column is-3">
             <doc-outline />

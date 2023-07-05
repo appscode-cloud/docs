@@ -37,7 +37,7 @@ export default defineConfigWithTheme<ThemeConfig>({
         }
       }
     },
-    guide: {
+    navigation: {
       sidebar: [
         {
           title: "Getting Started",

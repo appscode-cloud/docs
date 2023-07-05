@@ -10,7 +10,7 @@ const SidebarBody = defineAsyncComponent(() => import('@appscode/design-system/v
 const SidebarFooter = defineAsyncComponent(() => import('@appscode/design-system/vue-components/v3/sidebar/SidebarFooter.vue'))
 const SidebarOptions = defineAsyncComponent(() => import('./SidebarOptions.vue'))
 const { theme } = useData()
-const { guide } = theme.value
+const { navigation } = theme.value
 </script>
 
 <template>
@@ -21,7 +21,7 @@ const { guide } = theme.value
 
     <template #sidebar-body>
       <sidebar-body>
-        <sidebar-options :options="guide.sidebar" />
+        <sidebar-options :options="navigation.sidebar" />
       </sidebar-body>
     </template>
 
