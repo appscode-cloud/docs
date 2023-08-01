@@ -1,7 +1,7 @@
 {
   "hosting": {
     "target": "nuxt",
-    "public": ".output/public",
+    "public": ".vitepress/dist",
     "ignore": [
       "firebase.json",
       "**/.*",
