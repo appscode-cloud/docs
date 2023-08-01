@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "target": "nuxt",
+    "public": ".output/public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "trailingSlash": true,
+    "redirects": [ {
+      "source": "/",
+      "destination": "https://byte.builders/docs/",
+      "type": 301
+    } ]
+  }
+}

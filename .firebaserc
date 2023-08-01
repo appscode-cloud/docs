@@ -1,0 +1,22 @@
+{
+  "projects": {
+    "prod": "byte-builders",
+    "default": "kubedb-new-e7965"
+  },
+  "targets": {
+    "kubedb-new-e7965": {
+      "hosting": {
+        "nuxt": [
+          "bb-docs-qa"
+        ]
+      }
+    },
+    "byte-builders": {
+      "hosting": {
+        "nuxt": [
+          "byte-builders-docs"
+        ]
+      }
+    }
+  }
+}

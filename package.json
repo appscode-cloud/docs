@@ -9,7 +9,9 @@
     "lint:style": "stylelint .vitepress/theme/**.{css,scss,sass}",
     "lint-fix:es": "eslint . --fix",
     "lint-fix:style": "stylelint .vitepress/theme/**.{css,scss,sass} --fix",
-    "format": "run-p lint-fix:*"
+    "format": "run-p lint-fix:*",
+    "deploy-qa": "npm run build; firebase use default; firebase deploy",
+    "deploy-prod": "npm run build; firebase use prod; firebase deploy; firebase use default"
   },
   "dependencies": {
     "@appscode/design-system": "^1.1.0-beta.20",
