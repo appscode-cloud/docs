@@ -1,17 +1,21 @@
 <script setup lang="ts">
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent, onMounted } from 'vue'
 import { useUserStore } from '../store/user'
-import { getServerDomain } from '../plugins/fetch'
 
 const UserDropdown = defineAsyncComponent(() => import('@appscode/design-system/vue-components/v3/navbar/User.vue'))
 
 const userStore = useUserStore()
 
 // fetch and store user
-userStore.fetchAndStoreUser()
-
-const serverDomain = getServerDomain()
-const accountsDomain = getServerDomain('accounts', '3000')
+let serverDomain = ''
+let accountsDomain = ''
+onMounted(() => {
+  userStore.fetchAndStoreUser()
+  import('../plugins/fetch').then(({ getServerDomain }) => {
+    serverDomain = getServerDomain()
+    accountsDomain = getServerDomain('accounts', '3000')
+  })
+})
 
 const href = window.location
 </script>

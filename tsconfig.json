@@ -5,9 +5,10 @@
   "compilerOptions": {
     "composite": true,
     "moduleResolution": "node",
-    "lib": ["ES2016", "DOM", "DOM.Iterable"],
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "baseUrl": ".",
+    "target": "ES2022",
     "paths": {
       "@/*": ["./src/*"]
     }

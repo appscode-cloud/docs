@@ -1,35 +1,35 @@
 {
-  "hash": "d47475c3",
-  "browserHash": "d6924b2c",
+  "hash": "9cb6f4f5",
+  "browserHash": "4a3af93d",
   "optimized": {
     "vue": {
       "src": "../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "30f3b419",
+      "fileHash": "92f1901a",
       "needsInterop": false
     },
     "pinia": {
       "src": "../../../node_modules/pinia/dist/pinia.mjs",
       "file": "pinia.js",
-      "fileHash": "1e1e8167",
+      "fileHash": "b9d35b65",
       "needsInterop": false
     },
     "vue-i18n/dist/vue-i18n.cjs.js": {
       "src": "../../../node_modules/vue-i18n/dist/vue-i18n.cjs.js",
       "file": "vue-i18n_dist_vue-i18n__cjs__js.js",
-      "fileHash": "2838f4a8",
+      "fileHash": "6f07d8e9",
       "needsInterop": true
     },
     "@vueuse/core": {
       "src": "../../../node_modules/@vueuse/core/index.mjs",
       "file": "@vueuse_core.js",
-      "fileHash": "d357e4c6",
+      "fileHash": "7ea96f42",
       "needsInterop": false
     },
     "@vueuse/integrations/useCookies": {
       "src": "../../../node_modules/@vueuse/integrations/useCookies.mjs",
       "file": "@vueuse_integrations_useCookies.js",
-      "fileHash": "bff77dd7",
+      "fileHash": "35c1d177",
       "needsInterop": false
     }
   },

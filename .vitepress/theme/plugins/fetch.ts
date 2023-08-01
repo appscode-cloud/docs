@@ -13,10 +13,9 @@ export function getServerDomain(subDomain?: string, inputPort?: string): string 
   let host = `${protocol}//${subDomain ? `${subDomain}.` : ''}${rootDomain}`
   if (hostname.search('bb.test') !== -1) {
     // dev
-    const port = subDomain ? inputPort || window.location.port : '5998'
+    const port = subDomain ? inputPort || window.location.port : '8080'
     host += port ? `:${port}` : ''
   }
-
   return host
 }
 

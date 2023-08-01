@@ -38,7 +38,7 @@ const previousOption = computed(() => {
 <style scoped lang="scss">
 .ac-doc-footer {
   margin-top: 50px;
-  border-top: 2px solid $ac-primary;
+  border-top: 2px solid $primary;
   padding: 20px 10px;
   display: flex;
   flex-direction: row;
