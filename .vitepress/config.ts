@@ -5,12 +5,14 @@ import { ThemeConfig } from './theme/index'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfigWithTheme<ThemeConfig>({
+  base: '/docs/',
   title: 'Bytebuilders Docs',
   titleTemplate: 'Bytebuilders',
   description: 'A documentation website for Bytebuilders Platform.',
   head: HeaderLinks.map(hl => ['link', hl]),
   srcDir: 'src',
   srcExclude: ['**/README.md', '**/TODO.md'],
+  outDir: './.vitepress/dist/docs',
   locales: {
     en: {
       label: 'English',
