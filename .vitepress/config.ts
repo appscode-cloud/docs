@@ -1,11 +1,15 @@
-import { Theme, defineConfigWithTheme } from 'vitepress'
+import process from 'node:process'
+import { defineConfigWithTheme } from 'vitepress'
 import AutoImport from 'unplugin-auto-import/vite'
 import HeaderLinks from './header-links'
-import { ThemeConfig } from './theme/index'
+import type { ThemeConfig } from './theme/index'
+
+const hostname = process.env.HOSTNAME || 'http://bb.test:5997'
+const base = '/docs/'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfigWithTheme<ThemeConfig>({
-  base: '/docs/',
+  base,
   title: 'Bytebuilders Docs',
   titleTemplate: 'Bytebuilders',
   description: 'A documentation website for Bytebuilders Platform.',
@@ -20,11 +24,14 @@ export default defineConfigWithTheme<ThemeConfig>({
     },
     bn: {
       label: 'বাংলা',
-      lang: 'bn'
-    }
+      lang: 'bn',
+    },
   },
   markdown: {
-    headers: true
+    headers: true,
+  },
+  sitemap: {
+    hostname: `${hostname}${base}`,
   },
   themeConfig: {
     i18n: {
@@ -32,58 +39,58 @@ export default defineConfigWithTheme<ThemeConfig>({
       fallbackLocale: 'en',
       messages: {
         en: {
-          hello: 'Hello'
+          hello: 'Hello',
         },
         bn: {
-          hello: 'হ্যালো'
-        }
-      }
+          hello: 'হ্যালো',
+        },
+      },
     },
     navigation: {
       sidebar: [
         {
-          title: "Getting Started",
-          link: '/getting-started'
+          title: 'Getting Started',
+          link: '/getting-started',
         },
         {
-          title: "Credentials",
+          title: 'Credentials',
           sections: [
             {
-              title: "What are credentials in Bytebuilders?",
-              link: "/credentials/what-are-credentials-bytebuilders"
+              title: 'What are credentials in Bytebuilders?',
+              link: '/credentials/what-are-credentials-bytebuilders',
             },
             {
-              title: "How does it work?",
-              link: "/credentials/how-does-it-work"
+              title: 'How does it work?',
+              link: '/credentials/how-does-it-work',
             },
             {
-              title: "Adding a credential to your profile",
-              link: ""
-            }
-          ]
+              title: 'Adding a credential to your profile',
+              link: '',
+            },
+          ],
         },
         {
-          title: "Import Cluster",
+          title: 'Import Cluster',
           sections: [
             {
-              title: "Import managed cluster",
-              link: ""
+              title: 'Import managed cluster',
+              link: '',
             },
             {
-              title: "Import private cluster",
-              link: ""
+              title: 'Import private cluster',
+              link: '',
             },
             {
-              title: "Import public cluster",
-              link: ""
-            }
-          ]
-        }
-      ]
+              title: 'Import public cluster',
+              link: '',
+            },
+          ],
+        },
+      ],
     },
     meilisearch: {
-      index: "kubedb"
-    }
+      index: 'kubedb',
+    },
   },
   vite: {
     plugins: [AutoImport()],
@@ -92,8 +99,8 @@ export default defineConfigWithTheme<ThemeConfig>({
         {
           find: 'vue-i18n',
           replacement: 'vue-i18n/dist/vue-i18n.cjs.js',
-        }
-      ]
+        },
+      ],
     },
     css: {
       preprocessorOptions: {
@@ -114,8 +121,8 @@ export default defineConfigWithTheme<ThemeConfig>({
   vue: {
     template: {
       compilerOptions: {
-        isCustomElement: (tag) => (tag.includes('nuxt-link') || tag.includes('router-link')),
+        isCustomElement: tag => (tag.includes('nuxt-link') || tag.includes('router-link')),
       },
     },
-  }
+  },
 })

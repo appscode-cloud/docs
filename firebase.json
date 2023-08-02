@@ -8,10 +8,10 @@
       "**/node_modules/**"
     ],
     "trailingSlash": true,
-    "redirects": [ {
+    "redirects": [{
       "source": "/",
       "destination": "https://byte.builders/docs/",
       "type": 301
-    } ]
+    }]
   }
 }
