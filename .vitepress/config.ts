@@ -33,6 +33,10 @@ export default defineConfigWithTheme<ThemeConfig>({
   sitemap: {
     hostname: `${hostname}${base}`,
   },
+  transformHead(context) {
+    if (context.pageData.isNotFound)
+      return [['meta', { 'http-equiv': 'refresh', 'content': `0; URL=${base}` }]]
+  },
   themeConfig: {
     i18n: {
       locale: 'en',

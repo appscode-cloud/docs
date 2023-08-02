@@ -3,12 +3,13 @@ import { useData, useRoute } from 'vitepress'
 import { useI18n } from 'vue-i18n'
 import { defineAsyncComponent } from 'vue'
 import Navbar from './components/Navbar.vue'
+import Error from './components/Error.vue'
 
 const Sidebar = defineAsyncComponent(() => import('./components/Sidebar.vue'))
 const DocOutline = defineAsyncComponent(() => import('./components/DocOutline.vue'))
 const DocFooter = defineAsyncComponent(() => import('./components/DocFooter.vue'))
 // https://vitepress.dev/reference/runtime-api#usedata
-const { frontmatter } = useData()
+const { frontmatter, page } = useData()
 // set i18n local from path
 const { path } = useRoute()
 const [, lang] = path.split('/')
@@ -18,6 +19,9 @@ locale.value = lang
 
 <template>
   <navbar />
+  <div v-if="page.isNotFound">
+    <error :is-404="true" />
+  </div>
   <div v-if="frontmatter.layout === 'home'">
     <div class="pt-60 pl-20">
       <content />
