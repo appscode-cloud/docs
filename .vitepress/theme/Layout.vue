@@ -3,7 +3,6 @@ import { useData, useRoute } from 'vitepress'
 import { useI18n } from 'vue-i18n'
 import { defineAsyncComponent } from 'vue'
 import Navbar from './components/Navbar.vue'
-import Error from './components/Error.vue'
 
 const Sidebar = defineAsyncComponent(() => import('./components/Sidebar.vue'))
 const DocOutline = defineAsyncComponent(() => import('./components/DocOutline.vue'))
@@ -19,9 +18,6 @@ locale.value = lang
 
 <template>
   <navbar />
-  <div v-if="page.isNotFound">
-    <error :is-404="true" />
-  </div>
   <div v-if="frontmatter.layout === 'home'">
     <div class="pt-60 pl-20">
       <content />
