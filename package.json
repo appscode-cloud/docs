@@ -2,7 +2,7 @@
   "scripts": {
     "dev": "vitepress dev",
     "build": "run-p type-check build-only",
-    "build-only": "vitepress build",
+    "build-only": "rm -rf tsconfig.tsbuildinfo; vitepress build; mv .vitepress/dist/docs/404.html .vitepress/dist/404.html",
     "preview": "vitepress preview",
     "type-check": "vue-tsc --noEmit",
     "lint:es": "eslint .",
