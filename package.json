@@ -10,8 +10,8 @@
     "lint-fix:es": "eslint . --fix",
     "lint-fix:style": "stylelint .vitepress/theme/**.{css,scss,sass} --fix",
     "format": "run-p lint-fix:*",
-    "deploy-qa": "export HOSTNAME=https://appscode.ninja; npm run build; firebase use default; firebase deploy",
-    "deploy-prod": "export HOSTNAME=https://byte.builders; npm run build; firebase use prod; firebase deploy; firebase use default"
+    "deploy:qa": "export HOSTNAME=https://appscode.ninja; npm run build; firebase use default; firebase deploy",
+    "deploy:prod": "export HOSTNAME=https://appscode.com; npm run build; firebase use prod; firebase deploy; firebase use default"
   },
   "dependencies": {
     "@appscode/design-system": "^1.1.0-beta.66",

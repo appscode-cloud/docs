@@ -10,7 +10,7 @@
     "trailingSlash": true,
     "redirects": [{
       "source": "/",
-      "destination": "https://byte.builders/docs/",
+      "destination": "https://appscode.com/docs/",
       "type": 301
     }]
   }
