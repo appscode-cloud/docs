@@ -27,5 +27,6 @@ coverage
 *.sw?
 
 .vitepress/dist
+.vitepress/.temp
 .firebase
 *.tsbuildinfo

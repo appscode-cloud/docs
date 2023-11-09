@@ -3,6 +3,7 @@ import { defineConfigWithTheme } from 'vitepress'
 import AutoImport from 'unplugin-auto-import/vite'
 import HeaderLinks from './header-links'
 import type { ThemeConfig } from './theme/index'
+import SidebarOptions from './sidebar-links.json'
 
 const hostname = process.env.HOSTNAME || 'http://bb.test:5997'
 const base = '/docs/'
@@ -52,44 +53,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     },
     navigation: {
       sidebar: [
-        {
-          title: 'Getting Started',
-          link: '/getting-started',
-        },
-        {
-          title: 'Credentials',
-          sections: [
-            {
-              title: 'What are credentials in Bytebuilders?',
-              link: '/credentials/what-are-credentials-bytebuilders',
-            },
-            {
-              title: 'How does it work?',
-              link: '/credentials/how-does-it-work',
-            },
-            {
-              title: 'Adding a credential to your profile',
-              link: '',
-            },
-          ],
-        },
-        {
-          title: 'Import Cluster',
-          sections: [
-            {
-              title: 'Import managed cluster',
-              link: '',
-            },
-            {
-              title: 'Import private cluster',
-              link: '',
-            },
-            {
-              title: 'Import public cluster',
-              link: '',
-            },
-          ],
-        },
+        ...SidebarOptions,
       ],
     },
     meilisearch: {

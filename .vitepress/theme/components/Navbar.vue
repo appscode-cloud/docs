@@ -4,7 +4,7 @@ import { defineAsyncComponent } from 'vue'
 
 const Navbar = defineAsyncComponent(() => import('@appscode/design-system/vue-components/v3/navbar/Navbar.vue'))
 const NavbarUser = defineClientComponent(() => import('./NavbarUser.vue')).setup()
-const NavbarLanguageSwitcher = defineClientComponent(() => import('./NavbarLanguageSwitcher.vue')).setup()
+// const NavbarLanguageSwitcher = defineClientComponent(() => import('./NavbarLanguageSwitcher.vue')).setup()
 const DocSearch = defineClientComponent(() => import('./DocSearch.vue')).setup()
 
 const { theme } = useData()
@@ -24,7 +24,7 @@ const showSearchbar = !!theme.value.meilisearch
     <template #navbar-cluster-switcher>
       <doc-search v-if="showSearchbar" />
     </template>
-    <navbar-language-switcher />
+    <!-- <navbar-language-switcher /> -->
     <navbar-user />
   </navbar>
 </template>
