@@ -12,9 +12,9 @@ const base = '/docs/'
 // https://vitepress.dev/reference/site-config
 export default defineConfigWithTheme<ThemeConfig>({
   base,
-  title: 'Bytebuilders Docs',
-  titleTemplate: 'Bytebuilders',
-  description: 'A documentation website for Bytebuilders Platform.',
+  title: 'AppsCode Docs',
+  titleTemplate: 'AppsCode',
+  description: 'A documentation website for AppsCode Platform.',
   head: HeaderLinks.map(hl => ['link', hl]),
   srcDir: 'src',
   srcExclude: ['**/README.md', '**/TODO.md'],
