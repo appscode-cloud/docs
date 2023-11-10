@@ -18,7 +18,7 @@ const { navigation } = theme.value
       <div class="sidebar-header">
         <!-- brand logo  -->
         <a class="is-flex brand-logo" :href="withBase('/')">
-          <img src="https://cdn.appscode.com/images/products/bytebuilders/bytebuilders-white.png" alt="brand-logo">
+          <img src="https://cdn.appscode.com/images/products/appscode/appscode-white.png" alt="appscode-logo">
         </a>
         <span class="brand-extension">
           Docs

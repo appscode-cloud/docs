@@ -15,7 +15,7 @@ const showSearchbar = !!theme.value.meilisearch
   <navbar modifier-classes="is-light" :full-width="true">
     <template #navbar-brand-logo>
       <a href="/">
-        <img src="https://cdn.appscode.com/images/products/bytebuilders/bytebuilders.png" alt="Bytebuilders Logo">
+        <img src="https://cdn.appscode.com/images/products/appscode/appscode.png" alt="AppsCode Logo">
       </a>
       <span class="brand-extension">
         Docs

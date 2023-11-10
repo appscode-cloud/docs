@@ -26,3 +26,18 @@ function wrapLinkWithLang(link: string) {
     </template>
   </ul>
 </template>
+
+<style lang="scss" scoped>
+ul{
+  li {
+    a{
+      color: $color-link;
+
+      &:hover {
+        color: $ac-primary;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+</style>

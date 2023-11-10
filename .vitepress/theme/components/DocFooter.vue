@@ -22,14 +22,14 @@ const previousOption = computed(() => {
 
 <template>
   <footer class="ac-doc-footer">
-    <a v-if="previousOption" class="ac-doc-footer-left" :href="wrapLinkWithLang(previousOption.link)">
-      <span class="header"><i class="fa fa-angle-left" />Previous</span>
-      <span class="title">{{ previousOption.title }}</span>
+    <a v-if="previousOption" class="ac-doc-footer-left button ac-button is-primary is-outlined" :href="wrapLinkWithLang(previousOption.link)">
+      <span class=""><i class="fa fa-angle-left" />Previous</span>
+      <span class="title mt-16">{{ previousOption.title }}</span>
     </a>
     <div v-else />
-    <a v-if="nextOption" class="ac-doc-footer-right" :href="wrapLinkWithLang(nextOption.link)">
-      <span class="header">Next<i class="fa fa-angle-right" /></span>
-      <span class="title">{{ nextOption.title }}</span>
+    <a v-if="nextOption" class="ac-doc-footer-right button ac-button is-primary is-outlined" :href="wrapLinkWithLang(nextOption.link)">
+      <span class="">Next<i class="fa fa-angle-right" /></span>
+      <span class="title mt-16">{{ nextOption.title }}</span>
     </a>
     <div v-else />
   </footer>
@@ -38,7 +38,7 @@ const previousOption = computed(() => {
 <style scoped lang="scss">
 .ac-doc-footer {
   margin-top: 50px;
-  border-top: 2px solid $primary;
+  border-top: 1px solid $color-border;
   padding: 20px 10px;
   display: flex;
   flex-direction: row;

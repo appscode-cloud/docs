@@ -19,8 +19,10 @@ locale.value = lang
 <template>
   <navbar />
   <div v-if="frontmatter.layout === 'home'">
-    <div class="pt-60 pl-20">
-      <content />
+    <div class="pt-60">
+      <div class="container is-fluid">
+        <content />
+      </div>
     </div>
   </div>
   <div v-else-if="frontmatter.layout === 'guide'" class="ac-system-body is-terminal">

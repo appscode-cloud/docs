@@ -18,7 +18,7 @@ const { page } = useData()
   position: fixed;
   height: calc(100vh - 90px);
   padding: 20px;
-  border-left: 2px solid $primary-40;
+  border-left: 1px solid $color-border;
 
   li {
     a {
