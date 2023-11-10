@@ -1,6 +1,7 @@
 import process from 'node:process'
 import { defineConfigWithTheme } from 'vitepress'
 import AutoImport from 'unplugin-auto-import/vite'
+import Icons from 'unplugin-icons/vite'
 import HeaderLinks from './header-links'
 import type { ThemeConfig } from './theme/index'
 import SidebarOptions from './sidebar-links.json'
@@ -61,7 +62,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     },
   },
   vite: {
-    plugins: [AutoImport()],
+    plugins: [AutoImport(), Icons({ compiler: 'vue3' })],
     resolve: {
       alias: [
         {
@@ -73,7 +74,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@import "@appscode/design-system/base/utilities/colors";',
+          additionalData: '@import "@appscode/design-system/vue-components/styles/base/utilities/colors"; @import "@appscode/design-system/vue-components/styles/theme/appscode.scss";',
         },
       },
     },

@@ -42,7 +42,9 @@ watch(activeLinkWithoutLang, () => {
 <style lang="scss" scoped>
 .ac-menu-label {
   padding-left: 20px;
-  font-size: 14px;
-  color: #bbb;
+  margin: 0;
+  margin-top: 24px;
+  font-size: 1rem;
+  color: $primary-95;
 }
 </style>

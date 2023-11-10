@@ -3,6 +3,8 @@ import { useDebounceFn, useFetch } from '@vueuse/core'
 import { useData } from 'vitepress'
 import { defineAsyncComponent, ref, watch } from 'vue'
 
+const HeroiconsMagnifyingGlass = defineAsyncComponent(() => import('~icons/heroicons/magnifying-glass'))
+
 const DocSearchResults = defineAsyncComponent(() => import('./DocSearchResults.vue'))
 
 const showSearchResults = ref(false)
@@ -62,8 +64,9 @@ watch(searchText, (n) => {
 <template>
   <div class="ac-navbar-search">
     <div class="search-item">
-      <span>
-        <i aria-hidden="true" class="fa fa-search" />
+      <span class="icon">
+        <heroicons-magnifying-glass />
+
       </span>
       <input
         v-model="searchText" type="search"
