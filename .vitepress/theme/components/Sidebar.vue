@@ -36,7 +36,7 @@ const { navigation } = theme.value
     </template>
 
     <template #sidebar-footer>
-      <sidebar-footer :is-colorpicker-enabled="false" @toggle-sidebar="$emit('toggleSidebar')" />
+      <sidebar-footer :is-colorpicker-enabled="false" :hide-footer="true" @toggle-sidebar="$emit('toggleSidebar')" />
     </template>
   </sidebar>
 </template>
