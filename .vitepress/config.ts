@@ -62,7 +62,10 @@ export default defineConfigWithTheme<ThemeConfig>({
     },
   },
   vite: {
-    plugins: [AutoImport(), Icons({ compiler: 'vue3' })],
+    plugins: [
+      AutoImport(),
+      Icons({ compiler: 'vue3' }),
+    ],
     resolve: {
       alias: [
         {
@@ -90,7 +93,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   vue: {
     template: {
       compilerOptions: {
-        isCustomElement: tag => (tag.includes('nuxt-link') || tag.includes('router-link')),
+        isCustomElement: tag => (tag.includes('nuxt-link') || tag.includes('router-link') || tag.includes('NuxtLink') || tag.includes('RouterLink')),
       },
     },
   },
