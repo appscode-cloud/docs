@@ -11,6 +11,9 @@
     "target": "ES2022",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "types": [
+      "unplugin-icons/types/vue",
+    ]
   }
 }
