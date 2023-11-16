@@ -8,8 +8,8 @@ const Sidebar = defineAsyncComponent(() => import('@appscode/design-system/vue-c
 const SidebarBody = defineAsyncComponent(() => import('@appscode/design-system/vue-components/v3/sidebar/SidebarBody.vue'))
 const SidebarFooter = defineAsyncComponent(() => import('@appscode/design-system/vue-components/v3/sidebar/SidebarFooter.vue'))
 const SidebarOptions = defineAsyncComponent(() => import('./SidebarOptions.vue'))
-const { theme } = useData()
-const { navigation } = theme.value
+const data = useData()
+const { navigation } = data.theme.value
 </script>
 
 <template>

@@ -2,13 +2,11 @@
 layout: 'guide'
 menu:
   docs_menu:
-    identifier: account-management-accesstokens
-    name: Access Tokens
+    identifier: account-management-security
+    name: Account Management
+    weight: 30
     parent: account-management
-    weight: 50
+    pre: dropdown
 menu_name: docs_menu
 section_menu: guides
 ---
-
-
-# Access Tokens

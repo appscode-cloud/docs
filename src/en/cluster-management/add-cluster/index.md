@@ -2,13 +2,11 @@
 layout: 'guide'
 menu:
   docs_menu:
-    identifier: cluster-management-securityreport
-    name: Security Report
+    identifier: cluster-management-add
+    name: Adding a Cluster
+    weight: 10
     parent: cluster-management
-    weight: 80
+    pre: dropdown
 menu_name: docs_menu
 section_menu: guides
 ---
-
-
-# Security Report
