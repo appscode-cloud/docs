@@ -2,10 +2,6 @@
 import { useData, useRoute } from 'vitepress'
 import { useI18n } from 'vue-i18n'
 import { defineAsyncComponent } from 'vue'
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-import { data as docs } from '../docs.data'
 import Navbar from './components/Navbar.vue'
 
 const Sidebar = defineAsyncComponent(() => import('./components/Sidebar.vue'))
@@ -18,14 +14,12 @@ const { path } = useRoute()
 const [, lang] = path.split('/')
 const { locale } = useI18n()
 locale.value = lang
-
-console.log({ docs })
 </script>
 
 <template>
   <navbar />
   <div v-if="frontmatter.layout === 'home'">
-    {{ docs }}
+    {{ page }}
     <div class="pt-60">
       <div class="container is-fluid">
         <content />

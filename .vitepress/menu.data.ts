@@ -1,18 +1,18 @@
 import { createContentLoader } from 'vitepress'
 
-interface MenuItemDetails {
+export interface MenuItemDetails {
   identifier: string
   name: string
   parent?: string
   weight: number
   url: string
 }
-interface MenuItemBody {
+export interface MenuItemBody {
   children: string[]
   details: MenuItemDetails
 }
-interface MenuItem extends Record<string, MenuItemBody> {}
-interface Menu extends Record<string, MenuItem> {}
+export interface MenuItem extends Record<string, MenuItemBody> {}
+export interface Menu extends Record<string, MenuItem> {}
 
 export default createContentLoader<Menu>('**/*.md', {
   transform: (pages) => {

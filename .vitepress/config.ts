@@ -4,7 +4,6 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Icons from 'unplugin-icons/vite'
 import HeaderLinks from './header-links'
 import type { ThemeConfig } from './theme/index'
-import SidebarOptions from './sidebar-links.json'
 
 const hostname = process.env.HOSTNAME || 'http://bb.test:5997'
 const base = '/docs/'
@@ -51,11 +50,6 @@ export default defineConfigWithTheme<ThemeConfig>({
           hello: 'হ্যালো',
         },
       },
-    },
-    navigation: {
-      sidebar: [
-        ...SidebarOptions,
-      ],
     },
     meilisearch: {
       index: 'kubedb',

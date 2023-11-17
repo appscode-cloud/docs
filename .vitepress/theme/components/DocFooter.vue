@@ -1,35 +1,39 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useData } from 'vitepress'
 import { useLang } from '../composables/lang'
-import { useNavigation } from '../composables/navigation'
+import { useMenu } from '../composables/menu'
 
+const { frontmatter } = useData()
 const { activeLinkWithoutLang, wrapLinkWithLang } = useLang()
-const { flattenedSidebarOptions } = useNavigation()
+const { flattenedActiveMenu } = useMenu(frontmatter.value.menu_name)
+const menuName = computed(() => frontmatter.value.menu_name)
+const activeMenuItemIdentifier = computed(() => frontmatter.value.menu[menuName.value].identifier)
 
-const activeSidebarOptionIdx = computed(() => flattenedSidebarOptions.findIndex(option => option.link === `/${activeLinkWithoutLang.value}`))
+const activeSidebarOptionIdx = computed(() => flattenedActiveMenu.findIndex(menuItem => menuItem.identifier === activeMenuItemIdentifier.value))
 
 const nextOption = computed(() => {
-  if (activeSidebarOptionIdx.value >= 0 && activeSidebarOptionIdx.value < flattenedSidebarOptions.length - 1)
-    return flattenedSidebarOptions[activeSidebarOptionIdx.value + 1]
+  if (activeSidebarOptionIdx.value >= 0 && activeSidebarOptionIdx.value < flattenedActiveMenu.length - 1)
+    return flattenedActiveMenu[activeSidebarOptionIdx.value + 1]
   else return undefined
 })
 const previousOption = computed(() => {
   if (activeSidebarOptionIdx.value > 0)
-    return flattenedSidebarOptions[activeSidebarOptionIdx.value - 1]
+    return flattenedActiveMenu[activeSidebarOptionIdx.value - 1]
   else return undefined
 })
 </script>
 
 <template>
   <footer class="ac-doc-footer">
-    <a v-if="previousOption" class="ac-doc-footer-left button ac-button is-primary is-outlined" :href="wrapLinkWithLang(previousOption.link)">
+    <a v-if="previousOption" class="ac-doc-footer-left button ac-button is-primary is-outlined" :href="wrapLinkWithLang(previousOption.url, true)">
       <span class=""><i class="fa fa-angle-left" />Previous</span>
-      <span class="title mt-16">{{ previousOption.title }}</span>
+      <span class="title mt-16">{{ previousOption.name }}</span>
     </a>
     <div v-else />
-    <a v-if="nextOption" class="ac-doc-footer-right button ac-button is-primary is-outlined" :href="wrapLinkWithLang(nextOption.link)">
+    <a v-if="nextOption" class="ac-doc-footer-right button ac-button is-primary is-outlined" :href="wrapLinkWithLang(nextOption.url, true)">
       <span class="">Next<i class="fa fa-angle-right" /></span>
-      <span class="title mt-16">{{ nextOption.title }}</span>
+      <span class="title mt-16">{{ nextOption.name }}</span>
     </a>
     <div v-else />
   </footer>
