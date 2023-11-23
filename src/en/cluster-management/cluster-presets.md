@@ -6,6 +6,11 @@ menu:
     name: Manage Presets
     parent: cluster-management
     weight: 50
+  home_menu:
+    identifier: home-cluster-preset
+    name: Manage Presets
+    parent: home-cluster
+    weight: 50
 menu_name: docs_menu
 section_menu: guides
 ---

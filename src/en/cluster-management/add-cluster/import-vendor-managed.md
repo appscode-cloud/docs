@@ -6,6 +6,11 @@ menu:
     name: Import Vendor Managed Clusters
     parent: cluster-management-add
     weight: 10
+  home_menu:
+    identifier: home-cluster-add-vendormanaged
+    name: Import Vendor Managed Clusters
+    parent: home-cluster-add
+    weight: 10
 menu_name: docs_menu
 section_menu: guides
 ---

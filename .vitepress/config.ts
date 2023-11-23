@@ -16,7 +16,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   description: 'A documentation website for AppsCode Platform.',
   head: HeaderLinks.map(hl => ['link', hl]),
   srcDir: 'src',
-  srcExclude: ['**/README.md', '**/TODO.md'],
+  srcExclude: ['**/README.md', '**/TODO.md', '**/_*.md'],
   outDir: './.vitepress/dist/docs',
   locales: {
     en: {

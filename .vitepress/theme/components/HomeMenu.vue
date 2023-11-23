@@ -1,27 +1,23 @@
 <script setup lang="ts">
 import { withBase } from 'vitepress'
-import type { SidebarConfig, SidebarItemWithLink, SidebarItemWithSections } from '../typings/sidebar'
+import type { Sidebar } from '../composables/menu'
 
 defineProps<{
-  options: SidebarConfig
+  options: Sidebar
 }>()
-
-function wrapLinkWithLang(link: string) {
-  return withBase(`/en/${link.startsWith('/') ? link.slice(1) : link}`)
-}
 </script>
 
 <template>
   <ul>
-    <template v-for="item in options" :key="item.title">
-      <template v-if="(item as SidebarItemWithSections).sections">
+    <template v-for="item in options" :key="item.identifier">
+      <template v-if="item.children?.length">
         <li class="p-5">
-          <h5>{{ item.title }}</h5>
+          <h5>{{ item.name }}</h5>
         </li>
-        <home-menu class="ml-5 pl-20 b-l-1" :options="(item as SidebarItemWithSections).sections" />
+        <home-menu class="ml-5 pl-20 b-l-1" :options="item.children" />
       </template>
       <li v-else class="p-5">
-        <a :href="wrapLinkWithLang((item as SidebarItemWithLink).link)">{{ item.title }}</a>
+        <a :href="withBase(item.url)">{{ item.name }}</a>
       </li>
     </template>
   </ul>

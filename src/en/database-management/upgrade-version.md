@@ -6,6 +6,11 @@ menu:
     name: Upgrade Database Version
     parent: database-management
     weight: 50
+  home_menu:
+    identifier: home-database-update
+    name: Upgrade Database Version
+    parent: home-database
+    weight: 50
 menu_name: docs_menu
 section_menu: guides
 ---

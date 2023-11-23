@@ -6,6 +6,11 @@ menu:
     name: Configure Database TLS & Monitoring
     parent: database-management
     weight: 70
+  home_menu:
+    identifier: home-database-tls
+    name: Configure Database TLS & Monitoring
+    parent: home-database
+    weight: 70
 menu_name: docs_menu
 section_menu: guides
 ---
