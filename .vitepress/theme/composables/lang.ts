@@ -14,8 +14,13 @@ export function useLang() {
     return linkWithoutLang.join('/')
   })
 
-  function wrapLinkWithLang(link: string) {
-    return withBase(`/${activeLang.value.lang}/${link.startsWith('/') ? link.slice(1) : link}`)
+  function wrapLinkWithLang(link: string, linkAlreadyHasLang?: boolean) {
+    let path = link
+    if (linkAlreadyHasLang) {
+      // remove the embedded lang
+      path = path.split('/').slice(2).join('/')
+    }
+    return withBase(`/${activeLang.value.lang}/${path.startsWith('/') ? path.slice(1) : path}`)
   }
   function wrapCurrentPageWithLang(lang: string) {
     return withBase(`/${locales[lang].lang || ''}/${activeLinkWithoutLang.value}`)

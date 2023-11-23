@@ -18,7 +18,12 @@ locale.value = lang
 
 <template>
   <navbar />
-  <div v-if="frontmatter.layout === 'home'">
+  <div v-if="page.isNotFound">
+    <div class="pt-60">
+      404 not found page
+    </div>
+  </div>
+  <div v-else-if="frontmatter.layout === 'home'">
     <div class="pt-60">
       <div class="container is-fluid">
         <content />
