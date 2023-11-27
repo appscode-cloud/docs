@@ -30,16 +30,27 @@ locale.value = lang
   </div>
   <div v-else-if="frontmatter.layout === 'guide'" class="ac-system-body is-terminal">
     <sidebar />
-    <div class="ac-system-content">
-      <div class="columns is-multiline">
-          <div class="column is-9 content">
-            <content style="min-height: calc(100vh - 120px)" />
-            <doc-footer />
-          </div>
-          <div class="column is-3">
-            <doc-outline />
-          </div>
-        </div>
+    <div class="content">
+      <content class="content-body"/>
+      <doc-footer class="content-footer" />
+    </div>
+    <div class="toc">
+      <doc-outline />
     </div>
   </div>
 </template>
+<style lang="scss">
+.ac-system-body {
+  grid-template-columns: 350px auto 350px !important;
+  .ac-left-sidebar-wrapper {
+    width: 350px;
+  }
+}
+ .content {
+  .content-body {
+    min-height: calc(100vh - 160px);
+  }
+  width: calc(100% - 120px);
+  margin: 20px auto 20px;
+ }
+</style>

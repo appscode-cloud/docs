@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { defineAsyncComponent } from 'vue'
-import { useData } from 'vitepress'
+import { useData } from 'vitepress';
+import { defineAsyncComponent } from 'vue';
 
 const DocOutlineOptions = defineAsyncComponent(() => import('./DocOutlineOptions.vue'))
 
@@ -16,8 +16,8 @@ const { page } = useData()
 <style lang="scss">
 .ac-doc-outline {
   position: fixed;
-  height: calc(100vh - 90px);
-  padding: 20px;
+  height: calc(100vh - 50px);
+  padding: 24px;
   border-left: 1px solid $color-border;
 
   li {

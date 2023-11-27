@@ -26,12 +26,16 @@ const previousOption = computed(() => {
 
 <template>
   <footer class="ac-doc-footer is-flex is-justify-content-space-between">
-    <a v-if="previousOption" class="ac-doc-footer-left button ac-button is-grey b-1  is-light" :href="wrapLinkWithLang(previousOption.url, true)">
-      <span class=""><i class="fa fa-angle-left" />{{ previousOption.name }}</span>
+    <a v-if="previousOption" class="ac-doc-footer-left button ac-button is-grey b-1 is-light gap-4" :href="wrapLinkWithLang(previousOption.url, true)">
+      <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 20 20"><path fill="currentColor" fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10" clip-rule="evenodd"/></svg></span>
+      <span class="">{{ previousOption.name }}</span>
     </a>
     <div v-else />
-    <a v-if="nextOption" class="ac-doc-footer-right button ac-button is-grey b-1   is-light" :href="wrapLinkWithLang(nextOption.url, true)">
-      <span class="">{{ nextOption.name }}<i class="fa fa-angle-right" /></span>
+    <a v-if="nextOption" class="ac-doc-footer-right button ac-button is-grey b-1 is-light gap-4" :href="wrapLinkWithLang(nextOption.url, true)">
+      <span>{{ nextOption.name }}</span>
+      <span class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 20 20"><path fill="currentColor" fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10" clip-rule="evenodd"/></svg>
+      </span>
     </a>
     <div v-else />
   </footer>

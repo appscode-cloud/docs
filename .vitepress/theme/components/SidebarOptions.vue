@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { type WatchStopHandle, computed, nextTick, onBeforeUnmount, onMounted, watch } from 'vue'
-import { useData } from 'vitepress'
-import { useLang } from '../composables/lang'
-import type { Sidebar } from '../composables/menu'
+import { useData } from 'vitepress';
+import { computed, nextTick, onBeforeUnmount, onMounted, watch, type WatchStopHandle } from 'vue';
+import { useLang } from '../composables/lang';
+import type { Sidebar } from '../composables/menu';
 
 defineProps<{
   options: Sidebar
@@ -47,10 +47,13 @@ onBeforeUnmount(() => {
 
 <style lang="scss" scoped>
 .ac-menu-label {
-  padding-left: 20px;
-  margin: 0;
-  margin-top: 24px;
   font-size: 1rem;
-  color: $primary-95;
+  font-weight: 500;
+  color: $color-heading;
+  letter-spacing: 1%;
+}
+.ac-left-sidebar .menu-list.ac-menu-list li a {
+  font-weight: 400;
+  color: $color-text;
 }
 </style>
