@@ -16,16 +16,16 @@ const { activeMenu } = useMenu(menuName)
 </script>
 
 <template>
-  <sidebar>
+  <sidebar :sidebar-light="true">
     <template #sidebar-header>
       <div class="sidebar-header">
         <!-- brand logo  -->
         <a class="is-flex brand-logo" :href="withBase('/')">
-          <img src="https://cdn.appscode.com/images/products/appscode/appscode-white.png" alt="appscode-logo">
+          <img src="https://cdn.appscode.com/images/products/appscode/appscode.svg" alt="appscode-logo">
         </a>
-        <span class="brand-extension">
+        <!-- <span class="brand-extension">
           Docs
-        </span>
+        </span> -->
         <!-- brand logo  -->
       </div>
     </template>

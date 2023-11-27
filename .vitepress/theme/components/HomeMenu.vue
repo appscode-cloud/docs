@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { withBase } from 'vitepress'
-import type { Sidebar } from '../composables/menu'
+import { withBase } from 'vitepress';
+import type { Sidebar } from '../composables/menu';
 
 defineProps<{
   options: Sidebar
@@ -11,12 +11,12 @@ defineProps<{
   <ul>
     <template v-for="item in options" :key="item.identifier">
       <template v-if="item.children?.length">
-        <li class="p-5">
-          <h5>{{ item.name }}</h5>
+        <li class="is-flex is-align-items-center gap-8">
+          <h6>{{ item.name }}</h6>
         </li>
-        <home-menu class="ml-5 pl-20 b-l-1" :options="item.children" />
+        <home-menu class="ml-5 pl-16 b-l-1" :options="item.children" />
       </template>
-      <li v-else class="p-5">
+      <li v-else class="py-2">
         <a :href="withBase(item.url)">{{ item.name }}</a>
       </li>
     </template>

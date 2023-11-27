@@ -1,5 +1,7 @@
 @charset "utf-8";
-
+body {
+    // font-size: 14px !important;
+}
 // customize bulma CSS
 @import '@appscode/design-system/vue-components/styles/base/utilities/customize-bulma';
 
@@ -20,6 +22,7 @@
 // COMPONENTS
 // @import '@appscode/design-system/vue-components/styles/components/all';
 @import '@appscode/design-system/vue-components/styles/components/button';
+@import '@appscode/design-system/vue-components/styles/components/form-fields/input';
 
 // 404
 @import "@appscode/design-system/vue-components/styles/layouts/404";

@@ -1,30 +1,30 @@
 <script setup lang="ts">
-import { defineClientComponent, useData } from 'vitepress'
-import { defineAsyncComponent } from 'vue'
+import { defineClientComponent } from 'vitepress';
+import { defineAsyncComponent } from 'vue';
 
 const Navbar = defineAsyncComponent(() => import('@appscode/design-system/vue-components/v3/navbar/Navbar.vue'))
 const NavbarMenu = defineAsyncComponent(() => import('./NavbarMenu.vue'))
 const NavbarUser = defineClientComponent(() => import('./NavbarUser.vue')).setup()
 // const NavbarLanguageSwitcher = defineClientComponent(() => import('./NavbarLanguageSwitcher.vue')).setup()
-const DocSearch = defineClientComponent(() => import('./DocSearch.vue')).setup()
+// const DocSearch = defineClientComponent(() => import('./DocSearch.vue')).setup()
 
-const { theme } = useData()
-const showSearchbar = !!theme.value.meilisearch
+// const { theme } = useData()
+// const showSearchbar = !!theme.value.meilisearch
 </script>
 
 <template>
   <navbar modifier-classes="is-light" :full-width="true">
     <template #navbar-brand-logo>
-      <a href="/">
+      <a href="/" class="is-flex">
         <img src="https://cdn.appscode.com/images/products/appscode/appscode.png" alt="AppsCode Logo">
       </a>
-      <span class="brand-extension">
+      <!-- <span class="brand-extension">
         Docs
-      </span>
+      </span> -->
     </template>
     <navbar-menu />
     <template #navbar-cluster-switcher>
-      <doc-search v-if="showSearchbar" />
+      <!-- <doc-search v-if="showSearchbar" /> -->
     </template>
     <!-- <navbar-language-switcher /> -->
     <navbar-user />

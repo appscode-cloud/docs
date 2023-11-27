@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useData, useRoute } from 'vitepress'
-import { useI18n } from 'vue-i18n'
-import { defineAsyncComponent } from 'vue'
-import Navbar from './components/Navbar.vue'
+import { useData, useRoute } from 'vitepress';
+import { defineAsyncComponent } from 'vue';
+import { useI18n } from 'vue-i18n';
+import Navbar from './components/Navbar.vue';
 
 const Sidebar = defineAsyncComponent(() => import('./components/Sidebar.vue'))
 const DocOutline = defineAsyncComponent(() => import('./components/DocOutline.vue'))
@@ -25,25 +25,21 @@ locale.value = lang
   </div>
   <div v-else-if="frontmatter.layout === 'home'">
     <div class="pt-60">
-      <div class="container is-fluid">
-        <content />
-      </div>
+      <content />
     </div>
   </div>
   <div v-else-if="frontmatter.layout === 'guide'" class="ac-system-body is-terminal">
     <sidebar />
     <div class="ac-system-content">
-      <div class="p-20">
-        <div class="columns is-multiline">
+      <div class="columns is-multiline">
           <div class="column is-9 content">
-            <content />
+            <content style="min-height: calc(100vh - 120px)" />
             <doc-footer />
           </div>
           <div class="column is-3">
             <doc-outline />
           </div>
         </div>
-      </div>
     </div>
   </div>
 </template>

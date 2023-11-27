@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useData } from 'vitepress'
-import { useLang } from '../composables/lang'
-import { useMenu } from '../composables/menu'
+import { useData } from 'vitepress';
+import { computed } from 'vue';
+import { useLang } from '../composables/lang';
+import { useMenu } from '../composables/menu';
 
 const { frontmatter } = useData()
 const { wrapLinkWithLang } = useLang()
@@ -25,65 +25,62 @@ const previousOption = computed(() => {
 </script>
 
 <template>
-  <footer class="ac-doc-footer">
-    <a v-if="previousOption" class="ac-doc-footer-left button ac-button is-primary is-outlined" :href="wrapLinkWithLang(previousOption.url, true)">
-      <span class=""><i class="fa fa-angle-left" />Previous</span>
-      <span class="title mt-16">{{ previousOption.name }}</span>
+  <footer class="ac-doc-footer is-flex is-justify-content-space-between">
+    <a v-if="previousOption" class="ac-doc-footer-left button ac-button is-grey b-1  is-light" :href="wrapLinkWithLang(previousOption.url, true)">
+      <span class=""><i class="fa fa-angle-left" />{{ previousOption.name }}</span>
     </a>
     <div v-else />
-    <a v-if="nextOption" class="ac-doc-footer-right button ac-button is-primary is-outlined" :href="wrapLinkWithLang(nextOption.url, true)">
-      <span class="">Next<i class="fa fa-angle-right" /></span>
-      <span class="title mt-16">{{ nextOption.name }}</span>
+    <a v-if="nextOption" class="ac-doc-footer-right button ac-button is-grey b-1   is-light" :href="wrapLinkWithLang(nextOption.url, true)">
+      <span class="">{{ nextOption.name }}<i class="fa fa-angle-right" /></span>
     </a>
     <div v-else />
   </footer>
 </template>
 
 <style scoped lang="scss">
-.ac-doc-footer {
-  margin-top: 50px;
-  border-top: 1px solid $color-border;
-  padding: 20px 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+// .ac-doc-footer {
+//   // border-top: 1px solid $color-border;
+//   padding: 20px 10px;
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
 
-  .ac-doc-footer-left, .ac-doc-footer-right {
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+//   .ac-doc-footer-left, .ac-doc-footer-right {
+//     padding: 10px;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
 
-    .header {
-      font-size: 14px;
-      color: $primary-50;
-    }
+//     .header {
+//       font-size: 14px;
+//       color: $primary-50;
+//     }
 
-    .title {
-      margin-top: 10px;
-      font-size: 16px;
-      color: $primary-20;
-    }
-  }
+//     .title {
+//       margin-top: 10px;
+//       font-size: 16px;
+//       color: $primary-20;
+//     }
+//   }
 
-  .ac-doc-footer-left {
-    text-align: left;
+//   .ac-doc-footer-left {
+//     text-align: left;
 
-    .header {
-      i {
-        margin-right: 5px;
-      }
-    }
-  }
+//     .header {
+//       i {
+//         margin-right: 5px;
+//       }
+//     }
+//   }
 
-  .ac-doc-footer-right {
-    text-align: right;
+//   .ac-doc-footer-right {
+//     text-align: right;
 
-    .header {
-      i {
-        margin-left: 5px;
-      }
-    }
-  }
-}
+//     .header {
+//       i {
+//         margin-left: 5px;
+//       }
+//     }
+//   }
+// }
 </style>
