@@ -5,7 +5,11 @@ menu:
     identifier: account-management
     name: Account Management
     weight: 20
-    pre: dropdown
+  section_menu:
+    identifier: account-management
+    name: Account Management
+    weight: 20
+    parent: guides
 menu_name: docs_menu
 section_menu: guides
 ---

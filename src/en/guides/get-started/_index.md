@@ -5,7 +5,11 @@ menu:
     identifier: guide-start
     name: Get Started
     weight: 10
-    pre: dropdown
+  section_menu:
+    identifier: guide-start
+    name: Get Started
+    weight: 10
+    parent: guides
 menu_name: docs_menu
 section_menu: guides
 ---
