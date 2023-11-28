@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useData, withBase } from 'vitepress'
-import { defineAsyncComponent } from 'vue'
+import { computed, defineAsyncComponent } from 'vue'
 import { useMenu } from '../composables/menu'
 
 defineEmits(['toggleSidebar'])
@@ -11,7 +11,8 @@ const SidebarFooter = defineAsyncComponent(() => import('@appscode/design-system
 const SidebarOptions = defineAsyncComponent(() => import('./SidebarOptions.vue'))
 
 const { frontmatter } = useData()
-const { activeMenu } = useMenu(frontmatter.value.menu_name)
+const menuName = computed(() => frontmatter.value.menu_name)
+const { activeMenu } = useMenu(menuName)
 </script>
 
 <template>

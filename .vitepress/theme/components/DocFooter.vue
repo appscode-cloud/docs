@@ -5,21 +5,21 @@ import { useLang } from '../composables/lang'
 import { useMenu } from '../composables/menu'
 
 const { frontmatter } = useData()
-const { activeLinkWithoutLang, wrapLinkWithLang } = useLang()
-const { flattenedActiveMenu } = useMenu(frontmatter.value.menu_name)
+const { wrapLinkWithLang } = useLang()
 const menuName = computed(() => frontmatter.value.menu_name)
-const activeMenuItemIdentifier = computed(() => frontmatter.value.menu[menuName.value].identifier)
+const { flattenedActiveMenu } = useMenu(menuName)
+const activeMenuItemIdentifier = computed(() => frontmatter.value.menu[menuName.value]?.identifier)
 
-const activeSidebarOptionIdx = computed(() => flattenedActiveMenu.findIndex(menuItem => menuItem.identifier === activeMenuItemIdentifier.value))
+const activeSidebarOptionIdx = computed(() => flattenedActiveMenu.value.findIndex(menuItem => menuItem.identifier === activeMenuItemIdentifier.value))
 
 const nextOption = computed(() => {
-  if (activeSidebarOptionIdx.value >= 0 && activeSidebarOptionIdx.value < flattenedActiveMenu.length - 1)
-    return flattenedActiveMenu[activeSidebarOptionIdx.value + 1]
+  if (activeSidebarOptionIdx.value >= 0 && activeSidebarOptionIdx.value < flattenedActiveMenu.value.length - 1)
+    return flattenedActiveMenu.value[activeSidebarOptionIdx.value + 1]
   else return undefined
 })
 const previousOption = computed(() => {
   if (activeSidebarOptionIdx.value > 0)
-    return flattenedActiveMenu[activeSidebarOptionIdx.value - 1]
+    return flattenedActiveMenu.value[activeSidebarOptionIdx.value - 1]
   else return undefined
 })
 </script>
