@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { useData, useRoute } from 'vitepress'
+import { useData, useRoute, useRouter } from 'vitepress'
 import { useI18n } from 'vue-i18n'
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent, ref, watchEffect } from 'vue'
 import Navbar from './components/Navbar.vue'
+import { useMenu } from './composables/menu'
 
 const Sidebar = defineAsyncComponent(() => import('./components/Sidebar.vue'))
 const DocOutline = defineAsyncComponent(() => import('./components/DocOutline.vue'))
@@ -14,6 +15,20 @@ const { path } = useRoute()
 const [, lang] = path.split('/')
 const { locale } = useI18n()
 locale.value = lang
+
+const { go } = useRouter()
+watchEffect(() => {
+  const redirectCtx = frontmatter.value.redirect || {}
+  if (redirectCtx) {
+    const { to_menu_name, to_identifier } = redirectCtx || {}
+    if (to_menu_name && to_identifier) {
+      const { getMenuItemUrl } = useMenu(ref(to_menu_name))
+      const url = getMenuItemUrl(to_identifier)
+      if (url)
+        go(url)
+    }
+  }
+})
 </script>
 
 <template>

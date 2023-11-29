@@ -6,7 +6,7 @@ menu:
     name: Selfhost Setup
     weight: 30
 menu_name: selfhost-setup_docs_menu
-section_name: guide
+section_menu: selfhost-setup
 ---
 
 

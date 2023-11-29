@@ -10,6 +10,9 @@ menu:
     name: Cluster Management
     weight: 30
     parent: guides
+redirect:
+  to_menu_name: docs_menu
+  to_identifier: cluster-management-add-vendormanaged
 menu_name: docs_menu
 section_menu: guides
 ---

@@ -10,6 +10,9 @@ menu:
     name: Database Management
     weight: 40
     parent: guides
+redirect:
+  to_menu_name: docs_menu
+  to_identifier: database-management-create
 menu_name: docs_menu
 section_menu: guides
 ---
