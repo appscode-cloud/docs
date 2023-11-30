@@ -2,16 +2,16 @@
 layout: 'guide'
 menu:
   docs_menu:
-    identifier: account-management-security
-    name: Manage Security
-    weight: 30
+    identifier: account-management-kubernetes
+    name: Kubernetes
+    weight: 100
     parent: account-management
     pre: dropdown
   home_menu:
-    identifier: home-account-security
-    name: Manage Security
+    identifier: home-account-kubernetes
+    name: Kubernetes
     parent: home-account
-    weight: 30
+    weight: 100
 menu_name: docs_menu
 section_menu: guides
 ---
