@@ -11,7 +11,7 @@ defineProps<{
 const { activeLinkWithoutLang, wrapLinkWithLang } = useLang()
 const { frontmatter } = useData()
 const activeMenuName = computed(() => frontmatter.value.menu_name)
-const activeMenuItemIdentifier = computed(() => frontmatter.value.menu[activeMenuName.value].identifier)
+const activeMenuItemIdentifier = computed(() => frontmatter.value.menu[activeMenuName.value]?.identifier)
 
 let activeLinkWatcher: WatchStopHandle
 onMounted(() => {

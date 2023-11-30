@@ -3,6 +3,7 @@ import { defineClientComponent, useData } from 'vitepress'
 import { defineAsyncComponent } from 'vue'
 
 const Navbar = defineAsyncComponent(() => import('@appscode/design-system/vue-components/v3/navbar/Navbar.vue'))
+const NavbarMenu = defineAsyncComponent(() => import('./NavbarMenu.vue'))
 const NavbarUser = defineClientComponent(() => import('./NavbarUser.vue')).setup()
 // const NavbarLanguageSwitcher = defineClientComponent(() => import('./NavbarLanguageSwitcher.vue')).setup()
 const DocSearch = defineClientComponent(() => import('./DocSearch.vue')).setup()
@@ -21,6 +22,7 @@ const showSearchbar = !!theme.value.meilisearch
         Docs
       </span>
     </template>
+    <navbar-menu />
     <template #navbar-cluster-switcher>
       <doc-search v-if="showSearchbar" />
     </template>

@@ -6,10 +6,12 @@ menu_name: home_menu
 
 <script setup lang="ts">
 import { useData } from 'vitepress'
+import {computed} from "vue";
 import { useMenu } from '../.vitepress/theme/composables/menu.ts'
 import HomeMenu from "../.vitepress/theme/components/HomeMenu.vue"
 const {theme, frontmatter} = useData();
-const {activeMenu} = useMenu(frontmatter.value.menu_name)
+const menuName = computed(() => frontmatter.value.menu_name)
+const {activeMenu} = useMenu(menuName)
 </script>
 
 # Appscode Docs

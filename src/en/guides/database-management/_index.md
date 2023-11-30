@@ -5,7 +5,6 @@ menu:
     identifier: database-management
     name: Database Management
     weight: 40
-    pre: dropdown
 menu_name: docs_menu
 section_menu: guides
 ---

@@ -5,7 +5,6 @@ menu:
     identifier: cluster-management
     name: Cluster Management
     weight: 30
-    pre: dropdown
 menu_name: docs_menu
 section_menu: guides
 ---
