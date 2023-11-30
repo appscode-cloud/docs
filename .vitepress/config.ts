@@ -30,6 +30,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   },
   markdown: {
     headers: true,
+    theme: 'github-light',
   },
   sitemap: {
     hostname: `${hostname}${base}`,
