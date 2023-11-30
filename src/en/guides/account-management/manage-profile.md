@@ -11,6 +11,11 @@ menu:
     name: Manage Profile, Emails, & Avatar
     parent: home-account
     weight: 10
+  section_menu:
+    identifier: account-management
+    name: Account Management
+    weight: 20
+    parent: guides
 menu_name: docs_menu
 section_menu: guides
 ---

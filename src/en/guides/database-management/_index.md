@@ -1,0 +1,10 @@
+---
+layout: 'guide'
+menu:
+  docs_menu:
+    identifier: database-management
+    name: Database Management
+    weight: 40
+menu_name: docs_menu
+section_menu: guides
+---

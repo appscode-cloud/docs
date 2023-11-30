@@ -41,11 +41,5 @@ export function useMenu(menuName: Ref<string>) {
   }
   const flattenedActiveMenu = computed(() => flattenMenu(activeMenu.value))
 
-  function getMenuItemUrl(identifier: string) {
-    const menuItem = flattenedActiveMenu.value.find(menuItem => menuItem.identifier === identifier)
-    if (menuItem)
-      return menuItem.url
-    else return ''
-  }
-  return { activeMenu, flattenedActiveMenu, getMenuItemUrl }
+  return { activeMenu, flattenedActiveMenu }
 }
