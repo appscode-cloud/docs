@@ -39,18 +39,41 @@ locale.value = lang
     </div>
   </div>
 </template>
+
 <style lang="scss">
+
 .ac-system-body {
   grid-template-columns: 350px auto 350px !important;
+
   .ac-left-sidebar-wrapper {
     width: 350px;
+
+    .sidebar-header {
+      border-bottom: 1px solid $color-border !important;
+    }
+
+    .ac-menu-list {
+      padding: 20px;
+      padding-top: 16px !important;
+    }
+
+    .ac-left-sidebar .menu-list.ac-menu-list, .sidebar-footer {
+      border-right: 1px solid $color-border;
+    }
+
+    //  aside, .sidebar-footer {
+    //   border-right: 1px solid $color-border;
+    // }
   }
 }
+
  .content {
+   width: calc(100% - 120px);
+   margin: 20px auto;
+
   .content-body {
     min-height: calc(100vh - 160px);
   }
-  width: calc(100% - 120px);
-  margin: 20px auto 20px;
+
  }
 </style>

@@ -1,7 +1,5 @@
 @charset "utf-8";
-body {
-    // font-size: 14px !important;
-}
+
 // customize bulma CSS
 @import '@appscode/design-system/vue-components/styles/base/utilities/customize-bulma';
 
@@ -21,8 +19,35 @@ body {
 
 // COMPONENTS
 // @import '@appscode/design-system/vue-components/styles/components/all';
+@import '@appscode/design-system/vue-components/styles/components/navbar/navbar';
 @import '@appscode/design-system/vue-components/styles/components/button';
 @import '@appscode/design-system/vue-components/styles/components/form-fields/input';
 
 // 404
 @import "@appscode/design-system/vue-components/styles/layouts/404";
+
+.ac-navbar-menu {
+    a{
+        color: $color-text;
+        font-weight: 500;
+       
+    }
+
+    .navbar-item, .navbar-link.is-active {
+        &:hover{
+            background-color: transparent;
+        }
+    }
+
+    .navbar-link:not(.is-arrowless)::after {
+        border-color: $color-text;
+        border-width: 1px;
+    }
+}
+
+.navbar-dropdown {
+    a.navbar-item {
+        padding: 8px 16px;
+        font-size: 1rem;
+    }
+}

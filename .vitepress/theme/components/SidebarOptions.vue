@@ -31,10 +31,10 @@ onBeforeUnmount(() => {
   <aside class="menu">
     <template v-for="item in options" :key="item.identifier">
       <template v-if="item.children">
-        <p class="menu-label ac-menu-label pl-10">
+        <p class="menu-label ac-menu-label">
           {{ item.name }}
         </p>
-        <ul class="menu-list pl-20">
+        <ul class="menu-list">
           <sidebar-options :options="item.children" />
         </ul>
       </template>
@@ -50,8 +50,13 @@ onBeforeUnmount(() => {
   font-size: 1rem;
   font-weight: 500;
   color: $color-heading;
-  letter-spacing: 1%;
+  letter-spacing: 1px;
 }
+
+.menu-label:not(:last-child) {
+  margin-bottom: 0;
+}
+
 .ac-left-sidebar .menu-list.ac-menu-list li a {
   font-weight: 400;
   color: $color-text;
