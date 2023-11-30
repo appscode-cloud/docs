@@ -31,7 +31,7 @@ locale.value = lang
   <div v-else-if="frontmatter.layout === 'guide'" class="ac-system-body is-terminal">
     <sidebar />
     <div class="content">
-      <content class="content-body"/>
+      <content class="content-body" />
       <doc-footer class="content-footer" />
     </div>
     <div class="toc">
@@ -39,8 +39,68 @@ locale.value = lang
     </div>
   </div>
 </template>
-
 <style lang="scss">
+.ac-left-sidebar {
+  .menu-list {
+    &.ac-menu-list {
+      padding: 20px;
+      padding-top: 16px !important;
+
+
+      .menu-list {
+        position: relative;
+
+        &::after {
+          position: absolute;
+          content: "";
+          left: 6px;
+          top: 0;
+          width: 1px;
+          height: 100%;
+          background-color: $color-border;
+          z-index: -1;
+        }
+      }
+
+     ul {
+      li {
+        position: relative;
+
+        a {
+          padding: 8px 15px 8px 24px;
+          color: $color-text;
+
+          &::after {
+            width: 12px !important;
+            height: 12px !important;
+            top: 12px !important;
+            left: 0 !important;
+            background-color: $ac-primary !important;
+            border: 1px solid $ac-primary !important;
+            border-radius: 50% !important;
+            opacity: 0;
+          }
+
+          &:hover {
+            color: $ac-primary !important;
+            padding-left: 32px;
+          }
+
+          &.is-active {
+            color: $ac-primary !important;
+
+            &::after {
+              background-color: $ac-primary;
+              border: 1px solid $ac-primary;
+              opacity: 1;
+            }
+          }
+        }
+      }
+     }
+    }
+  }
+}
 
 .ac-system-body {
   grid-template-columns: 350px auto 350px !important;
@@ -52,28 +112,20 @@ locale.value = lang
       border-bottom: 1px solid $color-border !important;
     }
 
-    .ac-menu-list {
-      padding: 20px;
-      padding-top: 16px !important;
-    }
-
-    .ac-left-sidebar .menu-list.ac-menu-list, .sidebar-footer {
+    .ac-left-sidebar .menu-list.ac-menu-list,
+    .sidebar-footer {
       border-right: 1px solid $color-border;
     }
-
-    //  aside, .sidebar-footer {
-    //   border-right: 1px solid $color-border;
-    // }
   }
 }
 
- .content {
-   width: calc(100% - 120px);
-   margin: 20px auto;
+.content {
+  width: calc(100% - 120px);
+  margin: 20px auto;
 
   .content-body {
     min-height: calc(100vh - 160px);
   }
 
- }
+}
 </style>

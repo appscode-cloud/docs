@@ -57,8 +57,74 @@ onBeforeUnmount(() => {
   margin-bottom: 0;
 }
 
-.ac-left-sidebar .menu-list.ac-menu-list li a {
+.ac-left-sidebar .menu-list.menu-list li a {
   font-weight: 400;
   color: $color-text;
 }
+
+
+// =========
+.ac-left-sidebar {
+  .menu-list {
+    padding-left: 20px;
+
+    &.menu-list {
+      padding: 20px;
+      padding-top: 16px !important;
+
+      .menu-list {
+        position: relative;
+
+        &::after {
+          position: absolute;
+          content: "";
+          left: 6px;
+          top: 0;
+          width: 1px;
+          height: 100%;
+          background-color: $color-border;
+          z-index: -1;
+        }
+      }
+
+     ul {
+      li {
+        position: relative;
+
+        a {
+          padding: 8px 15px 8px 24px;
+          color: $color-text;
+
+          &::after {
+            width: 12px !important;
+            height: 12px !important;
+            top: 12px !important;
+            left: 0 !important;
+            background-color: $ac-primary !important;
+            border: 1px solid $ac-primary !important;
+            border-radius: 50% !important;
+            opacity: 0;
+          }
+
+          &:hover {
+            color: $ac-primary !important;
+            padding-left: 32px;
+          }
+
+          &.is-active {
+            color: $ac-primary !important;
+
+            &::after {
+              background-color: $ac-primary;
+              border: 1px solid $ac-primary;
+              opacity: 1;
+            }
+          }
+        }
+      }
+     }
+    }
+  }
+}
+
 </style>
