@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { useDebounceFn, useFetch } from '@vueuse/core'
-import { useData } from 'vitepress'
-import { defineAsyncComponent, ref, watch } from 'vue'
+import { useDebounceFn, useFetch } from '@vueuse/core';
+import { useData } from 'vitepress';
+import { defineAsyncComponent, ref, watch } from 'vue';
 
+const Searchbar = defineAsyncComponent(() => import('@appscode/design-system/vue-components/v3/form-fields/Searchbar.vue'))
 const HeroiconsMagnifyingGlass = defineAsyncComponent(() => import('~icons/heroicons/magnifying-glass'))
 
 const DocSearchResults = defineAsyncComponent(() => import('./DocSearchResults.vue'))
@@ -62,7 +63,10 @@ watch(searchText, (n) => {
 </script>
 
 <template>
-  <div class="ac-navbar-search">
+  <!-- searchbar item  -->
+<searchbar/>
+<!-- /Users/mohin/go/src/go.bytebuilders.dev/design-system/src/components/vue-components/v3/form-fields/Searchbar.vue -->
+  <!-- <div class="ac-navbar-search">
     <div class="search-item">
       <span class="icon">
         <heroicons-magnifying-glass />
@@ -76,33 +80,16 @@ watch(searchText, (n) => {
       >
       <doc-search-results v-show="showSearchResults" :results="searchHits" :is-searching="isSearching" />
     </div>
-  </div>
+  </div> -->
 </template>
 
-<style lang="scss" scoped>
-.ac-navbar-search {
-  .search-item {
-    display: flex;
-    align-items: center;
-    background-color: rgb(255 255 255 / 20%);
-    padding: 5px 20px;
-    border-radius: 4px;
-    width: 650px;
+<style lang="scss">
+.search-result-box{
+  display: none;
+}
 
-    input {
-      background-color: transparent;
-      border: none;
-      color: var(--ac-white);
-      font-size: 13px;
-      font-weight: 600;
-      font-family: Roboto,sans-serif;
-      width: 100%;
-      padding-left: 15px;
-
-      &:focus {
-        outline: none;
-      }
-    }
-  }
+.searchbar{
+  width: 80%;
+  margin: 0 auto;
 }
 </style>

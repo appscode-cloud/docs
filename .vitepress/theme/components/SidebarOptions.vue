@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { type WatchStopHandle, computed, nextTick, onBeforeUnmount, onMounted, watch } from 'vue'
-import { useData } from 'vitepress'
-import { useLang } from '../composables/lang'
-import type { Sidebar } from '../composables/menu'
+import { useData } from 'vitepress';
+import { computed, nextTick, onBeforeUnmount, onMounted, watch, type WatchStopHandle } from 'vue';
+import { useLang } from '../composables/lang';
+import type { Sidebar } from '../composables/menu';
 
 defineProps<{
   options: Sidebar
@@ -28,29 +28,125 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <aside class="menu">
+ <aside class="menu">
     <template v-for="item in options" :key="item.identifier">
       <template v-if="item.children">
-        <p class="menu-label ac-menu-label pl-10">
-          {{ item.name }}
+        <p class="menu-label ac-menu-label">
+          <span> {{ item.name }}</span>
+          <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+
+          </span>
         </p>
-        <ul class="menu-list pl-20">
+        <ul class="dropdown-menu-list">
           <sidebar-options :options="item.children" />
         </ul>
       </template>
       <li v-else>
-        <a :href="wrapLinkWithLang(item.url, true)" :class="{ 'is-active': activeMenuItemIdentifier === item.identifier }">{{ item.name }}</a>
+        <a :href="wrapLinkWithLang(item.url, true)"
+          :class="{ 'is-active': activeMenuItemIdentifier === item.identifier }">{{ item.name }}</a>
       </li>
     </template>
   </aside>
 </template>
 
-<style lang="scss" scoped>
-.ac-menu-label {
-  padding-left: 20px;
-  margin: 0;
-  margin-top: 24px;
-  font-size: 1rem;
-  color: $primary-95;
+<style lang="scss">
+.sidebar-header {
+  margin-bottom: 16px;
+}
+
+.ac-left-sidebar {
+  // .menu-list.ac-menu-list {
+  //   padding: 24px !important;
+  // }
+
+  .ac-menu-label {
+    font-size: 1rem;
+    margin-bottom: 4px !important;
+    font-weight: 500;
+    color: $color-heading;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 24px !important;
+    cursor: pointer;
+
+    .icon {
+     height: 16px;
+     width: 16px;
+     display: flex;
+     align-items: center;
+     color: #555;
+     margin-right: 20px;
+    }
+  }
+
+  .menu-label:not(:last-child) {
+    margin-bottom: 0;
+  }
+
+  .dropdown-menu-list {
+    padding: 20px 0 0 20px;
+    padding-top: 0 !important;
+    position: relative;
+
+    p {
+      padding-left: 24px;
+    }
+
+    a {
+      padding: 8px 15px 8px 24px;
+      font-weight: 400 !important;
+      color: $color-text;
+
+      &::after {
+        width: 12px !important;
+        height: 12px !important;
+        top: 12px !important;
+        left: 0 !important;
+        background-color: $ac-primary !important;
+        border: 1px solid $ac-primary !important;
+        border-radius: 50% !important;
+        opacity: 0;
+      }
+
+      &:hover {
+        color: $ac-primary !important;
+        padding-left: 32px;
+      }
+
+      &.is-active {
+        color: $ac-primary !important;
+
+        &::after {
+          background-color: $ac-primary;
+          border: 1px solid $ac-primary;
+          opacity: 1;
+        }
+      }
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      left: 26px;
+      top: 0;
+      width: 1px;
+      height: calc(100% - 16px);
+      background-color: $color-border;
+      z-index: -1;
+    }
+
+    ul {
+      li {
+        position: relative;
+
+
+      }
+    }
+  }
 }
 </style>
