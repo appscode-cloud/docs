@@ -75,7 +75,45 @@ Then add the credential [here](https://home.appscode.com/user/settings/credentia
 ## Azure
 ## Digital Ocean
 ## Google Cloud
+
+To access GKE clusters, you need to create a GCP service account with with container.admin role.
+
+- Set Project id, service account name
+    ```sh
+    # Set the project ID where you registered your Domain
+    PROJECT_ID="myproject-id" # change it to your project id
+    GKE_SA_NAME="gke-cluster" # change it to your desired sa name
+    GKE_SA_EMAIL="$GKE_SA_NAME@${PROJECT_ID}.iam.gserviceaccount.com"
+    ```
+- Create Service account and Assign permission
+    ```sh
+    gcloud iam service-accounts create $GKE_SA_NAME --display-name $GKE_SA_NAME
+
+    # assign google service account to dns.admin role in cloud-dns project
+    gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member serviceAccount:$GKE_SA_EMAIL --role "roles/container.admin"
+    ```
+- Create a Service Account Secret
+    ```sh
+    # download static credentials
+    gcloud iam service-accounts keys create $GKE_SA_NAME-credentials.json \
+    --iam-account $GKE_SA_EMAIL
+    ```
+
+Then add the service account credentials [here](https://home.appscode.com/user/settings/credentials/create).
+
 ## Google OAuth
+<img align="right" width="40%" src="gcp-oauth.png">
+
+Simplest way to access GKE clusters is through creating `Google OAuth` type credential. <br>
+Just head over [here](https://home.appscode.com/user/settings/credentials/create) and
+- Choose a `Name`
+- Select Credential Type: `Google OAuth`
+- Click `Continue with Google`
+
+
+This will create a credential, you will be able to access your k8s cluster with.
+
 ## Linode
 
 To access LKE clusters, you need to create a API token from Linode with the following permissions.
