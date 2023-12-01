@@ -28,7 +28,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <aside class="menu">
+ <aside class="menu">
     <template v-for="item in options" :key="item.identifier">
       <template v-if="item.children">
         <p class="menu-label ac-menu-label">
@@ -41,7 +41,7 @@ onBeforeUnmount(() => {
 
           </span>
         </p>
-        <ul class="menu-list">
+        <ul class="dropdown-menu-list">
           <sidebar-options :options="item.children" />
         </ul>
       </template>
@@ -54,6 +54,10 @@ onBeforeUnmount(() => {
 </template>
 
 <style lang="scss">
+.sidebar-header {
+  margin-bottom: 16px;
+}
+
 .ac-left-sidebar {
   // .menu-list.ac-menu-list {
   //   padding: 24px !important;
@@ -61,11 +65,14 @@ onBeforeUnmount(() => {
 
   .ac-menu-label {
     font-size: 1rem;
+    margin-bottom: 4px !important;
     font-weight: 500;
     color: $color-heading;
     letter-spacing: 1px;
     display: flex;
     justify-content: space-between;
+    padding-left: 24px !important;
+    cursor: pointer;
 
     .icon {
      height: 16px;
@@ -81,9 +88,9 @@ onBeforeUnmount(() => {
     margin-bottom: 0;
   }
 
-  .menu-list {
-    padding: 20px 0 20px 20px;
-    padding-top: 16px !important;
+  .dropdown-menu-list {
+    padding: 20px 0 0 20px;
+    padding-top: 0 !important;
     position: relative;
 
     p {
