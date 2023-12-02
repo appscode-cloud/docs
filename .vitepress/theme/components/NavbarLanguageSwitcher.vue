@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useData } from 'vitepress'
-import { useLang } from '../composables/lang'
+import { useData } from 'vitepress';
+import { useLang } from '../composables/lang';
 
 const { site } = useData()
 const { locales } = site.value

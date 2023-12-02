@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { defineAsyncComponent, onMounted } from 'vue'
-import { useUserStore } from '../store/user'
+import { defineAsyncComponent, onMounted } from 'vue';
+import { useUserStore } from '../store/user';
 
 const UserDropdown = defineAsyncComponent(() => import('@appscode/design-system/vue-components/v3/navbar/User.vue'))
 
@@ -23,8 +23,9 @@ const href = window.location
 <template>
   <button v-if="userStore.userStatus.phase === 'pending'" class="button ac-button is-rounded is-loading" />
   <user-dropdown v-else-if="userStore.userStatus.phase === 'success'" :user="userStore.user" :show-account-switcher="false" :server-domain="serverDomain" :accounts-domain="accountsDomain" />
-  <div v-else class="buttons mr-20 ml-32">
+  <div v-else class="buttons px-4">
     <a class="button ac-button is-primary" :href="`${accountsDomain}/user/sign_up`">SIGN UP</a>
     <a class="button ac-button is-outlined is-primary" :href="`${accountsDomain}/user/login?redirect_to=${href}`">LOG IN</a>
   </div>
 </template>
+

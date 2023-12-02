@@ -5,7 +5,24 @@
 
 // bulma
 @import 'bulma/bulma.sass';
+html, body {
 
+    @include fullhd {
+        font-size: 16px !important;
+    }
+    @include widescreen {
+        font-size: 14px !important;
+    }
+    @include desktop {
+        font-size: 14px !important;
+    }
+    @include tablet {
+        font-size: 14px !important;
+    }
+    @include mobile {
+        font-size: 14px !important;
+    }
+}
 
 // // fonts
 // @import 'https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp';
@@ -31,6 +48,42 @@
         color: $color-text;
         font-weight: 500;
        
+    }
+
+    @include mobile {
+        flex-direction: column;
+        position: absolute;
+        background-color: $white-100;
+        width: calc(100% - 100px);
+        height: 100vh;
+        top: 0;
+        right: -100%;
+        transition: 0.3s ease-in-out;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+
+        .buttons {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            .button {
+                width: 100%;
+                margin-right: 0 !important;
+            }
+        }
+        .has-dropdown {
+            width: 100% !important;
+            .navbar-dropdown {
+                margin-top: 0;
+                padding-top: 0;
+                padding-left: 16px;
+            }
+        }
+        a , .navbar-link{
+            display: block;
+            width: 100%;
+            padding-inline: 24px !important;
+        }
     }
 
     .navbar-item, .navbar-link.is-active {
