@@ -40,10 +40,72 @@ locale.value = lang
   </div>
 </template>
 <style lang="scss">
+
 .ac-system-body {
   grid-template-columns: 350px auto 350px !important;
+  @media (min-width:  0) and (max-width: 1215px) {
+    grid-template-columns: 300px auto 260px !important;
+    .ac-left-sidebar-wrapper {
+      width: 300px !important;
+    }
+    .content {
+      width: calc(100% - 30px);
+      
+     ul, ol {
+      pre {
+          // max-width: 600px !important;
+         
+      }
+     }
+    }
+  }
+
+  @media (min-width:  0) and (max-width: 768px) {
+    grid-template-columns: 200px auto 200px !important;
+    .ac-left-sidebar-wrapper {
+      width: 200px !important;
+    }
+    .content {
+      ul, ol {
+        pre {
+          max-width: 500px;
+        }
+      }
+    }
+  }
+
+
+  @media (min-width:  769px) and (max-width: 1215px) {
+    grid-template-columns: 250px auto 250px !important;
+    .ac-left-sidebar-wrapper {
+      width: 250px !important;
+    }
+    .content {
+      ul, ol {
+        pre {
+          max-width: 500px;
+        }
+      }
+    }
+  }
+
+  @media (min-width:  1216px) and (max-width: 1407px) {
+    grid-template-columns: 270px auto 270px !important;
+    .ac-left-sidebar-wrapper {
+      width: 270px !important;
+    }
+    .content {
+      ul, ol {
+        pre {
+          max-width: 700px;
+        }
+      }
+    }
+  }
+
 
   .ac-left-sidebar-wrapper {
+    z-index: 9 !important;
     width: 350px;
 
     .sidebar-header {
@@ -55,9 +117,8 @@ locale.value = lang
       border-right: 1px solid $color-border;
     }
   }
+ 
 }
-
-
 
 .content {
   width: calc(100% - 120px);
@@ -66,6 +127,53 @@ locale.value = lang
   .content-body {
     overflow: hidden;
     min-height: calc(100vh - 160px);
+
+  div[class*=language-] {
+    position: relative;
+    margin-bottom: 8px;
+    &:hover {
+      .copy{
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+  .lang {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    color: $color-text;
+  }
+  .copy {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    z-index: 99;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    background-repeat: no-repeat;
+    border: 1px solid $color-border;
+    background-color: $white-100;
+    background-position: 50%;
+    cursor: pointer;
+    border-radius: 4px;
+    background-size: 20px;
+    transition: 0.3s ease-in-out;
+    background-image: url(https://api.iconify.design/heroicons:clipboard.svg);
+    opacity: 0;
+    visibility: hidden;
+    &:hover {
+      border: 1px solid $ac-primary;
+    }
+    &.copied {
+      background-image: url(https://api.iconify.design/heroicons:clipboard-document-check.svg);
+    }
+  }
+
+  pre {
+    border-radius: 4px;
+  }
 
     h1 {
       font-size: 2rem;

@@ -50,21 +50,24 @@ const NavbarUser = defineClientComponent(() => import('./NavbarUser.vue')).setup
     font-family: Roboto, Arial, Helvetica, sans-serif;
   }
 }
-
+.navbar-link.is-active {
+  color: $ac-primary !important;
+}
 .responsive-menu {
   position: fixed;
   right: 0;
+  z-index: 999;
 
   label {
     display: flex;
     flex-direction: column;
     width: 70px;
     cursor: pointer;
-    transform: rotate(180deg) scale(0.4);
+    transform: rotate(180deg) scale(0.3);
   }
 
   label span {
-    background: $color-text;
+    background: $color-heading;
     border-radius: 10px;
     height: 7px;
     margin: 7px 0;

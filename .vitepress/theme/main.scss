@@ -43,16 +43,23 @@ html, body {
 // 404
 @import "@appscode/design-system/vue-components/styles/layouts/404";
 
+.container {
+    @include touch {
+        padding-inline: 16px;
+    }
+}
 .ac-navbar-menu {
     a{
         color: $color-text;
         font-weight: 500;
        
     }
+ 
 
-    @include mobile {
+    @include touch {
         flex-direction: column;
-        position: absolute;
+        position: fixed;
+        z-index: 99;
         background-color: $white-100;
         width: calc(100% - 100px);
         height: 100vh;
@@ -61,11 +68,18 @@ html, body {
         transition: 0.3s ease-in-out;
         justify-content: flex-start !important;
         align-items: flex-start !important;
+        padding-top: 64px;
+
 
         .buttons {
             display: flex;
             flex-direction: row;
             width: 100%;
+
+            @include touch {
+                position: absolute;
+                bottom: 32px;
+            }
             .button {
                 width: 100%;
                 margin-right: 0 !important;
@@ -96,11 +110,26 @@ html, body {
         border-color: $color-text;
         border-width: 1px;
     }
-}
 
-.navbar-dropdown {
-    a.navbar-item {
-        padding: 8px 16px;
-        font-size: 1rem;
+    .navbar-dropdown {
+        @include touch {
+            position: relative;
+            z-index: 9;
+            &::after{
+                position: absolute;
+                content: "";
+                left: 24px;
+                top: 0;
+                width: 1px;
+                height: calc(100% - 20px);
+                background-color: $color-border;
+
+            }
+        }
+        a.navbar-item {
+            padding: 8px 16px;
+            font-size: 1rem;
+        }
     }
 }
+
