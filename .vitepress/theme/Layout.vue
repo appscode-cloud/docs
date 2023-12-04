@@ -19,12 +19,12 @@ locale.value = lang
 <template>
   <navbar />
   <div v-if="page.isNotFound">
-    <div class="pt-60">
+    <div class="pt-50">
       404 not found page
     </div>
   </div>
   <div v-else-if="frontmatter.layout === 'home'">
-    <div class="pt-60">
+    <div class="pt-50">
       <content />
     </div>
   </div>
@@ -43,11 +43,14 @@ locale.value = lang
 
 .ac-system-body {
   grid-template-columns: 350px auto 350px !important;
-  @media (min-width:  0) and (max-width: 1215px) {
+
+  @media (width >=  0) and (width <= 1215px) {
     grid-template-columns: 300px auto 260px !important;
+
     .ac-left-sidebar-wrapper {
       width: 300px !important;
     }
+
     .content {
       width: calc(100% - 30px);
       
@@ -60,11 +63,13 @@ locale.value = lang
     }
   }
 
-  @media (min-width:  0) and (max-width: 768px) {
+  @media (width >=  0) and (width <= 768px) {
     grid-template-columns: 200px auto 200px !important;
+
     .ac-left-sidebar-wrapper {
       width: 200px !important;
     }
+
     .content {
       ul, ol {
         pre {
@@ -75,11 +80,13 @@ locale.value = lang
   }
 
 
-  @media (min-width:  769px) and (max-width: 1215px) {
+  @media (width >=  769px) and (width <= 1215px) {
     grid-template-columns: 250px auto 250px !important;
+
     .ac-left-sidebar-wrapper {
       width: 250px !important;
     }
+
     .content {
       ul, ol {
         pre {
@@ -89,11 +96,13 @@ locale.value = lang
     }
   }
 
-  @media (min-width:  1216px) and (max-width: 1407px) {
+  @media (width >=  1216px) and (width <= 1407px) {
     grid-template-columns: 270px auto 270px !important;
+
     .ac-left-sidebar-wrapper {
       width: 270px !important;
     }
+
     .content {
       ul, ol {
         pre {
@@ -128,9 +137,10 @@ locale.value = lang
     overflow: hidden;
     min-height: calc(100vh - 160px);
 
-  div[class*=language-] {
+  div[class*="language-"] {
     position: relative;
     margin-bottom: 8px;
+
     &:hover {
       .copy{
         opacity: 1;
@@ -138,12 +148,14 @@ locale.value = lang
       }
     }
   }
+
   .lang {
     position: absolute;
     right: 8px;
     top: 8px;
     color: $color-text;
   }
+
   .copy {
     position: absolute;
     right: 4px;
@@ -160,14 +172,16 @@ locale.value = lang
     border-radius: 4px;
     background-size: 20px;
     transition: 0.3s ease-in-out;
-    background-image: url(https://api.iconify.design/heroicons:clipboard.svg);
+    background-image: url("https://api.iconify.design/heroicons:clipboard.svg");
     opacity: 0;
     visibility: hidden;
+
     &:hover {
       border: 1px solid $ac-primary;
     }
+
     &.copied {
-      background-image: url(https://api.iconify.design/heroicons:clipboard-document-check.svg);
+      background-image: url("https://api.iconify.design/heroicons:clipboard-document-check.svg");
     }
   }
 

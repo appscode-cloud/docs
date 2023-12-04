@@ -26,6 +26,10 @@ const showSearchbar = !!theme.value.meilisearch
 <style lang="scss">
 .docs-hero-area {
     padding: 60px 0;
-    background: linear-gradient(360deg, #E3E8E5 0%, rgba(249, 250, 250, 0.00) 100%);
+    background-image: url('/images/pattern-squire.png');
+    position: relative;
+    z-index: 9;
+    border-bottom: 1px solid $color-border;
+    background-color: #fcfcfc;
 }
 </style>
