@@ -71,9 +71,40 @@ To access EKS clusters, you need to run the following commands and provide us th
     ```
 
 Then add the credential [here](https://home.appscode.com/user/settings/credentials/create) you got from previous step.
-![Add AWS Credential](aws-cred.png)
+
+<img  width="50%" src="/images/aws-cred.png">
+
+<!-- ![Add AWS Credential](/images/aws-cred.png) -->
+
 ## Azure
+
+To configure Azure credentials for accessing and managing Azure Kubernetes Service (AKS) clusters, follow these steps using the Azure CLI:
+- Set the Azure subscription ID using the following command.
+    ```sh
+    export AZURE_SUBSCRIPTION_ID=$(az account show --query id --output tsv)
+    ```
+- Create Azure Service Principal with `Contributor` role.
+    ```sh
+    az ad sp create-for-rbac --role Contributor --scopes="/subscriptions/${AZURE_SUBSCRIPTION_ID}" --sdk-auth
+    ```
+- Save Credentials <br>
+The command will output a JSON response containing the service principal details, including clientId (Application ID), clientSecret (Client Secret), subscriptionId, tenantId, and other information. Save these credentials securely as they will be used to configure the AKS cluster.
+
+Then add the credential [here](https://home.appscode.com/user/settings/credentials/create).
+
+
+<img align="right" width="50%" src="/images/do-cred.png">
+
 ## Digital Ocean
+To access Digital Ocean Managed clusters, you need to create a API token from Digital Ocean.
+
+Ref: [How to Create a Personal Access Token](https://docs.digitalocean.com/reference/api/create-personal-access-token/)
+
+
+Then add the credential [here](https://home.appscode.com/user/settings/credentials/create) you got from Digital Ocean.
+
+<br><br><br><br>
+
 ## Google Cloud
 
 To access GKE clusters, you need to create a GCP service account with with container.admin role.
@@ -102,8 +133,9 @@ To access GKE clusters, you need to create a GCP service account with with conta
 
 Then add the service account credentials [here](https://home.appscode.com/user/settings/credentials/create).
 
+<img align="right" width="50%" src="/images/gcp-oauth.png">
+
 ## Google OAuth
-<img align="right" width="40%" src="gcp-oauth.png">
 
 Simplest way to access GKE clusters is through creating `Google OAuth` type credential. <br>
 Just head over [here](https://home.appscode.com/user/settings/credentials/create) and
@@ -114,6 +146,10 @@ Just head over [here](https://home.appscode.com/user/settings/credentials/create
 
 This will create a credential, you will be able to access your k8s cluster with.
 
+<br><br><br>
+
+<img align="right" width="50%" src="/images/linode-cred.png">
+
 ## Linode
 
 To access LKE clusters, you need to create a API token from Linode with the following permissions.
@@ -123,8 +159,8 @@ Ref: [Manage Linode Personal Access Tokens](https://www.linode.com/docs/products
 
 
 Then add the credential [here](https://home.appscode.com/user/settings/credentials/create) you got from Linode.
-![Linode Credential](linode-cred.png)
 
+<br><br><br>
 ## Rancher
 
 
