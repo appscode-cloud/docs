@@ -33,38 +33,228 @@ Visit https://home.appscode.com/user/settings/credentials to manage credential.
 
 ## AWS
 
-To access EKS clusters, you need to run the following commands and provide us the generated `AccessKeyID` and `SecretAccessKey`.
-- Create a policy
-    ```sh
-    echo '{
-        "Version": "2012-10-17",
-        "Statement": [
-            {
-                "Effect": "Allow",
-                "Action": [
-                    "eks:DescribeCluster",
-                    "eks:ListClusters"
-                ],
-                "Resource": "*"
-            },
-            {
-                "Effect": "Allow",
-                "Action": "ec2:DescribeRegions",
-                "Resource": "*"
-            }
-        ]
-    }' > eks-cluster-policy.json
-    ```
-    ```sh
-    aws iam create-policy --policy-name eks-cluster-policy --policy-document file://eks-cluster-policy.json
+To create or import EKS clusters to [AppsCode Dashboard](https://console.appscode.com/), you need to create a access-key with the following policies.
+- AmazonEC2FullAccess (AWS Managed Policy)
+- AWSCloudFormationFullAccess (AWS Managed Policy)
+- EKSAllAccess
+- IamLimitedAccess
 
-    POLICY_ARN=$(aws iam list-policies --query 'Policies[?PolicyName==`eks-cluster-policy`].Arn' --output text)
-    ```
-- Create a user and attach this policy to that user
+Steps:
+- Create user
+- Create required policies
+- Attach the policies to the user
+- Create access key
+
+Details:
+- Create user
     ```sh
     aws iam create-user --user-name "eks-cluster"
-    aws iam attach-user-policy --user-name "eks-cluster" --policy-arn $POLICY_ARN
     ```
+- Create policies
+    - Export AWS Account ID
+        ```sh
+        export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query 'Account' --output text)
+        ```
+    - Create `AmazonEC2FullAccess (AWS Managed Policy)` policy
+        ```sh
+        echo '{
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Action": "ec2:*",
+                    "Effect": "Allow",
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "elasticloadbalancing:*",
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "cloudwatch:*",
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "autoscaling:*",
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "iam:CreateServiceLinkedRole",
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": [
+                                "autoscaling.amazonaws.com",
+                                "ec2scheduled.amazonaws.com",
+                                "elasticloadbalancing.amazonaws.com",
+                                "spot.amazonaws.com",
+                                "spotfleet.amazonaws.com",
+                                "transitgateway.amazonaws.com"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }' > ec2-policy.json
+        ```
+        ```sh
+        aws iam create-policy --policy-name ec2-policy --policy-document file://ec2-policy.json
+
+        POLICY_ARN=$(aws iam list-policies --query 'Policies[?PolicyName==`ec2-policy`].Arn' --output text)
+        aws iam attach-user-policy --user-name "eks-cluster" --policy-arn $POLICY_ARN
+        ```
+    - Create `AWSCloudFormationFullAccess (AWS Managed Policy)` policy
+        <!-- ::: details Write policy to file -->
+        ```sh
+        echo '{
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudformation:*"
+                    ],
+                    "Resource": "*"
+                }
+            ]
+        }' > cloudformation-policy.json
+        ```
+        <!-- ::: -->
+        ```sh
+        aws iam create-policy --policy-name cloudformation-policy --policy-document file://cloudformation-policy.json
+
+        POLICY_ARN=$(aws iam list-policies --query 'Policies[?PolicyName==`cloudformation-policy`].Arn' --output text)
+        aws iam attach-user-policy --user-name "eks-cluster" --policy-arn $POLICY_ARN
+        ```
+    - Create `EKSAllAccess` policy
+         ```sh
+        echo '{
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": "eks:*",
+                    "Resource": "*"
+                },
+                {
+                    "Action": [
+                        "ssm:GetParameter",
+                        "ssm:GetParameters"
+                    ],
+                    "Resource": [
+                        "arn:aws:ssm:*:${AWS_ACCOUNT_ID}:parameter/aws/*",
+                        "arn:aws:ssm:*::parameter/aws/*"
+                    ],
+                    "Effect": "Allow"
+                },
+                {
+                    "Action": [
+                    "kms:CreateGrant",
+                    "kms:DescribeKey"
+                    ],
+                    "Resource": "*",
+                    "Effect": "Allow"
+                },
+                {
+                    "Action": [
+                    "logs:PutRetentionPolicy"
+                    ],
+                    "Resource": "*",
+                    "Effect": "Allow"
+                }
+            ]
+        }' > eks-policy-template.json
+
+        envsubst < eks-policy-template.json > eks-policy.json
+        ```
+        ```sh
+        aws iam create-policy --policy-name eks-policy --policy-document file://eks-policy.json
+
+        POLICY_ARN=$(aws iam list-policies --query 'Policies[?PolicyName==`eks-policy`].Arn' --output text)
+        aws iam attach-user-policy --user-name "eks-cluster" --policy-arn $POLICY_ARN
+        ```
+    - Create `IamLimitedAccess` policy
+        ```sh
+        echo '{
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "iam:CreateInstanceProfile",
+                        "iam:DeleteInstanceProfile",
+                        "iam:GetInstanceProfile",
+                        "iam:RemoveRoleFromInstanceProfile",
+                        "iam:GetRole",
+                        "iam:CreateRole",
+                        "iam:DeleteRole",
+                        "iam:AttachRolePolicy",
+                        "iam:PutRolePolicy",
+                        "iam:AddRoleToInstanceProfile",
+                        "iam:ListInstanceProfilesForRole",
+                        "iam:PassRole",
+                        "iam:DetachRolePolicy",
+                        "iam:DeleteRolePolicy",
+                        "iam:GetRolePolicy",
+                        "iam:GetOpenIDConnectProvider",
+                        "iam:CreateOpenIDConnectProvider",
+                        "iam:DeleteOpenIDConnectProvider",
+                        "iam:TagOpenIDConnectProvider",
+                        "iam:ListAttachedRolePolicies",
+                        "iam:TagRole",
+                        "iam:GetPolicy",
+                        "iam:CreatePolicy",
+                        "iam:DeletePolicy",
+                        "iam:ListPolicyVersions"
+                    ],
+                    "Resource": [
+                        "arn:aws:iam::${AWS_ACCOUNT_ID}:instance-profile/eksctl-*",
+                        "arn:aws:iam::${AWS_ACCOUNT_ID}:role/eksctl-*",
+                        "arn:aws:iam::${AWS_ACCOUNT_ID}:policy/eksctl-*",
+                        "arn:aws:iam::${AWS_ACCOUNT_ID}:oidc-provider/*",
+                        "arn:aws:iam::${AWS_ACCOUNT_ID}:role/aws-service-role/eks-nodegroup.amazonaws.com/AWSServiceRoleForAmazonEKSNodegroup",
+                        "arn:aws:iam::${AWS_ACCOUNT_ID}:role/eksctl-managed-*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "iam:GetRole"
+                    ],
+                    "Resource": [
+                        "arn:aws:iam::${AWS_ACCOUNT_ID}:role/*"
+                    ]
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "iam:CreateServiceLinkedRole"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": [
+                                "eks.amazonaws.com",
+                                "eks-nodegroup.amazonaws.com",
+                                "eks-fargate.amazonaws.com"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }' > iam-policy-template.json
+
+        envsubst < iam-policy-template.json > iam-policy.json
+        ```
+        ```sh
+        aws iam create-policy --policy-name iam-policy --policy-document file://iam-policy.json
+
+        POLICY_ARN=$(aws iam list-policies --query 'Policies[?PolicyName==`iam-policy`].Arn' --output text)
+        aws iam attach-user-policy --user-name "eks-cluster" --policy-arn $POLICY_ARN
+        ```
 - Create Access Token for the user
     ```sh
     aws iam create-access-key --user-name "eks-cluster"
