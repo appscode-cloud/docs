@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@appscode/design-system": "2.0.44-alpha.1",
+    "@bytebuilders/docs-base": "github:bytebuilders/docs-base#s4k1b/test-base-use",
     "@vueuse/core": "^10.1.2",
     "@vueuse/integrations": "^10.1.2",
     "bulma": "^0.9.4",
