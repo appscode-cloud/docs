@@ -51,7 +51,7 @@ Click the "Done" button to submit your information. AppsCode will generate the i
 
 ### 6. Deploy AppsCode Platform
 
-Follow the documentation provided by AppsCode to deploy the AppsCode Platform on your system:
+Follow the documentation provided by AppsCode to deploy the AppsCode Platform on your system.
 - If using a public VM, follow the provided instructions to install k3s and deploy the platform.
 - If using a Kubernetes cluster, follow the deployment documentation.
 
@@ -64,5 +64,3 @@ Once deployed, access the AppsCode Platform using the specified domain. Log in w
 If you encounter any challenges during the deployment or have questions, reach out to AppsCode support for assistance.
 
 Congratulations! You have successfully deployed the AppsCode Platform in Self Hosted Demo mode. Explore the features and capabilities of the platform in your customized environment.
-
-For more advanced configurations and production deployments, consider checking out the detailed documentation on the AppsCode website.
