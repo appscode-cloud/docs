@@ -1,24 +1,14 @@
-// https://vitepress.dev/guide/custom-theme
+import { BaseLayout } from '@bytebuilders/docs-base'
 import { createPinia } from 'pinia'
-import type { VueI18nOptions } from 'vue-i18n'
 import { createI18n } from 'vue-i18n'
-import Layout from './Layout.vue'
-import './main.scss'
-
-export interface ThemeConfig {
-  i18n: VueI18nOptions
-  meilisearch?: {
-    index: string
-  }
-}
+import type { Theme } from 'vitepress'
 
 export default {
-  Layout,
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
+  Layout: BaseLayout,
   enhanceApp({ app, router, siteData }) {
     app.use(createPinia())
     app.use(createI18n({ legacy: false, ...siteData.value.themeConfig.i18n }))
     // ...
   },
-}
+
+} satisfies Theme

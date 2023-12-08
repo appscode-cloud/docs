@@ -1,19 +1,19 @@
 {
   "extends": ["@vue/tsconfig/tsconfig.dom.json", "@tsconfig/node18/tsconfig.json"],
-  "include": ["env.d.ts", "./src/**/*", "./src/**/*.vue", "./src/**/*.ts", "./src/**/*.d.ts", "./src/**/*.tsx", "./src/**/*.vue", "./src/*.vue", "./.vitepress/theme/*", "./.vitepress/*.data.ts", "./.vitepress/theme/*.ts", "./.vitepress/theme/*.d.ts", "./.vitepress/theme/*.tsx", "./.vitepress/theme/*.vue", "./.vitepress/theme/**/*.vue", "./.vitepress/theme/**/*.ts"],
-  "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,
-    "moduleResolution": "node",
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "esModuleInterop": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "baseUrl": ".",
-    "target": "ES2022",
-    "paths": {
-      "@/*": ["./src/*"]
-    },
+    "target": "ESNext",
     "types": [
       "unplugin-icons/types/vue"
-    ]
-  }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["shims-vue.d.ts", "src/**/*", ".vitepress/**/*"]
 }
