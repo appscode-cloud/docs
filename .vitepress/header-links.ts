@@ -72,4 +72,4 @@ export default [
     rel: 'manifest',
     href: 'https://cdn.appscode.com/images/products/appscode/icons/manifest.json',
   },
-]
+] as Record<string, string>[]

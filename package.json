@@ -15,8 +15,8 @@
     "deploy:prod": "export HOSTNAME=https://appscode.com; npm run build; firebase use prod; firebase deploy; firebase use default"
   },
   "dependencies": {
-    "@appscode/design-system": "2.0.44-alpha.1",
-    "@bytebuilders/docs-base": "github:bytebuilders/docs-base#s4k1b/test-base-use",
+    "@appscode/design-system": "^2.0.54",
+    "@bytebuilders/docs-base": "github:bytebuilders/docs-base",
     "@vueuse/core": "^10.1.2",
     "@vueuse/integrations": "^10.1.2",
     "bulma": "^0.9.4",
@@ -46,7 +46,7 @@
     "universal-cookie": "^4.0.4",
     "unplugin-auto-import": "^0.16.4",
     "unplugin-icons": "^0.17.3",
-    "vitepress": "^1.0.0-rc.25",
+    "vitepress": "^1.0.0-rc.31",
     "vue-tsc": "^1.6.5"
   }
 }

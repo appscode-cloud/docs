@@ -1,6 +1,7 @@
 import { BaseLayout } from '@bytebuilders/docs-base'
 import { createPinia } from 'pinia'
 import { createI18n } from 'vue-i18n'
+import type { Theme } from 'vitepress'
 
 export default {
   Layout: BaseLayout,
@@ -10,4 +11,4 @@ export default {
     // ...
   },
 
-}
+} satisfies Theme
