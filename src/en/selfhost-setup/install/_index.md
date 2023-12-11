@@ -2,7 +2,7 @@
 layout: 'guide'
 menu:
   selfhost-setup_docs_menu:
-    identifier: selfhost-setup-install
-    name: Install
+    identifier: selfhosted-installer
+    name: Self Hosted Installer
     weight: 10
 ---
