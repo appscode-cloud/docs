@@ -351,34 +351,21 @@ Ref: [Manage Linode Personal Access Tokens](https://www.linode.com/docs/products
 Then add the credential [here](https://home.appscode.com/user/settings/credentials/create) you got from Linode.
 
 <br><br><br>
+
+<img align="right" width="50%" src="/images/rancher-cred.png">
+
 ## Rancher
 
+To access Rancher clusters through AppsCode, you need to create an API token in your Rancher system. Follow these steps:
 
+1. In Rancher, click on the profile icon.
+2. Select `Account & API Keys`.
+3. Click `Create API Key`.
+4. Provide a name and set the expiration for the API key.
+5. Click `Create` to complete the API token creation.
 
-<!-- {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "eks:DescribeCluster",
-                "eks:ListClusters"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": "ec2:DescribeRegions",
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "eks:ListUpdates",
-                "eks:UpdateClusterConfig",
-                "eks:UpdateClusterVersion"
-            ],
-            "Resource": "arn:aws:eks:*:*:cluster/*"
-        }
-    ]
-} -->
+Reference: [Rancher API Keys](https://ranchermanager.docs.rancher.com/reference-guides/user-settings/api-keys)
+
+Copy the generated access key, secret key, and API endpoint from the `Account & API Keys` overview page.
+
+Next, add these credentials to the [AppsCode user settings credentials page](https://home.appscode.com/user/settings/credentials/create).
