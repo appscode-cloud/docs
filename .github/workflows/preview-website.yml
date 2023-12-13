@@ -36,25 +36,6 @@ jobs:
           node-version: '18'
           check-latest: true
 
-      - name: Install yq
-        run: |
-          curl -fsSL -o yqq https://github.com/mikefarah/yq/releases/download/3.3.0/yq_linux_amd64
-          chmod +x yqq
-          sudo mv yqq /usr/local/bin/yqq
-          pip3 install yq
-
-      - name: Install Hugo
-        run: |
-          curl -fsSL -o hugo_extended.deb https://github.com/gohugoio/hugo/releases/download/v0.111.1/hugo_extended_0.111.1_linux-amd64.deb
-          sudo dpkg -i hugo_extended.deb
-          rm hugo_extended.deb
-
-      - name: Install Hugo Tools
-        run: |
-          curl -fsSL -o hugo-tools https://github.com/appscodelabs/hugo-tools/releases/download/v0.2.23/hugo-tools-linux-amd64
-          chmod +x hugo-tools
-          sudo mv hugo-tools /usr/local/bin/hugo-tools
-
       - name: Update docs
         run: |
           npm install
