@@ -30,6 +30,24 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
+      - name: Check tag matches package version
+        run: |
+          PKG_VERSION=$(jq -r '.version' package.json)
+          GIT_TAG=$(git describe --exact-match --abbrev=0 2>/dev/null || echo "")
+          test "v${PKG_VERSION}" = "${GIT_TAG}"
+
+      - name: Prepare git
+        env:
+          GITHUB_USER: 1gtm
+          GITHUB_TOKEN: ${{ secrets.LGTM_GITHUB_TOKEN }}
+        run: |
+          set -x
+          git config --global user.name "${GITHUB_USER}"
+          git config --global user.email "${GITHUB_USER}@appscode.com"
+          git config --global \
+            url."https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com".insteadOf \
+            "https://github.com"
+
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
