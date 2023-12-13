@@ -5,12 +5,12 @@ menu:
     identifier: cluster-management-k8sworkloads
     name: Kubernetes Workload Management
     parent: cluster-management
-    weight: 70
+    weight: 40
   home_menu:
     identifier: home-cluster-k8sworkloads
     name: Kubernetes Workload Management
     parent: home-cluster
-    weight: 70
+    weight: 40
 menu_name: docs_menu
 section_menu: guides
 ---
