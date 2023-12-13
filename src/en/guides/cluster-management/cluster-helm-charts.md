@@ -5,12 +5,12 @@ menu:
     identifier: cluster-management-helmcharts
     name: Manage Cluster Helm Charts
     parent: cluster-management
-    weight: 60
+    weight: 50
   home_menu:
     identifier: home-cluster-helmcharts
     name: Manage Cluster Helm Charts
     parent: home-cluster
-    weight: 60
+    weight: 50
 menu_name: docs_menu
 section_menu: guides
 ---
@@ -18,30 +18,34 @@ section_menu: guides
 
 # Manage Helm Charts in AppsCode Dashboard
 
-In AppsCode Dashboard, users can seamlessly manage Helm releases within their imported Kubernetes clusters. This functionality empowers users to interact with existing releases, install new charts, and perform various actions related to Helm charts.
+AppsCode Dashboard offers a robust Helm Chart Management feature, allowing users to effortlessly manage Helm releases within their Kubernetes clusters. This functionality streamlines the installation of new charts, interaction with existing releases, and provides an overall intuitive interface for Helm chart management.
+
+## Accessing Helm Chart Management
+
+To navigate to the Helm Chart Management page:
+
+1. From the [AppsCode Dashboard](https://console.appscode.com), click on your imported cluster to go to the Cluster Overview page.
+2. In the left sidebar, under **Helm**, select **Releases** to access the Helm Chart Management page.
 
 ## Helm Chart Management Features
 
 ### Install New Charts
 
-Users can effortlessly install new Helm charts by following these steps:
+Installing new Helm charts is a straightforward process:
 
-1. **Select Chart Source:** Users can choose a chart source from publicly available URLs. Additionally, they have the option to provide a custom URL if the desired chart is not listed.
-
-2. **Choose Chart and Version:** From the selected chart source, users can browse and choose the specific chart and version they wish to install.
-
-3. **Customize Installation:** Users can provide a custom release name, namespace, and even specify a custom values file during the installation process.
+1. **Choose Chart Source:** Select a chart source from publicly available URLs or provide a custom URL.
+2. **Select Chart and Version:** Browse and choose the desired chart and version.
+3. **Customize Installation:** Provide a custom release name, namespace, and specify a custom values file during installation.
 
 ### Interact with Existing Releases
 
-AppsCode Dashboard allows users to interact with existing Helm releases in the following ways:
+Efficiently manage existing Helm releases:
 
-- **Modify Releases:** Users can modify existing Helm releases based on their evolving requirements.
-
-- **Rollback to Previous Versions:** In case a rollback is necessary, users can easily revert to previous versions of Helm releases.
+- **Modify Releases:** Adjust existing Helm releases based on evolving requirements.
+- **Rollback to Previous Versions:** Easily revert to previous versions of Helm releases if needed.
 
 ### User-Friendly Interface
 
-The Helm Chart Management page in the AppsCode Dashboard provides an intuitive and user-friendly interface, ensuring that users can efficiently manage Helm releases without the need for extensive Helm CLI commands.
+The Helm Chart Management page in the AppsCode Dashboard ensures an intuitive and user-friendly interface. This allows users to manage Helm releases seamlessly, minimizing the reliance on complex Helm CLI commands.
 
-This streamlined management process enhances the overall Helm chart experience within the AppsCode Dashboard, providing users with a powerful toolset to handle Helm releases seamlessly.
+Explore the power of Helm chart management within the AppsCode Dashboard and enhance your Kubernetes experience.

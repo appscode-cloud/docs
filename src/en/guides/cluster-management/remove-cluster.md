@@ -18,8 +18,27 @@ section_menu: guides
 
 # Remove / Delete Cluster
 
-If you need to remove an already imported cluster from the AppsCode Dashboard, you can do so with ease. During this removal process, you have the option to disable features associated with the cluster that were enabled earlier.
+Removing an already imported cluster from the AppsCode Dashboard is a straightforward process, and you can also manage associated features during removal. Follow these steps to seamlessly remove a cluster:
 
-To remove a cluster, navigate to the Cluster Overview page. Alternatively, you can access the removal options by clicking the three dots attached to your cluster on the [Cluster List](https://console.appscode.com) page. In both instances, you will find the option to remove the cluster along with the ability to manage the features associated with it.
+1. **Navigate to the Cluster Overview Page:**
+   - Go to the [AppsCode Dashboard](https://console.appscode.com).
+   - Click on your imported cluster to access the Cluster Overview page.
 
-This straightforward process ensures that you can efficiently manage your clusters within the AppsCode Dashboard, tailoring your environment to your evolving requirements.
+   **OR**
+
+2. **Access Removal Options from Cluster List:**
+   - On the [Cluster List](https://console.appscode.com) page, locate your cluster.
+   - Click the three dots attached to your cluster to find the removal button.
+
+3. **Remove Cluster:**
+   - In both instances, you will find the option to remove the cluster.
+   - Confirm the removal to complete the process.
+
+4. **Manage Features:**
+   - During the removal process, you have the option to disable features associated with the cluster.
+   - Utilize this feature to tailor your AppsCode Dashboard environment based on your evolving requirements.
+
+This streamlined process ensures efficient cluster management within the AppsCode Dashboard, providing flexibility and control over your Kubernetes clusters.
+
+---
+
