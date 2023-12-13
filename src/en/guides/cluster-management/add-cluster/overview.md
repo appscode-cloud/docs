@@ -25,7 +25,9 @@ The procedure consists of two primary steps:
 
 #### For Vendor-Managed Clusters
 
-To include vendor-managed clusters in the AppsCode dashboard, follow the steps outlined in [Import Vendor Managed Clusters](import-vendor-managed.md).
+To include Vendor-Managed clusters in the AppsCode dashboard, follow the steps outlined in [Import Vendor Managed Clusters](import-vendor-managed.md).
+
+For Rancher Managed cluster, refer to [Import Rancher Managed Clusters](import-rancher-cluster.md) documentation.
 
 #### For Self-Managed Clusters
 
