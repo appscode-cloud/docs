@@ -11,6 +11,11 @@ menu:
     name: Overview
     parent: home-cluster-add
     weight: 1
+  section_menu:
+    identifier: cluster-management
+    name: Cluster Management
+    weight: 30
+    parent: guides
 menu_name: docs_menu
 section_menu: guides
 ---
