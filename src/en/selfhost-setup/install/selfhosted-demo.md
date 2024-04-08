@@ -10,20 +10,18 @@ menu_name: selfhost-setup_docs_menu
 section_menu: selfhost-setup
 ---
 
-
 # Deploying AppsCode Platform: Self Hosted Demo
 
-Welcome to the AppsCode Platform's "Self Hosted Demo" deployment! Experience the power of AppsCode in a quick and convenient trial environment. Follow these steps to deploy the AppsCode Platform in Self Hosted Demo mode:
+Welcome to the AppsCode Platform's "Self Hosted Demo" deployment! Follow these steps to deploy the AppsCode Platform in Self Hosted Demo mode.
 
-Deployment of the platform needs a Kubernetes Cluster with VM size at least **16 GB ram**, **4+ cpus** & **Routable IP**.
+Deployment of the platform needs a Kubernetes Cluster with VM size at least **16 GB ram**, **4-6 cpus** & **Routable IP**.
 
 If you have a Ubuntu 22.04 server with **16 GB ram**, **4+ cpus** & **Routable IP**, you will find instructions to install `k3s` cluster in the server. <br>
 If you already have a k8s cluster, you can skip the `k3s` setup procedure.
 
-
 ### 1. Visit the AppsCode Self-Hosted Page
 
-Navigate to [AppsCode Self-Hosted](https://selfhost.appscode.com/appscode). Here you will find your previously generated self-hosted installers. <br>
+Navigate to [AppsCode Self-Hosted](https://selfhost.appscode.com). Here you will find your previously generated self-hosted installers. <br>
 Click on the `Create New Installer` button to get started.
 
 ### 2. Choose Deployment Mode
@@ -61,6 +59,6 @@ Once deployed, access the AppsCode Platform using the specified domain. Log in w
 
 ### 8. Get Support
 
-If you encounter any challenges during the deployment or have questions, reach out to AppsCode support for assistance.
+If you encounter any challenges during the deployment or have questions, email support@appscode.com for assistance.
 
 Congratulations! You have successfully deployed the AppsCode Platform in Self Hosted Demo mode. Explore the features and capabilities of the platform in your customized environment.

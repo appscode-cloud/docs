@@ -10,14 +10,13 @@ menu_name: selfhost-setup_docs_menu
 section_menu: selfhost-setup
 ---
 
-
 # Deploying AppsCode Platform: Self Hosted Production
 
 Welcome to the AppsCode Platform's "Self Hosted Production" deployment! In this mode, you have the flexibility to customize various aspects of the deployment to meet the specific requirements of your production environment. Follow these steps to deploy the AppsCode Platform in Self Hosted Production mode:
 
 ### 1. Visit the AppsCode Self-Hosted Page
 
-Navigate to [AppsCode Self-Hosted](https://selfhost.appscode.com/appscode). Here you will find your previously generated self-hosted installers. Click on the `Create New Installer` button to get started.
+Navigate to [AppsCode Self-Hosted](https://selfhost.appscode.com). Here you will find your previously generated self-hosted installers. Click on the `Create New Installer` button to get started.
 
 ### 2. Choose Deployment Mode
 
