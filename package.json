@@ -16,8 +16,8 @@
     "deploy:prod": "export HOSTNAME=https://appscode.com; npm run build; firebase use prod; firebase deploy; firebase use default"
   },
   "dependencies": {
-    "@appscode/design-system": "^2.0.58",
-    "@bytebuilders/docs-base": "github:bytebuilders/docs-base",
+    "@appscode/design-system": "^2.2.7",
+    "@bytebuilders/docs-base": "github:bytebuilders/docs-base#mohin/improve-docs-ui",
     "@vueuse/core": "^10.1.2",
     "@vueuse/integrations": "^10.1.2",
     "bulma": "^0.9.4",

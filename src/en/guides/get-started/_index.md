@@ -4,6 +4,9 @@ menu:
   docs_menu:
     identifier: guide-start
     name: Get Started
+    description: Basic information and instructions for first-time users of AppsCode
+    icon: https://img.icons8.com/00994A/ios/50/rocket--v1.png
+    popular: true
     weight: 10
 menu_name: docs_menu
 section_menu: guides

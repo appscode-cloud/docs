@@ -10,6 +10,7 @@ menu:
     identifier: home-start-credential
     name: Add a Credential
     parent: home-start
+    popular: true
     weight: 20
 menu_name: docs_menu
 section_menu: guides
