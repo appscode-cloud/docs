@@ -15,5 +15,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["shims-vue.d.ts", "src/**/*", ".vitepress/**/*"]
+  "include": ["shims-vue.d.ts", "src/**/*", ".vitepress/**/*","vite/client"]
 }
