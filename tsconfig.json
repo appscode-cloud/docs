@@ -9,11 +9,12 @@
     "baseUrl": ".",
     "target": "ESNext",
     "types": [
-      "unplugin-icons/types/vue"
+      "unplugin-icons/types/vue",
+      "vite/client"
     ],
     "paths": {
       "@/*": ["./src/*"]
     }
   },
-  "include": ["shims-vue.d.ts", "src/**/*", ".vitepress/**/*","vite/client"]
+  "include": ["shims-vue.d.ts", "src/**/*", ".vitepress/**/*"]
 }
