@@ -9,7 +9,7 @@ menu:
   home_menu:
     identifier: home-cluster-add-selfmanaged-overview
     name: Overview
-    parent: home-cluster-add-selfmanaged
+    parent: home-cluster
     weight: 10
 menu_name: docs_menu
 section_menu: guides
