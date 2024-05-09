@@ -6,11 +6,6 @@ menu:
     name: Credentials
     parent: account-management-kubernetes
     weight: 20
-  home_menu:
-    identifier: home-account-kubernetes-creds
-    name: Credentials
-    parent: home-account-kubernetes
-    weight: 20
 menu_name: docs_menu
 section_menu: guides
 ---
