@@ -9,7 +9,7 @@ menu:
   home_menu:
     identifier: home-cluster-add-rancher
     name: Import Rancher Managed Clusters
-    parent: home-cluster-add
+    parent: home-cluster
     weight: 15
 menu_name: docs_menu
 section_menu: guides
