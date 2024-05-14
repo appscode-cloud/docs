@@ -6,11 +6,6 @@ menu:
     name: Customize Cluster Sidebar
     parent: cluster-management
     weight: 60
-  home_menu:
-    identifier: home-cluster-sidebar
-    name: Customize Cluster Sidebar
-    parent: home-cluster
-    weight: 60
 menu_name: docs_menu
 section_menu: guides
 ---

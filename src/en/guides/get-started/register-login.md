@@ -6,11 +6,6 @@ menu:
     name: Get Started (Register & Login)
     parent: guide-start
     weight: 10
-  home_menu:
-    identifier: home-start-register
-    name: Register & Login
-    parent: home-start
-    weight: 10
   section_menu:
     identifier: guide-start
     name: Get Started

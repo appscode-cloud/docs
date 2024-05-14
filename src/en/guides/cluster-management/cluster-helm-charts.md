@@ -6,11 +6,6 @@ menu:
     name: Manage Cluster Helm Charts
     parent: cluster-management
     weight: 50
-  home_menu:
-    identifier: home-cluster-helmcharts
-    name: Manage Cluster Helm Charts
-    parent: home-cluster
-    weight: 50
 menu_name: docs_menu
 section_menu: guides
 ---

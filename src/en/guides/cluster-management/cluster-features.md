@@ -6,11 +6,6 @@ menu:
     name: Feature Management
     parent: cluster-management
     weight: 30
-  home_menu:
-    identifier: home-cluster-feature
-    name: Feature Management
-    parent: home-cluster
-    weight: 30
 menu_name: docs_menu
 section_menu: guides
 ---

@@ -4,6 +4,7 @@ menu:
   docs_menu:
     identifier: cluster-management
     name: Cluster Management
+    popular: true
     weight: 30
 menu_name: docs_menu
 section_menu: guides

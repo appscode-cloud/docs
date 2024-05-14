@@ -6,11 +6,6 @@ menu:
     name: Import Rancher Managed Clusters
     parent: cluster-management-add
     weight: 15
-  home_menu:
-    identifier: home-cluster-add-rancher
-    name: Import Rancher Managed Clusters
-    parent: home-cluster-add
-    weight: 15
 menu_name: docs_menu
 section_menu: guides
 ---

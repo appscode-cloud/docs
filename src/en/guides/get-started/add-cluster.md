@@ -10,6 +10,7 @@ menu:
     identifier: home-start-cluster
     name: Add a Kubernetes Cluster
     parent: home-start
+    popular: true
     weight: 30
 menu_name: docs_menu
 section_menu: guides
