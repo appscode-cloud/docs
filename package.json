@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@appscode/design-system": "^2.2.7",
-    "@bytebuilders/docs-base": "github:bytebuilders/docs-base",
+    "@bytebuilders/docs-base": "github:bytebuilders/docs-base#riyad/lint",
     "@vueuse/core": "^10.1.2",
     "@vueuse/integrations": "^10.1.2",
     "bulma": "^0.9.4",
