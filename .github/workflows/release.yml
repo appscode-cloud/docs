@@ -63,18 +63,18 @@ jobs:
         run: |
           npm i -g firebase-tools@v11.14.1
 
-      - name: QA
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        if: startsWith(github.event.ref, 'refs/tags/') && (contains(github.ref, '-alpha.') || contains(github.ref, '-beta.'))
-        run: |
-          npm install
-          npm run deploy:qa
+      # - name: QA
+      #   env:
+      #     FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      #   if: startsWith(github.event.ref, 'refs/tags/') && (contains(github.ref, '-alpha.') || contains(github.ref, '-beta.'))
+      #   run: |
+      #     npm install
+      #     npm run deploy:qa
 
       - name: Release
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        if: startsWith(github.event.ref, 'refs/tags/') && (contains(github.ref, '-alpha.') || contains(github.ref, '-beta.')) == false
+        # if: startsWith(github.event.ref, 'refs/tags/') && (contains(github.ref, '-alpha.') || contains(github.ref, '-beta.')) == false
         run: |
           npm install
           npm run deploy:prod
