@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "scripts": {
     "dev": "GENERATE_INDEX=false vitepress dev",
     "build": "GENERATE_INDEX=true run-p type-check build-only",
