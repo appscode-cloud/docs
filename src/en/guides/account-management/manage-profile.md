@@ -26,9 +26,7 @@ section_menu: guides
 You have the flexibility to manage your profile, email, and avatar directly from the user settings page at [https://home.appscode.com/user/settings](https://home.appscode.com/user/settings). Follow these steps to customize your user settings:
 
 1. From any UI, such as the user profile page or the Kubernetes dashboard, navigate to the user settings page.
-
 2. Click on your profile icon or username to access the user menu.
-
 3. Select "Settings" to go to the user settings page.
 
 ## Update Profile Information

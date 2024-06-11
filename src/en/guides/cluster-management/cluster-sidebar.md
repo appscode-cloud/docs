@@ -31,7 +31,6 @@ To access the Cluster Sidebar Settings page and customize your sidebar preferenc
 The Cluster Sidebar Settings page presents two panels:
 
 1. **Available Menus (Left Side):** Displays all available menu options that users can choose from. Utilize the search functionality to find specific resources efficiently.
-
 2. **Current Menus (Right Side):** Reflects the current menu options visible in the sidebar.
 
 ## Customization Process
@@ -39,11 +38,8 @@ The Cluster Sidebar Settings page presents two panels:
 To customize the cluster sidebar, follow these steps:
 
 1. **Drag and Drop:** Easily move a menu option from the available options to the current menu section and vice versa. This drag-and-drop functionality simplifies the customization process.
-
 2. **Search for Resources:** Utilize the search bar in the available menus section to quickly locate specific resources. Once found, drag the resource to the current menu section.
-
 3. **Default Options:** Revert to the default sidebar options by clicking the "Default" button. This action undoes any previous customization.
-
 4. **Save Changes:** To apply the personalized changes, click the "Save" button. This ensures that the sidebar reflects the selected menu options.
 
 This enhanced customization feature empowers users to efficiently organize and optimize their AppsCode Dashboard experience by arranging the sidebar according to their preferences.

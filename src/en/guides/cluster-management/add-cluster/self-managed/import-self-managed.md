@@ -14,6 +14,14 @@ section_menu: guides
 
 If you possess a kubeconfig for either a public Kubernetes cluster or an air-gapped cluster, categorically referred to as self-managed clusters, here are the guides to seamlessly import these clusters into the AppsCode Dashboard:
 
-To add a self-managed public cluster, refer to [Import Public Clusters](import-public.md).
+<div class="is-flex gap-8">
+  <a href="./import-public.html" class="single-card">
+    <h5>Import Public Clusters</h5>
+    <p>To add a self-managed public cluster, refer to <button class="inline-link">Click Here</button></p>
+  </a>
 
-To add a self-managed private cluster, refer to [Import Private Clusters](import-private.md).
+  <a href="./import-private.html" class="single-card">
+    <h5>Import Private Clusters</h5>
+    <p>To add a self-managed private cluster, refer to <button class="inline-link">Click Here</button></p>
+  </a>
+</div>

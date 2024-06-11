@@ -21,11 +21,8 @@ section_menu: guides
 To delete your account, follow these steps:
 
 1. Navigate to the **Account** tab within the **General** section of the user settings page at [https://home.appscode.com/user/settings](https://home.appscode.com/user/settings).
-
 2. Provide your account password in the designated field.
-
 3. Click the "Confirm Deletion" button.
-
 By completing these steps, your account will be deleted. Please note that this action is irreversible, and all associated data will be permanently removed.
 
 If you have any concerns or need assistance, feel free to reach out to our support team.

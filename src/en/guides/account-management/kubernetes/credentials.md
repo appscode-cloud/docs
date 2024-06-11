@@ -13,8 +13,9 @@ section_menu: guides
 
 # Kubernetes Credentials Management
 
-In order to integrate a vendor-managed Kubernetes cluster into our system, you can either opt o `Create` a new cluster or `Import` an existing one. This process involves adding specific credentials based on your vendor. <br>
-Supported Credential Types include: <br>
+In order to integrate a vendor-managed Kubernetes cluster into our system, you can either opt o `Create` a new cluster or `Import` an existing one. This process involves adding specific credentials based on your vendor. 
+
+Supported Credential Types include: 
 - [AWS](#aws)
 - [Azure](#azure)
 - [Digital Ocean](#digital-ocean)
