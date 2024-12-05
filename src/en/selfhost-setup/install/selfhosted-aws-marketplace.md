@@ -54,7 +54,7 @@ You will find an `Installer URL` for this installer. You have to give this URL i
 
 The expiry time for this installer is 2 hours. You will find in detail deployment guideline after creating the installer.
 
-Go to [AppsCode Cloud w/ Usage Billing](https://aws.amazon.com/marketplace) in the AWS Marketplace. Launch the application following the given guideline.
+Go to [AppsCode Cloud w/ Usage Billing](https://aws.amazon.com/marketplace/pp/prodview-izn7wxvkpbjuo) in the AWS Marketplace. Launch the application following the given guideline.
 When deploying the CloudFormation template you have to give the `Installer URL` that you found in the previous step.
 
 Once you complete the `Launch` process, the application may need 5-10 minutes to initialize everything and go live.
