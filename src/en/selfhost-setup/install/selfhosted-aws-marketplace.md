@@ -2,8 +2,8 @@
 layout: 'guide'
 menu:
   selfhost-setup_docs_menu:
-    identifier: selfhost-demo-deployment
-    name: Demo Deployment
+    identifier: selfhost-aws-marketplace
+    name: AWS Marketplace Deployment
     parent: selfhosted-installer
     weight: 10
 menu_name: selfhost-setup_docs_menu
