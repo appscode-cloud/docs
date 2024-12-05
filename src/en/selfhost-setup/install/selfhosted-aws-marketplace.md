@@ -38,11 +38,11 @@ You'll be prompted to provide the following basic information for Self Hosted De
 ### 4. Provide Additional Information
 You can provide some additional information. if you want to customize them too. Like if you want your system to pull docker images or helm repositories from your hosted docker registries, you can set those too.
 
-**Domain White List (required):** You must specify the end users domains, the system will only allow users with that specified domains. You can Add multiple domain whitelists at the same time.
+**Domain White List (required):** You must specify the end users domains, the system will only allow users with those specified domains. You can Add multiple domain whitelists at the same time.
 
-You can also create an initial `CAPI Cluster` from `self management` and enable desired features in it. 
+You can also create an initial `CAPI Cluster` by enabling `capi-core` feature in the `Self Management` section. 
 
-Also, if you want your system to have your custom Logo, Favicon and Primary color, you can set those too.
+Also, you can customize your system's appearance by setting a custom logo, favicon, and primary color in the `Branding` section.
 
 ### 5. Generate Installer and Documentation
 
