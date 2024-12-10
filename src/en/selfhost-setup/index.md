@@ -15,7 +15,7 @@ section_menu: selfhost-setup
 Welcome to AppsCode Platform's Self-Hosted deployment! Whether you're looking for a quick trial in "Self Hosted Demo" mode or gearing up for a production-ready environment (`Self Hosted Production`), you're in control.
 
 
-Navigate to [AppsCode Self-Hosted](https://selfhost.appscode.com). Here you will find your previously generated self-hosted installers.
+Navigate to [AppsCode Self-Hosted](https://appscode.com/selfhost). Here you will find your previously generated self-hosted installers.
 
 <img src="/images/selfhost-setup/installer-home.png">
 <br/>

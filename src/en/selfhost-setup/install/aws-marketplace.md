@@ -2,8 +2,8 @@
 layout: 'guide'
 menu:
   selfhost-setup_docs_menu:
-    identifier: selfhost-aws-marketplace
-    name: AWS Marketplace Deployment
+    identifier: aws-marketplace
+    name: AWS Marketplace
     parent: selfhosted-installer
     weight: 10
 menu_name: selfhost-setup_docs_menu
@@ -217,7 +217,7 @@ AmazonS3FullAccess (AWS Managed Policy)
 ## Application Deployment
 ### 1. Visit the AppsCode Self-Hosted Page
 
-Navigate to [AppsCode Self-Hosted](https://appscode.com/selfhost). Here you will see the previously created installers as well as you can create a new installer. <br>
+Navigate to [AppsCode Self-Hosted](https://appscode.com/selfhost/create?dt=AWSMarketplace). Here you will see the previously created installers as well as you can create a new installer. <br>
 Click on the `Create New Installer` button to get started. You have to install the application from AWS Marketplace within 2 hours after creating this `Installer`. Otherwise, this installer will be `expired`.
 
 ### 2. Choose Deployment Mode

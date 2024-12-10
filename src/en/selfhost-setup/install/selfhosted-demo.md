@@ -21,7 +21,7 @@ If you already have a k8s cluster, you can skip the `k3s` setup procedure.
 
 ### 1. Visit the AppsCode Self-Hosted Page
 
-Navigate to [AppsCode Self-Hosted](https://selfhost.appscode.com). Here you will find your previously generated self-hosted installers. <br>
+Navigate to [AppsCode Self-Hosted](https://appscode.com/selfhost). Here you will find your previously generated self-hosted installers. <br>
 Click on the `Create New Installer` button to get started.
 
 ### 2. Choose Deployment Mode
