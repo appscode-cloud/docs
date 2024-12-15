@@ -7,6 +7,11 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "trailingSlash": true
+    "trailingSlash": true,
+    "redirects": [ {
+        "source": "/",
+        "destination": "https://appscode.com/docs/",
+        "type": 301
+      } ]
   }
 }
