@@ -17,5 +17,8 @@ export default defineConfigWithTheme<ThemeConfig>({
         '@vueuse/integrations/useCookies': '@vueuse/integrations/useCookies.mjs',
       },
     },
+    server: {
+      allowedHosts: ['bb.test'],
+    },
   },
 })
