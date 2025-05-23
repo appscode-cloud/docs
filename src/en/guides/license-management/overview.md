@@ -9,12 +9,12 @@ menu:
   home_menu:
     identifier: license-management-overview
     name: Overview
-    parent: license-management
+    parent: home-license
     weight: 10
   section_menu:
     identifier: license-management
     name: License Management
-    weight: 10
+    weight: 20
     parent: guides
 menu_name: docs_menu
 section_menu: guides

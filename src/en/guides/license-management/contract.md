@@ -9,7 +9,7 @@ menu:
   home_menu:
     identifier: license-management-contract
     name: Contract
-    parent: license-management
+    parent: home-license
     weight: 40
 menu_name: docs_menu
 section_menu: guides
