@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@appscode/design-system": "^2.2.7",
-    "@bytebuilders/docs-base": "github:bytebuilders/docs-base#rollBack",
+    "@bytebuilders/docs-base": "github:bytebuilders/docs-base",
     "@vueuse/components": "^12.5.0",
     "@vueuse/core": "^12.5.0",
     "@vueuse/integrations": "^12.5.0",
