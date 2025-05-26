@@ -20,6 +20,26 @@ To install the platform application you need to have the permissions to manage E
 
 You have to create an `Access Key` and `Secret Key` with following policies attached. Check out similar [eksctl docs](https://eksctl.io/usage/minimum-iam-policies/) for reference. 
 
+### For importing cluster to console:
+ImportClusterCustomAccess
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+            "eks:DescribeNodegroup",
+            "ec2:DescribeAvailabilityZones",
+            "ec2:DescribeRegions",
+            "eks:DescribeCluster",
+            "eks:ListClusters"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
 ### For creating and managing the EKS Cluster and EC2 resources:
 
 AmazonEC2FullAccess (AWS Managed Policy)
