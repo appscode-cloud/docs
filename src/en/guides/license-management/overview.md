@@ -23,11 +23,9 @@ section_menu: guides
 
 ## Overview <br>
 
-The AppsCode License Management System provides a comprehensive solution for managing AppsCode's product licenses across customer Kubernetes deployments. This system enables efficient license administration through a centralized billing console while ensuring secure license validation within customer environments. Supporting both `online` and `offline` licensing modes, the system accommodates various operational requirements and network constraints.
+The AppsCode License Management System simplifies managing product licenses for Kubernetes deployments. It offers a centralized billing console for efficient license administration and secure validation, supporting both online and offline modes to suit various needs.
 
-This documentation offers a detailed guide to the AppsCode License Management System, covering its architecture, operational workflows, and best practices for license administration.
-
-In this detailed guide, we'll explore the Billing Console's functionality in depth. We'll start with an overview of its `key components`, then dive into `contract management`, explain the `license-proxyserver` deployment process, and conclude with `troubleshooting tips` for common issues. By the end, you'll have a clear, actionable understanding of how to leverage this tool to manage licenses effectively.
+This guide explores the Billing Console, covering its key components, contract management, license-proxyserver deployment, and troubleshooting tips for common issues. By the end, you’ll know how to effectively manage licenses with this tool.
 
 **Target Audience:** This guide is intended for `administrators` and `personnel` responsible for managing AppsCode's product licenses.
 
@@ -41,13 +39,10 @@ While AppsCode administrators are responsible for the core lifecycle of contract
 
 ### Key Components
 
-The Billing Console serves as the central center for AppsCode's license management ecosystem. It's a web-based platform that integrates various components to provide a seamless experience. Let's break down its key elements:
-
 - **Contracts:** Digital agreements, typically established by [AppsCode administrators](https://AppsCode.com/contact/) within the Billing Console, that define the terms of AppsCode's product (e.g., ACE, KubeDB, KubeStash, KubeVault etc.) usage. This includes the specific AppsCode products which can be licensed, the duration of the contract, applicable features, and the clusters authorized to use these licenses. Contracts ensure that usage aligns with legal and financial terms, providing a foundation for all subsequent actions in the console. Contracts can be configured for either online or offline license validation.
 <br> <br>
 - **Licensed cluster:** The `Licensed Cluster` section within the AppsCode Billing Console offers a comprehensive overview and detailed management capabilities for Kubernetes clusters that have been issued AppsCode product licenses. This component is pivotal for administrators to monitor the cluster(s) `licences` and `events` of licensed products across their infrastructure.
 <br> <br>
-- **License Proxy Server:** A lightweight component deployed within the customer's Kubernetes cluster(s). It functions as an on-premise license manager, acting as a bridge between AppsCode products running in the cluster and the central AppsCode Billing Console. Its primary function is to ensure that AppsCode products are properly licensed and remain compliant with the terms defined in the customer's contracts. It also handles license `validation` and `retrieval`, acting as a `gatekeeper` to ensure compliance. This localized validation mechanism enhances security and performance by keeping sensitive license checks within the customer's environment. 
-  <br>The AppsCode Billing Console generates installers for the `license-proxyserver`, customized based on the contract's mode (`online` or `offline`). Depending on the contract type (`online` or `offline`), it either periodically refreshes and validates licenses with AppsCode's central licensing servers or uses static preloaded licenses embedded during deployment for the full contract duration.
+- **License Proxy Server:** A lightweight in-cluster component that validates licenses, either by connecting to AppsCode servers (online) or using preloaded licenses (offline). The console generates customized installers for deployment. Depending on the contract type (`online` or `offline`), it either periodically refreshes and validates licenses with AppsCode's central licensing servers or uses static preloaded licenses embedded during deployment for the full contract duration.
 
 These components work together to provide a seamless experience for license administrators, allowing them to efficiently manage the entire licensing `lifecycle` from a single interface. For instance, AppsCode's administrator creates a contract for KubeDB, and associates the contract to the target customer. Then from the customer panel, the customer can add a cluster to it, generates a customized installer for the `license-proxyserver`, deploys it to the cluster, and then monitors usage—all within the Billing Console. This integrated workflow eliminates the need for disparate tools or manual processes, saving time and reducing errors.

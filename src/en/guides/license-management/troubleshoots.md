@@ -16,8 +16,7 @@ section_menu: guides
 ---
 
 ## Troubleshooting License Proxy Server Issues
-When encountering issues with AppsCode product licensing, troubleshooting the license-proxyserver is a crucial first step. Since the license-proxyserver functions as an extended API server within the Kubernetes cluster, 
-the troubleshooting process involves verifying its API registration, service health, and connectivity to the AppsCode backend.
+The troubleshooting process involves verifying its API registration, service health, connectivity to the AppsCode backend etc.
 
 #### 1. Verify `APIService` Configuration
 First, confirm that the APIService for the license-proxyserver is correctly registered and available within the Kubernetes API aggregation layer.
@@ -155,8 +154,6 @@ If the `in-cluster` components of the `license-proxyserver` appear healthy, and 
 
 #### 5. Conclusion
 The AppsCode License Management System delivers a `lightweight`, `in-cluster` authority for fast, reliable license validation in Kubernetes. Its `online` and `offline` modes accommodate both 
-always-connected and isolated environments. <br>
-Meanwhile, The AppsCode Billing Console serves as the centralized administrative hub, empowering customers with `self-service` capabilities for cluster association, 
-installer generation, and comprehensive monitoring of licensed clusters and their associated licenses.
+always-connected and isolated environments. It empowers customers with `self-service` capabilities for cluster association.
 
 For unresolved issues, email [support@appscode.com](mailto:support@appscode.com) or [platform-support@appscode.com](mailto:support@appscode.com), or file a ticket at [AppsCode Contact](https://appscode.com/contact).

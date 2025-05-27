@@ -17,8 +17,7 @@ section_menu: guides
 
 ## The License Proxy Server
 
-The `license-proxyserver` is a critical component of the AppsCode License Management System, deployed within customer Kubernetes clusters to validate and apply licenses to AppsCode products. This component acts as the local authority for AppsCode product's licensing and as an intermediary between the licensed products and the AppsCode's Central Billing Console, ensuring that all deployed AppsCode applications operate with valid licenses as per the terms defined in their associated contracts.
-
+The `license-proxyserver` is a critical component of the AppsCode License Management System, deployed within customer Kubernetes clusters to validate and apply licenses to AppsCode products. 
 ### 1. Purpose and Architecture
 
 The primary purpose of the `license-proxyserver` is to:
@@ -34,9 +33,9 @@ The primary purpose of the `license-proxyserver` is to:
 1. **AppsCode Product Request:** When an AppsCode product (e.g., KubeDB operator) starts or performs a licensed operation, it requests a license from the License Proxy Server running in its cluster.
 2. **License Proxy Server Response:**
     - **Online Mode:** If the `license-proxyserver` has a valid, cached license, it provides it immediately. If the license is nearing its expiration, has already expired, or is otherwise invalid, the `license-proxyserver` attempts to contact AppsCode `Billing Backend` to fetch a new license. This new license is based on the active contracts associated with that specific cluster.
-    - **Offline Mode:** The `license-proxyserver` primarily uses the pre-generated licenses embedded in its installer. It operates without connecting to the Billing Console for routine validation. However, if all embedded licenses are found to be expired or have been revoked, the `license-proxyserver` will, as a fallback, attempt to fetch new licenses from the AppsCode billing backend. This means that even in air-gapped environments, a temporary or controlled outbound connection might be necessary for license renewal or recovery if the embedded licenses become invalid over time. Each mode offers distinct advantages and is suitable for different operational contexts.
+    - **Offline Mode:** The `license-proxyserver` primarily uses the pre-generated licenses embedded in its installer. It operates without connecting to the Billing Console for routine validation. However, if all embedded licenses are found to be expired or have been revoked, the `license-proxyserver` will, as a fallback, attempt to fetch new licenses from the AppsCode billing backend. This means that even in air-gapped environments, a temporary or controlled outbound connection might be necessary for license renewal or recovery if the embedded licenses become invalid over time. 
    > Each mode offers distinct advantages and is suitable for different operational contexts.
-3. **Product Operation:** Based on whether a valid license is received from the `license-proxyserver`, the AppsCode product will enable or disable its functionalities accordingly. A valid license allows the product to operate with its full feature set, while an invalid or absent license may lead to reduced functionality or prevent the product from operating.
+3. **Product Operation:** A valid license allows the product to operate with its full feature set, while an invalid or absent license may lead to reduced functionality or prevent the product from operating.
 
 > This architecture ensures that licensing checks are performed locally within the cluster, minimizing latency and dependency on external services for routine operations, especially after initial license acquisition.
 
@@ -54,14 +53,12 @@ Online mode is suitable for clusters with reliable internet connectivity, allowi
 When the `Online` option is selected for installer generation in the Billing Console, the system prepares a standard `license-proxyserver` installer. ![Online Installer](./images/online-installer.png) 
 This installer is typically provided as a `Helm` commands or `YAML files`, as seen in the `Scripts` pop-up. ![Online Installer Scripts](./images/online-installer-scripts.png)
 
-The generated installer configures the license-proxyserver to communicate with the AppsCode licensing backend. Key configurations embedded in the installer include:
+The generated installer configures the license-proxyserver to communicate with the AppsCode licensing backend. The cluster where this `license-proxyserver` is installed must be `associated with one or more online contracts` in the Billing Console for successful license acquisition.
+Key configurations embedded in the installer include:
 
 - The base URL for the AppsCode licensing backend, explicitly set (e.g., `-set platform.baseURL=https://AppsCode.com`). This ensures the `license-proxyserver` knows where to connect for license validation and updates.
 - A platform token (e.g., `-set platform.token=dc823391fc8d6d9ca10f47a1ed07************`). This token is used by the `license-proxyserver` to authenticate itself with the AppsCode backend and identify which licenses it is eligible for.
 
-The Helm command provided (e.g., `helm upgrade --install license-proxyserver oci://ghcr.io/AppsCode-charts/license-proxyserver --version v2025.4.30`) specifies the Helm chart repository and a particular version, 
-along with flags for namespace creation (`--namespace kubeops --create-namespace`) and deployment behavior (`--wait --debug --burst-limit=1000`). 
-The cluster where this `license-proxyserver` is installed must be `associated with one or more online contracts` in the Billing Console for successful license acquisition.
 
 #### License Acquisition and Rotation
 
@@ -78,12 +75,7 @@ The cluster where this `license-proxyserver` is installed must be `associated wi
 
 #### Offline Mode Deployment
 
-Offline mode caters to environments that are air-gapped or have stringent restrictions on external network communications.
-
-#### Rationale for Offline Mode
-Many organizations, particularly in sectors like finance, government, or critical infrastructure, operate Kubernetes clusters in environments completely 
-disconnected from the internet for security reasons. Offline licensing ensures that AppsCode products can still be fully utilized in such scenarios without 
-compromising security policies. It provides operational autonomy once the `license-proxyserver` is deployed.
+Offline mode caters to environments that are air-gapped or have stringent restrictions on external network communications. It is ideal for sectors like finance, government, or critical infrastructure, where Kubernetes cluster environments are completely offline.
 
 #### Enabling Offline Contracts
 The prerequisite for generating an offline `license-proxyserver` installer is that the relevant contract(s) in the AppsCode Billing Console must be explicitly 
@@ -99,11 +91,11 @@ Generating an installer for offline mode is a multi-step process, designed to em
 
 #### License Characteristics in Offline Mode
 
-- **Full Duration Licenses:** The licenses embedded in the offline installer are valid for the entire duration of the selected offline contract(s). <br>For example, if an offline contract runs from `not_before: June 1, 2025`, to `not_after: May 31, 2026`, the embedded license will be valid for this `full one-year` period.
-- **No Periodic Online Rotation (Initially):** Unlike online mode, these licenses do not require periodic contact with AppsCode servers for renewal or rotation as long as they are valid. They are self-contained and remain active until the contract's specified end date.
-- **Fallback to Online Mode:** A critical aspect of `Offline Mode` is its fallback mechanism. If all embedded licenses within the `license-proxyserver` are found to be `expired`, the `license-proxyserver` will, as a fallback, attempt to fetch new licenses from the AppsCode billing backend. In this scenario, it will try to periodically fetch licenses for shorter periods, similar to how online mode operates.
-- **Self-Contained Deployment:** All necessary licensing information is deployed directly into the cluster as part of the `license-proxyserver's` configuration. The cluster can operate in a fully disconnected state post-installation, provided the embedded licenses are valid.
-- **Updates Require New Installer:** When an offline contract is extended by [AppsCode administrators](https://AppsCode.com/contact) and the customer wishes to update the embedded license to reflect this extended duration, a new offline `license-proxyserver` installer bundle must be generated from the Billing Console. This new bundle then needs to be `upgraded` or `re-installed` on the cluster by the customer. Similarly, if the embedded licenses expire and the `license-proxyserver` switches to online mode, the customer should generate a fresh offline installer and upgrade the existing `Helm release` to `re-embed` the `long-lived` licenses, thereby restoring full offline functionality.
+- **Full Duration Licenses:** Offline licenses are valid for the entire contract term, e.g., June 1, 2025, to May 31, 2026.
+- **No Periodic Online Rotation (Initially):** Self-contained licenses don’t need AppsCode server contact until expiration.
+- **Fallback to Online Mode:** Expired offline licenses trigger the license-proxyserver to fetch new licenses online, mimicking online mode.
+- **Self-Contained Deployment:** Licensing data is embedded in the license-proxyserver, allowing disconnected operation while licenses are valid.
+- **Updates Require New Installer:** Contract extensions or expired licenses require a new installer from the Billing Console, which must be upgraded or reinstalled to maintain or restore offline functionality.
 
 
 ### 3. Verifying Product License Status
