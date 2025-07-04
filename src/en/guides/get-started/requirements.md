@@ -10,16 +10,15 @@ menu_name: docs_menu
 section_menu: guides
 ---
 
-
 # Requirements to deploy ACE
 We will discuss the resources requirements. networking requirements & best practices for deploying your first ACE & DBaaS cluster. It is highly recommended to read the [architecture](https://appscode.com/docs/en/guides/get-started/architecture.html) doc first before continuing. 
 
 ## Requirements for ACE Cluster
 
 ### 1. Resources
-Minimum: Single node with 4 cpu, 16 GB ram, 100 GB disk attached. A k3s cluster will be deployed on that VM. And then the ui-components will be installed.
+**Minimum**: Single node with 4 cpu, 16 GB ram, 100 GB disk attached. A k3s cluster will be deployed on that VM. And then the ui-components will be installed.
 
-HA Deployment: 3 worker nodes, each with 4 cpu, 16 GB ram, PVC support (3000 iops, 200 GB disk across multiple pvcs) and LB service support.
+**HA Deployment**: 3 worker nodes, each with 4 cpu, 16 GB ram, PVC support (3000 iops, 200 GB disk across multiple pvcs) and LB service support. The Kubernetes control plane should be also HA.
 
 ### 2. Networking
 If you want to run in an air-gapped environments (disconnected from internet), You will have to make sure that all images are cached locally. You can use Harbor or jfrog artifactory for this. 
@@ -44,8 +43,6 @@ These are the required connectivities to everything work correctly:
 Here is a sample video on how you can setup ACE:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/1diG8qq73f4?si=pisqA3gOrfO1wxlx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-
-
 ## Requirements for DBaaS Cluster
 ### 1. Resources
 Depends on how many and what size of databases users are running.
@@ -57,6 +54,5 @@ Note that, The largest node must be able to fit the largest DB Pod(in terms of C
 ### 2. Networking
 Literally all the Networking requirements described for ACE are also applicable here, except the `Port Requiements` part.
 Only one additional requirement here is that the DBaaS cluster should be accessible from the management/ACE cluster.
-
 
 You now have an overall idea on the requirements. So, [Login](https://appscode.com/docs/en/guides/get-started/register-login.html) into your account & get going with our [installer](https://appscode.com/selfhost/). Happy ACE!

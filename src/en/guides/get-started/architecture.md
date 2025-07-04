@@ -23,11 +23,12 @@ We also have native-integration of [OCM hub-spoke model](https://open-cluster-ma
 ACE is used as the hub of OCM mode. Thats why we call this `Hub cluster` too.
 
 The ACE cluster can be a single-node k3s cluster for staging or development. Or a full-fledged multi-node cluster for prod.
-The installer page in the `selfhost-ui` on appscode.com site by-default gives the information to create a demo k3s cluster to get going right on-the-fly.
+
+The installer page on the `selfhost-ui` on appscode.com provides instructions for quickly setting up a K3s cluster to get started immediately.
 
 ### DBaaS
 DBaaS cluster is the main cluster for database users. This can be of two main type: spoke cluster, general imported cluster.
-While importing, if someone make it a spoke, then cluster-manager-spoke component will be installed. And its features will be synced by the Hub cluster.
+While importing, if someone make it a spoke, then cluster-manager-spoke features will be installed by the Hub cluster.
 If you don't want to manage it from the hub, we can just import it as a general cluster. In that case, that auto-sync from hub will not happen.
 
 
