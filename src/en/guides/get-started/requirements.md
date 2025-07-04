@@ -6,11 +6,6 @@ menu:
     name: ACE Requirements
     parent: guide-start
     weight: 14
-  home_menu:
-    identifier: home-ace-requirements
-    name: ACE Requirements
-    parent: home-start
-    weight: 14
 menu_name: docs_menu
 section_menu: guides
 ---

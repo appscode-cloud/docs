@@ -6,15 +6,9 @@ menu:
     name: Architecture
     parent: guide-start
     weight: 12
-  home_menu:
-    identifier: home-architecture
-    name: Architecture
-    parent: home-start
-    weight: 12
 menu_name: docs_menu
 section_menu: guides
 ---
-
 
 # Architecture
 Let's first discuss some basic terminologies, those will be repeated many times throughout the whole docs. The below picture will help in describing the terminologies:
