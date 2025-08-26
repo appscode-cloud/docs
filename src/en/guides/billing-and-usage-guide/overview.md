@@ -26,7 +26,7 @@ This document provides a detailed overview of the **Usage** section within our b
 
 ## **AppsCode Billing Console — Usage**
 
-The AppsCode Billing Console is a web-based hub at [AppsCode Billing Console](https://AppsCode.com/billing) where you can manage contracts, link clusters, generate license-proxyserver installers, track licensed clusters, and **monitor usage—all in one place**.
+The AppsCode Billing Console is a web-based hub at [AppsCode Billing Console](https://appsCode.com/billing) where you can manage contracts, link clusters, generate license-proxyserver installers, track licensed clusters, and **monitor usage—all in one place**.
 
 This section focuses on the **Usage** dashboard, which shows the resources consumed by downstream AppsCode services like KubeDB running in your clusters.
 
@@ -40,7 +40,7 @@ This section focuses on the **Usage** dashboard, which shows the resources consu
 ![usage-product-selector](images/usage-section-product-dropdown.png)
 * **Usage Types:**
   * **Total Usage**: total consumption for the selected scope, measured primarily in `Core-Minute` and `GiB-Minute`.
-  * **Billable Usage**: the portion that is billable, measured primarily in `Core-Month` and `GiB-Month`. Billable is computed only if your organization has a paid contract for the selected product. If there’s no paid contract, a 30‑day free contract is applied and usage during this period is counted as `free usage`. See the [Contract docs](http://localhost:5997/docs/en/guides/license-management/contract.html) for details.
+  * **Billable Usage**: the portion that is billable, measured primarily in `Core-Month` and `GiB-Month`. Billable is computed only if your organization has a paid contract for the selected product. If there’s no paid contract, a 30‑day free contract is applied and usage during this period is counted as `free usage`. See the [Contract docs](http://appscode.com/docs/en/guides/license-management/contract.html) for details.
 ![usage-usage-type-selector](images/usage-section-usage-type-dropdown.png)
 * **View By:**
   * Choose how data is grouped. For Database view, you can drill down **Kinds → Clusters → Deployments** (for example, `kubedb.com/Postgres` → `clusters running Postgres` → `individual database deployments`).
@@ -65,6 +65,6 @@ What you’ll see in the Billable table
 
 **How to influence these numbers:**
   - Cluster mode (`PROD` vs `NON‑PROD`) and namespace trials are configured in Cost Management: [Cost Management](./cost-management.md)
-  - Contract behavior (`paid` vs. `30‑day free` when none exists) is described here: [Contract docs](http://localhost:5997/docs/en/guides/license-management/contract.html)
+  - Contract behavior (`paid` vs. `30‑day free` when none exists) is described here: [Contract docs](http://appscode.com/docs/en/guides/license-management/contract.html)
 
-**For more details, please contact** [AppsCode administrators](https://AppsCode.com/contact/).
+**For more details, please contact** [AppsCode administrators](https://appsCode.com/contact/).

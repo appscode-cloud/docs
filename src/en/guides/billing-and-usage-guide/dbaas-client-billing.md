@@ -23,7 +23,7 @@ This section is intended for DBaaS providers (self-hosted administrators) who ma
 
 Before these APIs can be used, the **Client Billing** feature must be enabled in your contract with us. This is a digital agreement that activates the necessary backend services to collect and expose usage data for your clients' namespaces from our central system.
 
-For more information on how to view or modify your contract, please refer to the [official contract management documentation](https://appscode.com/docs/en/guides/license-management/contract.html) or contact [AppsCode administrators](https://AppsCode.com/contact/). Once Enable **Client Billing** is active in your contract, you can proceed to use the API endpoints detailed below.
+For more information on how to view or modify your contract, please refer to the [official contract management documentation](https://appscode.com/docs/en/guides/license-management/contract.html) or contact [AppsCode administrators](https://appsCode.com/contact/). Once Enable **Client Billing** is active in your contract, you can proceed to use the API endpoints detailed below.
 
 ### **Authentication**
 
