@@ -57,9 +57,12 @@ Users can get a one-month free trial for every KubeDB database running within a 
 
 To enable the free trial, the user needs to add a specific annotation to the desired namespace.
 
+- **Who applies this:** In a DBaaS setup, downstream users typically do not have direct access to the cluster. The annotation must be applied by the cluster/infra administrator who manages the cluster.
+- **Where it can be used:** The trial can be enabled in namespaces on both **PROD** and **NON-PROD** clusters. While the trial is active, eligible database usage is counted as **free usage** (not billed and reported as Free usage in the Billable section), regardless of cluster mode. After the trial ends for a database, subsequent usage follows the cluster's pricing mode (**PROD** or **NON-PROD**) and your contract status (paid contract vs. the 30‑day free contract when no paid contract exists).
+
 **To enable the trial:**
 
-1. Choose the namespace where the KubeDB resources are running.
+1. Select the namespace that contains your KubeDB databases. Any existing databases in this namespace that have not previously received a trial will receive a one-month free trial starting from when the annotation is applied. Any databases created later in this namespace will also automatically receive a one-month free trial. Databases that have already used a trial are not eligible again.
 2. Apply the annotation `ace.appscode.com/enable-resource-trial` with the value `true`.
 
 **Example using kubectl:**

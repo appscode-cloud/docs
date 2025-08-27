@@ -26,7 +26,7 @@ This document provides a detailed overview of the **Usage** section within our b
 
 ## **AppsCode Billing Console — Usage**
 
-The AppsCode Billing Console is a web-based hub at [AppsCode Billing Console](https://appsCode.com/billing) where you can manage contracts, link clusters, generate license-proxyserver installers, track licensed clusters, and **monitor usage—all in one place**.
+The AppsCode Billing Console is a web-based hub at [AppsCode Billing Console](https://appscode.com/billing) where you can manage contracts, link clusters, generate license-proxyserver installers, track licensed clusters, and **monitor usage—all in one place**.
 
 This section focuses on the **Usage** dashboard, which shows the resources consumed by downstream AppsCode services like KubeDB running in your clusters.
 
@@ -67,4 +67,4 @@ What you’ll see in the Billable table
   - Cluster mode (`PROD` vs `NON‑PROD`) and namespace trials are configured in Cost Management: [Cost Management](./cost-management.md)
   - Contract behavior (`paid` vs. `30‑day free` when none exists) is described here: [Contract docs](http://appscode.com/docs/en/guides/license-management/contract.html)
 
-**For more details, please contact** [AppsCode administrators](https://appsCode.com/contact/).
+**For more details, please contact** [AppsCode administrators](https://appscode.com/contact/).
