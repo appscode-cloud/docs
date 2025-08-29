@@ -51,7 +51,7 @@ To set it to a **NON-PROD** mode like staging, run:
 kubectl annotate namespace kube-system cluster.appscode.com/mode=staging --overwrite
 ```
 
-### **Enabling the One-Month Free Resource Trial**
+### **Enabling the First One-Month Free Resource Trial**
 
 Users can get a one-month free trial for every KubeDB database running within a specific namespace. This allows for evaluation of the service without incurring costs during the trial period.
 
@@ -62,7 +62,10 @@ To enable the free trial, the user needs to add a specific annotation to the des
 
 **To enable the trial:**
 
-1. Select the namespace that contains your KubeDB databases. Any existing databases in this namespace that have not previously received a trial will receive a one-month free trial starting from when the annotation is applied. Any databases created later in this namespace will also automatically receive a one-month free trial. Databases that have already used a trial are not eligible again.
+1. Select the namespace that contains your KubeDB databases. The trial behavior depends on when databases are created relative to when the annotation is applied:
+   - **Existing databases:** If a database is still within its first month from creation, it will receive free trial usage for the remaining portion of that first month (starting from when the annotation is applied). Databases that have already completed their first month are not eligible for the trial.
+   - **New databases:** Any databases created after the annotation is applied will receive a full one-month free trial from their creation timestamp, as long as the namespace remains annotated.
+   - **Trial eligibility:** Each database is eligible for a one-month free trial only once during its lifetime.
 2. Apply the annotation `ace.appscode.com/enable-resource-trial` with the value `true`.
 
 **Example using kubectl:**
@@ -73,4 +76,5 @@ To enable the free trial for a namespace named `my-app-ns`, run the following co
 kubectl annotate namespace my-app-ns ace.appscode.com/enable-resource-trial=true --overwrite
 ```
 
-Once this annotation is applied, all KubeDB resources deployed within the my-app-ns namespace will automatically receive a one-month free trial.
+Once this annotation is applied, eligible KubeDB resources in this namespace will receive trial benefits as described above.
+

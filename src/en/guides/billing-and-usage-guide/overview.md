@@ -60,7 +60,7 @@ What you’ll see in the Billable table
 - **PROD/NON-PROD usage:** billable usage split by cluster mode—clusters marked `prod` are priced at the `PROD` rate; clusters marked `qa`, `staging`, or `dev` are priced at the `NON‑PROD` rate.
 ![usage-billable-prod-nonprod](images/usage-section-prod-nonprod-usage-home.png)
 - **Free usage:** usage that isn’t billed. This includes:
-  - **Trial usage** from namespaces annotated `ace.appscode.com/enable-resource-trial=true` (one‑month free per database in that namespace).
+  - **Trial usage** from namespaces annotated `ace.appscode.com/enable-resource-trial=true` (`first one‑month` free per database starting from its creation in that namespace).
   - Usage covered by the **30‑day free contract** when there’s no paid contract for the selected product.
 
 **How to influence these numbers:**
