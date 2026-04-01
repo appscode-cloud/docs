@@ -1,12 +1,12 @@
 ---
 layout: 'guide'
 menu:
-  selfhost-setup_docs_menu:
+  v2_1_0_selfhost-setup_docs_menu:
     identifier: selfhost-cloud-demo-deployment
     name: Cloud Demo Deployment
     parent: selfhosted-installer
     weight: 10
-menu_name: selfhost-setup_docs_menu
+menu_name: v2_1_0_selfhost-setup_docs_menu
 section_menu: selfhost-setup
 ---
 
