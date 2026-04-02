@@ -16,9 +16,9 @@ section_menu: guides
 ---
 
 
-![](images/delete-account.png)
-
 **Deleting Your AppsCode Account**
+
+![](images/delete-account.png)
 
 This guide provides step-by-step instructions for permanently removing your personal account from the AppsCode platform.
 

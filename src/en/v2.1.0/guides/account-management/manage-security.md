@@ -16,7 +16,7 @@ menu_name: v2_1_0_docs_menu
 section_menu: guides
 ---
 
-**User Guide: Account Security**
+**Account Security**
 
 Manage your account's protection under **USER SETTINGS > Security** in the left-hand sidebar.
 
