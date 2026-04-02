@@ -16,25 +16,27 @@ section_menu: guides
 ---
 
 
-# Manage Organizations
+**Managing Organizations**
 
-Navigate to the [Organizations](https://home.appscode.com/user/settings/organizations) tab to view and manage all the organizations associated with your account.
+Manage your collaborations and organizational structure via the **ORGANIZATIONS** tab in the top navigation menu.
 
-## View Organizations
+**1. Viewing & Managing Organizations**
 
-In the "Organizations" tab, you can see a list of organizations you are part of, either as a creator or a member. Each organization has an associated "Leave" button, allowing you to leave any organization when needed. Additionally, you can click on the organization name to navigate to its profile.
+![](images/orgs-members-1.png)
 
-## Create a New Organization
+The main list displays all organizations you belong to as a creator or member.
 
-To create a new organization:
+- **Search & View:** Use the search bar to find groups and click their names to visit their profiles.
+- **Leave:** Click the **Leave** button to remove yourself from an organization immediately.
 
-1. Click "New Organization."
-2. Provide the required details:
-   - Username
-   - Full Name
-   - Description
-   - Website
-   - Location
-3. Click "Create" to complete the organization creation process.
+**2. Creating a New Organization**
 
-Regularly review and manage your organizations to optimize your collaboration and organizational structure within the AppsCode platform.
+![](images/orgs-members-2.png)
+
+Click **+ New Organization** to establish a new group.
+
+- **Details:** Provide a required **Organization Name**, plus an optional full name, description, website, and location.
+- **Visibility:** Choose who can see your organization: **Public**, **Limited** (logged-in users only), or **Private** (members only).
+- **Origin:** Toggle **Rancher Managed?** if the organization is managed through Rancher.
+- **Avatar:** Set a profile image using a Gravatar email or by uploading a custom image (Max: 1MB, 4096 x 3072 resolution).
+- **Finalize:** Click the green **Create** button to finish.
