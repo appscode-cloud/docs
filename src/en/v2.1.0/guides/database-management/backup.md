@@ -3,36 +3,32 @@ layout: 'guide'
 menu:
   v2_1_0_docs_menu:
     identifier: database-management-backup
-    name: Configure Backups & Restore
+    name: Configure Backups
     parent: database-management
     weight: 40
   home_menu:
     identifier: home-database-backup
-    name: Configure Backups & Restore
+    name: Configure Backups
     parent: home-database
     weight: 40
 menu_name: v2_1_0_docs_menu
 section_menu: guides
 ---
 
-# Configure Backups & Restore
+# Configure Backups
 
-This guide covers two workflows: using the **Configure Backup** interface to manage data protection via individual configurations (**BackupConfig**) or broader templates (**BackupBlueprint**), and using the **Restore** interface to recover data from a specific backup snapshot.
+This guide covers how to use the **Configure Backup** interface to manage data protection via individual configurations (**BackupConfig**) or broader templates (**BackupBlueprint**).
 
 ---
 
 ## 1. Getting Started
 
-To begin, select **Configure Backup** or **Restore** from the left sidebar. This selection determines the available settings and workflow.
+To begin, select **Configure Backup** from the left sidebar. This selection determines the available settings and workflow.
 
 - **BackupConfig:** Use this to create, delete, or modify specific backup tasks.
 - **BackupBlueprint:** Use this to manage high-level templates for enabling or disabling backups across multiple resources.
 
 ![Configure Backup section showing BackupConfig and BackupBlueprint options](./images/backup-config.png)
-
-- **Restore:** Use this to recover data from a specific backup snapshot.
-
-![Restore option in the left sidebar](./images/restore.png)
 
 ---
 
@@ -99,22 +95,6 @@ Selecting the **BackupBlueprint** type allows you to toggle predefined backup te
 
 ---
 
-## 4. Configuring a Restore
-
-The **Restore Configuration** form allows you to define exactly which data you want to recover and where it should come from.
-
-![Restore Configuration form with Repository and Snapshot fields](./images/restore-config.png)
-
-1. **Repository:** Select the backup repository that contains your data (e.g., **demo/mongodb**).
-1. **Select Snapshot:** Choose the specific point-in-time backup you wish to restore.
-1. **Additional Parameters:** Provide any specific configuration flags or advanced parameters.
-1. **Preview:** Click **Preview** to review the restore configuration.
-1. **Submit:** Once satisfied, click **Submit** to begin the restore.
-
-> **Note:** Fields marked with a red asterisk are required. If left empty, the system will display an "Error in 1 field" warning.
-
----
-
 ## Quick Reference
 
 | Action | How to do it |
@@ -123,4 +103,3 @@ The **Restore Configuration** form allows you to define exactly which data you w
 | Modify an existing backup | **BackupConfig** → **Modify** → choose config → update settings → **Preview** → **Submit** |
 | Delete a backup config | **BackupConfig** → **Delete** → choose config → **Deploy** |
 | Enable/disable a blueprint | **BackupBlueprint** → toggle **Enable Backup Blueprint** → **Preview** → **Submit** |
-| Restore from a snapshot | **Restore** → choose Repository and Snapshot → **Preview** → **Submit** |
