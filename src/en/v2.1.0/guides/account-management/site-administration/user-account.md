@@ -11,13 +11,13 @@ section_menu: guides
 ---
 
 
-**Managing User Accounts**
+# Managing User Accounts
 
 As a site administrator, you can view all registered user accounts and create new ones from the **User Accounts** section.
 
-**1. View All Users**
+## 1. View All Users
 
-![](../images/site-admin-user-account-1.png)
+![View All User Accounts](../images/site-admin-user-account-1.png)
 
 Go to **SITE ADMINISTRATION > User Accounts** to see the full list of registered accounts.
 
@@ -26,9 +26,9 @@ Go to **SITE ADMINISTRATION > User Accounts** to see the full list of registered
 - **Actions:** Each user has **Edit** and **Delete** buttons. Use **Delete** to permanently remove a user, or **Edit** to update their details.
 - **Create:** Click **Create User Account** in the top right to add a new user.
 
-**2. Create a New User Account**
+## 2. Create a New User Account
 
-![](../images/site-admin-user-account-2.png)
+![Create New User Account](../images/site-admin-user-account-2.png)
 
 Click **Create User Account** to open the new user form.
 

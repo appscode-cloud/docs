@@ -11,13 +11,13 @@ section_menu: guides
 ---
 
 
-**Managing Organizations**
+# Managing Organizations
 
 Site administrators can view all organizations on the platform and create new ones from the **Organizations** section.
 
-**1. View All Organizations**
+## 1. View All Organizations
 
-![](../images/site-admin-organizations-1.png)
+![View All Organizations](../images/site-admin-organizations-1.png)
 
 Go to **SITE ADMINISTRATION > Organizations** to see the full list of organizations.
 
@@ -26,9 +26,9 @@ Go to **SITE ADMINISTRATION > Organizations** to see the full list of organizati
 - **Actions:** Each organization has a **Delete** button to remove it and a **No Access** button to restrict access.
 - **Create:** Click **+ New Organization** in the top right to add a new organization.
 
-**2. Create a New Organization**
+## 2. Create a New Organization
 
-![](../images/site-admin-organizations-2.png)
+![Create New Organization](../images/site-admin-organizations-2.png)
 
 Click **+ New Organization** to open the creation form.
 

@@ -11,13 +11,13 @@ section_menu: guides
 ---
 
 
-**Site Administration Dashboard**
+# Site Administration Dashboard
 
 The Site Admin Dashboard gives administrators a high-level overview of the entire platform — users, organizations, and system activity.
 
-**Accessing the Dashboard**
+## Accessing the Dashboard
 
-![](../images/site-admin-dashboard.png)
+![Site Administration Dashboard](../images/site-admin-dashboard.png)
 
 Navigate to **SITE ADMINISTRATION > Dashboard** from the top navigation bar.
 

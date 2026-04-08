@@ -11,13 +11,13 @@ section_menu: guides
 ---
 
 
-**External Authentication Sources**
+# External Authentication Sources
 
 Site administrators can enable third-party OAuth login providers (such as GitHub, Google, or others) so users can sign in using their existing external accounts.
 
-**Add an External Authentication Source**
+## Add an External Authentication Source
 
-![](../images/external-authentication.png)
+![Add External Authentication Source](../images/external-authentication.png)
 
 Go to **SITE ADMINISTRATION > External Authentication Sources** and fill in the form.
 
@@ -29,7 +29,7 @@ Go to **SITE ADMINISTRATION > External Authentication Sources** and fill in the 
 
 Click **Add External Authentication** to save and activate the provider.
 
-**How to Obtain Credentials**
+## How to Obtain Credentials
 
 Before filling in the form, you must register an OAuth application with your chosen provider:
 

@@ -11,13 +11,13 @@ section_menu: guides
 ---
 
 
-**Authentication Sources**
+# Authentication Sources
 
 Site administrators can configure external authentication backends (such as LDAP) to allow users to log in using their organization's existing credentials.
 
-**Add an Authentication Source**
+## Add an Authentication Source
 
-![](../images/authentication-sources.png)
+![Add Authentication Source](../images/authentication-sources.png)
 
 Go to **SITE ADMINISTRATION > Authentication Sources** and configure a new source using the form below.
 
@@ -37,7 +37,7 @@ Go to **SITE ADMINISTRATION > Authentication Sources** and configure a new sourc
 - **Email Attribute:** The attribute for the user's email address (e.g., `mail`).
 - **Public SSH Key Attribute:** The attribute for the user's SSH public key (e.g., `sshPublicKey`).
 
-**Options**
+## Options
 
 - **Use Paged Search:** Enable this to handle large directories by fetching results in pages.
 - **Fetch Attributes in Bind DN Context:** Retrieve user attributes using the Bind DN credentials.

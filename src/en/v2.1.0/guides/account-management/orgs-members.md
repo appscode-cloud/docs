@@ -16,22 +16,22 @@ section_menu: guides
 ---
 
 
-**Managing Organizations**
+# Managing Organizations
 
 Manage your collaborations and organizational structure via the **ORGANIZATIONS** tab in the top navigation menu.
 
-**1. Viewing & Managing Organizations**
+## 1. Viewing & Managing Organizations
 
-![](images/orgs-members-1.png)
+![Organizations List](images/orgs-members-1.png)
 
 The main list displays all organizations you belong to as a creator or member.
 
 - **Search & View:** Use the search bar to find groups and click their names to visit their profiles.
 - **Leave:** Click the **Leave** button to remove yourself from an organization immediately.
 
-**2. Creating a New Organization**
+## 2. Creating a New Organization
 
-![](images/orgs-members-2.png)
+![Create New Organization](images/orgs-members-2.png)
 
 Click **+ New Organization** to establish a new group.
 

@@ -11,22 +11,22 @@ section_menu: guides
 ---
 
 
-**Deleted Accounts**
+# Deleted Accounts
 
 When a user account is deleted from the **User Accounts** list, it is soft-deleted and moved here. Site administrators can view all deleted accounts and reactivate them if needed.
 
-**1. View Deleted Accounts**
+## 1. View Deleted Accounts
 
-![](../images/site-admin-deleted-account-1.png)
+![View Deleted Accounts](../images/site-admin-deleted-account-1.png)
 
 Go to **SITE ADMINISTRATION > Deleted Accounts** to see the list of deleted user accounts.
 
 - **User Details:** Each row shows the user's ID, username, email, creation date, and last sign-in.
 - **Reactivate:** Click the **Reactive** button next to a user to restore their account.
 
-**2. Confirm Reactivation**
+## 2. Confirm Reactivation
 
-![](../images/site-admin-deleted-account-2.png)
+![Confirm Account Reactivation](../images/site-admin-deleted-account-2.png)
 
 Clicking **Reactive** opens a confirmation dialog.
 

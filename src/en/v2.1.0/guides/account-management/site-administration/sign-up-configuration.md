@@ -11,17 +11,17 @@ section_menu: guides
 ---
 
 
-**Sign-up Configuration**
+# Sign-up Configuration
 
 Site administrators can control who is allowed to register on the platform by managing approved domains and toggling user sign-up access.
 
-**Overview**
+## Overview
 
-![](../images/sign-up-config-1.png)
+![Sign-up Configuration Overview](../images/sign-up-config-1.png)
 
 Go to **SITE ADMINISTRATION > Sign-up Configuration** to manage registration settings.
 
-**Allowed Domains**
+## Allowed Domains
 
 Restrict sign-ups to users with email addresses from specific approved domains.
 
@@ -30,13 +30,13 @@ Restrict sign-ups to users with email addresses from specific approved domains.
 - **Delete:** Click the **Delete** button next to a domain to remove it from the allowed list.
 - **Add:** Click **+ Add Domains** to add a new allowed domain.
 
-**Registration Options**
+## Registration Options
 
 - **Disable user sign-up?** — Toggle this on to prevent new users from registering on the platform entirely.
 
-**Add a New Allowed Domain**
+## Add a New Allowed Domain
 
-![](../images/sign-up-config-2.png)
+![Add Allowed Domain](../images/sign-up-config-2.png)
 
 Click **+ Add Domains** to open the form.
 
