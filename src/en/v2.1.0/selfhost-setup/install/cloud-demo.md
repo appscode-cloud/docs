@@ -14,12 +14,14 @@ section_menu: selfhost-setup
 
 Welcome to the AppsCode Platform's "Cloud Demo" deployment! Follow these steps to deploy the AppsCode Platform in Cloud Demo mode.
 
-Deployment of the platform needs a Kubernetes Cluster with VM size at least: 
+### Prerequisites
 
-* one worker node
-* 4-6 CPUs
-* 16 GB of RAM 
-* Routable IP
+Before you begin, please ensure your Kubernetes cluster meets the following minimum system requirements:
+* Worker Nodes: At least one dedicated worker node.
+* CPU: 4–6 vCPUs.
+* Memory: 16 GB of RAM.
+* Networking: A routable IP address for external connectivity.
+
 
 
 You will get an instruction to deploy a k3s cluster in Ubuntu VM or you can skip this step if you already have a cluster. 
@@ -40,6 +42,27 @@ Before beginning the installation, identify your target infrastructure and clust
   * **Target IP:** Provide the static IP addresses for your cluster nodes or load balancer.
 * **Cluster Type:** Determine if you are installing on **AWS EKS Cluster** or **Red Hat OpenShift Cluster**.
 
+#### Additional configuration for EKS cluster
+
+**Prerequisite:** <br/>
+* EBS CSI Driver must be installed
+* AWS Load Balancer Controller must be installed
+
+Run the following command to get Kube API Server
+
+```
+aws eks describe-cluster --name <cluster-name> --region <region> --query "cluster.endpoint" --output text
+```
+
+**Run the following command to get Subnet IDs**
+```
+aws ec2 describe-subnets --filters "Name=vpc-id,Values=$(aws eks describe-cluster --name <cluster-name> --region <region> --query "cluster.resourcesVpcConfig.vpcId" --output text)" "Name=map-public-ip-on-launch,Values=true" --region <region> --query "Subnets[*].SubnetId" --output text
+```
+
+**Subnet IDs:** Make sure you have added the allocation id of Target IP as well. Run the following command to create EIP Allocation IDs `aws ec2 allocate-address --region <region>`
+
+**EIP Allocation IDs:** Give EIP allocation IDs for your public subnets. 
+
 ### 3. Global Administrative Settings
 These credentials define the primary super-user and the initial organizational structure.
 
@@ -49,6 +72,8 @@ These credentials define the primary super-user and the initial organizational s
   - **Admin Account Password:** The password for the administrator account. You may manually set a password or leave it blank to allow the system to **auto-generate** a secure administrative password.
   - **Initial Organization Name:** You can choose what will be the initial organization name for your account
 
+<br/>
+<img width="50%" src="../images/admin-setting.png">
 
 ### 4. Registry
 Ace requires access to various container registries and Helm repositories to pull necessary images and charts.
@@ -64,19 +89,30 @@ If using private or authenticated registries, provide:
 
 ### 5. Settings
 
-* **Domain White List and Proxy Servers**: Add domain one by one for whitelisting
-* **Proxy Servers:** If you have proxy servers then enter the **HTTP Proxy**, **HTTPS Proxy** and **No Proxy**
-* Put Login and Logout URL
+#### Domain White List and Proxy Servers
 
+* Add domain one by one for whitelisting
+* **Proxy Servers:** If you have proxy servers then put **HTTP Proxy**, **HTTPS Proxy** and **No Proxy**
+* Put Login and Logout URL for your app
 
+<br/>
+<img width="50%" src="../images/domain-whitelisting.png">
 
 ### 6. Ingress & Gateway
 
-* Enable either the **Gateway API** or standard **Ingress**. 
+Configure how the application is exposed to the internet or your internal network.
+
+* **Ingress & Gateway:** Enable either the **Gateway API** or standard **Ingress**. 
+
+<br/>
+<img width="50%" src="../images/ingress-gateway.png">
 
 
 ### 7. Self Management
-In this section you can enable or disable features.
+In this section you can enable or disable features
+
+<br/>
+<img width="50%" src="../images/features.png">
 
 ### 8. Branding & UI Customization
 Administrators can globally re-brand the Ace interface to match corporate identity.
@@ -87,6 +123,9 @@ Administrators can globally re-brand the Ace interface to match corporate identi
     * **Logo:** Upload a 200x30px image (SVG/PNG recommended).
     * **Favicon:** Upload a 20KB icon file.
 * **App Tag:** Toggle **"Show App Tag"** to display or hide the version/tagging info in the UI.
+
+<br/>
+<img width="50%" src="../images/branding.png">
 
 ### 9. Generate Installer and Documentation
 
@@ -99,6 +138,10 @@ Follow the documentation provided by AppsCode to deploy the AppsCode Platform on
 ### 11. Explore the Deployed Platform
 
 Once deployed, access the AppsCode Platform using the specified domain. Log in with the admin account credentials provided during the creation process.
+
+<br/>
+<img width="50%" src="../images/ace-dashboard.png">
+
 ## Get Support
 
 If you encounter any challenges during the deployment or have questions, reach out to AppsCode support for assistance.

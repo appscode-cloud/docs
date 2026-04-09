@@ -14,12 +14,14 @@ section_menu: selfhost-setup
 
 Welcome to the AppsCode Platform's "K8s App Demo" deployment! Follow these steps to deploy the AppsCode Platform in K8s App Demo mode.
 
-Deployment of the platform needs a Kubernetes Cluster with VM size at least: 
+### Prerequisites
 
-* one worker node
-* 4-6 CPUs
-* 16 GB of RAM 
-* Routable IP
+Before you begin, please ensure your Kubernetes cluster meets the following minimum system requirements:
+* Worker Nodes: At least one dedicated worker node.
+* CPU: 4–6 vCPUs.
+* Memory: 16 GB of RAM.
+* Networking: A routable IP address for external connectivity.
+
 
 You will get an instruction to deploy a k3s cluster in Ubuntu VM or you can skip this step if you already have a cluster. 
 
@@ -47,6 +49,8 @@ These credentials define the primary super-user and the initial organizational s
   - **Admin Account Password:** The password for the administrator account.You may manually set a password or leave it blank to allow the system to **auto-generate** a secure administrative password.
   - **Initial Organization Name:** You can choose what will be the initial organization name for your account
 
+<br/>
+<img width="50%" src="../images/admin-setting.png">
 
 ### 4. Registry
 Ace requires access to various container registries and Helm repositories to pull necessary images and charts.
@@ -62,12 +66,20 @@ If using private or authenticated registries, provide:
 
 ### 5. Settings
 
-* **Domain White List and Proxy Servers**: Add domain one by one for whitelisting
+#### Domain White List and Proxy Servers
+
+* Add domain one by one for whitelisting
 * **Proxy Servers:** If you have proxy servers then put **HTTP Proxy**, **HTTPS Proxy** and **No Proxy**
-* Put Login and Logout URL
+* Put Login and Logout URL for your app
+
+<br/>
+<img width="50%" src="../images/domain-whitelisting.png">
 
 ### 6. Self Management
-In this section you can enable or disable features.
+In this section you can enable or disable features
+
+<br/>
+<img width="50%" src="../images/features.png">
 
 ### 7. Branding & UI Customization
 Administrators can globally re-brand the Ace interface to match corporate identity.
@@ -78,6 +90,9 @@ Administrators can globally re-brand the Ace interface to match corporate identi
     * **Logo:** Upload a 200x30px image (SVG/PNG recommended).
     * **Favicon:** Upload a 20KB icon file.
 * **App Tag:** Toggle **"Show App Tag"** to display or hide the version/tagging info in the UI.
+
+<br/>
+<img width="50%" src="../images/branding.png">
 
 ### 8. Generate Installer and Documentation
 
@@ -90,6 +105,10 @@ Follow the documentation provided by AppsCode to deploy the AppsCode Platform on
 ### 10. Explore the Deployed Platform
 
 Once deployed, access the AppsCode Platform using the specified domain. Log in with the admin account credentials provided during the creation process.
+
+<br/>
+<img width="50%" src="../images/ace-dashboard.png">
+
 ## Get Support
 
 If you encounter any challenges during the deployment or have questions, reach out to AppsCode support for assistance.
