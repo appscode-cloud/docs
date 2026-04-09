@@ -16,31 +16,39 @@ section_menu: guides
 ---
 
 
-# Setup OAuth2 Applications
+# Application Overview
 
-To enable external logins using OAuth2, you can set up OAuth2 applications under the "Applications" tab in your [user settings](https://home.appscode.com/user/settings).
+![OAuth2 Applications Overview](images/OAuth1.png)
 
-## Create OAuth2 Application
+Navigate to **User Settings > Applications** to manage how third-party services interact with your account. This page is divided into two sections:
 
-Follow these steps to create a new OAuth2 application:
+- **OAuth2 Applications:** A list of applications you have created, where you can **Edit** settings or **Remove** them entirely.
+- **Authorized OAuth2 Applications:** A list showing external services you have specifically granted access to your personal account.
+- To begin, click the green **\+ Create Application** button
 
-1. Navigate to the "Applications" tab.
-2. Click "Create Application."
-3. Provide the necessary details:
-   - Application Name
-   - Redirect URI
-4. Click "Create" to complete the OAuth2 application setup.
+## Create a New Application
 
-You will receive a client ID and client secret upon successful creation. Use these credentials in your system for OAuth2-based external logins.
+![Create New Application](images/OAuth2.png)
 
-## Manage OAuth2 Applications
+On the creation screen, you must provide the following required information:
 
-Under "OAuth2 Applications," you can view all the OAuth2 applications you've created. You can edit or remove an existing OAuth2 application by clicking the appropriate button next to the application name.
+- **Application Name:** The name that will identify your application.
+- **Redirect URL:** The specific address where users are sent after they authorize the application.
+- Click **\+ Create Application** to generate your credentials
 
-## Authorized OAuth2 Applications
+## Secure Your Credentials & Customize
 
-Once you've authorized applications, you can view them in the "Authorized OAuth2 Applications" section.
+![Client Credentials and Customization](images/OAuth3.png)
 
-Optimize your external login experience by configuring and managing OAuth2 applications through AppsCode user settings.
+Once the application is generated, you will see your **Client ID** and **Client Secret**.
 
+- ⚠️ **Important:** Copy your **Client Secret** immediately using the **Copy Client Secret** link; for security, it will **not be shown again**.
+- **Regenerate Secret:** If you lose your secret, use this link to create a new one.
+- **Application Icon:** You can personalize your app by dragging and dropping an image (Max size: **1MB**, Max resolution: **4096 x 3072**).
+- Click **Save Changes** to apply any updates to the name, URL, or icon
 
+## Confirmation of Success
+
+![Success Notification](images/OAuth4.png)
+
+After saving your changes or creating an application, a green "Successfully updated" notification will appear at the top of the screen. Your new application will now be visible in the OAuth2 Applications list, ready for use with its assigned Client ID
