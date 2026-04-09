@@ -16,27 +16,36 @@ section_menu: guides
 ---
 
 
-# Tokens
+# Managing Tokens
 
-Navigate to the [Tokens](https://home.appscode.com/user/settings/tokens) tab to manage access tokens and NATS tokens for your account.
+Manage your access and NATS tokens to securely connect external applications and services to your account.
 
-## Manage Access Tokens
+## Access and Overview
 
-In the "Manage Access Tokens" section, you can generate new access tokens to be used in external applications for authentication and authorization within the AppsCode system.
+![Tokens Overview](images/token-1.png)
 
-### Generate an Access Token
+Go to **USER SETTINGS > Tokens** to manage your credentials.
 
-1. Click "Generate Token"
-2. Provide a name for the token.
-3. Click "Generate" to create the token.
+- **Manage Access Tokens:** View existing tokens, their expiration dates, and recent activity.
+- **Actions:** Use the search bar to find tokens or click **Delete** to remove them.
+- **NATS Tokens:** Located at the bottom, these manage UI features and AppsCode licenses.
 
-View previously generated tokens along with their creation time and last activity. You can `Delete` any token you no longer need.
+## Generate a New Access Token
 
-## Manage NATS Tokens
+![Generate New Token](images/token-2.png)
 
-In the "Manage NATS Tokens" section, you'll find all NATS tokens associated with your account. These tokens serve various purposes, including enhancing your UI experience and connecting to your AppsCode license.
+Click **Generate Token** to create a new credential.
 
-You can `Revoke` any token that you consider no longer valid.
+- **Name:** Give your token a descriptive label.
+- **Expiration:** Select an **Expire Date** using the calendar icon.
+- **Generate:** Click the green **Generate** button.
+- **Note:** Tokens grant full access to your account.
 
-Maintaining control over your tokens is essential for ensuring the security and integrity of your AppsCode account. Regularly review and manage your tokens to optimize your account's functionality and security.
+## Secure Your Token
 
+![Token Created Successfully](images/token-3.png)
+
+A success banner will confirm the token is created.
+
+- ⚠️ **Copy Immediately:** Use the **Copy Token** link to save your credential now.
+- **Privacy:** For security, the token string **will never be shown again** after you leave this page

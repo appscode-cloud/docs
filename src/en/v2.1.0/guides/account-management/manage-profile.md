@@ -21,51 +21,32 @@ section_menu: guides
 ---
 
 
-# Manage Profile, Emails, & Avatar
+# Managing Your Profile
 
-You have the flexibility to manage your profile, email, and avatar directly from the user settings page at [https://home.appscode.com/user/settings](https://home.appscode.com/user/settings). Follow these steps to customize your user settings:
+Personalize your account details and profile picture under **USER SETTINGS > Profile**.
 
-1. From any UI, such as the user profile page or the Kubernetes dashboard, navigate to the user settings page.
-2. Click on your profile icon or username to access the user menu.
-3. Select "Settings" to go to the user settings page.
+## 1. Update Profile Info
 
-## Update Profile Information
+![Update Profile Info](images/manage-profile-1.png)
 
-On the **General** section of the user settings page, find the **Profile** tab. Here, you can update various details such as your:
+Update your public identity and contact information in the **Manage Profile** section:
 
-- **Username**
-- **Full Name**
-- **Email**
-- **Biography**
-- **Website**
-- **Location**
+- **Fields:** Modify your **Username**, **Full Name**, **Email Address**, **Biography**, **Website**, and **Location**.
+- **Save:** Click **Update Profile** to apply changes.
 
-Click "Update Profile" after making the desired changes to apply the updates.
+## 2. Manage Avatar
 
-## Manage Avatar
+You can choose between two methods for your profile picture:
 
-Customizing your avatar is easy. You can do it in two ways:
+### Option A: Link to Gravatar
 
-### Update Avatar from Gravatar Email
+- Select the **From mail** tab.
+- Enter the **Avatar Email Address** connected to your Gravatar and click **Update Gravatar Email**.
 
-1. Provide your Gravatar email in the designated field.
-2. Click "Update Gravatar Email" to use the avatar associated with the provided Gravatar email.
+### Option B: Custom Upload
 
-### Upload a Custom Avatar Image
+![Custom Avatar Upload](images/manage-profile-2.png)
 
-1. Drag and drop your image or click "Choose File" to upload a custom image from your local storage.
-2. Use the cropping box to select the portion of the image for your avatar.
-3. Adjust the zoom or position as needed.
-4. Click "Set Image" to update your avatar.
-
-Remember:
-- The image should not exceed 1MB.
-- The maximum resolution is 4096x3072.
-
-### Delete Current Avatar
-
-If you want to remove your current avatar:
-
-- Click "Delete Current Avatar."
-
-Managing your profile, email preferences, and avatar is a seamless process with the user settings page. Personalize your AppsCode experience with these customizable options.
+- Select the **Custom** tab.
+- **Upload:** Drag and drop an image or select one from storage (Max: **1MB**, Max resolution: **4096 x 3072**).
+- **Reset:** Use the **Delete Current Avatar** button to remove your current image.
