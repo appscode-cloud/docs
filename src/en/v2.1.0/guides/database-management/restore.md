@@ -49,51 +49,7 @@ The list page displays all Restore resources in your cluster, including both sch
 
 ---
 
-## 3. Viewing a Restore
-
-Click on any Restore name in the list to open its detail page. The detail page shows the restore's metadata, source snapshot, and target database information.
-
-### 3.1 - Overview
-
-The detail page opens on the **Overview** tab showing:
-
-![Restore detail page showing Basic info, Source Snapshot table, and Target Database information](./images/backup/restore-db-overview.png)
-
-**Basic** — Core metadata for the restore operation:
-
-| Field | Description |
-|---|---|
-| **Name** | The Restore resource name. |
-| **Namespace** | The namespace it belongs to. |
-| **Labels** | Key-value labels attached to the resource. |
-| **Annotations** | Key-value annotations linking to source and target resources. |
-| **UID** | The unique Kubernetes identifier. |
-| **Phase** | Current lifecycle phase (e.g., `Succeeded`, `Running`, `Failed`). |
-| **Duration** | Total time taken to complete the restore operation. |
-
-**Source Snapshot** — Information about the snapshot being restored:
-
-| Column | Description |
-|---|---|
-| **Name** | The Snapshot resource name. |
-| **Namespace** | Namespace of the snapshot. |
-| **Repository** | The repository containing this snapshot. |
-| **Size** | Size of the snapshot data. |
-| **Creation Timestamp** | When the snapshot was created. |
-| **Status** | Verification status of the snapshot. |
-
-**Target Database** — The database instance being restored to:
-
-| Column | Description |
-|---|---|
-| **Kind** | The database resource type (e.g., `MongoDB`). |
-| **Namespace** | Namespace of the target database. |
-| **Name** | The target database instance name. |
-| **Status** | Current status of the target database. |
-
----
-
-## 4. Creating a Restore
+## 3. Creating a Restore
 
 To manually trigger a restore operation, click **Create New Instance** from the Restore list page.
 
@@ -101,9 +57,7 @@ The **Create Restore** form will open with the following fields:
 
 ![Create Restore form showing Namespace, Labels & Annotations, Source Snapshot, and Target Database sections](./images/backup/restore-create-overview.png)
 
-### 4.1 - Basic Fields
-
-![Create Restore form showing all required and optional fields](./images/backup/restore-create-form.png)
+### 3.1 - Basic Fields
 
 | Field | Description |
 |---|---|
@@ -111,7 +65,7 @@ The **Create Restore** form will open with the following fields:
 | **Labels & Annotations** | Optional metadata key-value pairs for organization and filtering. |
 | **Restore Name** | A unique name for this Restore operation (e.g., `mongodb-restore-001`). Required. |
 
-### 4.2 - Labels & Annotations
+### 3.2 - Labels & Annotations
 
 Use the **Labels & Annotations** section to attach custom metadata:
 
@@ -119,7 +73,7 @@ Use the **Labels & Annotations** section to attach custom metadata:
 - Use **+ Add new** under **Annotations** to add key-value annotation pairs.
 - Use the delete icon on any row to remove an entry.
 
-### 4.3 - Source Snapshot Configuration
+### 3.3 - Source Snapshot Configuration
 
 The **Source Snapshot** section specifies which backup snapshot to restore from.
 
@@ -131,7 +85,7 @@ The **Source Snapshot** section specifies which backup snapshot to restore from.
 | **Repository Name** | The name of the Repository containing the snapshot. Required. |
 | **Snapshot Name** | The name of the Snapshot to restore from. Required. |
 
-### 4.4 - Target Database Configuration
+### 3.4 - Target Database Configuration
 
 The **Target Database** section identifies where the data will be restored.
 
@@ -148,7 +102,7 @@ The **Target Database** section identifies where the data will be restored.
 
 ---
 
-## 5. Preview and Submit
+## 4. Preview and Submit
 
 Once all required fields are filled, click **Preview** to review the generated `Restore` manifest before applying it.
 
@@ -164,7 +118,7 @@ Once all required fields are filled, click **Preview** to review the generated `
 
 ---
 
-## Quick Reference
+## 5. Quick Reference
 
 | Action | How to do it |
 |---|---|
