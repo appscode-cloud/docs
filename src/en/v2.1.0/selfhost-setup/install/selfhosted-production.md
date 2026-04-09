@@ -12,11 +12,30 @@ section_menu: selfhost-setup
 
 # Deploying AppsCode Platform: Self Hosted Production 
 
-Welcome to the AppsCode Platform's "Self Hosted Demo" deployment! In this mode, you have the flexibility to customize various aspects of the deployment to meet the specific requirements of your production environment. By following this structured walkthrough, you can deploy **AppsCode Ace** in a self-hosted production environment, based on the configuration parameters required by the installation wizard. You need to have a kubernetes cluster with the following minimum configuration
-* Cluster should have at least one worker node
-* 4-6 CPUs
-* 16 GB of RAM 
-* Routable IP
+Welcome to the **Self-Hosted Production** deployment guide for the **AppsCode Platform**. This installation mode is designed for environments requiring high levels of customization and granular control. 
+
+By following this walkthrough, you can tailor the deployment to meet your specific production requirements while ensuring a stable and optimized installation.
+
+#### Why Choose Self-Hosted Production?
+
+The self-hosted model provides the flexibility to:
+* **Optimize Resources:** Tune performance parameters based on your specific workload.
+* **Custom Configurations:** Integrate with existing infrastructure and security policies.
+* **Production Readiness:** Implement the platform using best practices for high availability and reliability.
+
+
+#### Deployment Overview
+
+This guide provides a structured approach to deploying the platform manually. We will cover the prerequisite checks, configuration steps, and final verification to ensure your environment is ready for a seamless rollout.
+
+> **Note:** Ensure your infrastructure meets the minimum system requirements before proceeding to the configuration steps.
+
+Before you begin, please ensure your Kubernetes cluster meets the following minimum system requirements:
+* **Worker Nodes**: At least one dedicated worker node.
+* **CPU**: 4–6 vCPUs.
+* **Memory**: 16 GB of RAM.
+* **Networking**: A routable IP address for external connectivity.
+
 
 You will get an instruction to deploy a k3s cluster in Ubuntu VM or you can skip this step if you already have a cluster 
 
@@ -35,26 +54,80 @@ Before beginning the installation, identify your target infrastructure and clust
 * **DNS & Connectivity:** 
   * **Enable DNS:** Toggle this to allow the installer to manage or integrate with your DNS provider.
   * **Target IP:** Provide the static IP addresses for your cluster nodes or load balancer.
-* **Cluster Type:** Determine if you are installing on **AWS EKS Cluster** or **Red Hat OpenShift Cluster**.
+* **Cluster Type:** Determine if you are installing on **AWS EKS Cluster** or **Red Hat OpenShift Cluster**. For openshift cluster toggle Red Hat OpenShift cluster and give Kube API Server endpoint 
 * **Credential-Less Mode:** Enable this if you are using IAM roles for service accounts (IRSA) to avoid manual secret management.
+<br/>
+<img width="50%" src="../images/selfhost-deployment-option.png">
 
+### Additional configuration for EKS cluster
 
-#### Additional configuration for EKS cluster
-
-**Prerequisite:**</br>
+**Prerequisite:** <br/>
 * EBS CSI Driver must be installed
 * AWS Load Balancer Controller must be installed
 
-**Run the following command to get Subnet IDs**
+Run the following command to get Kube API Server put it in the API server field
+
+```
+aws eks describe-cluster --name <cluster-name> --region <region> --query "cluster.endpoint" --output text
+```
+
+Run the following command to get Subnet IDs and add them
+
 ```
 aws ec2 describe-subnets --filters "Name=vpc-id,Values=$(aws eks describe-cluster --name <cluster-name> --region <region> --query "cluster.resourcesVpcConfig.vpcId" --output text)" "Name=map-public-ip-on-launch,Values=true" --region <region> --query "Subnets[*].SubnetId" --output text
 ```
 
 **Subnet IDs:** Make sure you have added the allocation id of Target IP as well. Run the following command to create EIP Allocation IDs `aws ec2 allocate-address --region <region>`
 
-**EIP Allocation IDs:** Give EIP allocation IDs for your public subnets.Run the following command to get Kube API Server and put value of Kube API Server 
+**EIP Allocation IDs:** Give EIP allocation IDs for your public subnets. 
 
-#### Configuring AWS credentialless mode
+### Configuring AWS credentialless mode
+
+For Database backup process **KubeDB** uses  **KubeStash** and KubeStash depends on Object storage for storing data. If you configure S3 in aws then by configuring credentialless mode you can avoid the hassle of using `Access Key` and `Secret Key`. You can configure credentialless mode for both EC2(K3s cluster VM) and EKS infrastucture. 
+
+### EC2 Instance 
+
+If you are managing credentialless mode in EC2 VM then you will get policy permission json file after clicking the deploy button. You need to attach this to EC2 instance profile. Follow the following steps for policy attachment
+
+#### 1. Create the IAM Policy
+First, create the policy in your AWS account. 
+
+```bash
+aws iam create-policy \
+    --policy-name <your-policy-name> \
+    --policy-document file://iam-selfhost-permission.json
+```
+
+**Note:** Copy the `Arn` from the output; you will need it for the next step. It will look like: `arn:aws:iam::123456789012:policy/<your-policy-name>`.
+
+#### 2. Identify your IAM Role
+If you don't know the exact name of the role currently attached to your EC2 instance, use this command to list the role attached to your specific instance:
+
+```bash
+aws ec2 describe-instances \
+    --instance-id <your-instance-id> \
+    --query "Reservations[0].Instances[0].IamInstanceProfile.Arn" \
+    --output text
+```
+
+#### 3. Attach the Policy to the Role
+Once you have the role name, attach the newly created policy to it.
+
+```bash
+aws iam attach-role-policy \
+    --role-name <your-role-name> \
+    --policy-arn arn:aws:iam::123456789012:policy/<your-policy-name>
+```
+#### Verifying the Setup
+After running the command, you can verify that the policy is attached to the role:
+
+```bash
+aws iam list-attached-role-policies --role-name <your-role-name>
+```
+
+### EKS Cluster
+
+Use following steps to give necessary permission to the credential manager controller through service acccount. 
 
 Here you have to give IRSA related information. Create Role for IRSA and get OIDC ID
 
@@ -117,11 +190,7 @@ aws eks associate-access-policy \
   --access-scope type=cluster
 ```
 
-Provide the output role arn as Ace Installer Role ARN `echo $ROLE_ARN`in the **Ace Installer Role ARN** field. Run the following command to get Kube API Server
-
-`aws eks describe-cluster --name <cluster-name> --region <region> --query "cluster.endpoint" --output text`
-
-
+Provide the output role arn as Ace Installer Role ARN `echo $ROLE_ARN`in the **Ace Installer Role ARN** field. 
 
 ### 3. Global Administrative Settings
 These credentials define the primary super-user and the initial organizational structure.
@@ -132,9 +201,8 @@ These credentials define the primary super-user and the initial organizational s
   - **Admin Account Password:** The password for the administrator account.You may manually set a password or leave it blank to allow the system to **auto-generate** a secure administrative password.
   - **Initial Organization Name:** You can choose what will be the initial organization name for your account
 
-For openshift cluster toggle Red Hat OpenShift cluster and give Kube API Server endpoint 
-
-
+<br/>
+<img width="50%" src="../images/admin-setting.png">
 
 ### 4. Release
 Define the specific Kubernetes namespace and release information for the Ace components.
@@ -142,8 +210,6 @@ Define the specific Kubernetes namespace and release information for the Ace com
 * **Release Name:** Defaults to `ace`.
 * **Namespace:** Enter the target namespace (default: `ace`). 
 * **Namespace Automation:** Toggle **"Create namespaces during Helm install"** if you want the installer to handle namespace lifecycle management.
-
-
 
 ### 5. Registry
 Ace requires access to various container registries and Helm repositories to pull necessary images and charts.
@@ -160,6 +226,10 @@ If using private or authenticated registries, provide:
 ### 6. Settings
 This secton is for Persistence & Resource Allocation. Properly sizing your resources is critical for production stability. Configure CPU Requests, CPU Limits, Memory Request and  Memory Limit for both cache and Database
 
+
+<img width="50%" src="../images/resource-limit.png">
+<br/>
+
 > [!IMPORTANT]
 > Ensure your cluster has a **Storage Class** defined to fulfill the PVC requests for both the Cache and the Database.
 If SMTP is enabled then put Host, Username, Password and From. You can also enable Send As Plain Text and TLS. 
@@ -169,6 +239,9 @@ If SMTP is enabled then put Host, Username, Password and From. You can also enab
 * Add domain one by one for whitelisting
 * **Proxy Servers:** If you have proxy servers then put **HTTP Proxy**, **HTTPS Proxy** and **No Proxy**
 * Put Login and Logout URL for your app
+
+<br/>
+<img width="50%" src="../images/domain-whitelisting.png">
 
 
 #### KubeStash
@@ -199,6 +272,8 @@ Configure how the application is exposed to the internet or your internal networ
 
 * **Ingress & Gateway:** Enable either the **Gateway API** or standard **Ingress**. 
 
+<br/>
+<img width="50%" src="../images/ingress-gateway.png">
 
 ### 9. NATS
 
@@ -214,11 +289,13 @@ Configure NATS, which is used as the internal messaging system for the platform.
 **Replicas:** For production, ensure at least 1 replica is active (consider 3 for high availability).
 **Resources:** Configure CPU Requests, CPU Limits, Memory Request and  Memory Limit
 
-
+<br/>
+<img width="50%" src="../images/nats.png">
 
 ### 10. Self Management
 In this section you can enable or disable features
-
+<br/>
+<img width="50%" src="../images/features.png">
 
 ### 11. Branding & UI Customization
 Administrators can globally re-brand the Ace interface to match corporate identity.
@@ -230,6 +307,9 @@ Administrators can globally re-brand the Ace interface to match corporate identi
     * **Favicon:** Upload a 20KB icon file.
 * **App Tag:** Toggle **"Show App Tag"** to display or hide the version/tagging info in the UI.
 
+<br/>
+<img width="50%" src="../images/branding.png">
+
 ### 12. Generate Installer and Documentation
 
 Click the "Deploy" button to submit your information. AppsCode will generate the installer and provide the necessary documentation.
@@ -240,4 +320,7 @@ Follow the documentation provided by AppsCode to deploy the AppsCode Platform on
 
 ### 14. Explore the Deployed Platform
 
-Once deployed, access the AppsCode Platform using the specified domain. Log in with the admin account credentials provided during the creation process.
+Once deployed, access the **AppsCode Platform** using the specified domain. Log in with the admin account credentials provided during the creation process.After the login process you will see the **ACE dashboard** user interface
+
+<br/>
+<img width="50%" src="../images/ace-dashboard.png">
