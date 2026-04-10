@@ -4,7 +4,7 @@ menu:
     identifier: home-start
     name: Get Started
     description: New to AppsCode? Follow simple steps to set up your account.
-    link: /en/v0.0.13/guides/get-started/register-login.html
+    link: /en/guides/get-started/register-login.html
     icon: https://img.icons8.com/00994A/ios/50/rocket--v1.png
     weight: 10
 ---
