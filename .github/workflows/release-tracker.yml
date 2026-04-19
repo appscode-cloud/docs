@@ -26,7 +26,6 @@ jobs:
     name: Build
     needs: label-detector
     runs-on: "${{ needs.label-detector.outputs.runs-on }}"
-
     steps:
       - uses: actions/checkout@v4
 
