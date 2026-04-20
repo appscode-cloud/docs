@@ -3,7 +3,7 @@ layout: docs
 menu:
   docsplatform_{{.version}}:
     identifier: account-management-siteadmin-ace-upgrade
-    name: ACE Upgrade
+    name: KubeDB Platform Upgrade
     parent: account-management-siteadmin
     weight: 60
 menu_name: docsplatform_{{.version}}
@@ -11,9 +11,9 @@ section_menu_id: guides
 ---
 
 
-# ACE Upgrade
+# KubeDB Platform Upgrade
 
-Site administrators can upgrade the AppsCode Enterprise (ACE) management cluster directly from the platform UI by uploading a configuration file downloaded from the AppsCode portal.
+Site administrators can upgrade the KubeDB Platform management cluster directly from the platform UI by uploading a configuration file downloaded from the KubeDB Platform portal.
 
 ---
 
@@ -27,13 +27,13 @@ Before starting the upgrade, download the required values file from the AppsCode
 
 ---
 
-## Step 1 — Open ACE Upgrade
+## Step 1 — Open KubeDB Platform Upgrade
 
-![ACE Version Page](../images/upgrade-version-1.png)
+![KubeDB Platform Version Page](../images/upgrade-version-1.png)
 
-Go to **SITE ADMINISTRATION > ACE Upgrade** from the left-hand menu.
+Go to **SITE ADMINISTRATION > KubeDB Platform Upgrade** from the left-hand menu.
 
-The page displays the current ACE version and the upgrade status of all platform components. Click the **Upgrade Version** button at the top right to begin.
+The page displays the current KubeDB Platform version and the upgrade status of all platform components. Click the **Upgrade Version** button at the top right to begin.
 
 ---
 
@@ -41,7 +41,7 @@ The page displays the current ACE version and the upgrade status of all platform
 
 ![Upload Values File](../images/upgrade-version-2.png)
 
-On the **Upgrade ACE** screen:
+On the **Upgrade KubeDB Platform** screen:
 
 - Click **Upload values file...** and select the `values.yaml` file downloaded from the AppsCode portal.
 - Click **Update Version** to start the upgrade process.

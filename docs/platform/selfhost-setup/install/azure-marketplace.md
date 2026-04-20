@@ -28,16 +28,16 @@ The **Azure Marketplace** installation wizard will prompt you for specific confi
 
 If you encounter any issues during the deployment, please refer to our Official Documentation or contact with us.
 
-### 2. Visit the AppsCode Self-Hosted Page
+### 2. Visit the KubeDB Platform Self-Hosted Page
 
-Navigate to [AppsCode Self-Hosted](https://appscode.com/selfhost). Here you will find your previously generated self-hosted installers. <br>
+Navigate to [KubeDB Platform Self-Hosted](https://appscode.com/selfhost). Here you will find your previously generated self-hosted installers. <br>
 Click on the `Create New Installer` button to get started.
 
 ### 3. Choose Deployment Mode And Environment
 
 Choose `Deployment Type` -> `Azure Marketplace` and give it a name in the installer name section.
 
-For deploying ACE using azure marketplace, you usually need these four pieces of information to establish a secure connection. These represent the "Identity" of your application and the "Address" of your billing/directory structure.
+For deploying KubeDB Platform using azure marketplace, you usually need these four pieces of information to establish a secure connection. These represent the "Identity" of your application and the "Address" of your billing/directory structure.
 
 #### 1. Subscription ID
 The unique identifier for your **Azure Subscription**. This is where the actual billing for Marketplace services occurs. To get Subscription ID: 
@@ -85,7 +85,7 @@ For openshift cluster toggle Red Hat OpenShift cluster and give Kube API Server 
 
 ### 5. Registry
 
-Ace requires access to various container registries and Helm repositories to pull necessary images and charts.
+KubeDB Platform requires access to various container registries and Helm repositories to pull necessary images and charts.
 
 **Docker Registry:** Go to the docker registry section first then look for the following settings
 * **Proxies:** Put registry name for Appscode `r.appscode.com` and other Public Registries like Docker Hub, GitHub Container Registry (`ghcr.io`), Kubernetes Registry, Microsoft (`mcr.microsoft.com`), and Quay.
@@ -110,7 +110,7 @@ In this section you can enable or disable features.  You can also create an init
 
 ### 8. Branding & UI Customization
 
-Administrators can globally re-brand the Ace interface to match corporate identity.
+Administrators can globally re-brand the KubeDB Platform interface to match corporate identity.
 
 * **App Name:** Changes the browser tab title.
 * **Primary Color:** Enter a Hex code (default: `#009948`).
@@ -124,7 +124,7 @@ Administrators can globally re-brand the Ace interface to match corporate identi
 
 ### 9. Generate Installer and Documentation
 
-Click the "Deploy" button to submit your information. AppsCode will generate the installer and provide the necessary documentation.
+Click the "Deploy" button to submit your information. KubeDB Platform will generate the installer and provide the necessary documentation.
 
 ### 10. Deploy KubeDB Platform
 

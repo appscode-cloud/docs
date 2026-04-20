@@ -25,9 +25,9 @@ Before you begin, please ensure your Kubernetes cluster meets the following mini
 
 You will get an instruction to deploy a k3s cluster in Ubuntu VM or you can skip this step if you already have a cluster. 
 
-### 1. Visit the AppsCode Self-Hosted Page
+### 1. Visit the KubeDB Platform Self-Hosted Page
 
-Navigate to [AppsCode Self-Hosted](https://appscode.com/selfhost). Here you will find your previously generated self-hosted installers. <br>
+Navigate to [KubeDB Platform Self-Hosted](https://appscode.com/selfhost). Here you will find your previously generated self-hosted installers. <br>
 Click on the `Create New Installer` button to get started.
 
 ### 2. Choose Deployment Mode
@@ -53,7 +53,7 @@ These credentials define the primary super-user and the initial organizational s
 <img width="50%" src="../images/admin-setting.png">
 
 ### 4. Registry
-Ace requires access to various container registries and Helm repositories to pull necessary images and charts.
+KubeDB Platform requires access to various container registries and Helm repositories to pull necessary images and charts.
 
 **Docker Registry:** Go to the docker registry section first then look for the following settings
 * **Proxies:** Put registry name for Appscode `r.appscode.com` and other Public Registries like Docker Hub, GitHub Container Registry (`ghcr.io`), Kubernetes Registry, Microsoft (`mcr.microsoft.com`), and Quay.
@@ -82,7 +82,7 @@ In this section you can enable or disable features
 <img width="50%" src="../images/features.png">
 
 ### 7. Branding & UI Customization
-Administrators can globally re-brand the Ace interface to match corporate identity.
+Administrators can globally re-brand the KubeDB Platform interface to match corporate identity.
 
 * **App Name:** Changes the browser tab title.
 * **Primary Color:** Enter a Hex code (default: `#009948`).
@@ -96,11 +96,11 @@ Administrators can globally re-brand the Ace interface to match corporate identi
 
 ### 8. Generate Installer and Documentation
 
-Click the "Deploy" button to submit your information. AppsCode will generate the installer and provide the necessary documentation.
+Click the "Deploy" button to submit your information. KubeDB Platform will generate the installer and provide the necessary documentation.
 
 ### 9. Deploy KubeDB Platform
 
-Follow the documentation provided by AppsCode to deploy the KubeDB Platform on your system.
+Follow the documentation provided by KubeDB Platform to deploy the KubeDB Platform on your system.
 
 ### 10. Explore the Deployed Platform
 
@@ -111,6 +111,6 @@ Once deployed, access the KubeDB Platform using the specified domain. Log in wit
 
 ## Get Support
 
-If you encounter any challenges during the deployment or have questions, reach out to AppsCode support for assistance.
+If you encounter any challenges during the deployment or have questions, reach out to KubeDB Platform support for assistance.
 
 Congratulations! You have successfully deployed the KubeDB Platform in K8s App Demo mode. Explore the features and capabilities of the platform in your customized environment.

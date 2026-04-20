@@ -88,7 +88,7 @@ Scroll down past the **Basic** section to see the **Feature Sets** grid. Each ca
 | **Multicluster Spoke** | Connect this cluster as a spoke to a hub |
 | **Networking Addons** | Various networking addons for Kubernetes |
 | **Observability** | Cluster monitoring with Prometheus and Grafana |
-| **Opscenter Tools** | DevOps tools for ACE |
+| **Opscenter Tools** | DevOps tools for KubeDB Platform |
 | **Policy Management** | Platform policy management tools |
 | **Secret Management** | Tools for secret management |
 | **Security** | TLS, secret scanning, and vulnerability tools |
