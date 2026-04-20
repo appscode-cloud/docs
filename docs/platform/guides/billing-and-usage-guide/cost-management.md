@@ -1,5 +1,5 @@
 ---
-layout: platform_single
+layout: docs
 menu:
   docsplatform_{{.version}}:
     identifier: billing-and-usage-guide-cost-management

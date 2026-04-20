@@ -1,15 +1,14 @@
 ---
-layout: platform_single
+layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: welcome-contributing
+    identifier: platform-contributing
     name: Contributing
     parent: welcome
     weight: 10
 menu_name: docsplatform_{{.version}}
 section_menu_id: welcome
 ---
-
 
 # Contribution Guidelines
 

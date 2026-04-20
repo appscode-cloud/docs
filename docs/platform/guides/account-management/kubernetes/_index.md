@@ -1,5 +1,5 @@
 ---
-layout: platform_single
+layout: docs
 menu:
   docsplatform_{{.version}}:
     identifier: account-management-kubernetes
