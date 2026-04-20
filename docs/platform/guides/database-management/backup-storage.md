@@ -13,7 +13,7 @@ section_menu_id: guides
 
 # Backup Storage
 
-This guide explains how to view and create **BackupStorage** resources using the AppsCode console. A BackupStorage defines the storage backend (cloud provider, credentials, bucket, and connection settings) where database backups are stored and can be retrieved for restoration.
+This guide explains how to view and create **BackupStorage** resources using the platform console. A BackupStorage defines the storage backend (cloud provider, credentials, bucket, and connection settings) where database backups are stored and can be retrieved for restoration.
 
 ---
 

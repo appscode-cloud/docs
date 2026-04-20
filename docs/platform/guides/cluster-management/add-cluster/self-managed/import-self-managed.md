@@ -10,9 +10,9 @@ menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---
 
-# Adding a Self-Managed Cluster to AppsCode Dashboard
+# Adding a Self-Managed Cluster to Platform Console
 
-If you possess a kubeconfig for either a public Kubernetes cluster or an air-gapped cluster, categorically referred to as self-managed clusters, here are the guides to seamlessly import these clusters into the AppsCode Dashboard:
+If you possess a kubeconfig for either a public Kubernetes cluster or an air-gapped cluster, categorically referred to as self-managed clusters, here are the guides to seamlessly import these clusters into the Platform Console:
 
 <div class="is-flex gap-8">
   <a href="./import-public.html" class="single-card">

@@ -10,9 +10,9 @@ menu_name: docsplatform_{{.version}}
 section_menu_id: selfhost-setup
 ---
 
-# Deploying AppsCode Platform: Cloud Demo
+# Deploying KubeDB Platform: Cloud Demo
 
-Welcome to the AppsCode Platform's "Cloud Demo" deployment! Follow these steps to deploy the AppsCode Platform in Cloud Demo mode.
+Welcome to the KubeDB Platform's "Cloud Demo" deployment! Follow these steps to deploy the KubeDB Platform in Cloud Demo mode.
 
 ### Prerequisites
 
@@ -131,13 +131,13 @@ Administrators can globally re-brand the Ace interface to match corporate identi
 
 Click the "Deploy" button to submit your information. AppsCode will generate the installer and provide the necessary documentation.
 
-### 10. Deploy AppsCode Platform
+### 10. Deploy KubeDB Platform
 
-Follow the documentation provided by AppsCode to deploy the AppsCode Platform on your system.
+Follow the documentation provided by AppsCode to deploy the KubeDB Platform on your system.
 
 ### 11. Explore the Deployed Platform
 
-Once deployed, access the AppsCode Platform using the specified domain. Log in with the admin account credentials provided during the creation process.
+Once deployed, access the KubeDB Platform using the specified domain. Log in with the admin account credentials provided during the creation process.
 
 <br/>
 <img width="50%" src="../images/ace-dashboard.png">
@@ -146,4 +146,4 @@ Once deployed, access the AppsCode Platform using the specified domain. Log in w
 
 If you encounter any challenges during the deployment or have questions, reach out to AppsCode support for assistance.
 
-Congratulations! You have successfully deployed the AppsCode Platform in Cloud Demo mode. Explore the features and capabilities of the platform in your customized environment.
+Congratulations! You have successfully deployed the KubeDB Platform in Cloud Demo mode. Explore the features and capabilities of the platform in your customized environment.
