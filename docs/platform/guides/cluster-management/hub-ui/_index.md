@@ -1,0 +1,14 @@
+---
+layout: docs
+menu:
+  docsplatform_{{.version}}:
+    identifier: hub-ui
+    name: Hub UI
+    parent: cluster-management
+    description: Know how to use Hub UI
+    icon: https://img.icons8.com/external-anggara-basic-outline-anggara-putra/96/external-stats-ui-anggara-basic-outline-anggara-putra.png
+    popular: true
+    weight: 50
+menu_name: docsplatform_{{.version}}
+section_menu_id: guides
+---
