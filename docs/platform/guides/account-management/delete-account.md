@@ -15,7 +15,7 @@ section_menu_id: guides
 
 ![Delete Account](../images/delete-account.png)
 
-This guide provides step-by-step instructions for permanently removing your personal account from the AppsCode platform.
+This guide provides step-by-step instructions for permanently removing your personal account from the KubeDB Platform.
 
 1. **Navigate to Account Settings:**
    - Log in to your account.
