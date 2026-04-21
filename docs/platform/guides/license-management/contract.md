@@ -64,7 +64,7 @@ After removal, the cluster will no longer be authorized to use the licensed prod
 
 ### Cluster Contract Relationship
 
-The KubeDB Platform License Management System supports flexible relationships between clusters and contracts:
+The AppsCode License Management System supports flexible relationships between clusters and contracts:
 1. **Many-to-One:** Multiple clusters can be associated with a single contract.
 2. **One-to-Many:** A single cluster can be associated with multiple contracts for different products.
 3. **Many-to-Many:** Multiple clusters can be associated with multiple contracts.
@@ -77,7 +77,7 @@ The operational mode of a contract (`online` or `offline`) is a critical setting
 
 **Online Mode:**
 - This is the standard mode for contracts where clusters have internet access.
-- The `license-proxyserver` in the customer's cluster regularly connects to KubeDB Platform's central licensing servers (e.g., `AppsCode.com`s) for license `validation` and `renewal`.
+- The `license-proxyserver` in the customer's cluster regularly connects to AppsCode's central licensing servers (e.g., `AppsCode.com`s) for license `validation` and `renewal`.
 - Licenses are typically issued for shorter durations (e.g., `7 days` by default) and are automatically rotated.
 - This mode facilitates dynamic license management and ensures continuous validation against the current contract status.
 

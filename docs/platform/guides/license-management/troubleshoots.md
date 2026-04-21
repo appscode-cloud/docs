@@ -106,22 +106,22 @@ license-proxyserver   ClusterIP   10.43.189.38   <none>        443/TCP,8080/TCP 
   it indicates a problem with the `service selector` or the `license-proxyserver`  pod itself (e.g., pod not `running`, `crashlooping`).
 
 
-#### 4. Test KubeDB Platform Backend Connectivity (for Online Mode/Fallback)
-If the `in-cluster` components of the `license-proxyserver` appear healthy, and you are operating in `Online Mode` or troubleshooting an `Offline Mode fallback` scenario, verify that the cluster can reach the KubeDB Platform licensing backend.
+#### 4. Test AppsCode Backend Connectivity (for Online Mode/Fallback)
+If the `in-cluster` components of the `license-proxyserver` appear healthy, and you are operating in `Online Mode` or troubleshooting an `Offline Mode fallback` scenario, verify that the cluster can reach the AppsCode licensing backend.
 
-1. **Check Network Connectivity:** Ensure that the cluster has internet access and can reach the KubeDB Platform licensing backend. This may involve checking `firewall rules`, `network policies`, or `proxy settings`. <br><br>
+1. **Check Network Connectivity:** Ensure that the cluster has internet access and can reach the AppsCode licensing backend. This may involve checking `firewall rules`, `network policies`, or `proxy settings`. <br><br>
 2. **Get Cluster ID:** Retrieve the unique identifier for your Kubernetes cluster:
    ```bash 
      kubectl get ns kube-system -o=jsonpath='{.metadata.uid}'
    ```
    Copy the output, which will be your `<CLUSTER_ID>`. <br><br>
-3. **Get Platform Token:** Extract the platform token used by the `license-proxyserver` for authentication with the KubeDB Platform backend:
+3. **Get Platform Token:** Extract the platform token used by the `license-proxyserver` for authentication with the AppsCode backend:
     ```bash
     kubectl get secrets -n kubeops ace-licenseserver-cred -o=jsonpath='{.data.license-proxyserver\.yaml}' | base64 -d
     ```
    From the output, locate the token field under `platform:` (e.g., `token: ac9b9eeec181fb09j73ab1604bd0180a4361e859`). Copy this value as your `<TOKEN>`. <br><br>
-4. **Get License Using CURL:** Perform a `curl` request to the KubeDB Platform Backend: Use `curl` from within a pod in your cluster (or a machine with network access to the cluster's outbound internet) to simulate a 
-  license request to the KubeDB Platform backend. Replace `<CLUSTER_ID>` and `<TOKEN>` with the values obtained in the previous steps. The features can be get from the Contract details page in KubeDB Platform Billing Console
+4. **Get License Using CURL:** Perform a `curl` request to the AppsCode Backend: Use `curl` from within a pod in your cluster (or a machine with network access to the cluster's outbound internet) to simulate a 
+  license request to the AppsCode backend. Replace `<CLUSTER_ID>` and `<TOKEN>` with the values obtained in the previous steps. The features can be get from the Contract details page in AppsCode Billing Console
   ```bash
     curl -k -X 'POST' -d '{"cluster":"<CLUSTER_ID>","features":["kubedb-enterprise"]}' \
     -H 'Authorization: Bearer <TOKEN>' \
@@ -130,7 +130,7 @@ If the `in-cluster` components of the `license-proxyserver` appear healthy, and 
     'https://api.AppsCode.com/api/v1/license/issue' --compressed
 ```
   **Expected curl Response Analysis:**
-  A successful response indicates that your cluster can communicate with the KubeDB Platform backend and that the authentication token is valid. The response will contain `contract` and `license` sections:
+  A successful response indicates that your cluster can communicate with the AppsCode backend and that the authentication token is valid. The response will contain `contract` and `license` sections:
   ```json
     {
       "contract": {
@@ -142,13 +142,13 @@ If the `in-cluster` components of the `license-proxyserver` appear healthy, and 
     }
   ```
   **Interpretation:**
-  - `contract.id:` This field is crucial. If it displays `0`, it indicates that the license issued is a `1-month (30-day)` free `trial` license, automatically provided by KubeDB Platform because the cluster is not explicitly associated with any paid contract. This is useful for initial testing. Each cluster is eligible for this free trial only once.
+  - `contract.id:` This field is crucial. If it displays `0`, it indicates that the license issued is a `1-month (30-day)` free `trial` license, automatically provided by AppsCode because the cluster is not explicitly associated with any paid contract. This is useful for initial testing. Each cluster is eligible for this free trial only once.
   - `contract.startTimestamp` and `contract.expiryTimestamp:` These fields define the validity period of the contract under which the license was issued.
-  - `license:` This is the actual `Base64-encoded` license token. A valid token here confirms that the KubeDB Platform backend successfully issued a license.
-  If the curl command fails (e.g., `connection refused`, `timeout`, `authentication` error), it indicates a network or authentication issue preventing the `license-proxyserver` from reaching the KubeDB Platform backend.
+  - `license:` This is the actual `Base64-encoded` license token. A valid token here confirms that the AppsCode backend successfully issued a license.
+  If the curl command fails (e.g., `connection refused`, `timeout`, `authentication` error), it indicates a network or authentication issue preventing the `license-proxyserver` from reaching the AppsCode backend.
 
 #### 5. Conclusion
-The KubeDB Platform License Management System delivers a `lightweight`, `in-cluster` authority for fast, reliable license validation in Kubernetes. Its `online` and `offline` modes accommodate both 
+The AppsCode License Management System delivers a `lightweight`, `in-cluster` authority for fast, reliable license validation in Kubernetes. Its `online` and `offline` modes accommodate both 
 always-connected and isolated environments. It empowers customers with `self-service` capabilities for cluster association.
 
-For unresolved issues, email [support@appscode.com](mailto:support@appscode.com) or [platform-support@appscode.com](mailto:support@appscode.com), or file a ticket at [KubeDB Platform Contact](https://appscode.com/contact).
+For unresolved issues, email [support@appscode.com](mailto:support@appscode.com) or [platform-support@appscode.com](mailto:support@appscode.com), or file a ticket at [AppsCode Contact](https://appscode.com/contact).
