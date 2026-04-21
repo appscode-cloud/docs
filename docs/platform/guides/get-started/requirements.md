@@ -3,17 +3,17 @@ layout: docs
 menu:
   docsplatform_{{.version}}:
     identifier: guide-ace-requirements
-    name: ACE Requirements
+    name: KubeDB Platform Requirements
     parent: guide-start
     weight: 14
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---
 
-# Requirements to deploy ACE
-We will discuss the resources requirements. networking requirements & best practices for deploying your first ACE & DBaaS cluster. It is highly recommended to read the [architecture](https://appscode.com/docs/en/guides/get-started/architecture.html) doc first before continuing. 
+# Requirements to deploy KubeDB Platform
+We will discuss the resources requirements. networking requirements & best practices for deploying your first KubeDB Platform & DBaaS cluster. It is highly recommended to read the [architecture](https://appscode.com/docs/en/guides/get-started/architecture.html) doc first before continuing. 
 
-## Requirements for ACE Cluster
+## Requirements for KubeDB Platform Cluster
 
 ### 1. Resources
 **Minimum**: Single node with 4 cpu, 16 GB ram, 100 GB disk attached. A k3s cluster will be deployed on that VM. And then the ui-components will be installed.
@@ -40,7 +40,7 @@ These are the required connectivities to everything work correctly:
 3. 4222  -  NATS.io port
 4. 4224  -  s3-proxy service port
 
-Here is a sample video on how you can setup ACE:
+Here is a sample video on how you can setup KubeDB Platform:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/1diG8qq73f4?si=pisqA3gOrfO1wxlx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Requirements for DBaaS Cluster
@@ -52,7 +52,7 @@ Minimum: Kubernetes cluster with 3 worker nodes, each with 8- 16GB ram, PVC supp
 Note that, The largest node must be able to fit the largest DB Pod(in terms of CPU, memory).
 
 ### 2. Networking
-Literally all the Networking requirements described for ACE are also applicable here, except the `Port Requiements` part.
-Only one additional requirement here is that the DBaaS cluster should be accessible from the management/ACE cluster.
+Literally all the Networking requirements described for KubeDB Platform are also applicable here, except the `Port Requiements` part.
+Only one additional requirement here is that the DBaaS cluster should be accessible from the management/KubeDB Platform cluster.
 
-You now have an overall idea on the requirements. So, [Login](https://appscode.com/docs/en/guides/get-started/register-login.html) into your account & get going with our [installer](https://appscode.com/selfhost/). Happy ACE!
+You now have an overall idea on the requirements. So, [Login](https://appscode.com/docs/en/guides/get-started/register-login.html) into your account & get going with our [installer](https://appscode.com/selfhost/). Happy KubeDB Platform!

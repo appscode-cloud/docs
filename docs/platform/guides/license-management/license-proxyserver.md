@@ -12,20 +12,20 @@ section_menu_id: guides
 
 ## The License Proxy Server
 
-The `license-proxyserver` is a critical component of the AppsCode License Management System, deployed within customer Kubernetes clusters to validate and apply licenses to AppsCode products. 
+The `license-proxyserver` is a critical component of the AppsCode License Management System, deployed within customer Kubernetes clusters to validate and apply licenses to KubeDB Platform products. 
 ### 1. Purpose and Architecture
 
 The primary purpose of the `license-proxyserver` is to:
 
-- **Serve Licenses:** Provide valid license tokens to AppsCode products (e.g., KubeDB, KubeStash, KubeVault operators and provisioners) running within the same Kubernetes cluster.
+- **Serve Licenses:** Provide valid license tokens to KubeDB Platform products (e.g., KubeDB, KubeStash, KubeVault operators and provisioners) running within the same Kubernetes cluster.
 - **Validate Licenses:**
     - In **Online Mode**, The `license-proxyserver` connects periodically to the Billing Server to validate and rotate licenses. This mode provides automatic license updates and ensures that changes to contract status are reflected promptly in the customer environment.
     - In **Offline Mode**, The `license-proxyserver` operates without connecting to the Billing Server. Instead, it uses `pre-generated` licenses embedded in the installer until the embedded licenses are expired. This mode is ideal for `air-gapped` environments or scenarios where external connections are restricted.
-- **Centralized License Management within the Cluster:** Simplifies license management for multiple AppsCode products within a single cluster by acting as a common point for license queries.
+- **Centralized License Management within the Cluster:** Simplifies license management for multiple KubeDB Platform products within a single cluster by acting as a common point for license queries.
 
 #### Architectural Flow
 
-1. **AppsCode Product Request:** When an AppsCode product (e.g., KubeDB operator) starts or performs a licensed operation, it requests a license from the License Proxy Server running in its cluster.
+1. **KubeDB Platform Product Request:** When a KubeDB Platform product (e.g., KubeDB operator) starts or performs a licensed operation, it requests a license from the License Proxy Server running in its cluster.
 2. **License Proxy Server Response:**
     - **Online Mode:** If the `license-proxyserver` has a valid, cached license, it provides it immediately. If the license is nearing its expiration, has already expired, or is otherwise invalid, the `license-proxyserver` attempts to contact AppsCode `Billing Backend` to fetch a new license. This new license is based on the active contracts associated with that specific cluster.
     - **Offline Mode:** The `license-proxyserver` primarily uses the pre-generated licenses embedded in its installer. It operates without connecting to the Billing Console for routine validation. However, if all embedded licenses are found to be expired or have been revoked, the `license-proxyserver` will, as a fallback, attempt to fetch new licenses from the AppsCode billing backend. This means that even in air-gapped environments, a temporary or controlled outbound connection might be necessary for license renewal or recovery if the embedded licenses become invalid over time. 
@@ -87,7 +87,7 @@ Generating an installer for offline mode is a multi-step process, designed to em
 #### License Characteristics in Offline Mode
 
 - **Full Duration Licenses:** Offline licenses are valid for the entire contract term, e.g., June 1, 2025, to May 31, 2026.
-- **No Periodic Online Rotation (Initially):** Self-contained licenses don’t need AppsCode server contact until expiration.
+- **No Periodic Online Rotation (Initially):** Self-contained licenses don't need AppsCode server contact until expiration.
 - **Fallback to Online Mode:** Expired offline licenses trigger the license-proxyserver to fetch new licenses online, mimicking online mode.
 - **Self-Contained Deployment:** Licensing data is embedded in the license-proxyserver, allowing disconnected operation while licenses are valid.
 - **Updates Require New Installer:** Contract extensions or expired licenses require a new installer from the Billing Console, which must be upgraded or reinstalled to maintain or restore offline functionality.
@@ -95,7 +95,7 @@ Generating an installer for offline mode is a multi-step process, designed to em
 
 ### 3. Verifying Product License Status
 
-After the `license-proxyserver` is installed and AppsCode products are deployed, administrators can verify the license status directly within the Kubernetes cluster using `kubectl`.
+After the `license-proxyserver` is installed and KubeDB Platform products are deployed, administrators can verify the license status directly within the Kubernetes cluster using `kubectl`.
 
 #### Using kubectl for License Verification
 
@@ -105,15 +105,15 @@ The `license-proxyserver` component functions as an `extended API server` within
 kubectl get licensestatus
 ```
 
-This command will list the status of licenses being consumed by various AppsCode products within the cluster.
+This command will list the status of licenses being consumed by various KubeDB Platform products within the cluster.
 
 ##### Interpreting licensestatus Output
 
 The output of `kubectl get licensestatus` provides several key pieces of information for each licensed component:
 
 - **ID:** A unique identifier for this specific license.
-- **PRODUCT:** The name of the AppsCode product that this license status pertains to (e.g., `kubedb`, `kubestash`, `platform` etc.).
-- **REQUESTER:** The specific `component` or `service account` within the cluster that requested and is utilizing this license. This helps pinpoint which part of an AppsCode product installation is covered by this license entry (e.g., `system:serviceaccount:kubedb:kubedb-kubedb-provisioner`).
+- **PRODUCT:** The name of the KubeDB Platform product that this license status pertains to (e.g., `kubedb`, `kubestash`, `platform` etc.).
+- **REQUESTER:** The specific `component` or `service account` within the cluster that requested and is utilizing this license. This helps pinpoint which part of a KubeDB Platform product installation is covered by this license entry (e.g., `system:serviceaccount:kubedb:kubedb-kubedb-provisioner`).
 - **CONTRACT:** This field indicates the identifier of the AppsCode contract which is utilized providing the license. There are two scenarios on how this field is populated: <br><br>
   - If a cluster is not explicitly associated with any contract in the Billing Console, AppsCode automatically provides a `1-month (30-day)` free trial license. In such cases, the `CONTRACT` column in the `licensestatus` output will display `0`. This temporary license is particularly helpful for customers during initial testing and evaluation periods. Each cluster is eligible for this free trial only once. ![Free Trial License](../images/license-status-free-contract.png)
   - Otherwise, if a cluster is associated with a specific contract, this column will display the actual `CONTRACT ID` from the Billing Console, allowing administrators to `cross-reference` the license with the detailed contract terms. ![Paid License](../images/license-status-paid-contract.png)

@@ -40,9 +40,9 @@ Before you begin, please ensure your Kubernetes cluster meets the following mini
 You will get an instruction to deploy a k3s cluster in Ubuntu VM or you can skip this step if you already have a cluster 
 
 
-### 1. Visit the AppsCode Self-Hosted Page
+### 1. Visit the KubeDB Platform Self-Hosted Page
 
-Navigate to [AppsCode Self-Hosted](https://appscode.com/selfhost). Here you will find your previously generated self-hosted installers. <br>
+Navigate to [KubeDB Platform Self-Hosted](https://appscode.com/selfhost). Here you will find your previously generated self-hosted installers. <br>
 Click on the `Create New Installer` button to get started.
 
 ### 2. Choose Deployment Mode And Environment
@@ -190,7 +190,7 @@ aws eks associate-access-policy \
   --access-scope type=cluster
 ```
 
-Provide the output role arn as Ace Installer Role ARN `echo $ROLE_ARN`in the **Ace Installer Role ARN** field. 
+Provide the output role arn as KubeDB Platform Installer Role ARN `echo $ROLE_ARN`in the **KubeDB Platform Installer Role ARN** field. 
 
 ### 3. Global Administrative Settings
 These credentials define the primary super-user and the initial organizational structure.
@@ -205,14 +205,14 @@ These credentials define the primary super-user and the initial organizational s
 <img width="50%" src="../images/admin-setting.png">
 
 ### 4. Release
-Define the specific Kubernetes namespace and release information for the Ace components.
+Define the specific Kubernetes namespace and release information for the KubeDB Platform components.
 
 * **Release Name:** Defaults to `ace`.
 * **Namespace:** Enter the target namespace (default: `ace`). 
 * **Namespace Automation:** Toggle **"Create namespaces during Helm install"** if you want the installer to handle namespace lifecycle management.
 
 ### 5. Registry
-Ace requires access to various container registries and Helm repositories to pull necessary images and charts.
+KubeDB Platform requires access to various container registries and Helm repositories to pull necessary images and charts.
 
 **Docker Registry:** Go to the docker registry section first then look for the following settings
 * **Proxies:** Put registry name for Appscode `r.appscode.com` and other Public Registries like Docker Hub, GitHub Container Registry (`ghcr.io`), Kubernetes Registry, Microsoft (`mcr.microsoft.com`), and Quay.
@@ -245,7 +245,7 @@ If SMTP is enabled then put Host, Username, Password and From. You can also enab
 
 
 #### KubeStash
-Ace uses **KubeStash** for automated backups and disaster recovery.
+KubeDB Platform uses **KubeStash** for automated backups and disaster recovery.
 
 * **Retention Policy:** Define how long backups are kept (e.g., `keep-1mo`).
 * **Schedule:** Set the backup frequency using Cron syntax (default: `0 */2 * * *` or every 2 hours).
@@ -298,7 +298,7 @@ In this section you can enable or disable features
 <img width="50%" src="../images/features.png">
 
 ### 11. Branding & UI Customization
-Administrators can globally re-brand the Ace interface to match corporate identity.
+Administrators can globally re-brand the KubeDB Platform interface to match corporate identity.
 
 * **App Name:** Changes the browser tab title.
 * **Primary Color:** Enter a Hex code (default: `#009948`).
@@ -312,15 +312,15 @@ Administrators can globally re-brand the Ace interface to match corporate identi
 
 ### 12. Generate Installer and Documentation
 
-Click the "Deploy" button to submit your information. AppsCode will generate the installer and provide the necessary documentation.
+Click the "Deploy" button to submit your information. KubeDB Platform will generate the installer and provide the necessary documentation.
 
 ### 13. Deploy KubeDB Platform
 
-Follow the documentation provided by AppsCode to deploy the KubeDB Platform on your system.
+Follow the documentation provided by KubeDB Platform to deploy the KubeDB Platform on your system.
 
 ### 14. Explore the Deployed Platform
 
-Once deployed, access the **KubeDB Platform** using the specified domain. Log in with the admin account credentials provided during the creation process.After the login process you will see the **ACE dashboard** user interface
+Once deployed, access the **KubeDB Platform** using the specified domain. Log in with the admin account credentials provided during the creation process.After the login process you will see the **KubeDB Platform dashboard** user interface
 
 <br/>
 <img width="50%" src="../images/ace-dashboard.png">

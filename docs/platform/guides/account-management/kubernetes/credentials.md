@@ -357,7 +357,7 @@ Then add the credential [here](https://home.appscode.com/user/settings/credentia
 
 ## Rancher
 
-To access Rancher clusters through AppsCode, you need to create an API token in your Rancher system. Follow these steps:
+To access Rancher clusters through KubeDB Platform, you need to create an API token in your Rancher system. Follow these steps:
 
 1. In Rancher, click on the profile icon.
 2. Select `Account & API Keys`.
@@ -369,7 +369,7 @@ Reference: [Rancher API Keys](https://ranchermanager.docs.rancher.com/reference-
 
 Copy the generated access key, secret key, and API endpoint from the `Account & API Keys` overview page.
 
-Next, add these credentials to the [AppsCode user settings credentials page](https://home.appscode.com/user/settings/credentials/create).
+Next, add these credentials to the [KubeDB Platform user settings credentials page](https://home.appscode.com/user/settings/credentials/create).
 
 <img align="right" width="50%" src="../images/credentials/azureStorage.png">
 

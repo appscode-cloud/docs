@@ -13,7 +13,7 @@ section_menu_id: guides
 
 # Add a Kubernetes Cluster
 
-With your credentials in place, it's time to connect your Kubernetes cluster to the Platform Console. This step allows AppsCode to seamlessly manage and provide insights into your cluster.
+With your credentials in place, it's time to connect your Kubernetes cluster to the Platform Console. This step allows KubeDB Platform to seamlessly manage and provide insights into your cluster.
 
 Follow these steps to import your Kubernetes cluster:
 
