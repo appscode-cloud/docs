@@ -86,8 +86,31 @@ If using private or authenticated registries, provide:
 * **Certs:** Upload CA Cert, Client Cert, and Client Key if required for mutual TLS.
 * **Image Pull Secrets:** Define the secrets used by the cluster to authenticate with the registries. You can enable create namespace during helm install, allow nondistributable artifacts and insecure option for insecure registry
 
+### 5. Monitoring
 
-### 5. Settings
+Use the **Monitoring** section to configure Alertmanager notifications for platform alerts.
+
+* **Alert Manager Email:** Enable email notifications for Alertmanager alerts.
+  * **Enable Email:** Turns email notifications on or off.
+  * **To:** The recipient email address. For Gmail, you can also use plus addressing such as `user+alerts@example.com`.
+  * **From:** The sender email address shown in the message. For Gmail, use the same address as **Auth Username** unless you have configured a verified alias.
+  * **Smarthost:** The SMTP server address. For Gmail, use `smtp.gmail.com:587`.
+  * **Auth Username:** The SMTP login username. For Gmail, this should be the real Gmail or Google Workspace mailbox used to authenticate.
+  * **Password:** The SMTP password. For Gmail, use an App Password generated from `https://myaccount.google.com/apppasswords`.
+  * **Require TLS:** Enables TLS for the SMTP connection. Leave this enabled for Gmail.
+  * **Send Resolved:** Sends a follow-up notification when an alert returns to a healthy state.
+* **Alert Manager Webhook:** Send alerts to an endpoint that accepts Alertmanager's generic webhook payload.
+  * **Enable Webhook:** Turns webhook delivery on or off.
+  * **URL:** The destination webhook URL. Some systems embed the secret directly in the URL.
+  * **Send Resolved:** Sends a follow-up notification when an alert returns to a healthy state.
+
+<br/>
+<img width="50%" src="../images/monitoring-alertmanager.png">
+
+> **Tip:** For Google Chat, a supported workaround is to generate a space email address in Google Chat settings and use that address in the **To** field.
+
+
+### 6. Settings
 
 #### Domain White List and Proxy Servers
 
@@ -98,7 +121,7 @@ If using private or authenticated registries, provide:
 <br/>
 <img width="50%" src="../images/domain-whitelisting.png">
 
-### 6. Ingress & Gateway
+### 7. Ingress & Gateway
 
 Configure how the application is exposed to the internet or your internal network.
 
@@ -107,14 +130,13 @@ Configure how the application is exposed to the internet or your internal networ
 <br/>
 <img width="50%" src="../images/ingress-gateway.png">
 
-
-### 7. Self Management
+### 8. Self Management
 In this section you can enable or disable features
 
 <br/>
 <img width="50%" src="../images/features.png">
 
-### 8. Branding & UI Customization
+### 9. Branding & UI Customization
 Administrators can globally re-brand the Ace interface to match corporate identity.
 
 * **App Name:** Changes the browser tab title.
@@ -127,15 +149,15 @@ Administrators can globally re-brand the Ace interface to match corporate identi
 <br/>
 <img width="50%" src="../images/branding.png">
 
-### 9. Generate Installer and Documentation
+### 10. Generate Installer and Documentation
 
 Click the "Deploy" button to submit your information. AppsCode will generate the installer and provide the necessary documentation.
 
-### 10. Deploy KubeDB Platform
+### 11. Deploy KubeDB Platform
 
 Follow the documentation provided by AppsCode to deploy the KubeDB Platform on your system.
 
-### 11. Explore the Deployed Platform
+### 12. Explore the Deployed Platform
 
 Once deployed, access the KubeDB Platform using the specified domain. Log in with the admin account credentials provided during the creation process.
 
