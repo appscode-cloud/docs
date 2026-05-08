@@ -251,7 +251,7 @@ Ace uses **KubeStash** for automated backups and disaster recovery.
 
 ### 7. Monitoring
 
-Use the **Monitoring** section to configure Alertmanager notifications for platform alerts.
+Use the **Monitoring** section to configure Alertmanager notifications for platform alerts for the site admin.
 
 * **Alert Manager Email:** Enable email notifications for Alertmanager alerts.
   * **Enable Email:** Turns email notifications on or off.
