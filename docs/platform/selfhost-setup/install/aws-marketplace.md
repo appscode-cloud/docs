@@ -277,19 +277,42 @@ If using private or authenticated registries, provide:
 * **Certs:** Upload CA Cert, Client Cert, and Client Key if required for mutual TLS.
 * **Image Pull Secrets:** Define the secrets used by the cluster to authenticate with the registries. You can enable create namespace during helm install, allow nondistributable artifacts and insecure option for insecure registry
 
+### 5. Monitoring
 
-### 5. Settings
+Use the **Monitoring** section to configure Alertmanager notifications for platform alerts for the site admin.
+
+* **Alert Manager Email:** Enable email notifications for Alertmanager alerts.
+  * **Enable Email:** Turns email notifications on or off.
+  * **To:** The recipient email address. For Gmail, you can also use plus addressing such as `user+alerts@example.com`.
+  * **From:** The sender email address shown in the message. For Gmail, use the same address as **Auth Username** unless you have configured a verified alias.
+  * **Smarthost:** The SMTP server address. For Gmail, use `smtp.gmail.com:587`.
+  * **Auth Username:** The SMTP login username. For Gmail, this should be the real Gmail or Google Workspace mailbox used to authenticate.
+  * **Password:** The SMTP password. For Gmail, use an App Password generated from `https://myaccount.google.com/apppasswords`.
+  * **Require TLS:** Enables TLS for the SMTP connection. Leave this enabled for Gmail.
+  * **Send Resolved:** Sends a follow-up notification when an alert returns to a healthy state.
+* **Alert Manager Webhook:** Send alerts to an endpoint that accepts Alertmanager's generic webhook payload.
+  * **Enable Webhook:** Turns webhook delivery on or off.
+  * **URL:** The destination webhook URL. Some systems embed the secret directly in the URL.
+  * **Send Resolved:** Sends a follow-up notification when an alert returns to a healthy state.
+
+<br/>
+<img width="50%" src="../images/monitoring-alertmanager.png">
+
+> **Tip:** For Google Chat, a supported workaround is to generate a space email address in Google Chat settings and use that address in the **To** field.
+
+
+### 6. Settings
 
 #### Domain White List
 
 * You must specify the end users domains, the system will only allow users with those specified domains. You can Add multiple domain whitelists at the same time.
 * Put Login and Logout URL
 
-### 6. Self Management
+### 7. Self Management
 In this section you can enable or disable features. You can also create an initial `CAPI Cluster` from this section. 
 
 
-### 7. Branding & UI Customization
+### 8. Branding & UI Customization
 Administrators can globally re-brand the Ace interface to match corporate identity.
 
 * **App Name:** Changes the browser tab title.
@@ -299,13 +322,13 @@ Administrators can globally re-brand the Ace interface to match corporate identi
     * **Favicon:** Upload a 20KB icon file.
 * **App Tag:** Toggle **"Show App Tag"** to display or hide the version/tagging info in the UI.
 
-### 8. Generate Installer and Documentation
+### 9. Generate Installer and Documentation
 
 Click the "Next" button to submit your information. AppsCode will generate the installer and provide the necessary documentation and further installation guideline in details.
 
 You will find an `Installer URL` for this installer. You have to give this URL in the AWS Marketplace application.  
 
-### 9. Deploy KubeDB Platform
+### 10. Deploy KubeDB Platform
 
 The expiry time for this installer is 2 hours. You will find in detail deployment guideline after creating the installer.
 
