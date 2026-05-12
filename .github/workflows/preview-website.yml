@@ -14,8 +14,16 @@ jobs:
   label-detector:
     name: Runner Label
     runs-on: label-detector
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
     outputs:
       runs-on: ${{ steps.detector.outputs.label }}
+      permissions:
+        contents: read
+        checks: write
+        pull-requests: write
     steps:
       - name: Detect Label
         id: detector
@@ -27,6 +35,10 @@ jobs:
     name: Build
     needs: label-detector
     runs-on: "${{ needs.label-detector.outputs.runs-on }}"
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
         with:
