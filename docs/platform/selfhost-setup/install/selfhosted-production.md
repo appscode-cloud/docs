@@ -40,9 +40,9 @@ Before you begin, please ensure your Kubernetes cluster meets the following mini
 You will get an instruction to deploy a k3s cluster in Ubuntu VM or you can skip this step if you already have a cluster 
 
 
-### 1. Visit the AppsCode Self-Hosted Page
+### 1. Visit the KubeDB Platform Self-Hosted Page
 
-Navigate to [AppsCode Self-Hosted](https://appscode.com/selfhost). Here you will find your previously generated self-hosted installers. <br>
+Navigate to [KubeDB Platform Self-Hosted](https://appscode.com/selfhost). Here you will find your previously generated self-hosted installers. <br>
 Click on the `Create New Installer` button to get started.
 
 ### 2. Choose Deployment Mode And Environment
@@ -333,11 +333,11 @@ Administrators can globally re-brand the KubeDB Platform interface to match corp
 
 ### 13. Generate Installer and Documentation
 
-Click the "Deploy" button to submit your information. AppsCode will generate the installer and provide the necessary documentation.
+Click the "Deploy" button to submit your information. KubeDB Platform will generate the installer and provide the necessary documentation.
 
 ### 14. Deploy KubeDB Platform
 
-Follow the documentation provided by AppsCode to deploy the KubeDB Platform on your system.
+Follow the documentation provided by KubeDB Platform to deploy the KubeDB Platform on your system.
 
 ### 15. Explore the Deployed Platform
 

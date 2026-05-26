@@ -5,7 +5,7 @@ menu:
     identifier: guide-start
     name: Get Started
     parent: guides
-    description: Basic information and instructions for first-time users of AppsCode
+    description: Basic information and instructions for first-time users of KubeDB Platform
     icon: https://img.icons8.com/00994A/ios/50/rocket--v1.png
     popular: true
     weight: 10
