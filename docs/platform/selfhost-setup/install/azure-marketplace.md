@@ -28,9 +28,9 @@ The **Azure Marketplace** installation wizard will prompt you for specific confi
 
 If you encounter any issues during the deployment, please refer to our Official Documentation or contact with us.
 
-### 2. Visit the AppsCode Self-Hosted Page
+### 2. Visit the KubeDB Platform Self-Hosted Page
 
-Navigate to [AppsCode Self-Hosted](https://appscode.com/selfhost). Here you will find your previously generated self-hosted installers. <br>
+Navigate to [KubeDB Platform Self-Hosted](https://appscode.com/selfhost). Here you will find your previously generated self-hosted installers. <br>
 Click on the `Create New Installer` button to get started.
 
 ### 3. Choose Deployment Mode And Environment
@@ -147,7 +147,7 @@ Administrators can globally re-brand the KubeDB Platform interface to match corp
 
 ### 10. Generate Installer and Documentation
 
-Click the "Deploy" button to submit your information. AppsCode will generate the installer and provide the necessary documentation.
+Click the "Deploy" button to submit your information. KubeDB Platform will generate the installer and provide the necessary documentation.
 
 ### 11. Deploy KubeDB Platform
 

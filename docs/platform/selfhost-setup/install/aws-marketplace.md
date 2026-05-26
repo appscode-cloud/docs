@@ -242,9 +242,9 @@ AmazonS3FullAccess (AWS Managed Policy)
 ```
 ## Application Deployment
 
-### 1. Visit the AppsCode Self-Hosted Page
+### 1. Visit the KubeDB Platform Self-Hosted Page
 
-Navigate to [AppsCode Self-Hosted](https://appscode.com/selfhost). Here you will find your previously generated self-hosted installers. <br>
+Navigate to [KubeDB Platform Self-Hosted](https://appscode.com/selfhost). Here you will find your previously generated self-hosted installers. <br>
 Click on the `Create New Installer` button to get started.
 
 ### 2. Choose Deployment Mode And Environment
@@ -324,7 +324,7 @@ Administrators can globally re-brand the KubeDB Platform interface to match corp
 
 ### 9. Generate Installer and Documentation
 
-Click the "Next" button to submit your information. AppsCode will generate the installer and provide the necessary documentation and further installation guideline in details.
+Click the "Next" button to submit your information. KubeDB Platform will generate the installer and provide the necessary documentation and further installation guideline in details.
 
 You will find an `Installer URL` for this installer. You have to give this URL in the AWS Marketplace application.  
 

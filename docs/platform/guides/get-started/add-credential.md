@@ -13,11 +13,11 @@ section_menu_id: guides
 
 # Add Credential
 
-Now that you have successfully registered and logged in to the Platform Console, let's take the next step in setting up your environment. The first crucial task is to add credentials for your Kubernetes clusters. This ensures a secure connection and allows AppsCode to seamlessly manage your clusters.
+Now that you have successfully registered and logged in to the Platform Console, let's take the next step in setting up your environment. The first crucial task is to add credentials for your Kubernetes clusters. This ensures a secure connection and allows KubeDB Platform to seamlessly manage your clusters.
 
 Follow these steps to add your credentials:
 
-1. Navigate to the [Add Credential Page](https://home.appscode.com/user/settings/credentials/create).
+1. Navigate to the [Add Credential Page](https://appscode.com/id/{user}/user/settings/credentials/create).
 2. Choose your `Credential Type` or authentication method and enter the required details.
 3. Click on the `Done` button to securely save your credentials.
 

@@ -14,7 +14,7 @@ section_menu_id: guides
 ## Contract
 
 A contract is basically a digital agreement of the licensing relationship between AppsCode and its customers. Each contract represents a formal agreement for the use of 
-specific AppsCode products, such as KubeDB or platform-enterprise, with defined validity periods and feature sets.
+specific KubeDB Platform products, such as KubeDB or platform-enterprise, with defined validity periods and feature sets.
 
 The contract management system within the Billing Console provides comprehensive tools for creating, modifying, and monitoring contracts. Administrators can specify 
 product details, validity periods, and associated features, ensuring that customers have access to the appropriate resources for their needs.
@@ -23,7 +23,7 @@ product details, validity periods, and associated features, ensuring that custom
 
 Key information typically contained within a contract includes:
 
-- **Product:** The specific AppsCode product or bundle covered by the contract (e.g., `kubedb-enterprise`, `platform-enterprise` etc.).
+- **Product:** The specific KubeDB Platform product or bundle covered by the contract (e.g., `kubedb-enterprise`, `platform-enterprise` etc.).
 - **Org/User:** The organization or user account to which the contract is assigned.
 - **Status:** The current state of the contract (e.g., active, expired, revoked), managed by AppsCode administrators.
 - **Start Date:** The date from which the contract, and thus the license, becomes valid (not_before).
@@ -34,7 +34,7 @@ Contracts ensure that product usage is aligned with the purchased entitlements, 
 
 ### Managing Cluster Associations with Contracts
 
-For AppsCode products to operate with a valid license on a Kubernetes cluster, customers must explicitly associate that cluster with one or more active contracts 
+For KubeDB Platform products to operate with a valid license on a Kubernetes cluster, customers must explicitly associate that cluster with one or more active contracts 
 made available to them in the Billing Console. This capability is a key `self-service` feature, allowing customers to dynamically manage which of their Kubernetes 
 environments are licensed under a given contract, within the overall terms and capacity of that agreement.
 
@@ -58,7 +58,7 @@ To remove a cluster's authorization to use licensed products under a specific co
 2. **Locate and Remove:** In the `Cluster` section, find the cluster in the associated clusters list that needs to be removed.
 3. **Confirm Removal:** Select the `Remove` option (often represented by a `trash` icon) next to the cluster and confirm the action when prompted. ![Cluster Delete](../images/cluster-delete.png)
 
-After removal, the cluster will no longer be authorized to use the licensed products associated with that contract. Any installed AppsCode products on that cluster may revert to their community or limited functionality, depending on their licensing model.
+After removal, the cluster will no longer be authorized to use the licensed products associated with that contract. Any installed KubeDB Platform products on that cluster may revert to their community or limited functionality, depending on their licensing model.
 
 **Audit Trail:** The Billing Console maintains an audit trail of changes to cluster associations, logging which user performed the action and when. This feature is vital for tracking, security, and troubleshooting. ![Audit Trail](../images/audits.png)
 
