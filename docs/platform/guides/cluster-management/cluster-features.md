@@ -37,7 +37,7 @@ The Feature Sets grid on the Cluster Overview page shows all available product m
 | **Multicluster Spoke** | Connect this cluster as a spoke to an existing Multicluster Hub. |
 | **Networking Addons** | Various networking plugins and extensions for Kubernetes. |
 | **Observability** | Cluster monitoring, metrics, and dashboards using Prometheus and Grafana. |
-| **Opscenter Tools** | DevOps tooling and management utilities for ACE. |
+| **Opscenter Tools** | DevOps tooling and management utilities for KubeDB Platform. |
 | **Policy Management** | Platform-level policy enforcement tools. |
 | **Secret Management** | Tools for secure secret storage and distribution across namespaces. |
 | **Security** | TLS certificate management, secret scanning, and image vulnerability tooling. |

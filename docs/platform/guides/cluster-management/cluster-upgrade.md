@@ -11,12 +11,12 @@ section_menu_id: guides
 ---
 
 
-# Upgrading Your ACE Platform: Management, Imported, and Spoke Clusters
+# Upgrading Your KubeDB Platform: Management, Imported, and Spoke Clusters
 
 ## Overview
 
-This guide walks through upgrading an **AppsCode Container Engine (ACE)** deployment
-across all cluster tiers — the base management cluster, the AC cluster, general imported
+This guide walks through upgrading a **KubeDB Platform** deployment
+across all cluster tiers, the base management cluster, the KubeDB Platform cluster, general imported
 clusters, and spoke clusters. The example below upgrades from release `2025.5.16` to
 `2025.6.x`.
 
@@ -25,17 +25,17 @@ clusters, and spoke clusters. The example below upgrades from release `2025.5.16
 ## Architecture
 
 ```
-                    ┌─────────────────────────┐
-                    │   Management Cluster     │
-                    │   (ACE control plane)    │
-                    └────────────┬────────────┘
-                                 │
-              ┌──────────────────┼──────────────────┐
-              │                  │                  │
-   ┌──────────▼──────┐  ┌────────▼────────┐   ┌─────▼──────────┐
-   │  ACE Cluster    │  │ Imported Cluster │  │ Spoke Cluster  │
-   │ (management)    │  │ (generic import) │  │ (generic import│
-   └─────────────────┘  └─────────────────┘   └────────────────┘
+                    ┌─────────────────────────────────┐
+                    │       Management Cluster         │
+                    │  (KubeDB Platform control plane) │
+                    └────────────────┬────────────────┘
+                                     │
+                  ┌──────────────────┼──────────────────┐
+                  │                  │                  │
+   ┌──────────────▼──────┐  ┌────────▼────────┐   ┌─────▼──────────┐
+   │ KubeDB Platform     │  │ Imported Cluster │  │ Spoke Cluster  │
+   │ Cluster (management)│  │ (generic import) │  │ (generic import│
+   └─────────────────────┘  └─────────────────┘   └────────────────┘
 ```
 
 Each tier is upgraded separately; the order matters.
@@ -104,10 +104,10 @@ Once the job completes, verify the op-center feature set reflects the new versio
 Spoke clusters are imported as **generic DBaaS** generally. Update them individually before
 updating the cluster set.
 
-1. In the Console, go to **Your Organization → Hub Cluster → ACE**.
+1. In the Console, go to **Your Organization → Hub Cluster → KubeDB Platform**.
 2. Select the correct **Cluster set** (how you imported). For example, Generic DBaaS.
 3. Select your spoke cluster.
-4. Click **Update ACE Resources → Update Version → Yes**.
+4. Click **Update KubeDB Platform Resources → Update Version → Yes**.
 
 ![Upgrade](images/upgrade/upgrade_1.png)
 
@@ -144,7 +144,7 @@ visible immediately.
 
 After **all** individual clusters are on the new version:
 
-1. In the Console, go to **Your Organization → Hub Cluster → ACE**.
+1. In the Console, go to **Your Organization → Hub Cluster → KubeDB Platform**.
 2. Select the correct **Cluster set** (how you imported). For example, Generic DBaaS.
 3. Click **Update Cluster Set**.
 
@@ -194,7 +194,7 @@ appscode.com → Download val file
        ↓
 Platform UI → Update Version (Management / Platform cluster)
        ↓
-Console → Generic DBaaS → Update AC Resources (each spoke)
+Console → Generic DBaaS → Update KubeDB Platform Resources (each spoke)
        ↓
 Console → Generic DBaaS → Update Cluster Set
        ↓

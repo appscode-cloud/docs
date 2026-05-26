@@ -24,25 +24,25 @@ Before proceeding, make sure you have:
 
 - A Rancher setup with access to the **Local** cluster.
 - An account on [appscode.com](https://appscode.com/).
-- The [ACE](https://appscode.com/docs/en/selfhost-setup/) platform deployed on your Rancher cluster.
+- The [KubeDB Platform](https://appscode.com/docs/en/selfhost-setup/) deployed on your Rancher cluster.
 
 ---
 
 ## 2. Deploying the KubeDB Rancher Extension
 
-### Step 1 – Deploy ACE
+### Step 1 – Deploy KubeDB Platform
 1. Create an account at [appscode.com](https://appscode.com/).
-2. Follow the [self-hosting ACE guide](https://appscode.com/docs/en/selfhost-setup/) to deploy ACE on your Rancher cluster.  
-   You can also watch this video tutorial for step-by-step instructions: [Self-Hosting ACE Video Guide](https://www.youtube.com/watch?v=1diG8qq73f4&list=PLoiT1Gv2KR1iqWFGkCozbLqYe31QMsQcX&index=2)
+2. Follow the [self-hosting KubeDB Platform guide](https://appscode.com/docs/en/selfhost-setup/) to deploy KubeDB Platform on your Rancher cluster.  
+   You can also watch this video tutorial for step-by-step instructions: [Self-Hosting KubeDB Platform Video Guide](https://www.youtube.com/watch?v=1diG8qq73f4&list=PLoiT1Gv2KR1iqWFGkCozbLqYe31QMsQcX&index=2)
 
 
 ---
 
-### Step 2 – Create a Rancher-Type Organization in ACE
-1. Visit your ACE URL and log in with your **admin account**. ![ACE URL](../images/ace-url.png)
+### Step 2 – Create a Rancher-Type Organization in KubeDB Platform
+1. Visit your KubeDB Platform URL and log in with your **admin account**. ![KubeDB Platform URL](../images/ace-url.png)
 2. Navigate to **Organizations** and create a new organization with the type set to **Rancher**.
 3. Provide a valid **Sync Token**.
-   > The Sync Token is used to synchronize Rancher users into the ACE platform.
+   > The Sync Token is used to synchronize Rancher users into the KubeDB Platform.
 
 ![Create Organization](../images/organization-create.png)
 
@@ -50,7 +50,7 @@ Before proceeding, make sure you have:
 
 ### Step 3 – Sync Rancher Users 
 1. Go to **Organization Settings → Rancher Extension**. ![Organization Settings](../images/organization-settings.png)
-2. Click **Sync User** to import Rancher users into ACE. ![Sync User](../images/organization-settings-sync-users.png)
+2. Click **Sync User** to import Rancher users into KubeDB Platform. ![Sync User](../images/organization-settings-sync-users.png)
 
 ---
 
@@ -110,4 +110,4 @@ Follow these steps to install the KubeDB extension in Rancher:
 
 ✅ Installation Complete!  
 You can now deploy and manage your databases directly from the KubeDB menu in your cluster.  
-NB: Import your Rancher cluster into the ACE UI under the Rancher organization you created earlier before using the Rancher extension, or it won’t work.
+NB: Import your Rancher cluster into the KubeDB Platform UI under the Rancher organization you created earlier before using the Rancher extension, or it won’t work.

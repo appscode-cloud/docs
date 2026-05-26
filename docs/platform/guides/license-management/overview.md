@@ -29,7 +29,7 @@ While AppsCode administrators are responsible for the core lifecycle of contract
 
 ### Key Components
 
-- **Contracts:** Digital agreements, typically established by [AppsCode administrators](https://appsCode.com/contact/) within the Billing Console, that define the terms of AppsCode's product (e.g., ACE, KubeDB, KubeStash, KubeVault etc.) usage. This includes the specific AppsCode products which can be licensed, the duration of the contract, applicable features, and the clusters authorized to use these licenses. Contracts ensure that usage aligns with legal and financial terms, providing a foundation for all subsequent actions in the console. Contracts can be configured for either online or offline license validation.
+- **Contracts:** Digital agreements, typically established by [AppsCode administrators](https://appsCode.com/contact/) within the Billing Console, that define the terms of AppsCode's product (e.g., KubeDB Platform, KubeDB, KubeStash, KubeVault etc.) usage. This includes the specific AppsCode products which can be licensed, the duration of the contract, applicable features, and the clusters authorized to use these licenses. Contracts ensure that usage aligns with legal and financial terms, providing a foundation for all subsequent actions in the console. Contracts can be configured for either online or offline license validation.
 <br> <br>
 - **Licensed cluster:** The `Licensed Cluster` section within the AppsCode Billing Console offers a comprehensive overview and detailed management capabilities for Kubernetes clusters that have been issued AppsCode product licenses. This component is pivotal for administrators to monitor the cluster(s) `licences` and `events` of licensed products across their infrastructure.
 <br> <br>

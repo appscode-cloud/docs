@@ -50,7 +50,7 @@ These credentials define the primary super-user and the initial organizational s
 For openshift cluster toggle Red Hat OpenShift cluster and give Kube API Server endpoint 
 
 ### 4. Registry
-Ace requires access to various container registries and Helm repositories to pull necessary images and charts.
+KubeDB Platform requires access to various container registries and Helm repositories to pull necessary images and charts.
 
 **Docker Registry:** Go to the docker registry section first then look for the following settings
 * **Proxies:** Put registry name for Appscode `r.appscode.com` and other Public Registries like Docker Hub, GitHub Container Registry (`ghcr.io`), Kubernetes Registry, Microsoft (`mcr.microsoft.com`), and Quay.
@@ -138,7 +138,7 @@ In this section you can enable or disable features
 <img width="50%" src="../images/features.png">
 
 ### 11. Branding & UI Customization
-Administrators can globally re-brand the Ace interface to match corporate identity.
+Administrators can globally re-brand the KubeDB Platform interface to match corporate identity.
 
 * **App Name:** Changes the browser tab title.
 * **Primary Color:** Enter a Hex code (default: `#009948`).

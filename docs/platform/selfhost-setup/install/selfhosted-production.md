@@ -165,7 +165,7 @@ EKS_POLICY_ARN=$(aws iam list-policies --query "Policies[?PolicyName==’AceSelf
 Create Role using the downloaded trust-relationship file
 ```
 sed -e "s/OIDC_ID/$OIDC_ID/g" -e "s/ACCOUNT_ID/$ACCOUNT_ID/g" -e "s/REGION/$REGION/g" -e "s/SA_NAMESPACE/"ace"/g" -e "s/SA_NAME/"ace"/g" template-trust-relationship > ace-trust-relationship.json
-aws iam create-role --role-name AceInstaller-$OIDC_ID --assume-role-policy-document file://ace-trust-relationship.json --description "A role to be used by ACE selfhost installer"
+aws iam create-role --role-name AceInstaller-$OIDC_ID --assume-role-policy-document file://ace-trust-relationship.json --description "A role to be used by KubeDB Platform selfhost installer"
 ROLE_ARN=$(aws iam get-role --role-name AceInstaller-$OIDC_ID --query "Role.Arn" --output text)
 # attach Policies to the Role
 aws iam attach-role-policy --role-name AceInstaller-$OIDC_ID --policy-arn=$EC2_POLICY_ARN
@@ -205,14 +205,14 @@ These credentials define the primary super-user and the initial organizational s
 <img width="50%" src="../images/admin-setting.png">
 
 ### 4. Release
-Define the specific Kubernetes namespace and release information for the Ace components.
+Define the specific Kubernetes namespace and release information for the KubeDB Platform components.
 
 * **Release Name:** Defaults to `ace`.
 * **Namespace:** Enter the target namespace (default: `ace`). 
 * **Namespace Automation:** Toggle **"Create namespaces during Helm install"** if you want the installer to handle namespace lifecycle management.
 
 ### 5. Registry
-Ace requires access to various container registries and Helm repositories to pull necessary images and charts.
+KubeDB Platform requires access to various container registries and Helm repositories to pull necessary images and charts.
 
 **Docker Registry:** Go to the docker registry section first then look for the following settings
 * **Proxies:** Put registry name for Appscode `r.appscode.com` and other Public Registries like Docker Hub, GitHub Container Registry (`ghcr.io`), Kubernetes Registry, Microsoft (`mcr.microsoft.com`), and Quay.
@@ -243,7 +243,7 @@ This secton is for Persistence & Resource Allocation. Properly sizing your resou
 
 
 #### KubeStash
-Ace uses **KubeStash** for automated backups and disaster recovery.
+KubeDB Platform uses **KubeStash** for automated backups and disaster recovery.
 
 * **Retention Policy:** Define how long backups are kept (e.g., `keep-1mo`).
 * **Schedule:** Set the backup frequency using Cron syntax (default: `0 */2 * * *` or every 2 hours).
@@ -319,7 +319,7 @@ In this section you can enable or disable features
 <img width="50%" src="../images/features.png">
 
 ### 12. Branding & UI Customization
-Administrators can globally re-brand the Ace interface to match corporate identity.
+Administrators can globally re-brand the KubeDB Platform interface to match corporate identity.
 
 * **App Name:** Changes the browser tab title.
 * **Primary Color:** Enter a Hex code (default: `#009948`).
@@ -341,7 +341,7 @@ Follow the documentation provided by AppsCode to deploy the KubeDB Platform on y
 
 ### 15. Explore the Deployed Platform
 
-Once deployed, access the **KubeDB Platform** using the specified domain. Log in with the admin account credentials provided during the creation process.After the login process you will see the **ACE dashboard** user interface
+Once deployed, access the **KubeDB Platform** using the specified domain. Log in with the admin account credentials provided during the creation process.After the login process you will see the **KubeDB Platform dashboard** user interface
 
 <br/>
 <img width="50%" src="../images/ace-dashboard.png">
