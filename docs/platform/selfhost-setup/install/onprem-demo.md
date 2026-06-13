@@ -33,6 +33,9 @@ Before beginning the installation, identify your target infrastructure and clust
   * **Enable DNS:** Toggle this to allow the installer to manage or integrate with your DNS provider.
   * **Target IP:** Provide the static IP addresses for your cluster nodes or load balancer.
 * **Cluster Type:** Determine if you are installing on **Red Hat OpenShift Cluster**.
+
+> For Red Hat OpenShift clusters, see the [Deploying KubeDB Platform in OpenShift Cluster](openshift-cluster.md) guide.
+
 ### 3. Global Administrative Settings
 See [Global Administrative Settings](common-config.md#global-administrative-settings) in the Common Configuration guide for the System Admin account fields (display name, email, password, and initial organization).
 

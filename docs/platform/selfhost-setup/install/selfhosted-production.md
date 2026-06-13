@@ -47,7 +47,7 @@ Before beginning the installation, identify your target infrastructure and clust
 * **DNS & Connectivity:** 
   * **Enable DNS:** Toggle this to allow the installer to manage or integrate with your DNS provider.
   * **Target IP:** Provide the static IP addresses for your cluster nodes or load balancer.
-* **Cluster Type:** Determine if you are installing on **AWS EKS Cluster** or **Red Hat OpenShift Cluster**. For openshift cluster toggle Red Hat OpenShift cluster and give Kube API Server endpoint 
+* **Cluster Type:** Determine if you are installing on **AWS EKS Cluster** or **Red Hat OpenShift Cluster**. For openshift cluster toggle Red Hat OpenShift cluster and give Kube API Server endpoint. See the [Deploying KubeDB Platform in OpenShift Cluster](openshift-cluster.md) guide.
 * **Credential-Less Mode:** Enable this if you are using IAM roles for service accounts (IRSA) to avoid manual secret management.
 <br/>
 <img width="50%" src="../images/selfhost-deployment-option.png">

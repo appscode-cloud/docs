@@ -34,6 +34,8 @@ Before beginning the installation, identify your target infrastructure and clust
   * **Target IP:** Provide the static IP addresses for your cluster nodes or load balancer.
 * **Cluster Type:** Determine if you are installing on **AWS EKS Cluster** or **Red Hat OpenShift Cluster**.
 
+> For Red Hat OpenShift clusters, see the [Deploying KubeDB Platform in OpenShift Cluster](openshift-cluster.md) guide.
+
 #### Additional configuration for EKS cluster
 
 See [Additional configuration for EKS cluster](common-config.md#additional-configuration-for-eks-cluster) in the Common Configuration guide for the EBS CSI / AWS Load Balancer Controller prerequisites and the commands to fetch the Kube API server endpoint, subnet IDs, and EIP allocation IDs.
