@@ -81,7 +81,7 @@ A condensed stat row at the top mirrors the key metrics from the Overview panel 
 
 The **Grafana Dashboards** section embeds pre-built dashboards for your database directly in the console. If Grafana integration is not yet configured, an error message will indicate that the dashboard link is missing and provide instructions to set it up.
 
-> **Tip:** To enable Grafana dashboards, ensure the Grafana datasource is configured in your cluster and the correct dashboard URL is registered in your AppsCode settings.
+> **Tip:** To enable Grafana dashboards, ensure the Grafana datasource is configured in your cluster and the correct dashboard URL is registered in your KubeDB Platform settings.
 
 ### 3.3 - Slow Queries
 

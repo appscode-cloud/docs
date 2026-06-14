@@ -11,7 +11,7 @@ section_menu_id: guides
 ---
 
 
-# Deleting Your AppsCode Account
+# Deleting Your KubeDB Platform Account
 
 ![Delete Account](../images/delete-account.png)
 

@@ -18,11 +18,11 @@ The **Cluster Overview** page is your primary dashboard for a connected Kubernet
 
 ## Step 1 — Open Your Cluster
 
-From the **AppsCode Console UI** home screen, you will see the **ALL CLUSTERS** grid. Each cluster card shows its name, status badge (e.g., **Active**), Kubernetes version, provider, number of nodes, and age.
+From the **KubeDB Platform Console UI** home screen, you will see the **ALL CLUSTERS** grid. Each cluster card shows its name, status badge (e.g., **Active**), Kubernetes version, provider, number of nodes, and age.
 
 Click on any cluster card to open its Overview page.
 
-![AppsCode home screen showing the cluster list — click a cluster card to open its Overview](../images/cluster-overview/cluster-overview-1.png)
+![KubeDB Platform home screen showing the cluster list — click a cluster card to open its Overview](../images/cluster-overview/cluster-overview-1.png)
 
 > The **+ Add Cluster** tile lets you import a new cluster at any time.
 
@@ -38,7 +38,7 @@ The **Basic** section at the top displays the cluster's core identity:
 
 | Field | Description |
 |---|---|
-| **Name** | The cluster name as registered in AppsCode |
+| **Name** | The cluster name as registered in KubeDB Platform |
 | **Endpoint** | The Kubernetes API server address |
 | **UID** | The unique identifier of this cluster |
 | **Provider** | Cloud or infrastructure provider (e.g., Generic, AWS, GCP) |
@@ -48,7 +48,7 @@ The **Basic** section at the top displays the cluster's core identity:
 
 Two action buttons appear top-right inside this section:
 - **Connect** — Downloads a KubeConfig for direct `kubectl` access
-- **Remove** — Disconnects and removes the cluster from AppsCode
+- **Remove** — Disconnects and removes the cluster from KubeDB Platform
 
 ![Cluster Overview page showing Basic info, Feature Sets grid, and Nodes section](../images/cluster-overview/cluster-overview-2.png)
 
