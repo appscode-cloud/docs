@@ -18,7 +18,7 @@ This document provides a detailed overview of the **Usage** section within our b
 
 The AppsCode Billing Console is a web-based hub at [AppsCode Billing Console](https://appscode.com/billing) where you can manage contracts, link clusters, generate license-proxyserver installers, track licensed clusters, and **monitor usage—all in one place**.
 
-This section focuses on the **Usage** dashboard, which shows the resources consumed by downstream KubeDB Platform services like KubeDB running in your clusters.
+This section focuses on the **Usage** dashboard, which shows the resources consumed by downstream AppsCode services like KubeDB running in your clusters.
 
 ![usage-dashboard](../images/usage-section-home.png)
 

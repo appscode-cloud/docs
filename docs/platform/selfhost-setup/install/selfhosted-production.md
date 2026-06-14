@@ -241,7 +241,7 @@ Click the "Deploy" button to submit your information. KubeDB Platform will gener
 
 ### 14. Deploy KubeDB Platform
 
-Follow the documentation provided by KubeDB Platform to deploy the KubeDB Platform on your system.
+Follow the documentation provided by AppsCode to deploy the KubeDB Platform on your system.
 
 ### 15. Explore the Deployed Platform
 
