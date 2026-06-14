@@ -87,7 +87,7 @@ Fill in all required fields and click **Preview** to advance.
 
 The modal advances to the **Values Preview** step:
 
-- The **left panel** lists each generated Helm release file (e.g., `helm_release_kubestash.yaml`, `helm_release_stash_presets.yaml`)
+- The **left panel** lists each generated Helm release file (e.g., `kubestash.yaml`, `stash_presets.yaml`)
 - The **right panel** shows the full YAML values for the selected file
 - Switch between **Edit** and **Preview Changes** tabs to review or compare against defaults
 - Click **Compare default values** to diff against the out-of-the-box configuration
@@ -148,9 +148,9 @@ Select your required database types and click **Preview**.
 ### Step 3 — Review the Generated Helm Values
 
 The modal advances to the YAML values preview. Three Helm release files are listed on the left:
-- `helm_release_kubedb.yaml`
-- `helm_release_kubedb_opscenter.yaml`
-- `helm_release_kubedb_ui_presets.yaml`
+- `kubedb.yaml`
+- `kubedb_opscenter.yaml`
+- `kubedb_ui_presets.yaml`
 
 The YAML editor on the right shows the `featureGates` configuration — each selected database type is set to `true`, others to `false`. Use **Edit / Preview Changes** tabs to review, then click **Deploy**.
 
