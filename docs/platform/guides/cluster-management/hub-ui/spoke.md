@@ -19,13 +19,13 @@ section_menu_id: guides
 1. Go to **Import Cluster** and complete the necessary steps
 2. Select an existing hub cluster before importing
 
-![Spoke](../images/spoke/spoke.png)
+![Spoke](../../images/spoke/spoke.png)
 
 3. Complete import
 
 ✅ Spoke cluster is created and linked
 
-![Homepage](../images/spoke/homepage.png)
+![Homepage](../../images/spoke/homepage.png)
 
 This method can also be started from the Hub cluster:
 
@@ -33,7 +33,7 @@ This method can also be started from the Hub cluster:
 2. Click **Import Managed Cluster**
 
 
-![Homepage](../images/spoke/import_spoke.png)
+![Homepage](../../images/spoke/import_spoke.png)
 
 3. Follow import steps
 
@@ -47,11 +47,11 @@ This method can also be started from the Hub cluster:
 1. Go to cluster → Feature Set  
 2. Enable **OCM Spoke**  (initially your features will be white leveled)
 
-![featureset](../images/spoke/featureset.png)
+![featureset](../../images/spoke/featureset.png)
 
 3. Select Hub Cluster
 
-![select](../images/spoke/select.png)
+![select](../../images/spoke/select.png)
 
 4. Provide a name
 5. Enable
@@ -60,11 +60,11 @@ Then:
 
 * Enter into your hub cluster then Click Go to Hub
 
-![request](../images/spoke/request.png)
+![request](../../images/spoke/request.png)
 
 * Click **Accept Spoke** The select the spoke from which the connection request was sent before
 
-![accept](../images/spoke/accept.png)
+![accept](../../images/spoke/accept.png)
 
 * Approve the request
 
