@@ -18,9 +18,9 @@ Welcome to the KubeDB Platform's "Cloud Demo" deployment! Follow these steps to 
 
 See [Prerequisites](common-config.md#prerequisites) in the Common Configuration guide for the minimum cluster requirements and the optional k3s setup note. 
 
-### 1. Visit the AppsCode Self-Hosted Page
+### 1. Visit the KubeDB Platform Self-Hosted Page
 
-Navigate to [AppsCode Self-Hosted](https://appscode.com/selfhost). Here you will find your previously generated self-hosted installers. <br>
+Navigate to [KubeDB Platform Self-Hosted](https://appscode.com/selfhost). Here you will find your previously generated self-hosted installers. <br>
 Click on the `Create New Installer` button to get started.
 
 ### 2. Choose Deployment Mode
@@ -69,7 +69,7 @@ See [Branding & UI Customization](common-config.md#branding--ui-customization) i
 
 ### 10. Generate Installer and Documentation
 
-Click the "Deploy" button to submit your information. AppsCode will generate the installer and provide the necessary documentation.
+Click the "Deploy" button to submit your information. KubeDB Platform will generate the installer and provide the necessary documentation.
 
 ### 11. Deploy KubeDB Platform
 
@@ -84,6 +84,6 @@ Once deployed, access the KubeDB Platform using the specified domain. Log in wit
 
 ## Get Support
 
-If you encounter any challenges during the deployment or have questions, reach out to AppsCode support for assistance.
+If you encounter any challenges during the deployment or have questions, reach out to KubeDB Platform support for assistance.
 
 Congratulations! You have successfully deployed the KubeDB Platform in Cloud Demo mode. Explore the features and capabilities of the platform in your customized environment.

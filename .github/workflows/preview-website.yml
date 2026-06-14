@@ -11,30 +11,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  label-detector:
-    name: Runner Label
-    runs-on: label-detector
-    permissions:
-      contents: read
-      checks: write
-      pull-requests: write
-    outputs:
-      runs-on: ${{ steps.detector.outputs.label }}
-      permissions:
-        contents: read
-        checks: write
-        pull-requests: write
-    steps:
-      - name: Detect Label
-        id: detector
-        run: |
-          # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idoutputs
-          echo "label=$(curl -fsSL https://this-is-nats.appscode.ninja/runs-on/${{ github.repository_owner }}?visibility=${{ github.repository_visibility }})" >> $GITHUB_OUTPUT
-
   build:
     name: Build
-    needs: label-detector
-    runs-on: "${{ needs.label-detector.outputs.runs-on }}"
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       checks: write
@@ -91,7 +70,6 @@ jobs:
           GITHUB_USER: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WEBSITE_REPOSITORY: ${{ secrets.WEBSITE_REPOSITORY }}
-          GOOGLE_CUSTOM_SEARCH_API_KEY: ${{ secrets.GOOGLE_CUSTOM_SEARCH_API_KEY }}
         run: |
           set -x
           export WEBSITE_ROOT=$RUNNER_WORKSPACE/$(basename $WEBSITE_REPOSITORY)
