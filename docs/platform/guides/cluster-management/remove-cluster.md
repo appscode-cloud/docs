@@ -13,7 +13,7 @@ section_menu_id: guides
 
 # Remove / Delete Cluster
 
-Removing an already imported cluster from the Platform Console is a straightforward process, and you can also manage associated features during removal. Follow these steps to seamlessly remove a cluster:
+You can remove an imported cluster from the Platform Console and manage its associated features during removal.
 
 1. **Navigate to the Cluster Overview Page:**
    - Go to the [Platform Console](https://console.appscode.com).
@@ -31,9 +31,6 @@ Removing an already imported cluster from the Platform Console is a straightforw
 
 4. **Manage Features:**
    - During the removal process, you have the option to disable features associated with the cluster.
-   - Utilize this feature to tailor your Platform Console environment based on your evolving requirements.
-
-This streamlined process ensures efficient cluster management within the Platform Console, providing flexibility and control over your Kubernetes clusters.
 
 ---
 

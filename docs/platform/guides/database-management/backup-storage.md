@@ -111,7 +111,7 @@ The form starts with basic identity fields:
 
 ### 4.2 - Labels & Annotations
 
-Expand the **Labels & Annotations** section to attach custom metadata for organization and integration:
+Expand the **Labels & Annotations** section to attach custom metadata:
 
 ![Labels and Annotations panel showing Labels and Annotations each with Key-Value input rows and Add new buttons](../images/backup/storage-label-annotation.png)
 
@@ -121,7 +121,7 @@ Expand the **Labels & Annotations** section to attach custom metadata for organi
 
 ### 4.3 - Backend Configuration
 
-The **Backend** section defines the storage provider and its credentials. This is where you configure the actual cloud storage connection.
+The **Backend** section defines the storage provider and its credentials.
 
 ![Backend section showing Provider dropdown (azure selected) with Auth and Spec sub-panels for Azure storage configuration](../images/backup/storage-create-backend.png)
 

@@ -19,13 +19,13 @@ section_menu_id: guides
 
 ![Upgrade](../images/upgrade/upgrade_1.png)
 
-2. You will see a new interface a spoke featureset inside a hub
+2. You will see the spoke featureset inside the hub
 
 ![Upgrade](../images/upgrade/upgrade_2.png)
 
-Here if you want a spoke to intentionally have different features than hub then you can configure them from here 
+To give a spoke different features than the hub, configure them here.
 
-3. Go to the upgrade version from sidebar if there is any latest version available you will upgrade button click and Done
+3. Go to **Upgrade Version** from the sidebar. If a latest version is available, click the upgrade button.
 
 ![Upgrade](../images/upgrade/upgrade_3.png)
 

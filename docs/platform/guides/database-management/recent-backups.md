@@ -13,7 +13,7 @@ section_menu_id: guides
 
 # Recent Backups
 
-This guide explains how to view and manage **BackupSessions** — individual backup job executions triggered by BackupConfigurations or manually created on-demand. Each BackupSession represents a single point-in-time snapshot of your database.
+A **BackupSession** is a single backup job execution — triggered by a BackupConfiguration or created manually on-demand — that produces a point-in-time snapshot of your database. This guide explains how to view and manage BackupSessions.
 
 ---
 
@@ -46,11 +46,11 @@ The list page displays all BackupSessions in your cluster, both scheduled (from 
 
 ## 3. Viewing a BackupSession
 
-Click on any BackupSession name in the list to open its detail page. The detail page shows the session's metadata, linked configuration, and all snapshots created.
+Click on any BackupSession name in the list to open its detail page.
 
 ### 3.1 - Overview
 
-The detail page opens on the **Overview** tab showing:
+The detail page opens on the **Overview** tab showing the session's metadata, linked configuration, and all snapshots created:
 
 ![BackupSession detail page showing Basic info, Backup Configuration table, and Snapshots table](../images/backup/recent-db-overview.png)
 

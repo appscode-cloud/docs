@@ -13,15 +13,13 @@ section_menu_id: guides
 
 # Expose via Gateway
 
-This guide explains how to use the **Expose via Gateway** interface to control whether your database is exposed externally through the gateway. Enabling this makes your database accessible outside the cluster via the configured gateway endpoint.
+Control whether your database is exposed externally through the gateway. Enabling this makes your database accessible outside the cluster via the configured gateway endpoint.
 
 ---
 
 ## 1. Getting Started
 
-To begin, select **Expose via Gateway** from the **Operations** section in the left sidebar.
-
-You will land on a simple form with a single toggle that controls the gateway exposure state of your database.
+Select **Expose via Gateway** from the **Operations** section in the left sidebar. The form has a single toggle that controls the gateway exposure state of your database.
 
 ![Expose via Gateway page showing the Expose Database toggle and Deploy button](../images/expose-via-gateway.png)
 

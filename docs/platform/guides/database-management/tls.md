@@ -13,15 +13,13 @@ section_menu_id: guides
 
 # Configure TLS
 
-This guide explains how to use the **TLS Configure** interface to manage TLS settings for your database. You can update TLS certificates, rotate existing ones, or remove TLS entirely — all managed through a `OpsRequest` that is applied safely to your cluster.
+Manage TLS settings for your database. You can update TLS certificates, rotate existing ones, or remove TLS entirely — all managed through a `OpsRequest` applied to your cluster.
 
 ---
 
 ## 1. Getting Started
 
-To begin, select **TLS Configure** from the **Operations** section in the left sidebar.
-
-You will land on the **TLS Configure** form, which is divided into the following sections:
+Select **TLS Configure** from the **Operations** section in the left sidebar. The **TLS Configure** form is divided into the following sections:
 
 - **TLS Operation** — Choose the type of TLS action to perform.
 - **Remove TLS** — Toggle to strip TLS from the database entirely.

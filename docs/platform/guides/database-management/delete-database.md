@@ -13,7 +13,7 @@ section_menu_id: guides
 
 # Delete Database
 
-This guide explains how to delete a database instance from the platform console. There are two ways to trigger a deletion — from the **Datastore Overview** page (bulk or single) or from inside the **individual database page**. Both methods lead to the same confirmation step.
+There are two ways to delete a database — from the **Datastore Overview** page (bulk or single) or from inside the **individual database page**. Both lead to the same confirmation step.
 
 > **Warning:** Deleting a database is a permanent and irreversible action. Ensure you have a valid backup before proceeding.
 
@@ -27,7 +27,7 @@ Navigate to the **Datastore** section from the left sidebar and select your data
 
 ## 2. Deleting from the Datastore Overview
 
-Use this method to delete one or more databases at once directly from the instance list.
+Use this method to delete one or more databases at once from the instance list.
 
 ![Datastore Overview page with a database instance selected and the Delete Selected button highlighted](../images/delete-overview.png)
 
@@ -42,7 +42,7 @@ Use this method to delete one or more databases at once directly from the instan
 
 ## 3. Deleting from the Database Detail Page
 
-Use this method to delete a specific database while viewing its detail page.
+Use this method to delete a specific database from its detail page.
 
 ![MongoDB database detail page showing the Delete button in the top-right navbar](../images/delete.png)
 

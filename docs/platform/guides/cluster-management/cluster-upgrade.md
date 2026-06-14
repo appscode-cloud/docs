@@ -15,10 +15,7 @@ section_menu_id: guides
 
 ## Overview
 
-This guide walks through upgrading a **KubeDB Platform** deployment
-across all cluster tiers, the base management cluster, the KubeDB Platform cluster, general imported
-clusters, and spoke clusters. The example below upgrades from release `2025.5.16` to
-`2025.6.x`.
+Upgrade a **KubeDB Platform** deployment across all cluster tiers: the base management cluster, the KubeDB Platform cluster, general imported clusters, and spoke clusters. The example below upgrades from release `2025.5.16` to `2025.6.x`.
 
 ---
 

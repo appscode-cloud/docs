@@ -47,7 +47,7 @@ The list page shows all BackupConfigurations across namespaces. Use the **Select
 
 ## 3. Viewing a BackupConfiguration
 
-Click on any BackupConfiguration name in the list to open its detail page. The detail page is divided into several panels giving a full picture of the configuration's state and linked resources.
+Click on any BackupConfiguration name in the list to open its detail page.
 
 ### 3.1 - Overview
 
@@ -167,7 +167,7 @@ The top section captures the core identity and storage references for the Backup
 
 ### 4.2 - Labels & Annotations
 
-Expand the **Labels & Annotations** panel to attach custom metadata to the BackupConfiguration resource for organization, filtering, or integration with other Kubernetes tools.
+Expand the **Labels & Annotations** panel to attach custom metadata to the BackupConfiguration resource.
 
 ![Labels and Annotations panel showing Labels and Annotations each with Key-Value input rows and Add new buttons](../images/backup/config-label-annotation.png)
 

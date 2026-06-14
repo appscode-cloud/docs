@@ -13,15 +13,13 @@ section_menu_id: guides
 
 # Upgrade Database Version
 
-This guide explains how to use the **Update Version** interface to upgrade your database to a newer version. The operation is managed through a `MongoDBOpsRequest`, which handles the upgrade process safely and tracks its status in your cluster.
+Upgrade your database to a newer version. The operation is managed through a `MongoDBOpsRequest`, which handles the upgrade process and tracks its status in your cluster.
 
 ---
 
 ## 1. Getting Started
 
-To begin, select **Update Version** from the **Operations** section in the left sidebar.
-
-You will land on the **Update Version** form, which has two main sections:
+Select **Update Version** from the **Operations** section in the left sidebar. The **Update Version** form has two main sections:
 
 - **Version** — Select the target version you want to upgrade your database to.
 - **OpsRequest Options** — Configure advanced settings such as timeout and apply policy.
@@ -59,7 +57,7 @@ Expand the **OpsRequest Options** panel to configure how the upgrade operation i
 
 ## 3. Review and Submit
 
-The Preview page displays the full `MongoDBOpsRequest` manifest that will be applied to your cluster. Review it carefully to confirm all settings are correct.
+The Preview page displays the full `MongoDBOpsRequest` manifest that will be applied to your cluster.
 
 ![Preview page showing the generated MongoDBOpsRequest YAML manifest](../images/update-version-submit.png)
 

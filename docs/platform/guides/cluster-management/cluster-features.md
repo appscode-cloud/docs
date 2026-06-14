@@ -12,7 +12,7 @@ section_menu_id: guides
 
 # Manage Feature Sets
 
-**Feature Sets** are groups of AppsCode product capabilities that you can install or remove on any connected cluster. This page walks you through all 18 available Feature Sets and shows a step-by-step enable flow for the two most commonly used ones: **Backup & Recovery** and **Databases**.
+**Feature Sets** are groups of AppsCode product capabilities that you can install or remove on any connected cluster. This page covers all 18 available Feature Sets and shows the enable flow for two common ones: **Backup & Recovery** and **Databases**.
 
 ---
 

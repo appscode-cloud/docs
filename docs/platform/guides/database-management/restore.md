@@ -109,7 +109,7 @@ Once all required fields are filled, click **Preview** to review the generated `
 
 1. **Submit:** Once satisfied, click **Submit** to create the Restore and begin the restoration process.
 
-> **Note:** After submitting, the restore operation will begin immediately. Monitor the restore status on the detail page. The target database will be updated with the restored data once the operation completes successfully.
+> **Note:** After submitting, the restore operation begins immediately. Monitor the status on the detail page; the target database is updated with the restored data once the operation completes successfully.
 
 ---
 

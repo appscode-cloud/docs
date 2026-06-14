@@ -13,7 +13,7 @@ section_menu_id: guides
 
 # Repository
 
-This guide explains how to view and create **Repository** resources using the platform console. A Repository is the logical backup repository that stores individual snapshots of a database within a BackupStorage backend. It acts as the bridge between BackupConfigurations and the actual cloud storage.
+A **Repository** is the logical backup repository that stores individual snapshots of a database within a BackupStorage backend, acting as the bridge between BackupConfigurations and the cloud storage. This guide explains how to view and create Repository resources using the platform console.
 
 ---
 
@@ -43,11 +43,11 @@ The list page displays all Repository resources configured across your cluster. 
 
 ## 3. Viewing a Repository
 
-Click on any Repository name in the list to open its detail page. The detail page displays repository metadata and all snapshots stored within it.
+Click on any Repository name in the list to open its detail page.
 
 ### 3.1 - Overview
 
-The detail page shows comprehensive information about the repository:
+The detail page displays repository metadata and all snapshots stored within it:
 
 ![Repository detail page showing Basic info, Backup Storage, Snapshots, and linked resources](../images/backup/repository-db-overview.png)
 

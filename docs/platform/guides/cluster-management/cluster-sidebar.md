@@ -12,7 +12,7 @@ section_menu_id: guides
 
 # Customize the Cluster Sidebar
 
-The **Cluster Sidebar** is your primary navigation panel inside a connected cluster. By default, it shows a curated set of Kubernetes workloads and AppsCode custom resources. The **Sidebar Settings** page lets you fully customize which menu items appear, so you can tailor the experience to your team's needs.
+The **Cluster Sidebar** is the navigation panel inside a connected cluster. By default it shows a set of Kubernetes workloads and AppsCode custom resources. The **Sidebar Settings** page lets you customize which menu items appear.
 
 ---
 
@@ -59,7 +59,7 @@ For example, typing `cert` instantly filters the list and highlights all matches
 
 ## Step 4 — Add or Rearrange Items (Drag & Drop)
 
-To add a resource to your sidebar, simply **drag** it from the **All Available Menus** panel on the left and **drop** it into the **Updated List** panel on the right at the position you prefer.
+To add a resource to your sidebar, **drag** it from the **All Available Menus** panel on the left and **drop** it into the **Updated List** panel on the right at the position you prefer.
 
 In the example below, the user is dragging **Appscode K8s Management → ProjectQuota** into the current sidebar layout. You can see it appearing as a floating drag indicator (`⠿`) in the left panel.
 

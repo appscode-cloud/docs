@@ -18,7 +18,7 @@ This guide covers how to use the **Configure Backup** interface to manage data p
 
 ## 1. Getting Started
 
-To begin, select **Configure Backup** from the left sidebar. This selection determines the available settings and workflow.
+Select **Configure Backup** from the left sidebar. This selection determines the available settings and workflow.
 
 - **BackupConfig:** Use this to create, delete, or modify specific backup tasks.
 - **BackupBlueprint:** Use this to manage high-level templates for enabling or disabling backups across multiple resources.

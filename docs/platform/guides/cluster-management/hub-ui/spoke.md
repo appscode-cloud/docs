@@ -16,7 +16,7 @@ section_menu_id: guides
 
 ### Steps
 
-1. Go to **Import Cluster** like before and do the necessary steps 
+1. Go to **Import Cluster** and complete the necessary steps
 2. Select an existing hub cluster before importing
 
 ![Spoke](../images/spoke/spoke.png)
@@ -27,11 +27,7 @@ section_menu_id: guides
 
 ![Homepage](../images/spoke/homepage.png)
 
-
-This method can be started from Hub cluster as well
-
-
-
+This method can also be started from the Hub cluster:
 
 1. Go to Hub → **Cluster List**
 2. Click **Import Managed Cluster**
