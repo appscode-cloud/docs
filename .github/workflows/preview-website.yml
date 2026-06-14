@@ -70,7 +70,6 @@ jobs:
           GITHUB_USER: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WEBSITE_REPOSITORY: ${{ secrets.WEBSITE_REPOSITORY }}
-          GOOGLE_CUSTOM_SEARCH_API_KEY: ${{ secrets.GOOGLE_CUSTOM_SEARCH_API_KEY }}
         run: |
           set -x
           export WEBSITE_ROOT=$RUNNER_WORKSPACE/$(basename $WEBSITE_REPOSITORY)
