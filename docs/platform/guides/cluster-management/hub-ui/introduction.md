@@ -11,7 +11,7 @@ section_menu_id: guides
 ---
 # Hub UI
 
-Hub UI is to manage multiple cluster from a single point. In this guide we will see how you can do that
+Hub UI lets you manage multiple clusters from a single point.
 
 ![Hub & Spoke Model](../images/introduction/hub-spoke-model.png)
 

@@ -13,7 +13,7 @@ section_menu_id: guides
 
 # Database Usage & Insights
 
-This guide explains how to use the **Overview**, **Insights**, and **Users** pages available on every database detail page in the platform console. These pages give you a live view of your database's connection details, performance metrics, query analytics, and access control bindings.
+Every database detail page has **Overview**, **Insights**, and **Users** pages. They give a live view of the database's connection details, performance metrics, query analytics, and access control bindings.
 
 ---
 
@@ -29,7 +29,7 @@ From the **Datastore** section in the left sidebar, click on any database engine
 
 ## 2. Overview
 
-The **Overview** tab is the landing page for any database instance. It is divided into two panels — **Connection Details** and **Insights** — and a **Nodes** table at the bottom.
+The **Overview** tab has two panels — **Connection Details** and **Insights** — and a **Nodes** table at the bottom.
 
 ![Database Overview page showing Connection Details, Insights summary panel, and Nodes table](../images/db-overview.png)
 
@@ -69,7 +69,7 @@ The **Nodes** table at the bottom lists every pod in the database cluster with i
 
 ## 3. Insights
 
-The **Insights** tab provides a deeper view into database performance — including Grafana dashboards, slow query analysis, and collection-level storage metrics.
+The **Insights** tab provides Grafana dashboards, slow query analysis, and collection-level storage metrics.
 
 ![Insights tab showing stat summary, Grafana Dashboards section, Slow Queries table, and Top Collections table](../images/db-insights.png)
 

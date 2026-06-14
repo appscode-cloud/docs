@@ -12,7 +12,9 @@ section_menu_id: guides
 
 # Manage Feature Sets
 
-**Feature Sets** are groups of AppsCode product capabilities that you can install or remove on any connected cluster. This page walks you through all 18 available Feature Sets and shows a step-by-step enable flow for the two most commonly used ones: **Backup & Recovery** and **Databases**.
+**Feature Sets** are groups of AppsCode product capabilities that you can install or remove on any connected cluster. This page covers all 19 available Feature Sets and shows the enable flow for two common ones: **Backup & Recovery** and **Databases**.
+
+> For a per-feature breakdown of every Feature Set — what each feature does, why you'd enable it, and its prerequisites — see the [Feature Set Reference](feature-reference.md).
 
 ---
 
@@ -87,7 +89,7 @@ Fill in all required fields and click **Preview** to advance.
 
 The modal advances to the **Values Preview** step:
 
-- The **left panel** lists each generated Helm release file (e.g., `helm_release_kubestash.yaml`, `helm_release_stash_presets.yaml`)
+- The **left panel** lists each generated Helm release file (e.g., `kubestash.yaml`, `stash_presets.yaml`)
 - The **right panel** shows the full YAML values for the selected file
 - Switch between **Edit** and **Preview Changes** tabs to review or compare against defaults
 - Click **Compare default values** to diff against the out-of-the-box configuration
@@ -148,9 +150,9 @@ Select your required database types and click **Preview**.
 ### Step 3 — Review the Generated Helm Values
 
 The modal advances to the YAML values preview. Three Helm release files are listed on the left:
-- `helm_release_kubedb.yaml`
-- `helm_release_kubedb_opscenter.yaml`
-- `helm_release_kubedb_ui_presets.yaml`
+- `kubedb.yaml`
+- `kubedb_opscenter.yaml`
+- `kubedb_ui_presets.yaml`
 
 The YAML editor on the right shows the `featureGates` configuration — each selected database type is set to `true`, others to `false`. Use **Edit / Preview Changes** tabs to review, then click **Deploy**.
 

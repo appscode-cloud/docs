@@ -13,27 +13,21 @@ section_menu_id: guides
 
 # Adding a Rancher Managed Cluster to Platform Console
 
-Adding a `Rancher-Managed` cluster to the Platform Console involves a slightly different process. In order to import a `Rancher-Managed` cluster to the Platform Console, you need to create a Rancher Managed Organization and a Rancher Type Credential.
+Importing a `Rancher-Managed` cluster requires a Rancher Type Credential and a Rancher Managed Organization.
 
 ## Create Rancher Type Credential
 
-To create a Rancher type credential, refer to the [Credentials Management Documentation](../../account-management/kubernetes/credentials.md#rancher) and follow the instructions to add a new credential of type "Rancher."
+Add a credential of type "Rancher" — see [Credentials Management](../../account-management/kubernetes/credentials.md#rancher).
 
 ## Create a Rancher Managed Organization
 
-Unlike personal accounts, Rancher clusters are associated with Rancher Managed organizations. Follow the [Create a New Organization](../../account-management/orgs-members.md#create-a-new-organization) documentation with the following additional steps:
+Rancher clusters belong to Rancher Managed organizations, not personal accounts. Follow [Create a New Organization](../../account-management/orgs-members.md#create-a-new-organization) with these settings:
 
-1. Choose the organization's Origin as `Rancher Managed`.
-2. Provide the Rancher `API Endpoint`, which you can find under the `Account & API Keys` page.
-3. Click `Create` to complete the organization creation process.
+1. Set the organization's Origin to `Rancher Managed`.
+2. Provide the Rancher `API Endpoint` (found on the `Account & API Keys` page).
+3. Click `Create`.
 
 ## Import the Cluster
 
-Before importing a Rancher Managed cluster into the Platform Console, you must switch to the Rancher organization. Follow these steps:
-
-1. Go to [AppsCode Console](https://console.appscode.com).
-2. Click on the Profile Icon or username.
-3. Choose `Switch Account`.
-4. Select your Rancher organization.
-
-Once you are in the Rancher organization, follow the standard cluster import process outlined in the [Import Vendor Managed Clusters](import-vendor-managed.md) documentation.
+1. Switch to the Rancher organization: in the [AppsCode Console](https://console.appscode.com), click your profile, choose `Switch Account`, and select the Rancher organization.
+2. Follow the standard import process in [Import Vendor Managed Clusters](import-vendor-managed.md).

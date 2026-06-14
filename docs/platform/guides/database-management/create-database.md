@@ -13,7 +13,7 @@ section_menu_id: guides
 
 # Creating a Database
 
-This guide explains how to create a new managed database instance using the platform console. The creation process is a multi-step wizard that walks you through selecting a database engine, setting a name and namespace, configuring topology and resources, and enabling optional features like monitoring, TLS, and backups.
+Creating a database is a multi-step wizard: select a database engine, set a name and namespace, configure topology and resources, and enable optional features like monitoring, TLS, and backups.
 
 ---
 
@@ -33,7 +33,7 @@ You will be presented with a grid of all supported database engines. Click on th
 
 ![Database type selection grid showing all supported engines including MongoDB, PostgreSQL, MySQL, Redis, and more](../images/db-create/db-type-select.png)
 
-> **Tip:** The console supports a wide range of engines including relational, document, key-value, search, and time-series databases. Select the engine that best fits your workload.
+> **Tip:** Supported engines include relational, document, key-value, search, and time-series databases.
 
 ---
 
@@ -60,7 +60,7 @@ The main configuration page shows all settings for the new database. At the top,
 
 ### 4.1 - Database Version
 
-Select the database engine version from the **Database Version** dropdown. The version determines the engine features, compatibility, and runtime behaviour of your cluster.
+Select the database engine version from the **Database Version** dropdown. The version determines engine features, compatibility, and runtime behaviour.
 
 ### 4.2 - Database Mode
 
@@ -151,7 +151,7 @@ Expand the **Advanced Configuration** panel (labelled *Configure Credentials, De
 
 ### 5.1 - Labels & Annotations
 
-Add custom Kubernetes labels and annotations to the database resources for organization, monitoring, and integration with other tools and services.
+Add custom Kubernetes labels and annotations to the database resources.
 
 ![Advanced Configuration panel showing Labels and Annotations sections each with Key-Value input rows and Add new buttons](../images/db-create/advance-lavel-annotation.png)
 

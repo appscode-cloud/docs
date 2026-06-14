@@ -19,7 +19,7 @@ This guide covers two workflows: using the **Instant Backup** interface to trigg
 
 ## 1. Getting Started
 
-To begin, select **Instant Backup** or **Restore** from the left sidebar under **Operations**.
+Select **Instant Backup** or **Restore** from the left sidebar under **Operations**.
 
 - **Instant Backup:** Use this to immediately trigger a backup using an existing backup configuration and session.
 - **Restore:** Use this to recover data from a specific backup snapshot.
@@ -28,7 +28,7 @@ To begin, select **Instant Backup** or **Restore** from the left sidebar under *
 
 ## 2. Instant Backup
 
-The **Instant Backup** form lets you trigger an on-demand backup right away by selecting an existing backup configuration and one or more backup sessions.
+The **Instant Backup** form triggers an on-demand backup by selecting an existing backup configuration and one or more backup sessions.
 
 ![Instant Backup form showing Backup Configuration and Backup Sessions fields](../images/instant-backup.png)
 
@@ -52,7 +52,7 @@ The **Instant Backup** form lets you trigger an on-demand backup right away by s
 
 ## 3. Configuring a Restore
 
-The **Restore Configuration** form allows you to define exactly which data you want to recover and where it should come from.
+The **Restore Configuration** form defines which data to recover and its source.
 
 ![Restore Configuration form with Repository and Snapshot fields](../images/restore-config.png)
 

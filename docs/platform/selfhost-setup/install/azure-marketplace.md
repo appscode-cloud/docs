@@ -5,7 +5,7 @@ menu:
     identifier: azure-marketplace
     name: Azure Marketplace
     parent: selfhosted-installer
-    weight: 10
+    weight: 7
 menu_name: docsplatform_{{.version}}
 section_menu_id: selfhost-setup
 ---
@@ -16,11 +16,7 @@ Welcome to the KubeDB Platform's **Azure Marketplace** deployment! This guide wi
 
 ### Prerequisites
 
-Before you begin, please ensure your Kubernetes cluster meets the following minimum system requirements:
-* **Worker Nodes**: At least one dedicated worker node.
-* **CPU**: 4–6 vCPUs.
-* **Memory**: 16 GB of RAM.
-* **Networking**: A routable IP address for external connectivity.
+See [Prerequisites](common-config.md#prerequisites) in the Common Configuration guide for the minimum cluster requirements and the optional k3s setup note.
 
 ## Getting Started
 
@@ -70,53 +66,17 @@ Put **Subscription ID**, **Tenant ID**, **Client ID** and **Client Secret** in t
 
 ### 4. Global Administrative Settings
 
-These credentials define the primary super-user and the initial organizational structure.
-
-* **System Admin:** In this section, provide the administrator's following information.
-  - **Admin Account Display Name:** The display name for the administrator account.
-  - **Admin Account Email:** The email address for the administrator account.
-  - **Admin Account Password:** The password for the administrator account.You may manually set a password or leave it blank to allow the system to **auto-generate** a secure administrative password.
-  - **Initial Organization Name:** You can choose what will be the initial organization name for your account
+See [Global Administrative Settings](common-config.md#global-administrative-settings) in the Common Configuration guide for the System Admin account fields (display name, email, password, and initial organization).
 
 For openshift cluster toggle Red Hat OpenShift cluster and give Kube API Server endpoint 
 
-<br/>
-<img width="50%" src="../images/admin-setting.png">
-
 ### 5. Registry
 
-KubeDB Platform requires access to various container registries and Helm repositories to pull necessary images and charts.
-
-**Docker Registry:** Go to the docker registry section first then look for the following settings
-* **Proxies:** Put registry name for Appscode `r.appscode.com` and other Public Registries like Docker Hub, GitHub Container Registry (`ghcr.io`), Kubernetes Registry, Microsoft (`mcr.microsoft.com`), and Quay.
-* **Helm Repositories:** In the helm repositories section put your helm repository url
-If using private or authenticated registries, provide:
-* **Credentials:** Username and Password.
-* **Certs:** Upload CA Cert, Client Cert, and Client Key if required for mutual TLS.
-* **Image Pull Secrets:** Define the secrets used by the cluster to authenticate with the registries. You can enable create namespace during helm install, allow nondistributable artifacts and insecure option for insecure registry
+See [Registry](common-config.md#registry) in the Common Configuration guide for Docker registry proxies, Helm repositories, credentials, certs, and image pull secrets.
 
 ### 6. Monitoring
 
-Use the **Monitoring** section to configure Alertmanager notifications for platform alerts for the site admin.
-
-* **Alert Manager Email:** Enable email notifications for Alertmanager alerts.
-  * **Enable Email:** Turns email notifications on or off.
-  * **To:** The recipient email address. For Gmail, you can also use plus addressing such as `user+alerts@example.com`.
-  * **From:** The sender email address shown in the message. For Gmail, use the same address as **Auth Username** unless you have configured a verified alias.
-  * **Smarthost:** The SMTP server address. For Gmail, use `smtp.gmail.com:587`.
-  * **Auth Username:** The SMTP login username. For Gmail, this should be the real Gmail or Google Workspace mailbox used to authenticate.
-  * **Password:** The SMTP password. For Gmail, use an App Password generated from `https://myaccount.google.com/apppasswords`.
-  * **Require TLS:** Enables TLS for the SMTP connection. Leave this enabled for Gmail.
-  * **Send Resolved:** Sends a follow-up notification when an alert returns to a healthy state.
-* **Alert Manager Webhook:** Send alerts to an endpoint that accepts Alertmanager's generic webhook payload.
-  * **Enable Webhook:** Turns webhook delivery on or off.
-  * **URL:** The destination webhook URL. Some systems embed the secret directly in the URL.
-  * **Send Resolved:** Sends a follow-up notification when an alert returns to a healthy state.
-
-<br/>
-<img width="50%" src="../images/monitoring-alertmanager.png">
-
-> **Tip:** For Google Chat, a supported workaround is to generate a space email address in Google Chat settings and use that address in the **To** field.
+See [Monitoring](common-config.md#monitoring) in the Common Configuration guide for Alertmanager email and webhook configuration.
 
 ### 7. Settings
 
@@ -133,17 +93,7 @@ In this section you can enable or disable features.  You can also create an init
 
 ### 9. Branding & UI Customization
 
-Administrators can globally re-brand the KubeDB Platform interface to match corporate identity.
-
-* **App Name:** Changes the browser tab title.
-* **Primary Color:** Enter a Hex code (default: `#009948`).
-* **Assets:**
-    * **Logo:** Upload a 200x30px image (SVG/PNG recommended).
-    * **Favicon:** Upload a 20KB icon file.
-* **App Tag:** Toggle **"Show App Tag"** to display or hide the version/tagging info in the UI.
-
-<br/>
-<img width="50%" src="../images/branding.png">
+See [Branding & UI Customization](common-config.md#branding--ui-customization) in the Common Configuration guide to re-brand the platform interface.
 
 ### 10. Generate Installer and Documentation
 

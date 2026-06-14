@@ -13,15 +13,13 @@ section_menu_id: guides
 
 # Scaling Storages
 
-This guide explains how to use the **Expand Volume** interface to increase the storage capacity of your database. Two approaches are available — a manual **Expand Volume** operation for an immediate one-time resize, and **Storage Autoscaling** which automatically expands storage based on usage thresholds.
+Increase the storage capacity of your database. Two approaches are available — a manual **Expand Volume** operation for an immediate one-time resize, and **Storage Autoscaling** which automatically expands storage based on usage thresholds.
 
 ---
 
 ## 1. Getting Started
 
-To begin, select **Scale Storage** from the **Operations** section in the left sidebar.
-
-You will land on the **Expand Volume** form, which contains two method cards at the top:
+Select **Scale Storage** from the **Operations** section in the left sidebar. The **Expand Volume** form contains two method cards at the top:
 
 - **Expand Volume** — Manually increase the database storage volume to a specified size.
 - **Storage Autoscaling** — Automatically scale storage capacity based on configurable usage thresholds.

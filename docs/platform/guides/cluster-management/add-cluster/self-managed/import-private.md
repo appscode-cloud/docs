@@ -13,26 +13,21 @@ section_menu_id: guides
 
 # Adding a Private Self-Managed Cluster to Platform Console
 
-Optimize your platform experience by seamlessly connecting your private or air-gapped self-managed Kubernetes cluster to the Platform Console. Follow these detailed steps for a smooth integration process:
+1. Go to the [Platform Console](https://console.appscode.com/) and click `Add Cluster`.
 
-1. Navigate to the [Platform Console](https://console.appscode.com/).
-2. Click on the `Add Cluster` button to initiate the integration.
+### Select Cluster Type
 
-### Cluster Type Selection - Private
-
-3. From the `Self Managed` section, choose the option for a private or air-gapped cluster.
+2. In the `Self Managed` section, choose the private/air-gapped cluster option.
 
 ### Provide Kubeconfig and Get Import Link
 
-4. Provide the kubeconfig for your private Kubernetes cluster. Click `Get Import Link` button and you will get two commands. Execute either of these commands in your Kubernetes cluster.
+3. Provide the kubeconfig for your cluster and click `Get Import Link`. Run either of the two returned commands inside your cluster.
 
-### Feature Customization
+### Customize Features
 
-5. After completion, the UI will automatically transition to the feature customization step, optimizing your cluster's capabilities within the platform.
+4. The UI then moves to the feature customization step.
 
 ### Explore
 
-6. Once imported, explore the cluster's details and capabilities within the Platform Console.
-
-By following these steps, you'll seamlessly integrate your private or air-gapped self-managed Kubernetes cluster, unlocking its full potential within the platform. Feel free to refer back to this tutorial for guidance.
+5. Once imported, explore the cluster in the Platform Console.
 

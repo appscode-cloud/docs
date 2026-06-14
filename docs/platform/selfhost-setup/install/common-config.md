@@ -2,54 +2,23 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: selfhost-openshift-demo
-    name: Open Shift Demo
+    identifier: selfhost-common-config
+    name: Common Configurations
     parent: selfhosted-installer
-    weight: 10
+    weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: selfhost-setup
 ---
 
-# Deploying KubeDB Platform: Open Shift Demo 
+# Common Configuration Sections
 
-Welcome to the KubeDB Platform's **Open Shift Demo** deployment! In this mode, you have the flexibility to customize various aspects of the deployment to meet the specific requirements of your production environment. 
+Several configuration sections of the installer wizard are identical across all
+Self-Hosted deployment modes. They are documented here once and referenced from
+each mode-specific guide. Use the links in those guides to jump to the relevant
+section below.
 
-### Prerequisites
+## Registry
 
-Before you begin, please ensure your Kubernetes cluster meets the following minimum system requirements:
-* **Worker Nodes**: At least one dedicated worker node.
-* **CPU**: 4–6 vCPUs.
-* **Memory**: 16 GB of RAM.
-* **Networking**: A routable IP address for external connectivity.
-
-### 1. Visit the KubeDB Platform Self-Hosted Page
-
-Navigate to [KubeDB Platform Self-Hosted](https://appscode.com/selfhost). Here you will find your previously generated self-hosted installers. <br>
-Click on the `Create New Installer` button to get started.
-
-### 2. Choose Deployment Mode And Environment
-
-Choose `Deployment Type` -> `Open Shift Demo` and give it a name in the installer name section.
-
-Before beginning the installation, identify your target infrastructure and cluster type.
-
-* **DNS & Connectivity:** 
-  * **Enable DNS:** Toggle this to allow the installer to manage or integrate with your DNS provider.
-  * **Target IP:** Provide the static IP addresses for your cluster nodes or load balancer.
-
-
-### 3. Global Administrative Settings
-These credentials define the primary super-user and the initial organizational structure.
-
-* **System Admin:** In this section, provide the administrator's following information.
-  - **Admin Account Display Name:** The display name for the administrator account.
-  - **Admin Account Email:** The email address for the administrator account.
-  - **Admin Account Password:** The password for the administrator account.You may manually set a password or leave it blank to allow the system to **auto-generate** a secure administrative password.
-  - **Initial Organization Name:** You can choose what will be the initial organization name for your account
-
-For openshift cluster toggle Red Hat OpenShift cluster and give Kube API Server endpoint 
-
-### 4. Registry
 KubeDB Platform requires access to various container registries and Helm repositories to pull necessary images and charts.
 
 **Docker Registry:** Go to the docker registry section first then look for the following settings
@@ -60,7 +29,7 @@ If using private or authenticated registries, provide:
 * **Certs:** Upload CA Cert, Client Cert, and Client Key if required for mutual TLS.
 * **Image Pull Secrets:** Define the secrets used by the cluster to authenticate with the registries. You can enable create namespace during helm install, allow nondistributable artifacts and insecure option for insecure registry
 
-### 5. Monitoring
+## Monitoring
 
 Use the **Monitoring** section to configure Alertmanager notifications for platform alerts for the site admin.
 
@@ -83,18 +52,8 @@ Use the **Monitoring** section to configure Alertmanager notifications for platf
 
 > **Tip:** For Google Chat, a supported workaround is to generate a space email address in Google Chat settings and use that address in the **To** field.
 
+## TLS
 
-### 6. Settings
-#### Domain White List and Proxy Servers
-
-* Add domain one by one for whitelisting
-* **Proxy Servers:** If you have proxy servers then put **HTTP Proxy**, **HTTPS Proxy** and **No Proxy**
-* Put Login and Logout URL for your app
-
-<br/>
-<img width="50%" src="../images/domain-whitelisting.png">
-
-### 7. TLS
 Configure TLS certificates for secure communication. You can choose the Issuer type from the following list.
   * **External**: Use this if you already have certificates from an external provider.
       * CA CERT: Paste the Certificate Authority certificate.
@@ -104,17 +63,8 @@ Configure TLS certificates for secure communication. You can choose the Issuer t
   * **CA:** Use this if you want AppsCode to manage your certificates with its internal CA.
       * CA CERT: Paste the internal CA certificate.
       * CA Key: Paste the internal CA key.
-  
-### 8. Ingress & Gateway
-Configure how the application is exposed to the internet or your internal network.
 
-* **Ingress & Gateway:** Enable either the **Gateway API** or standard **Ingress**. 
-
-<br/>
-<img width="50%" src="../images/ingress-gateway.png">
-
-
-### 9. NATS
+## NATS
 
 Configure NATS, which is used as the internal messaging system for the platform.
 
@@ -131,13 +81,8 @@ Configure NATS, which is used as the internal messaging system for the platform.
 <br/>
 <img width="50%" src="../images/nats.png">
 
-### 10. Self Management
-In this section you can enable or disable features
+## Branding & UI Customization
 
-<br/>
-<img width="50%" src="../images/features.png">
-
-### 11. Branding & UI Customization
 Administrators can globally re-brand the KubeDB Platform interface to match corporate identity.
 
 * **App Name:** Changes the browser tab title.
@@ -150,14 +95,73 @@ Administrators can globally re-brand the KubeDB Platform interface to match corp
 <br/>
 <img width="50%" src="../images/branding.png">
 
-### 12. Generate Installer and Documentation
 
-Click the "Deploy" button to submit your information. KubeDB Platform will generate the installer and provide the necessary documentation.
+## Prerequisites
 
-### 13. Deploy KubeDB Platform
+Before you begin, please ensure your Kubernetes cluster meets the following minimum system requirements:
+* **Worker Nodes**: At least one dedicated worker node.
+* **CPU**: 4–6 vCPUs.
+* **Memory**: 16 GB of RAM.
+* **Networking**: A routable IP address for external connectivity.
 
-Follow the documentation provided by KubeDB Platform to deploy the KubeDB Platform on your system.
+You will get an instruction to deploy a k3s cluster in Ubuntu VM, or you can skip this step if you already have a cluster.
 
-### 14. Explore the Deployed Platform
+## Global Administrative Settings
 
-Once deployed, access the **KubeDB Platform** using the specified domain. Log in with the admin account credentials provided during the creation process.
+These credentials define the primary super-user and the initial organizational structure.
+
+* **System Admin:** In this section, provide the administrator's following information.
+  - **Admin Account Display Name:** The display name for the administrator account.
+  - **Admin Account Email:** The email address for the administrator account.
+  - **Admin Account Password:** The password for the administrator account. You may manually set a password or leave it blank to allow the system to **auto-generate** a secure administrative password.
+  - **Initial Organization Name:** You can choose what will be the initial organization name for your account
+
+<br/>
+<img width="50%" src="../images/admin-setting.png">
+
+## Additional configuration for EKS cluster
+
+**Prerequisite:**
+* EBS CSI Driver must be installed
+* AWS Load Balancer Controller must be installed
+
+Run the following command to get the Kube API Server and put it in the API server field:
+
+```
+aws eks describe-cluster --name <cluster-name> --region <region> --query "cluster.endpoint" --output text
+```
+
+Run the following command to get the Subnet IDs and add them:
+
+```
+aws ec2 describe-subnets --filters "Name=vpc-id,Values=$(aws eks describe-cluster --name <cluster-name> --region <region> --query "cluster.resourcesVpcConfig.vpcId" --output text)" "Name=map-public-ip-on-launch,Values=true" --region <region> --query "Subnets[*].SubnetId" --output text
+```
+
+**Subnet IDs:** Make sure you have added the allocation id of Target IP as well. Run the following command to create EIP Allocation IDs `aws ec2 allocate-address --region <region>`
+
+**EIP Allocation IDs:** Give EIP allocation IDs for your public subnets.
+
+## Domain White List and Proxy Servers
+
+* Add domain one by one for whitelisting
+* **Proxy Servers:** If you have proxy servers then put **HTTP Proxy**, **HTTPS Proxy** and **No Proxy**
+* Put Login and Logout URL for your app
+
+<br/>
+<img width="50%" src="../images/domain-whitelisting.png">
+
+## Ingress & Gateway
+
+Configure how the application is exposed to the internet or your internal network.
+
+* **Ingress & Gateway:** Enable either the **Gateway API** or standard **Ingress**.
+
+<br/>
+<img width="50%" src="../images/ingress-gateway.png">
+
+## Self Management
+
+In this section you can enable or disable features.
+
+<br/>
+<img width="50%" src="../images/features.png">

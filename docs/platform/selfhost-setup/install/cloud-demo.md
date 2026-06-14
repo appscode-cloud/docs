@@ -5,7 +5,7 @@ menu:
     identifier: selfhost-cloud-demo-deployment
     name: Cloud Demo Deployment
     parent: selfhosted-installer
-    weight: 10
+    weight: 2
 menu_name: docsplatform_{{.version}}
 section_menu_id: selfhost-setup
 ---
@@ -16,15 +16,7 @@ Welcome to the KubeDB Platform's "Cloud Demo" deployment! Follow these steps to 
 
 ### Prerequisites
 
-Before you begin, please ensure your Kubernetes cluster meets the following minimum system requirements:
-* Worker Nodes: At least one dedicated worker node.
-* CPU: 4–6 vCPUs.
-* Memory: 16 GB of RAM.
-* Networking: A routable IP address for external connectivity.
-
-
-
-You will get an instruction to deploy a k3s cluster in Ubuntu VM or you can skip this step if you already have a cluster. 
+See [Prerequisites](common-config.md#prerequisites) in the Common Configuration guide for the minimum cluster requirements and the optional k3s setup note. 
 
 ### 1. Visit the KubeDB Platform Self-Hosted Page
 
@@ -42,112 +34,38 @@ Before beginning the installation, identify your target infrastructure and clust
   * **Target IP:** Provide the static IP addresses for your cluster nodes or load balancer.
 * **Cluster Type:** Determine if you are installing on **AWS EKS Cluster** or **Red Hat OpenShift Cluster**.
 
+> For Red Hat OpenShift clusters, see the [Deploying KubeDB Platform in OpenShift Cluster](openshift-cluster.md) guide.
+
 #### Additional configuration for EKS cluster
 
-**Prerequisite:** <br/>
-* EBS CSI Driver must be installed
-* AWS Load Balancer Controller must be installed
-
-Run the following command to get Kube API Server
-
-```
-aws eks describe-cluster --name <cluster-name> --region <region> --query "cluster.endpoint" --output text
-```
-
-**Run the following command to get Subnet IDs**
-```
-aws ec2 describe-subnets --filters "Name=vpc-id,Values=$(aws eks describe-cluster --name <cluster-name> --region <region> --query "cluster.resourcesVpcConfig.vpcId" --output text)" "Name=map-public-ip-on-launch,Values=true" --region <region> --query "Subnets[*].SubnetId" --output text
-```
-
-**Subnet IDs:** Make sure you have added the allocation id of Target IP as well. Run the following command to create EIP Allocation IDs `aws ec2 allocate-address --region <region>`
-
-**EIP Allocation IDs:** Give EIP allocation IDs for your public subnets. 
+See [Additional configuration for EKS cluster](common-config.md#additional-configuration-for-eks-cluster) in the Common Configuration guide for the EBS CSI / AWS Load Balancer Controller prerequisites and the commands to fetch the Kube API server endpoint, subnet IDs, and EIP allocation IDs.
 
 ### 3. Global Administrative Settings
-These credentials define the primary super-user and the initial organizational structure.
-
-* **System Admin:** In this section, provide the administrator's following information.
-  - **Admin Account Display Name:** The display name for the administrator account.
-  - **Admin Account Email:** The email address for the administrator account.
-  - **Admin Account Password:** The password for the administrator account. You may manually set a password or leave it blank to allow the system to **auto-generate** a secure administrative password.
-  - **Initial Organization Name:** You can choose what will be the initial organization name for your account
-
-<br/>
-<img width="50%" src="../images/admin-setting.png">
+See [Global Administrative Settings](common-config.md#global-administrative-settings) in the Common Configuration guide for the System Admin account fields (display name, email, password, and initial organization).
 
 ### 4. Registry
-KubeDB Platform requires access to various container registries and Helm repositories to pull necessary images and charts.
-
-**Docker Registry:** Go to the docker registry section first then look for the following settings
-* **Proxies:** Put registry name for Appscode `r.appscode.com` and other Public Registries like Docker Hub, GitHub Container Registry (`ghcr.io`), Kubernetes Registry, Microsoft (`mcr.microsoft.com`), and Quay.
-* **Helm Repositories:** In the helm repositories section put your helm repository url
-If using private or authenticated registries, provide:
-* **Credentials:** Username and Password.
-* **Certs:** Upload CA Cert, Client Cert, and Client Key if required for mutual TLS.
-* **Image Pull Secrets:** Define the secrets used by the cluster to authenticate with the registries. You can enable create namespace during helm install, allow nondistributable artifacts and insecure option for insecure registry
+See [Registry](common-config.md#registry) in the Common Configuration guide for Docker registry proxies, Helm repositories, credentials, certs, and image pull secrets.
 
 ### 5. Monitoring
 
-Use the **Monitoring** section to configure Alertmanager notifications for platform alerts for the site admin.
-
-* **Alert Manager Email:** Enable email notifications for Alertmanager alerts.
-  * **Enable Email:** Turns email notifications on or off.
-  * **To:** The recipient email address. For Gmail, you can also use plus addressing such as `user+alerts@example.com`.
-  * **From:** The sender email address shown in the message. For Gmail, use the same address as **Auth Username** unless you have configured a verified alias.
-  * **Smarthost:** The SMTP server address. For Gmail, use `smtp.gmail.com:587`.
-  * **Auth Username:** The SMTP login username. For Gmail, this should be the real Gmail or Google Workspace mailbox used to authenticate.
-  * **Password:** The SMTP password. For Gmail, use an App Password generated from `https://myaccount.google.com/apppasswords`.
-  * **Require TLS:** Enables TLS for the SMTP connection. Leave this enabled for Gmail.
-  * **Send Resolved:** Sends a follow-up notification when an alert returns to a healthy state.
-* **Alert Manager Webhook:** Send alerts to an endpoint that accepts Alertmanager's generic webhook payload.
-  * **Enable Webhook:** Turns webhook delivery on or off.
-  * **URL:** The destination webhook URL. Some systems embed the secret directly in the URL.
-  * **Send Resolved:** Sends a follow-up notification when an alert returns to a healthy state.
-
-<br/>
-<img width="50%" src="../images/monitoring-alertmanager.png">
-
-> **Tip:** For Google Chat, a supported workaround is to generate a space email address in Google Chat settings and use that address in the **To** field.
+See [Monitoring](common-config.md#monitoring) in the Common Configuration guide for Alertmanager email and webhook configuration.
 
 
 ### 6. Settings
 
 #### Domain White List and Proxy Servers
 
-* Add domain one by one for whitelisting
-* **Proxy Servers:** If you have proxy servers then put **HTTP Proxy**, **HTTPS Proxy** and **No Proxy**
-* Put Login and Logout URL for your app
-
-<br/>
-<img width="50%" src="../images/domain-whitelisting.png">
+See [Domain White List and Proxy Servers](common-config.md#domain-white-list-and-proxy-servers) in the Common Configuration guide for whitelisting domains, proxy servers, and login/logout URLs.
 
 ### 7. Ingress & Gateway
 
-Configure how the application is exposed to the internet or your internal network.
-
-* **Ingress & Gateway:** Enable either the **Gateway API** or standard **Ingress**. 
-
-<br/>
-<img width="50%" src="../images/ingress-gateway.png">
+See [Ingress & Gateway](common-config.md#ingress--gateway) in the Common Configuration guide for exposing the platform via the Gateway API or standard Ingress.
 
 ### 8. Self Management
-In this section you can enable or disable features
-
-<br/>
-<img width="50%" src="../images/features.png">
+See [Self Management](common-config.md#self-management) in the Common Configuration guide to enable or disable platform features.
 
 ### 9. Branding & UI Customization
-Administrators can globally re-brand the KubeDB Platform interface to match corporate identity.
-
-* **App Name:** Changes the browser tab title.
-* **Primary Color:** Enter a Hex code (default: `#009948`).
-* **Assets:**
-    * **Logo:** Upload a 200x30px image (SVG/PNG recommended).
-    * **Favicon:** Upload a 20KB icon file.
-* **App Tag:** Toggle **"Show App Tag"** to display or hide the version/tagging info in the UI.
-
-<br/>
-<img width="50%" src="../images/branding.png">
+See [Branding & UI Customization](common-config.md#branding--ui-customization) in the Common Configuration guide to re-brand the platform interface.
 
 ### 10. Generate Installer and Documentation
 

@@ -13,7 +13,7 @@ section_menu_id: guides
 
 # Snapshot
 
-This guide explains how to view and manage **Snapshot** resources using the platform console. A Snapshot represents a point-in-time backup of a database stored in a backup repository, capturing the complete state of the database at the moment of creation.
+A **Snapshot** is a point-in-time backup of a database stored in a backup repository. This guide explains how to view and manage Snapshot resources using the platform console.
 
 ---
 
@@ -47,11 +47,11 @@ The list page displays all Snapshot resources in your cluster. Use the **Select 
 
 ## 3. Viewing a Snapshot
 
-Click on any Snapshot name in the list to open its detail page. The detail page shows snapshot metadata, verification status, and the repository it belongs to.
+Click on any Snapshot name in the list to open its detail page.
 
 ### 3.1 - Overview
 
-The detail page shows comprehensive snapshot information:
+The detail page shows snapshot metadata, verification status, and the repository it belongs to:
 
 ![Snapshot detail page showing Basic info, Repository reference, and Invoker information](../images/backup/snapshot-operation-view.png)
 
@@ -92,7 +92,7 @@ The detail page shows comprehensive snapshot information:
 
 ## 4. Deleting a Snapshot
 
-To delete a snapshot, click on the snapshot name to open its detail page, then locate the delete action. The delete operation confirms your intention to remove the snapshot from the repository.
+To delete a snapshot, click on the snapshot name to open its detail page, then locate the delete action.
 
 ### 4.1 - Delete Confirmation
 

@@ -13,15 +13,13 @@ section_menu_id: guides
 
 # Scaling Databases
 
-This guide explains how to use the **Scale Vertically** interface to adjust the computational resources and replica count of your database. Three scaling approaches are available — **Vertical Scaling** for manual CPU and memory adjustments, **Compute Autoscaling** for policy-driven automatic resource management, and **Horizontal Scaling** for changing the number of database replicas.
+Adjust the computational resources and replica count of your database. Three scaling approaches are available — **Vertical Scaling** for manual CPU and memory adjustments, **Compute Autoscaling** for policy-driven automatic resource management, and **Horizontal Scaling** for changing the number of database replicas.
 
 ---
 
 ## 1. Getting Started
 
-To begin, select **Scale Vertically** from the **Operations** section in the left sidebar.
-
-You will land on the scaling form, which shows two method cards at the top:
+Select **Scale Vertically** from the **Operations** section in the left sidebar. The scaling form shows two method cards at the top:
 
 - **Vertical Scaling** — Manually adjust CPU and memory allocated to your database nodes.
 - **Compute Autoscaling** — Automatically scale CPU and memory in response to workload demands using predefined policies.

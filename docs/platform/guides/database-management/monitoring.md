@@ -13,15 +13,13 @@ section_menu_id: guides
 
 # Configure Monitoring
 
-This guide explains how to use the **Monitoring** interface to enable and configure Prometheus-based monitoring for your database. You can choose from three monitoring methods and optionally customize the metrics exporter sidecar that is injected alongside your database.
+This guide explains how to use the **Monitoring** interface to enable and configure Prometheus-based monitoring for your database. You can choose from three monitoring methods and optionally customize the metrics exporter sidecar injected alongside your database.
 
 ---
 
 ## 1. Getting Started
 
-To begin, select **Monitoring** from the left sidebar.
-
-You will land on the **Monitoring** form, which is divided into the following sections:
+Select **Monitoring** from the left sidebar. The **Monitoring** form is divided into the following sections:
 
 - **Enable Monitoring** — Master toggle to turn monitoring on or off.
 - **Select a Monitoring Method** — Choose how Prometheus scrapes your database metrics.

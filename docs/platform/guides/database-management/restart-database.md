@@ -13,15 +13,13 @@ section_menu_id: guides
 
 # Database Restarts
 
-This guide explains how to use the **Restart** interface to perform a rolling restart of your database. The operation is managed through a `MongoDBOpsRequest`, which ensures the restart is carried out safely and tracked in your cluster.
+The **Restart** interface performs a rolling restart of your database. The operation is managed through a `MongoDBOpsRequest`, which carries out the restart safely and tracks it in your cluster.
 
 ---
 
 ## 1. Getting Started
 
-To begin, select **Restart** from the **Operations** section in the left sidebar.
-
-You will land on the **Restart** form, which contains one main section:
+Select **Restart** from the **Operations** section in the left sidebar. The **Restart** form contains one main section:
 
 - **OpsRequest Options** — Configure how the restart operation is executed, including timeout and apply policy.
 
@@ -48,7 +46,7 @@ Expand the **OpsRequest Options** panel to configure the restart operation.
 
 ## 3. Review and Submit
 
-The Preview page displays the full `MongoDBOpsRequest` manifest that will be applied to your cluster. Review it carefully to confirm all settings are correct.
+The Preview page displays the full `MongoDBOpsRequest` manifest that will be applied to your cluster.
 
 ![Preview page showing the generated MongoDBOpsRequest YAML manifest for Restart](../images/restart-submit.png)
 

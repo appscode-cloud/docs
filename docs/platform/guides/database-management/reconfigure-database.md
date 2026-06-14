@@ -13,15 +13,13 @@ section_menu_id: guides
 
 # Reconfigure Databases
 
-This guide explains how to use the **Reconfigure** interface to update your database configuration. You can select a new configuration secret, apply a custom configuration directly, or remove an existing configuration — all through a `MongoDBOpsRequest` that is safely tracked in your cluster.
+The **Reconfigure** interface updates your database configuration. You can select a new configuration secret, apply a custom configuration directly, or remove an existing configuration — all through a `MongoDBOpsRequest` that is tracked in your cluster.
 
 ---
 
 ## 1. Getting Started
 
-To begin, select **Reconfigure** from the **Operations** section in the left sidebar.
-
-You will land on the **Reconfigure** form, which provides three operation modes via tabs:
+Select **Reconfigure** from the **Operations** section in the left sidebar. The **Reconfigure** form provides three operation modes via tabs:
 
 - **New Config Secret** — Select an existing Kubernetes secret or create a new one to use as your database configuration.
 - **Apply Config** — Define custom configuration key-value pairs inline, without needing a pre-existing secret.
@@ -33,7 +31,7 @@ You will land on the **Reconfigure** form, which provides three operation modes 
 
 ## 2. New Config Secret
 
-The **New Config Secret** tab lets you attach a Kubernetes secret containing your database configuration. Use this when you already have a configuration secret in your cluster or want to create one from scratch.
+The **New Config Secret** tab attaches a Kubernetes secret containing your database configuration. Use this when you already have a configuration secret in your cluster or want to create one from scratch.
 
 ![New Config Secret tab showing the Config Secret dropdown and YAML preview panel](../images/reconfigure-new-secret.png)
 
@@ -62,7 +60,7 @@ If you choose **+ Create a new Secret**, a form will expand below the dropdown:
 
 ## 3. Apply Config
 
-The **Apply Config** tab lets you define custom database configuration parameters directly as key-value pairs, without needing a pre-existing secret. These parameters will overwrite the current settings.
+The **Apply Config** tab defines custom database configuration parameters directly as key-value pairs, without needing a pre-existing secret. These parameters will overwrite the current settings.
 
 ![Apply Config tab showing the Configuration dropdown and YAML preview panel](../images/reconfigure-apply.png)
 
@@ -76,7 +74,7 @@ The **Apply Config** tab lets you define custom database configuration parameter
 
 ## 4. Remove
 
-The **Remove** tab lets you detach and remove an existing configuration secret from your database, reverting it to its default settings.
+The **Remove** tab detaches an existing configuration secret from your database, reverting it to its default settings.
 
 ![Remove tab showing the Configuration dropdown for selecting the secret to remove](../images/reconfigure-remove.png)
 

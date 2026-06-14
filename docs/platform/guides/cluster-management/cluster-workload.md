@@ -13,7 +13,7 @@ section_menu_id: guides
 
 # Kubernetes Workload Management
 
-The Kubernetes Workload Management section in the Platform Console offers robust capabilities for managing Kubernetes resources. Follow these steps to leverage this functionality:
+The Kubernetes Workload Management section in the Platform Console manages Kubernetes resources.
 
 1. Navigate to the [Platform Console](https://console.appscode.com).
 2. Click on your imported cluster to access the Cluster Overview page.
@@ -94,8 +94,6 @@ Select any resource from the left sidebar to list the resources. From there, you
 - Graph of Connected Resources
 - Resource Manifest
 
-The `Datastore` section is dedicated to KubeDB, an AppsCode product, providing management capabilities for various types of databases. You can create new databases, explore overviews, components, connected resources, and manifests for each database.
+The `Datastore` section is dedicated to KubeDB, an AppsCode product, for managing various types of databases. You can create new databases, explore overviews, components, connected resources, and manifests for each database.
 
 You can also create new resources directly from any resource list page by clicking the `➕ Create` button, filling out the form, and submitting to create the resource.
-
-Explore the power of Kubernetes workload management in the Platform Console for a seamless and efficient experience.

@@ -13,33 +13,22 @@ section_menu_id: guides
 
 # Adding a Vendor-Managed Cluster to Platform Console
 
-Enhance your platform experience by seamlessly connecting your vendor-managed Kubernetes cluster to the [Platform Console](https://console.appscode.com/). Follow these step-by-step instructions:
-
-1. Visit [Platform Console](https://console.appscode.com/).
-2. Click on the `Add Cluster` button.
+1. Go to the [Platform Console](https://console.appscode.com/) and click `Add Cluster`.
 
 ### Choose Provider
 
-3. From the `Vendor Managed` section, select the provider hosting your Kubernetes cluster.
+2. In the `Vendor Managed` section, select the provider hosting your cluster.
 
 ### Select Credential
 
-4. Choose a credential with the necessary permissions for accessing and importing the cluster. If you don't have a credential, create one by clicking the `+Create Credential` button [here](../../account-management/kubernetes/credentials.html).
-5. Select the created credential and click `Next`.
+3. Choose a credential with permission to access and import the cluster, then click `Next`. To create one, use the `+Create Credential` button (see [Credentials](../../account-management/kubernetes/credentials.html)).
 
 ### Select Cluster
 
-6. This step varies based on your provider:
-   - For `Linode` or `Digital Ocean`, directly select the cluster.
-   - For `AKS`, `EKS`, and `GKE`:
-      - Choose the appropriate `Resource Group`, `Region`, or `Project` where the cluster resides.
-      - Select the specific cluster for import.
+4. Selection depends on the provider:
+   - `Linode` / `Digital Ocean`: select the cluster directly.
+   - `AKS` / `EKS` / `GKE`: choose the `Resource Group`, `Region`, or `Project`, then select the cluster.
 
-### Customize Feature and Import
+### Customize Features and Import
 
-7. Complete the process by clicking `Import` to bring the selected cluster into the Platform Console.
-
-### Explore
-8. Once imported, explore the cluster's details and capabilities within the dashboard.
-
-By following these steps, you'll seamlessly integrate your vendor-managed Kubernetes cluster, unlocking its full potential within the platform. Feel free to refer back to this tutorial for guidance.
+5. Click `Import` to bring the cluster into the Platform Console, then explore it in the dashboard.
