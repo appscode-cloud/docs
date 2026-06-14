@@ -108,6 +108,16 @@ Once deployed, access the **KubeDB Platform** using the configured IP (IP mode) 
 <br/>
 <img width="50%" src="../images/ace-dashboard.png">
 
+## Notes
+
+- The Prometheus node-exporter DaemonSet will not run on an OpenShift cluster unless it runs in privileged mode. Since this is not our chart, you need to grant the required permission yourself:
+
+  ```bash
+  oc adm policy add-scc-to-user privileged -z kube-prometheus-stack-prometheus-node-exporter -n monitoring
+  ```
+
+- We also run the cert-manager `csi-driver-cacerts` feature in privileged mode so that it can add CA certificates to the OS trusted certificate store. You don't need to do anything manually for this — it is handled automatically at the chart level.
+
 ## Get Support
 
 If you encounter any challenges during the deployment or have questions, reach out to AppsCode support for assistance.
