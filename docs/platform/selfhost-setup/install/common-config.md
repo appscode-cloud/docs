@@ -48,6 +48,7 @@ Use the **Monitoring** section to configure Alertmanager notifications for platf
   * **Send Resolved:** Sends a follow-up notification when an alert returns to a healthy state.
 
 <br/>
+
 ![Monitoring Alertmanager](../../images/monitoring-alertmanager.png)
 
 > **Tip:** For Google Chat, a supported workaround is to generate a space email address in Google Chat settings and use that address in the **To** field.
@@ -79,6 +80,7 @@ Configure NATS, which is used as the internal messaging system for the platform.
 **Resources:** Configure CPU Requests, CPU Limits, Memory Request and  Memory Limit
 
 <br/>
+
 ![Nats](../../images/nats.png)
 
 ## Branding & UI Customization
@@ -93,6 +95,7 @@ Administrators can globally re-brand the KubeDB Platform interface to match corp
 * **App Tag:** Toggle **"Show App Tag"** to display or hide the version/tagging info in the UI.
 
 <br/>
+
 ![Branding](../../images/branding.png)
 
 
@@ -117,6 +120,7 @@ These credentials define the primary super-user and the initial organizational s
   - **Initial Organization Name:** You can choose what will be the initial organization name for your account
 
 <br/>
+
 ![Admin Setting](../../images/admin-setting.png)
 
 ## Additional configuration for EKS cluster
@@ -148,6 +152,7 @@ aws ec2 describe-subnets --filters "Name=vpc-id,Values=$(aws eks describe-cluste
 * Put Login and Logout URL for your app
 
 <br/>
+
 ![Domain Whitelisting](../../images/domain-whitelisting.png)
 
 ## Ingress & Gateway
@@ -157,6 +162,7 @@ Configure how the application is exposed to the internet or your internal networ
 * **Ingress & Gateway:** Enable either the **Gateway API** or standard **Ingress**.
 
 <br/>
+
 ![Ingress Gateway](../../images/ingress-gateway.png)
 
 ## Self Management
@@ -164,4 +170,5 @@ Configure how the application is exposed to the internet or your internal networ
 In this section you can enable or disable features.
 
 <br/>
+
 ![Features](../../images/features.png)

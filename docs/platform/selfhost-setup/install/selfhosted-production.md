@@ -50,6 +50,7 @@ Before beginning the installation, identify your target infrastructure and clust
 * **Cluster Type:** Determine if you are installing on **AWS EKS Cluster** or **Red Hat OpenShift Cluster**. For openshift cluster toggle Red Hat OpenShift cluster and give Kube API Server endpoint. See the [Deploying KubeDB Platform in OpenShift Cluster](openshift-cluster.md) guide.
 * **Credential-Less Mode:** Enable this if you are using IAM roles for service accounts (IRSA) to avoid manual secret management.
 <br/>
+
 ![Selfhost Deployment Option](../../images/selfhost-deployment-option.png)
 
 ### Additional configuration for EKS cluster
@@ -248,4 +249,5 @@ Follow the documentation provided by AppsCode to deploy the KubeDB Platform on y
 Once deployed, access the **KubeDB Platform** using the specified domain. Log in with the admin account credentials provided during the creation process.After the login process you will see the **KubeDB Platform dashboard** user interface
 
 <br/>
+
 ![Ace Dashboard](../../images/ace-dashboard.png)

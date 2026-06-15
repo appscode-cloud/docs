@@ -85,6 +85,7 @@ See [Monitoring](common-config.md#monitoring) in the Common Configuration guide 
 * Put Login and Logout URL 
 
 <br/>
+
 ![Domain Whitelisting](../../images/domain-whitelisting.png)
 
 ### 8. Self Management
@@ -105,18 +106,21 @@ Click the "Deploy" button to submit your information. KubeDB Platform will gener
 Go to Azure Marketplace and select AppsCode Cloud w/ Usage Billing application. [AppsCode Cloud w/ Usage Billing from Marketplace](https://portal.azure.com/#create/appscode.ace_paygace-payg)
 
 <br/>
+
 ![Azure Step 1](../../images/azureStep1.png)
 
 #### Step 2: Basic Information
 Provide basic information for the Azure application. Put your resource group and application name. 
 
 <br/>
+
 ![Azure Step 2](../../images/azureStep2.png)
 
 #### Step 3: Select VM
 Select a virtual machine for the Installer with at least 4 core CPU and 16GB of RAM.
 
 <br/>
+
 ![Azure Step 3](../../images/azureStep3.png)
 
 #### Step 4: Authentication Type
@@ -124,12 +128,14 @@ By default Username user will be created to your Installer VM.
 You can use one of the Password or SSH Key Pair to authenticate into the VM.
 
 <br/>
+
 ![Azure Step 4](../../images/azureStep4.png)
 
 #### Step 5: Installer Information
 Provide the URL link you found from the instruction in the Installer Url field
 
 <br/>
+
 ![Azure Step 5](../../images/azureStep5.png)
 
 You can monitor the deployment progress through the **Managed Resource Group's** overview page and the **Activity Log**. Once the deployment is complete, the necessary resources will be provisioned within that managed resource group.
