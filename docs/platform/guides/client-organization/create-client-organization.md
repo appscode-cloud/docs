@@ -89,6 +89,21 @@ Click **Next** to continue.
 
 ## Step 4: Telemetry Configuration
 
-In the final step, review the telemetry configuration that will be applied to the organization's `orgName-monitoring` namespace, then finish to create the client organization.
+In the final step, configure the telemetry settings that will be applied to the organization's `orgName-monitoring` namespace, then finish to create the client organization.
+
+![Create Client Organization wizard — Step 4, Telemetry Configuration with monitoring type, log retention, and metrics retention periods](./images/telemetry-configuration.png)
+
+- **Select Monitoring Type** — choose the monitoring stack to provision for the organization.
+- **Logs** — set the **Retention Period** for collected logs.
+- **Metrics** — set the retention periods for collected metrics:
+  - **Yearly Retention** — how long aggregated yearly metrics are kept.
+  - **Five Minute Retention** — how long five-minute resolution metrics are kept.
+  - **One Hour Retention** — how long one-hour resolution metrics are kept.
+
+Click **Submit** to create the client organization, or **Previous** to go back.
 
 Once created, the organization appears in the **Client Organizations** list and its admin can sign in to begin using it.
+
+## Next steps
+
+- [Add a Cluster to an Existing Client Organization](./add-cluster-to-existing-client-organization.md) — assign additional clusters after the organization is created.
