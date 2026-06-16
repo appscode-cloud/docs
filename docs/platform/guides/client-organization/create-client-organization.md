@@ -25,7 +25,7 @@ The wizard has four steps, shown on the right side of the form:
 
 Enter the organization details and choose its administrator.
 
-![Create Client Organization wizard — Step 1, User Information form with organization name, custom annotations, organization admin, and visibility](../images/create-client-organization.png)
+![Create Client Organization wizard — Step 1, User Information form with organization name, custom annotations, organization admin, and visibility](./images/create-client-organization.png)
 
 - **Organization Name** *(required)* — used to provision the three namespaces (`orgName`, `orgName-gw`, and `orgName-monitoring`).
 - **Organization Display Name** — a friendly name shown in the UI.
