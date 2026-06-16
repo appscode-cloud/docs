@@ -12,37 +12,19 @@ section_menu_id: guides
 
 # Kubernetes Workload Management
 
-The **Workloads** view in the Cluster UI is where you browse and manage every Kubernetes resource running inside a connected cluster — Deployments, Pods, Helm releases, databases, storage, and more — all from one screen.
+The **Workloads** group in the Cluster UI sidebar is where you browse and manage everything that runs application containers — Deployments, Pods, Jobs, and the other standard Kubernetes workload types.
+
+## Open the Workloads Section
 
 1. Navigate to the [Platform Console](https://console.appscode.com).
-2. Click on your imported cluster to open its **Cluster Overview** page.
+2. Click on your imported cluster to open its Cluster Overview page.
+3. In the left sidebar, click **Workloads** to expand it.
 
 ---
 
-## Cluster Overview Page
+## Workload Resource Types
 
-The Cluster Overview page is the landing page for a cluster. It shows the cluster's basic info, its installed Feature Sets, and the node list. See [Cluster Overview](cluster-overview.md) for a full walkthrough.
-
-> The left sidebar described below is available on every page inside a cluster, not just Overview.
-
----
-
-## Left Sidebar Navigation
-
-The left sidebar is how you reach every resource type in the cluster. It is grouped by category — **Kubernetes**, **Workloads**, **Helm**, **Datastore**, **KubeDB Ops**, **KubeStash Core**, **KubeStash Storage**, **Service & Discovery**, **Config**, **Storage**, **Monitoring**, **Security**, and **Admin**.
-
-> The exact groups and items you see depend on which Feature Sets are installed on the cluster. A cluster with fewer Feature Sets enabled shows fewer groups; enabling more (e.g. Databases, Backup & Recovery) adds their groups automatically. You can also customize the sidebar yourself — see [Customize the Cluster Sidebar](cluster-sidebar.md).
-
-Click any group to expand it, then click an item to open its resource list page.
-
-### Kubernetes
-
-- **Overview** — the Cluster Overview page.
-- **Nodes** — the cluster's node list. Covered in [Cluster Overview](cluster-overview.md).
-
-### Workloads
-
-The core resources for running and managing applications:
+The Workloads group lists every standard Kubernetes workload kind:
 
 - Deployments
 - Replica Sets
@@ -61,88 +43,13 @@ Every list page follows the same layout: a 🔍 search box, an **All Namespaces*
 
 ![Pods list page showing Ready, Status, Restarts, and IP columns](images/cluster-workload/pods-list.png)
 
-Click any row to open that resource's detail page — see [Resource Management](#resource-management) below.
-
-### Helm
-
-- **Releases** — installed Helm releases, with Namespace, Status, Version, and Age. Use **+ Install Chart** to deploy a new one.
-- **HelmRelease** — Helm-operator/GitOps style release objects, with a Ready status column.
-- **HelmChart** — chart source-tracking objects, showing Source Kind, Source Name, and Status.
-
-![Helm Releases list page showing installed releases with status and version](images/cluster-workload/helm-releases-list.png)
-
-### Datastore
-
-The Datastore group lists every database engine managed by KubeDB — Cassandra, ClickHouse, Druid, Elasticsearch, FerretDB, Hazelcast, Ignite, Kafka, MSSQLServer, MariaDB, Memcached, MongoDB, MySQL, Oracle, PerconaXtraDB, PgBouncer, Pgpool, and more further down the list.
-
-Selecting an engine lists the deployed instances of that database, including its version, mode, replica count, phase, and total resources.
-
-![Datastore group expanded in the sidebar, showing the PgBouncer instance list](images/cluster-workload/datastore-pgbouncer-list.png)
-
-### KubeDB Ops
-
-KubeDB Ops lists one **OpsRequest** type per database engine (e.g. MongoDBOpsRequest, MySQLOpsRequest, IgniteOpsRequest). An OpsRequest is how day-2 operations — version updates, restarts, scaling — are applied to an existing database instance. Each list shows the request's Type and Status (e.g. `UpdateVersion` / `Successful`).
-
-![KubeDB Ops group expanded, showing the IgniteOpsRequest list with Type and Status](images/cluster-workload/kubedb-ops-list.png)
-
-### KubeStash Core & KubeStash Storage
-
-These two groups cover backup and restore management:
-
-- **KubeStash Core** — backup and restore configuration resources.
-- **KubeStash Storage** — where backups are kept: **BackupStorage**, **Repository**, **RetentionPolicy**, and **Snapshot**.
-
-The BackupStorage list shows the storage Provider (e.g. `s3`), total Size, number of connected Repositories, and Status.
-
-![KubeStash Storage group expanded, showing the BackupStorage list](images/cluster-workload/kubestash-backupstorage-list.png)
-
-### Service & Discovery
-
-- **Services** — ClusterIP/Type, Cluster-IP, Ports, and Selector for each service.
-- **Ingresses** — ingress rules for the cluster.
-- **Network Policies** — traffic rules such as `allow-egress` or `allow-webhooks`.
-
-![Services list page showing service type, cluster-IP, and ports](images/cluster-workload/services-list.png)
-
-### Config
-
-- **Config Maps** — application configuration data, with a Data column showing key count.
-- **Secrets** — credentials and certificates, with a Type column (e.g. `kubernetes.io/tls`, `Opaque`).
-
-![Config Maps list page showing configuration objects across namespaces](images/cluster-workload/config-maps-list.png)
-
-### Storage
-
-- **Persistent Volume Claims** — claimed storage per workload, with Capacity, Access Modes, and Storage Class.
-- **Persistent Volumes** — the underlying volumes, with Reclaim Policy and Status (`Bound`).
-- **Storage Classes** — available provisioners (e.g. `local-path`).
-
-![Persistent Volume Claims list page showing capacity, access modes, and storage class](images/cluster-workload/persistent-volume-claims-list.png)
-
-### Monitoring
-
-Observability resources tied to Prometheus and Alertmanager: **Alertmanager**, **AlertmanagerConfig**, **PodMonitor**, **Probe**, **Prometheus**, **PrometheusAgent**, **PrometheusRule**, **ScrapeConfig**, **ServiceMonitor**, and **ThanosRuler**.
-
-![Monitoring group expanded, showing the Alertmanager list](images/cluster-workload/monitoring-alertmanager-list.png)
-
-### Security
-
-- **Overview** — security summary for the cluster.
-- **Service Accounts** — service accounts across namespaces, with their Secrets count and Age.
-
-![Security group expanded, showing the Service Accounts list](images/cluster-workload/security-service-accounts-list.png)
-
-### Admin
-
-Cluster-wide administrative resources: **Namespaces**, **Limit Ranges**, **Resource Quotas**, **Cluster Roles**, **Roles**, and **CSI Drivers**.
-
-![Admin group expanded, showing the Namespaces list](images/cluster-workload/admin-namespaces-list.png)
+Click any row to open that resource's detail page — see [Viewing Workload Details](#viewing-workload-details) below.
 
 ---
 
-## Resource Management
+## Viewing Workload Details
 
-Click any row on a list page to open that resource's **detail page**. Every detail page has the same layout: the resource name and breadcrumb at the top, **Edit** and **Delete** buttons top-right, and a set of tabs in the left panel. Which tabs appear depends on the resource kind — the example below is a Pod created by a KubeStash backup job.
+Click any row on a Workloads list page (e.g. a Pod) to open its **detail page**. Every detail page has the same layout: the resource name and breadcrumb at the top, **Edit** and **Delete** buttons top-right, and a set of tabs in the left panel. Which tabs appear depends on what created the resource — the example below is a Pod created by a backup Job.
 
 ### Overview Tab
 
@@ -152,7 +59,7 @@ The **Overview** tab shows the resource's Basic info (Name, Namespace, Labels, A
 
 ### Backup Tab
 
-For KubeStash-managed resources, the **Backup** tab shows Recent Backups, Recent Restores, Backup Configuration, and the connected Repository. A **Backup (Legacy)** tab is also available alongside it for the older Stash-based backups.
+If the workload was created by a backup process, a **Backup** tab shows Recent Backups, Recent Restores, Backup Configuration, and the connected Repository.
 
 ![Resource detail page Backup tab showing recent backups, restores, and backup configuration](images/cluster-workload/resource-detail-backup.png)
 
@@ -174,7 +81,7 @@ The **Events** tab lists the resource's Kubernetes events — Type, Reason, Sour
 
 ### Graph Tab
 
-The **Graph** tab draws the resource's **Connected Resources** as a diagram — for example, a backup Job linked to its ServiceAccount, ConfigMap, and Node.
+The **Graph** tab draws the resource's **Connected Resources** as a diagram — for example, a Pod linked to its ServiceAccount, ConfigMap, and Node.
 
 ![Resource detail page Graph tab showing connected resources as a diagram](images/cluster-workload/resource-detail-graph.png)
 
@@ -190,13 +97,12 @@ The **Manifest** tab shows the resource's raw YAML. Use **Raw** / **View Changes
 
 | Task | How to do it |
 |---|---|
-| Open the Workloads view | Click your cluster on the Platform Console → use the left sidebar |
-| List a resource type | Click its group in the sidebar, then the resource name |
+| Open the Workloads view | Click your cluster on the Platform Console → click **Workloads** in the left sidebar |
+| List a workload type | Click its name under the Workloads group (e.g. Deployments, Pods) |
 | Filter by namespace | Use the **All Namespaces** dropdown on any list page |
-| Create a new resource | Click **+ Create** on the resource's list page |
-| Open a resource's details | Click its row on the list page |
-| Edit a resource | Open its detail page → **Edit**, or edit directly in the **Manifest** tab |
-| Delete a resource | Open its detail page → **Delete** |
-| View events for a resource | Resource detail page → **Events** tab |
-| View what a resource connects to | Resource detail page → **Graph** tab |
-| Customize the sidebar | See [Customize the Cluster Sidebar](cluster-sidebar.md) |
+| Create a new workload | Click **+ Create** on the resource's list page |
+| Open a workload's details | Click its row on the list page |
+| Edit a workload | Open its detail page → **Edit**, or edit directly in the **Manifest** tab |
+| Delete a workload | Open its detail page → **Delete** |
+| View events for a workload | Resource detail page → **Events** tab |
+| View what a workload connects to | Resource detail page → **Graph** tab |
