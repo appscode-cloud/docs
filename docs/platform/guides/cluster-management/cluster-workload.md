@@ -144,41 +144,41 @@ Cluster-wide administrative resources: **Namespaces**, **Limit Ranges**, **Resou
 
 Click any row on a list page to open that resource's **detail page**. Every detail page has the same layout: the resource name and breadcrumb at the top, **Edit** and **Delete** buttons top-right, and a set of tabs in the left panel. Which tabs appear depends on the resource kind — the example below is a Pod created by a KubeStash backup job.
 
-### Overview
+### Overview Tab
 
 The **Overview** tab shows the resource's Basic info (Name, Namespace, Labels, Annotations, Age) followed by its Containers and Init-Containers, with image, command, and volume mount details.
 
 ![Resource detail page Overview tab showing Basic info and Containers table](../images/cluster-workload/resource-detail-overview.png)
 
-### Backup
+### Backup Tab
 
 For KubeStash-managed resources, the **Backup** tab shows Recent Backups, Recent Restores, Backup Configuration, and the connected Repository. A **Backup (Legacy)** tab is also available alongside it for the older Stash-based backups.
 
 ![Resource detail page Backup tab showing recent backups, restores, and backup configuration](../images/cluster-workload/resource-detail-backup.png)
 
-### Monitoring
+### Monitoring Tab
 
 The **Monitoring** tab lists any Service Monitors, Pod Monitors, and Prometheus instances tied to the resource, with a **+ Create** option for each.
 
-### Security
+### Security Tab
 
 The **Security** tab group has five sub-tabs: **CVE Report** (vulnerability counts by severity), **Access Control**, **TLS** (Certificates, Issuer, ClusterIssuer, Secrets), **Policies**, and **Runtime Security**. **Access Control** shows the resource's Service Account, ClusterRoles, and ClusterRoleBindings.
 
 ![Resource detail page Security tab showing Service Account, ClusterRoles, and ClusterRoleBindings](../images/cluster-workload/resource-detail-access-control.png)
 
-### Events
+### Events Tab
 
 The **Events** tab lists the resource's Kubernetes events — Type, Reason, Source, Count, First Seen, Last Seen, and Message.
 
 ![Resource detail page Events tab showing the event log](../images/cluster-workload/resource-detail-events.png)
 
-### Graph
+### Graph Tab
 
 The **Graph** tab draws the resource's **Connected Resources** as a diagram — for example, a backup Job linked to its ServiceAccount, ConfigMap, and Node.
 
 ![Resource detail page Graph tab showing connected resources as a diagram](../images/cluster-workload/resource-detail-graph.png)
 
-### Manifest
+### Manifest Tab
 
 The **Manifest** tab shows the resource's raw YAML. Use **Raw** / **View Changes** to toggle the view, edit the YAML directly, and click **Save Changes** to apply.
 

@@ -21,7 +21,7 @@ section_menu_id: guides
 
 ### Select Credential
 
-3. Choose a credential with permission to access and import the cluster, then click `Next`. To create one, use the `+Create Credential` button (see [Credentials](../../account-management/kubernetes/credentials.html)).
+3. Choose a credential with permission to access and import the cluster, then click `Next`. To create one, use the `+Create Credential` button (see [Credentials](../../account-management/kubernetes/credentials.md)).
 
 ### Select Cluster
 
