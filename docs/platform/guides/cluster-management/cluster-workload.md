@@ -55,11 +55,11 @@ The core resources for running and managing applications:
 
 Every list page follows the same layout: a 🔍 search box, an **All Namespaces** filter dropdown, and a green **+ Create** button top-right. The table columns vary by resource — for example, Deployments show Namespace, Pods, Images, and Age.
 
-![Deployments list page showing the table of deployments with namespace filter and Create button](../images/cluster-workload/deployments-list.png)
+![Deployments list page showing the table of deployments with namespace filter and Create button](images/cluster-workload/deployments-list.png)
 
 **Pods** is the only Workloads item with extra columns — Ready, Status, Restarts, and IP — since it reflects live container state.
 
-![Pods list page showing Ready, Status, Restarts, and IP columns](../images/cluster-workload/pods-list.png)
+![Pods list page showing Ready, Status, Restarts, and IP columns](images/cluster-workload/pods-list.png)
 
 Click any row to open that resource's detail page — see [Resource Management](#resource-management) below.
 
@@ -69,7 +69,7 @@ Click any row to open that resource's detail page — see [Resource Management](
 - **HelmRelease** — Helm-operator/GitOps style release objects, with a Ready status column.
 - **HelmChart** — chart source-tracking objects, showing Source Kind, Source Name, and Status.
 
-![Helm Releases list page showing installed releases with status and version](../images/cluster-workload/helm-releases-list.png)
+![Helm Releases list page showing installed releases with status and version](images/cluster-workload/helm-releases-list.png)
 
 ### Datastore
 
@@ -77,13 +77,13 @@ The Datastore group lists every database engine managed by KubeDB — Cassandra,
 
 Selecting an engine lists the deployed instances of that database, including its version, mode, replica count, phase, and total resources.
 
-![Datastore group expanded in the sidebar, showing the PgBouncer instance list](../images/cluster-workload/datastore-pgbouncer-list.png)
+![Datastore group expanded in the sidebar, showing the PgBouncer instance list](images/cluster-workload/datastore-pgbouncer-list.png)
 
 ### KubeDB Ops
 
 KubeDB Ops lists one **OpsRequest** type per database engine (e.g. MongoDBOpsRequest, MySQLOpsRequest, IgniteOpsRequest). An OpsRequest is how day-2 operations — version updates, restarts, scaling — are applied to an existing database instance. Each list shows the request's Type and Status (e.g. `UpdateVersion` / `Successful`).
 
-![KubeDB Ops group expanded, showing the IgniteOpsRequest list with Type and Status](../images/cluster-workload/kubedb-ops-list.png)
+![KubeDB Ops group expanded, showing the IgniteOpsRequest list with Type and Status](images/cluster-workload/kubedb-ops-list.png)
 
 ### KubeStash Core & KubeStash Storage
 
@@ -94,7 +94,7 @@ These two groups cover backup and restore management:
 
 The BackupStorage list shows the storage Provider (e.g. `s3`), total Size, number of connected Repositories, and Status.
 
-![KubeStash Storage group expanded, showing the BackupStorage list](../images/cluster-workload/kubestash-backupstorage-list.png)
+![KubeStash Storage group expanded, showing the BackupStorage list](images/cluster-workload/kubestash-backupstorage-list.png)
 
 ### Service & Discovery
 
@@ -102,14 +102,14 @@ The BackupStorage list shows the storage Provider (e.g. `s3`), total Size, numbe
 - **Ingresses** — ingress rules for the cluster.
 - **Network Policies** — traffic rules such as `allow-egress` or `allow-webhooks`.
 
-![Services list page showing service type, cluster-IP, and ports](../images/cluster-workload/services-list.png)
+![Services list page showing service type, cluster-IP, and ports](images/cluster-workload/services-list.png)
 
 ### Config
 
 - **Config Maps** — application configuration data, with a Data column showing key count.
 - **Secrets** — credentials and certificates, with a Type column (e.g. `kubernetes.io/tls`, `Opaque`).
 
-![Config Maps list page showing configuration objects across namespaces](../images/cluster-workload/config-maps-list.png)
+![Config Maps list page showing configuration objects across namespaces](images/cluster-workload/config-maps-list.png)
 
 ### Storage
 
@@ -117,26 +117,26 @@ The BackupStorage list shows the storage Provider (e.g. `s3`), total Size, numbe
 - **Persistent Volumes** — the underlying volumes, with Reclaim Policy and Status (`Bound`).
 - **Storage Classes** — available provisioners (e.g. `local-path`).
 
-![Persistent Volume Claims list page showing capacity, access modes, and storage class](../images/cluster-workload/persistent-volume-claims-list.png)
+![Persistent Volume Claims list page showing capacity, access modes, and storage class](images/cluster-workload/persistent-volume-claims-list.png)
 
 ### Monitoring
 
 Observability resources tied to Prometheus and Alertmanager: **Alertmanager**, **AlertmanagerConfig**, **PodMonitor**, **Probe**, **Prometheus**, **PrometheusAgent**, **PrometheusRule**, **ScrapeConfig**, **ServiceMonitor**, and **ThanosRuler**.
 
-![Monitoring group expanded, showing the Alertmanager list](../images/cluster-workload/monitoring-alertmanager-list.png)
+![Monitoring group expanded, showing the Alertmanager list](images/cluster-workload/monitoring-alertmanager-list.png)
 
 ### Security
 
 - **Overview** — security summary for the cluster.
 - **Service Accounts** — service accounts across namespaces, with their Secrets count and Age.
 
-![Security group expanded, showing the Service Accounts list](../images/cluster-workload/security-service-accounts-list.png)
+![Security group expanded, showing the Service Accounts list](images/cluster-workload/security-service-accounts-list.png)
 
 ### Admin
 
 Cluster-wide administrative resources: **Namespaces**, **Limit Ranges**, **Resource Quotas**, **Cluster Roles**, **Roles**, and **CSI Drivers**.
 
-![Admin group expanded, showing the Namespaces list](../images/cluster-workload/admin-namespaces-list.png)
+![Admin group expanded, showing the Namespaces list](images/cluster-workload/admin-namespaces-list.png)
 
 ---
 
@@ -148,13 +148,13 @@ Click any row on a list page to open that resource's **detail page**. Every deta
 
 The **Overview** tab shows the resource's Basic info (Name, Namespace, Labels, Annotations, Age) followed by its Containers and Init-Containers, with image, command, and volume mount details.
 
-![Resource detail page Overview tab showing Basic info and Containers table](../images/cluster-workload/resource-detail-overview.png)
+![Resource detail page Overview tab showing Basic info and Containers table](images/cluster-workload/resource-detail-overview.png)
 
 ### Backup Tab
 
 For KubeStash-managed resources, the **Backup** tab shows Recent Backups, Recent Restores, Backup Configuration, and the connected Repository. A **Backup (Legacy)** tab is also available alongside it for the older Stash-based backups.
 
-![Resource detail page Backup tab showing recent backups, restores, and backup configuration](../images/cluster-workload/resource-detail-backup.png)
+![Resource detail page Backup tab showing recent backups, restores, and backup configuration](images/cluster-workload/resource-detail-backup.png)
 
 ### Monitoring Tab
 
@@ -164,25 +164,25 @@ The **Monitoring** tab lists any Service Monitors, Pod Monitors, and Prometheus 
 
 The **Security** tab group has five sub-tabs: **CVE Report** (vulnerability counts by severity), **Access Control**, **TLS** (Certificates, Issuer, ClusterIssuer, Secrets), **Policies**, and **Runtime Security**. **Access Control** shows the resource's Service Account, ClusterRoles, and ClusterRoleBindings.
 
-![Resource detail page Security tab showing Service Account, ClusterRoles, and ClusterRoleBindings](../images/cluster-workload/resource-detail-access-control.png)
+![Resource detail page Security tab showing Service Account, ClusterRoles, and ClusterRoleBindings](images/cluster-workload/resource-detail-access-control.png)
 
 ### Events Tab
 
 The **Events** tab lists the resource's Kubernetes events — Type, Reason, Source, Count, First Seen, Last Seen, and Message.
 
-![Resource detail page Events tab showing the event log](../images/cluster-workload/resource-detail-events.png)
+![Resource detail page Events tab showing the event log](images/cluster-workload/resource-detail-events.png)
 
 ### Graph Tab
 
 The **Graph** tab draws the resource's **Connected Resources** as a diagram — for example, a backup Job linked to its ServiceAccount, ConfigMap, and Node.
 
-![Resource detail page Graph tab showing connected resources as a diagram](../images/cluster-workload/resource-detail-graph.png)
+![Resource detail page Graph tab showing connected resources as a diagram](images/cluster-workload/resource-detail-graph.png)
 
 ### Manifest Tab
 
 The **Manifest** tab shows the resource's raw YAML. Use **Raw** / **View Changes** to toggle the view, edit the YAML directly, and click **Save Changes** to apply.
 
-![Resource detail page Manifest tab showing the raw YAML editor](../images/cluster-workload/resource-detail-manifest.png)
+![Resource detail page Manifest tab showing the raw YAML editor](images/cluster-workload/resource-detail-manifest.png)
 
 ---
 
