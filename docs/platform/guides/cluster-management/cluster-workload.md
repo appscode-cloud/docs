@@ -20,76 +20,71 @@ The **Workloads** group in the Cluster UI sidebar is where you browse and manage
 2. Click on your imported cluster to open its Cluster Overview page.
 3. In the left sidebar, click **Workloads** to expand it.
 
+Every list page in this group follows the same layout: a 🔍 search box, an **All Namespaces** filter dropdown, and a green **+ Create** button top-right.
+
 ---
 
-## Workload Resource Types
+## Deployments
 
-The Workloads group lists every standard Kubernetes workload kind:
-
-- Deployments
-- Replica Sets
-- Replication Controllers
-- Stateful Sets
-- Daemon Sets
-- Jobs
-- Cron Jobs
-- Pods
-
-Every list page follows the same layout: a 🔍 search box, an **All Namespaces** filter dropdown, and a green **+ Create** button top-right. The table columns vary by resource — for example, Deployments show Namespace, Pods, Images, and Age.
+Lists every Deployment with its Namespace, Pods (ready count), Images, and Age.
 
 ![Deployments list page showing the table of deployments with namespace filter and Create button](images/cluster-workload/deployments-list.png)
 
-**Pods** is the only Workloads item with extra columns — Ready, Status, Restarts, and IP — since it reflects live container state.
+---
 
-![Pods list page showing Ready, Status, Restarts, and IP columns](images/cluster-workload/pods-list.png)
+## Replica Sets
 
-Click any row to open that resource's detail page — see [Viewing Workload Details](#viewing-workload-details) below.
+Lists every Replica Set with its Namespace, Pods, Images, and Age.
+
+![Replica Sets list page showing namespace, pods, images, and age columns](images/cluster-workload/replica-sets-list.png)
 
 ---
 
-## Viewing Workload Details
+## Replication Controllers
 
-Click any row on a Workloads list page (e.g. a Pod) to open its **detail page**. Every detail page has the same layout: the resource name and breadcrumb at the top, **Edit** and **Delete** buttons top-right, and a set of tabs in the left panel. Which tabs appear depends on what created the resource — the example below is a Pod created by a backup Job.
+Lists every Replication Controller with its Namespace, Pods, Images, and Age. Click **+ Create ReplicationController** to add one.
 
-### Overview Tab
+![Replication Controllers list page with no data available and a Create ReplicationController button](images/cluster-workload/replication-controllers-list.png)
 
-The **Overview** tab shows the resource's Basic info (Name, Namespace, Labels, Annotations, Age) followed by its Containers and Init-Containers, with image, command, and volume mount details.
+---
 
-![Resource detail page Overview tab showing Basic info and Containers table](images/cluster-workload/resource-detail-overview.png)
+## Stateful Sets
 
-### Backup Tab
+Lists every Stateful Set with its Namespace, Pods, Images, and Age.
 
-If the workload was created by a backup process, a **Backup** tab shows Recent Backups, Recent Restores, Backup Configuration, and the connected Repository.
+![Stateful Sets list page showing namespace, pods, images, and age columns](images/cluster-workload/stateful-sets-list.png)
 
-![Resource detail page Backup tab showing recent backups, restores, and backup configuration](images/cluster-workload/resource-detail-backup.png)
+---
 
-### Monitoring Tab
+## Daemon Sets
 
-The **Monitoring** tab lists any Service Monitors, Pod Monitors, and Prometheus instances tied to the resource, with a **+ Create** option for each.
+Lists every Daemon Set with its Namespace, Pods, Dsired, Current-Scheduled, Up-to-date, Node Selector, Images, and Age.
 
-### Security Tab
+![Daemon Sets list page showing desired, current-scheduled, and up-to-date columns](images/cluster-workload/daemon-sets-list.png)
 
-The **Security** tab group has five sub-tabs: **CVE Report** (vulnerability counts by severity), **Access Control**, **TLS** (Certificates, Issuer, ClusterIssuer, Secrets), **Policies**, and **Runtime Security**. **Access Control** shows the resource's Service Account, ClusterRoles, and ClusterRoleBindings.
+---
 
-![Resource detail page Security tab showing Service Account, ClusterRoles, and ClusterRoleBindings](images/cluster-workload/resource-detail-access-control.png)
+## Jobs
 
-### Events Tab
+Lists every Job with its Namespace, Annotations, Completions, Duration, Images, and Age.
 
-The **Events** tab lists the resource's Kubernetes events — Type, Reason, Source, Count, First Seen, Last Seen, and Message.
+![Jobs list page showing completions, duration, images, and age columns](images/cluster-workload/jobs-list.png)
 
-![Resource detail page Events tab showing the event log](images/cluster-workload/resource-detail-events.png)
+---
 
-### Graph Tab
+## Cron Jobs
 
-The **Graph** tab draws the resource's **Connected Resources** as a diagram — for example, a Pod linked to its ServiceAccount, ConfigMap, and Node.
+Lists every Cron Job with its Namespace, Annotations, Schedule, Suspend, Active, Last Schedule, Images, and Age.
 
-![Resource detail page Graph tab showing connected resources as a diagram](images/cluster-workload/resource-detail-graph.png)
+![Cron Jobs list page showing schedule, suspend, active, and last schedule columns](images/cluster-workload/cron-jobs-list.png)
 
-### Manifest Tab
+---
 
-The **Manifest** tab shows the resource's raw YAML. Use **Raw** / **View Changes** to toggle the view, edit the YAML directly, and click **Save Changes** to apply.
+## Pods
 
-![Resource detail page Manifest tab showing the raw YAML editor](images/cluster-workload/resource-detail-manifest.png)
+Lists every Pod with its Namespace, Ready, Status, Restarts, IP, Images, and Age — the only Workloads item with these extra live-state columns.
+
+![Pods list page showing Ready, Status, Restarts, and IP columns](images/cluster-workload/pods-list.png)
 
 ---
 
@@ -101,8 +96,3 @@ The **Manifest** tab shows the resource's raw YAML. Use **Raw** / **View Changes
 | List a workload type | Click its name under the Workloads group (e.g. Deployments, Pods) |
 | Filter by namespace | Use the **All Namespaces** dropdown on any list page |
 | Create a new workload | Click **+ Create** on the resource's list page |
-| Open a workload's details | Click its row on the list page |
-| Edit a workload | Open its detail page → **Edit**, or edit directly in the **Manifest** tab |
-| Delete a workload | Open its detail page → **Delete** |
-| View events for a workload | Resource detail page → **Events** tab |
-| View what a workload connects to | Resource detail page → **Graph** tab |
