@@ -43,6 +43,9 @@ SolrCloud requires ZooKeeper for coordination.
 |---|---|
 | **ZooKeeper Ref (Namespace / Name)** | Reference to the ZooKeeper instance Solr uses for coordination. |
 
+![Overseer, Data, Coordinator fields and Zookeeper Ref](../images/db-create/solr/fields.png)
+
+
 ## Create a Solr Database
 
 1. Open the wizard and select **Solr** — see [Getting Started](common-steps.md#1-getting-started) and [Select a Database Type](common-steps.md#2-select-a-database-type).
