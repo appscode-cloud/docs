@@ -12,7 +12,7 @@ section_menu_id: guides
 
 # Remove / Delete Cluster
 
-From the cluster list, click the **⋮** (three-dot) menu on any cluster card to access removal options.
+From the cluster list, click the **⋮** (three-dot) menu on any cluster card to access two actions: **Remove** and **Delete**.
 
 ![Cluster options menu showing KubeConfig, Remove, and Delete actions](images/remove-cluster/cluster-options-menu.png)
 
@@ -20,31 +20,30 @@ From the cluster list, click the **⋮** (three-dot) menu on any cluster card to
 
 ## Remove
 
-**Remove** unregisters the cluster from the Platform Console. The actual Kubernetes cluster and its workloads are left untouched.
+**Remove** unregisters the cluster from the Cluster UI. The actual Kubernetes cluster and its workloads are left untouched.
 
-1. Go to the [Platform Console](https://console.appscode.com) cluster list.
-2. Click **⋮** on your cluster card.
-3. Click **Remove**.
-4. In the confirmation modal, optionally check any cleanup actions you want to run before removal:
+1. Click **⋮** on your cluster card.
+2. Click **Remove**.
+3. A confirmation modal opens. Optionally check any cleanup actions to run before removal:
    - **Remove FluxCD** — uninstalls FluxCD from the cluster.
-   - **Remove All Features** — uninstalls all ACE feature-sets from the cluster.
-   - **Remove Spoke Components** — only shown if this cluster is a spoke.
-5. Click **Yes, Remove** to confirm.
+   - **Remove All Features** — uninstalls all installed feature-sets from the cluster.
+4. Click **Yes, Remove**.
 
-The console streams progress until the operation completes, then redirects you to the cluster list.
+![Remove Cluster modal with optional checkboxes for Remove FluxCD and Remove All Features](images/remove-cluster/remove-cluster-modal.png)
 
 ---
 
 ## Delete
 
-**Delete** permanently destroys the cluster and its underlying infrastructure. This action is irreversible and only available for clusters provisioned via Cluster API.
+**Delete** permanently destroys the cluster and its underlying infrastructure. This action is irreversible.
 
-1. Go to the [Platform Console](https://console.appscode.com) cluster list.
-2. Click **⋮** on your cluster card.
-3. Click **Delete**.
-4. Confirm in the modal.
+1. Click **⋮** on your cluster card.
+2. Click **Delete**.
+3. Confirm in the modal by clicking **Yes, Delete**.
 
-> **Warning:** Delete tears down the actual cloud infrastructure. Use Remove if you only want to unregister the cluster from the console.
+![Delete Cluster modal asking for confirmation with Yes, Delete button](images/remove-cluster/delete-cluster-modal.png)
+
+> **Warning:** Delete tears down the actual infrastructure. Use **Remove** if you only want to unregister the cluster from the UI.
 
 ---
 
@@ -52,5 +51,5 @@ The console streams progress until the operation completes, then redirects you t
 
 | Action | What happens | Cluster destroyed? |
 |---|---|---|
-| **Remove** | Unregisters cluster from console | No |
-| **Delete** | Destroys cluster + cloud infrastructure | Yes |
+| **Remove** | Unregisters cluster from Cluster UI | No |
+| **Delete** | Destroys cluster + infrastructure | Yes |
