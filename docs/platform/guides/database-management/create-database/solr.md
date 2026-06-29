@@ -1,0 +1,52 @@
+---
+layout: docs
+menu:
+  docsplatform_{{.version}}:
+    identifier: database-management-create-solr
+    name: Solr
+    parent: database-management-create
+    weight: 120
+menu_name: docsplatform_{{.version}}
+section_menu_id: guides
+---
+
+
+# Creating a Solr Database
+
+This page covers the configuration specific to **Solr** — its **Database Mode** and any engine-specific settings shown below. The rest of the creation flow —
+opening the wizard, namespace and name, version, machine profile, storage, and optional
+features — is the same for every engine and is documented in [Common Steps](common-steps.md).
+
+## Database Mode
+
+Select the topology under **Database Mode**. Three modes are available:
+
+- **Standalone** — A single-node Solr instance.
+- **Replicaset** — A multi-node Solr cluster. Set the **Number of Replicas**.
+- **Topology** — A role-separated cluster with dedicated **Overseer**, **Data**, and **Coordinator** node tiers.
+
+![Topology mode selected showing Overseer, Data, and Coordinator node panels](../images/db-create/solr/topology-mode.png)
+
+| Node | Description |
+|---|---|
+| **Overseer** | Cluster-management nodes that handle cluster state and coordination. |
+| **Data** | Nodes that host collections/shards and serve indexing and query traffic. |
+| **Coordinator** | Query-routing nodes that distribute requests across data nodes. |
+
+Each tier has its own **Number of Replicas**, **Storage size**, **Machine**, **CPU**, and **Memory** fields.
+
+## ZooKeeper
+
+SolrCloud requires ZooKeeper for coordination.
+
+| Field | Description |
+|---|---|
+| **ZooKeeper Ref (Namespace / Name)** | Reference to the ZooKeeper instance Solr uses for coordination. |
+
+## Create a Solr Database
+
+1. Open the wizard and select **Solr** — see [Getting Started](common-steps.md#1-getting-started) and [Select a Database Type](common-steps.md#2-select-a-database-type).
+1. Set the [namespace and name](common-steps.md#3-choose-namespace-and-name).
+1. Pick the database version and the **Database Mode** described above, then set the machine profile and storage — see [Configure the Database](common-steps.md#4-configure-the-database).
+1. Optionally configure [Advanced Configuration](common-steps.md#5-advanced-configuration) (labels, deletion policy, credentials, point-in-time recovery) and [Additional Options](common-steps.md#6-additional-options) (monitoring, backup, TLS, gateway).
+1. Click [**Deploy**](common-steps.md#7-deploy).
