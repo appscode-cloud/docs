@@ -21,7 +21,9 @@ features — is the same for every engine and is documented in [Common Steps](co
 
 Druid is always deployed as a **Topology** of role-separated process tiers. Configure each tier's node count and resources independently.
 
-![Druid topology showing Coordinators, Overlords/MiddleManagers, Historicals, and Brokers panels](../images/db-create/druid/topology-mode.png)
+![Druid topology showing Overlords/MiddleManagers and Historicals panels](../images/db-create/druid/topology-mode-1.png)
+
+![Druid topology showing Coordinators and Brokers panels](../images/db-create/druid/topology-mode-2.png)
 
 | Node | Description |
 |---|---|
