@@ -15,15 +15,15 @@ section_menu_id: guides
 
 This page covers the configuration specific to **Druid** — its **Database Mode** and any engine-specific settings shown below. The rest of the creation flow —
 opening the wizard, namespace and name, version, machine profile, storage, and optional
-features — is the same for every engine and is documented in [Common Steps](common-steps.md).
+features — is the same for every engine and is documented in [Common Steps](../common-steps.md).
 
 ## Database Mode
 
 Druid is always deployed as a **Topology** of role-separated process tiers. Configure each tier's node count and resources independently.
 
-![Druid topology showing Overlords/MiddleManagers and Historicals panels](../images/db-create/druid/topology-mode-1.png)
+![Druid topology showing Overlords/MiddleManagers and Historicals panels](../../images/db-create/druid/topology-mode-1.png)
 
-![Druid topology showing Coordinators and Brokers panels](../images/db-create/druid/topology-mode-2.png)
+![Druid topology showing Coordinators and Brokers panels](../../images/db-create/druid/topology-mode-2.png)
 
 | Node | Description |
 |---|---|
@@ -37,8 +37,6 @@ Each tier has its own **Number of Replicas**, **Storage size**, **Machine**, **C
 ## Druid Dependencies
 
 Druid relies on external dependencies for metadata, deep storage, and coordination. Each can be provisioned by the platform or pointed at an existing, externally-managed instance.
-
-![Druid deep storage, metadata storage, and ZooKeeper configuration](../images/db-create/druid/dependencies.png)
 
 **Deep Storage** — Durable storage for Druid segments.
 
@@ -64,8 +62,8 @@ Druid relies on external dependencies for metadata, deep storage, and coordinati
 
 ## Create a Druid Database
 
-1. Open the wizard and select **Druid** — see [Getting Started](common-steps.md#1-getting-started) and [Select a Database Type](common-steps.md#2-select-a-database-type).
-1. Set the [namespace and name](common-steps.md#3-choose-namespace-and-name).
-1. Pick the database version and the **Database Mode** described above, then set the machine profile and storage — see [Configure the Database](common-steps.md#4-configure-the-database).
-1. Optionally configure [Advanced Configuration](common-steps.md#5-advanced-configuration) (labels, deletion policy, credentials, point-in-time recovery) and [Additional Options](common-steps.md#6-additional-options) (monitoring, backup, TLS, gateway).
-1. Click [**Deploy**](common-steps.md#7-deploy).
+1. Open the wizard and select **Druid** — see [Getting Started](../common-steps.md#1-getting-started) and [Select a Database Type](../common-steps.md#2-select-a-database-type).
+1. Set the [namespace and name](../common-steps.md#3-choose-namespace-and-name).
+1. Pick the database version and the **Database Mode** described above, then set the machine profile and storage — see [Configure the Database](../common-steps.md#4-configure-the-database).
+1. Optionally configure [Advanced Configuration](../common-steps.md#5-advanced-configuration) (labels, deletion policy, credentials, point-in-time recovery) and [Additional Options](../common-steps.md#6-additional-options) (monitoring, backup, TLS, gateway).
+1. Click [**Deploy**](../common-steps.md#7-deploy).
