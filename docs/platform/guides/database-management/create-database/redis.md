@@ -49,7 +49,7 @@ If **Database Mode** is **Cluster**, an **Announce Redis Endpoints ?** toggle ap
 
 The number of shard rows must match the **Shards** count you set above, and each row must list one endpoint per node in that shard (master + replicas).
 
-You will need the externally reachable hostname or IP for every Redis pod before filling this in — get these from whoever set up the external gateway/DNS/load balancer for this cluster. All the underlying setup (gateway, DNS records, port mappings) is handled on the platform side; you only need to enter the resulting endpoints here.
+Whatever the **Type** (`hostname` or `ip`), the values you enter must ultimately resolve to the envoy service's external IP. For `hostname`, point a DNS **A** or **CNAME** record at that IP; for `ip`, enter the envoy service's IP directly. When exposure is enabled, envoy opens a set of ports on its external IP — one per Redis pod — and clients reach each pod through its assigned port.
 
 > **Note:** This only applies when you intend to connect to a **Cluster**-mode Redis from outside Kubernetes. If you only access it from within the cluster, or you're using **Standalone**/**Sentinel** mode, leave this off.
 
