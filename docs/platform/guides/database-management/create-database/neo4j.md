@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-neo4j
     name: Neo4j
     parent: database-management-create
-    weight: 260
+    weight: 270
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

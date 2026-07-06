@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-druid
     name: Druid
     parent: database-management-create
-    weight: 230
+    weight: 240
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-perconaxtradb
     name: Percona XtraDB
     parent: database-management-create
-    weight: 50
+    weight: 70
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

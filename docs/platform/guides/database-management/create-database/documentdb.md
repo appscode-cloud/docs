@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-documentdb
     name: DocumentDB
     parent: database-management-create
-    weight: 130
+    weight: 110
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

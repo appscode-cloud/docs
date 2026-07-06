@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-pgbouncer
     name: PgBouncer
     parent: database-management-create
-    weight: 280
+    weight: 290
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

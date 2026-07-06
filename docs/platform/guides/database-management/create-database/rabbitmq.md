@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-rabbitmq
     name: RabbitMQ
     parent: database-management-create
-    weight: 250
+    weight: 260
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

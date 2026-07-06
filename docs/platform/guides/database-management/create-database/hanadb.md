@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-hanadb
     name: SAP HANA
     parent: database-management-create
-    weight: 100
+    weight: 90
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-oracle
     name: Oracle
     parent: database-management-create
-    weight: 70
+    weight: 60
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

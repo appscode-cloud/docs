@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-zookeeper
     name: ZooKeeper
     parent: database-management-create
-    weight: 270
+    weight: 280
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-solr
     name: Solr
     parent: database-management-create
-    weight: 120
+    weight: 140
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

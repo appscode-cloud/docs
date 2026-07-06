@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-mssqlserver
     name: Microsoft SQL Server
     parent: database-management-create
-    weight: 60
+    weight: 40
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

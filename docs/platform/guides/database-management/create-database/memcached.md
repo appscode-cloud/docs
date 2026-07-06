@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-memcached
     name: Memcached
     parent: database-management-create
-    weight: 150
+    weight: 170
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

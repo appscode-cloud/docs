@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-clickhouse
     name: ClickHouse
     parent: database-management-create
-    weight: 220
+    weight: 230
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---
