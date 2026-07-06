@@ -14,7 +14,7 @@ section_menu_id: guides
 
 **Feature Sets** are groups of AppsCode product capabilities that you can install or remove on any connected cluster. This page covers all 19 available Feature Sets and shows the enable flow for two common ones: **Backup & Recovery** and **Databases**.
 
-> For a per-feature breakdown of every Feature Set — what each feature does, why you'd enable it, and its prerequisites — see the [Feature Set Reference](feature-reference.md).
+> For a per-feature breakdown of every Feature Set — what each feature does, why you'd enable it, and its prerequisites — see the [Feature Set Reference](../feature-reference.md).
 
 ---
 

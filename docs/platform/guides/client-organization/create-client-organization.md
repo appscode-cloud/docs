@@ -25,7 +25,7 @@ The wizard has four steps, shown on the right side of the form:
 
 Enter the organization details and choose its administrator.
 
-![Create Client Organization wizard — Step 1, User Information form with organization name, custom annotations, organization admin, and visibility](./images/create-client-organization.png)
+![Create Client Organization wizard — Step 1, User Information form with organization name, custom annotations, organization admin, and visibility](.././images/create-client-organization.png)
 
 - **Organization Name** *(required)* — used to provision the three namespaces (`orgName`, `orgName-gw`, and `orgName-monitoring`).
 - **Organization Display Name** — a friendly name shown in the UI.
@@ -42,7 +42,7 @@ Click **Next** to continue.
 
 Assign the organization to a hub and spoke cluster, and optionally tune where its database workloads are scheduled.
 
-![Create Client Organization wizard — Step 2, Select Cluster with hub cluster, spoke cluster, DB nodepool, and tolerations](./images/create-client-organization-2.png)
+![Create Client Organization wizard — Step 2, Select Cluster with hub cluster, spoke cluster, DB nodepool, and tolerations](.././images/create-client-organization-2.png)
 
 - **Hub Cluster** *(required)* — the management (hub) cluster for this organization.
 - **Spoke Cluster** *(required)* — the spoke cluster where the organization's databases run.
@@ -59,19 +59,19 @@ Choose how the organization exposes its workloads. There are two top-level optio
 
 Select **Use Shared Gateway** to reuse the platform's shared gateway. No additional gateway configuration is required.
 
-![Create Client Organization wizard — Step 3, Use Shared Gateway selected with no extra configuration](./images/use-shared-gateway.png)
+![Create Client Organization wizard — Step 3, Use Shared Gateway selected with no extra configuration](.././images/use-shared-gateway.png)
 
 ### Use Dedicated Gateway
 
 Select **Use Dedicated Gateway** to give the organization its own gateway. Then pick a **Dedicated Gateway Type**.
 
-![Create Client Organization wizard — Step 3, Use Dedicated Gateway selected with the dedicated gateway type options](./images/use-dedicated-gateway.png)
+![Create Client Organization wizard — Step 3, Use Dedicated Gateway selected with the dedicated gateway type options](.././images/use-dedicated-gateway.png)
 
 #### Use Existing Gateway
 
 Choose **Use Existing Gateway** and select a **Gateway Preset Config** to reuse an already-defined gateway configuration.
 
-![Create Client Organization wizard — dedicated gateway using an existing gateway preset config](./images/use-existing-gateway.png)
+![Create Client Organization wizard — dedicated gateway using an existing gateway preset config](.././images/use-existing-gateway.png)
 
 #### Use Custom Gateway
 
@@ -79,11 +79,11 @@ Choose **Use Custom Gateway** to define the gateway yourself. Use **Can it be us
 
 **Preload From Existing One** — start from an existing **Gateway Preset Config**, then edit the pre-filled fields across the **In Cluster** (certificates and keys), **Envoy Service** (service type, external IP, traffic policy, ports, provisioner type), and **Infra** (DNS provider, host type, host/domain, TLS issuer) sections.
 
-![Create Client Organization wizard — custom dedicated gateway preloaded from an existing preset, showing In Cluster, Envoy Service, and Infra sections](./images/preload-existing-gateway.png)
+![Create Client Organization wizard — custom dedicated gateway preloaded from an existing preset, showing In Cluster, Envoy Service, and Infra sections](.././images/preload-existing-gateway.png)
 
 **Create New From Start** — build the gateway from scratch by filling in the same **In Cluster**, **Envoy Service**, and **Infra** sections with your own values.
 
-![Create Client Organization wizard — custom dedicated gateway created from scratch with empty In Cluster, Envoy Service, and Infra sections](./images/create-new-custom-gateway.png)
+![Create Client Organization wizard — custom dedicated gateway created from scratch with empty In Cluster, Envoy Service, and Infra sections](.././images/create-new-custom-gateway.png)
 
 Click **Next** to continue.
 
@@ -91,7 +91,7 @@ Click **Next** to continue.
 
 In the final step, configure the telemetry settings that will be applied to the organization's `orgName-monitoring` namespace, then finish to create the client organization.
 
-![Create Client Organization wizard — Step 4, Telemetry Configuration with monitoring type, log retention, and metrics retention periods](./images/telemetry-configuration.png)
+![Create Client Organization wizard — Step 4, Telemetry Configuration with monitoring type, log retention, and metrics retention periods](.././images/telemetry-configuration.png)
 
 - **Select Monitoring Type** — choose the monitoring stack to provision for the organization.
 - **Logs** — set the **Retention Period** for collected logs.
@@ -106,4 +106,4 @@ Once created, the organization appears in the **Client Organizations** list and 
 
 ## Next steps
 
-- [Add a Cluster to an Existing Client Organization](./add-cluster-to-existing-client-organization.md) — assign additional clusters after the organization is created.
+- [Add a Cluster to an Existing Client Organization](../add-cluster-to-existing-client-organization.md) — assign additional clusters after the organization is created.

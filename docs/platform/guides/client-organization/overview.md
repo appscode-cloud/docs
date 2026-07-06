@@ -35,5 +35,5 @@ Client organizations are managed from **Site Administration → Client Organizat
 
 ## Next steps
 
-- [Create a Client Organization](./create-client-organization.md) — a step-by-step walkthrough of the creation wizard.
-- [Add a Cluster to an Existing Client Organization](./add-cluster-to-existing-client-organization.md) — assign additional clusters after the organization is created.
+- [Create a Client Organization](../create-client-organization.md) — a step-by-step walkthrough of the creation wizard.
+- [Add a Cluster to an Existing Client Organization](../add-cluster-to-existing-client-organization.md) — assign additional clusters after the organization is created.

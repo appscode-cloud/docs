@@ -13,6 +13,6 @@ section_menu_id: guides
 
 # Create Vendor Managed Clusters
 
-![Create vendor-managed cluster form showing cluster name, region, machine type, and cluster profile selection](../images/add_cluster/create-cluster-form.png)
+![Create vendor-managed cluster form showing cluster name, region, machine type, and cluster profile selection](../../images/add_cluster/create-cluster-form.png)
 
-![Creating cluster progress modal showing live status log](../images/add_cluster/create-cluster-progress.png)
+![Creating cluster progress modal showing live status log](../../images/add_cluster/create-cluster-progress.png)

@@ -30,7 +30,7 @@ Use this page to get a quick overview of all deployed charts, check release stat
 
 Lists every release with its **Name**, **Namespace**, **Status** (e.g. deployed, failed), **Version**, and **Age**. Use the **Select All** and **All Namespaces** dropdowns to filter the list.
 
-![Helm Releases page showing all deployed Helm releases with name, namespace, status, version, and age columns](images/cluster-helm-charts/helm-releases-deployed.png)
+![Helm Releases page showing all deployed Helm releases with name, namespace, status, version, and age columns](../images/cluster-helm-charts/helm-releases-deployed.png)
 
 ---
 
@@ -42,7 +42,7 @@ Use this page to check FluxCD-managed release health, spot failed reconciliation
 
 Lists every HelmRelease with its **Namespace**, **Age**, **Ready** status, and a **Status** message showing the last Helm operation result. Click **+ Create HelmRelease** to define a new one.
 
-![HelmRelease list page showing FluxCD-managed releases with namespace, age, ready, and status columns](images/cluster-helm-charts/helm-releases-list.png)
+![HelmRelease list page showing FluxCD-managed releases with namespace, age, ready, and status columns](../images/cluster-helm-charts/helm-releases-list.png)
 
 ---
 
@@ -54,7 +54,7 @@ Use this page to verify chart versions in use, check that chart sources are reso
 
 Lists every HelmChart with its **Namespace**, **Annotations**, **Age**, **Chart** name, **Version**, **Source Kind**, **Source Name**, **Ready** state, and **Status**. Click **+ Create HelmChart** to add a new chart source.
 
-![HelmChart list page showing chart name, version, source kind, source name, ready, and status columns](images/cluster-helm-charts/helm-charts-list.png)
+![HelmChart list page showing chart name, version, source kind, source name, ready, and status columns](../images/cluster-helm-charts/helm-charts-list.png)
 
 ---
 

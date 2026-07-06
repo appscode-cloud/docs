@@ -17,7 +17,7 @@ These steps are the same for every database engine. Each engine's own page cover
 the engine-specific **Database Mode**; everything else — opening the wizard, naming,
 versions, resources, and optional features — is described here.
 
-> Start on your engine's page (e.g. [PostgreSQL](postgres.md), [Redis](redis.md)) for the
+> Start on your engine's page (e.g. [PostgreSQL](../postgres.md), [Redis](../redis.md)) for the
 > Database Mode, and refer back to this page for the surrounding steps.
 
 ---
@@ -28,7 +28,7 @@ Navigate to the **Datastore** section in the left sidebar. The **Datastore Overv
 
 To create a new database, click the green **+ Create New Instance** button in the top-right corner of the page.
 
-![Datastore Overview page showing existing database instances and the Create New Instance button](../images/db-create/shared/overview-create.png)
+![Datastore Overview page showing existing database instances and the Create New Instance button](../../images/db-create/shared/overview-create.png)
 
 ---
 
@@ -36,7 +36,7 @@ To create a new database, click the green **+ Create New Instance** button in th
 
 You will be presented with a grid of all supported database engines. Click the engine you want to provision.
 
-![Database type selection grid showing all supported engines](../images/db-create/shared/db-type-select.png)
+![Database type selection grid showing all supported engines](../../images/db-create/shared/db-type-select.png)
 
 > **Tip:** Supported engines include relational, document, key-value, search, vector, and time-series databases.
 
@@ -46,7 +46,7 @@ You will be presented with a grid of all supported database engines. Click the e
 
 After selecting the database type, choose a namespace and provide a name for the new instance.
 
-![Choose Namespace and Name step showing Select Namespace dropdown and Name field](../images/db-create/shared/name-namespace-select.png)
+![Choose Namespace and Name step showing Select Namespace dropdown and Name field](../../images/db-create/shared/name-namespace-select.png)
 
 1. **Select Namespace:** The Kubernetes namespace where the database will be deployed. If the namespace has resource quotas, available CPU and memory are shown.
 1. **Name:** A unique name that starts with a lowercase letter and contains only letters, numbers, or dashes.
@@ -67,13 +67,13 @@ Select the engine version from the **Database Version** dropdown. The version de
 
 ### 4.2 - Database Mode
 
-The available topologies depend on the engine. See your engine's page for its **Database Mode** options and fields — for example [MongoDB](mongodb.md) (Standalone / Replicaset / Sharded) or [PostgreSQL](postgres.md) (Standalone / Cluster / RemoteReplica).
+The available topologies depend on the engine. See your engine's page for its **Database Mode** options and fields — for example [MongoDB](../mongodb.md) (Standalone / Replicaset / Sharded) or [PostgreSQL](../postgres.md) (Standalone / Cluster / RemoteReplica).
 
 ### 4.3 - Machine Profile
 
 The **Machine Profile** dropdown selects a preset CPU and memory configuration for your database nodes. Choose `custom` to enter CPU and memory values manually.
 
-![Machine Profile dropdown alongside the Storage Class and Advanced Configuration panels](../images/db-create/shared/machine-profile.png)
+![Machine Profile dropdown alongside the Storage Class and Advanced Configuration panels](../../images/db-create/shared/machine-profile.png)
 
 > **Tip:** Preset profiles are named by size (e.g., `db.t4large`). Use `custom` when your workload requires resources that do not match any preset.
 
@@ -81,7 +81,7 @@ The **Machine Profile** dropdown selects a preset CPU and memory configuration f
 
 Select the Kubernetes **Storage Class** that backs the persistent volumes and enter the required **Storage size**.
 
-![Storage Class dropdown and Storage size field](../images/db-create/shared/storage-class.png)
+![Storage Class dropdown and Storage size field](../../images/db-create/shared/storage-class.png)
 
 | Field | Description |
 |---|---|
@@ -98,7 +98,7 @@ Expand the **Advanced Configuration** panel (*Configure Credentials, Deployment 
 
 Add custom Kubernetes labels and annotations to the database resources.
 
-![Labels and Annotations sections each with Key-Value input rows and Add new buttons](../images/db-create/shared/advance-lavel-annotation.png)
+![Labels and Annotations sections each with Key-Value input rows and Add new buttons](../../images/db-create/shared/advance-lavel-annotation.png)
 
 - Use **+ Add new** under **Labels** / **Annotations** to attach key-value pairs.
 - Use the delete icon on any row to remove it.
@@ -107,7 +107,7 @@ Add custom Kubernetes labels and annotations to the database resources.
 
 The **Deletion Policy** dropdown controls what happens to the resources when the database object is deleted.
 
-![Deletion Policy dropdown showing Delete, Halt, WipeOut, and DoNotTerminate options](../images/db-create/shared/deletion-policy.png)
+![Deletion Policy dropdown showing Delete, Halt, WipeOut, and DoNotTerminate options](../../images/db-create/shared/deletion-policy.png)
 
 | Option | Behaviour |
 |---|---|
@@ -122,7 +122,7 @@ The **Deletion Policy** dropdown controls what happens to the resources when the
 
 Configure how the database credentials are managed.
 
-![Authentication Credentials section showing credential toggles, Secret dropdown, Password field, and Configuration textarea](../images/db-create/shared/auth-creds.png)
+![Authentication Credentials section showing credential toggles, Secret dropdown, Password field, and Configuration textarea](../../images/db-create/shared/auth-creds.png)
 
 | Field | Description |
 |---|---|
@@ -135,7 +135,7 @@ Configure how the database credentials are managed.
 
 For engines that support continuous archiving (e.g. **PostgreSQL**, **MySQL**), enable **Point in-time Recovery** to restore the new database from a previous backup to an exact timestamp.
 
-![Point in-time Recovery form showing Namespace, Name, and Recovery Timestamp fields](../images/db-create/shared/point-in-time-recovery.png)
+![Point in-time Recovery form showing Namespace, Name, and Recovery Timestamp fields](../../images/db-create/shared/point-in-time-recovery.png)
 
 1. **Namespace:** The namespace where the source backup resides. Required.
 1. **Name:** The name of the source database to recover from. Required.
@@ -149,7 +149,7 @@ For engines that support continuous archiving (e.g. **PostgreSQL**, **MySQL**), 
 
 Expand the **Additional Options** panel (*Enable Backup, Monitoring, TLS etc.*) to enable integrated platform features.
 
-![Additional Options panel showing Monitoring, Backup, TLS, and Gateway toggles](../images/db-create/shared/Additional-option.png)
+![Additional Options panel showing Monitoring, Backup, TLS, and Gateway toggles](../../images/db-create/shared/Additional-option.png)
 
 | Option | Description |
 |---|---|

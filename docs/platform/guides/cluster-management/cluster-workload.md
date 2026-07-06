@@ -30,7 +30,7 @@ A Deployment keeps a set number of identical app copies running and handles roll
 
 Lists every Deployment with its Namespace, Pods (ready count), Images, and Age. Click a row to view or edit it; use **+ Create** to deploy a new one.
 
-![Deployments list page showing the table of deployments with namespace filter and Create button](images/cluster-workload/deployments-list.png)
+![Deployments list page showing the table of deployments with namespace filter and Create button](../images/cluster-workload/deployments-list.png)
 
 ---
 
@@ -40,7 +40,7 @@ A Replica Set's only job is to keep a fixed number of Pod copies alive. You rare
 
 Lists every Replica Set with its Namespace, Pods, Images, and Age.
 
-![Replica Sets list page showing namespace, pods, images, and age columns](images/cluster-workload/replica-sets-list.png)
+![Replica Sets list page showing namespace, pods, images, and age columns](../images/cluster-workload/replica-sets-list.png)
 
 ---
 
@@ -50,7 +50,7 @@ The older, legacy way to keep a fixed number of Pod copies running — same idea
 
 Lists every Replication Controller with its Namespace, Pods, Images, and Age. Click **+ Create ReplicationController** to add one.
 
-![Replication Controllers list page with no data available and a Create ReplicationController button](images/cluster-workload/replication-controllers-list.png)
+![Replication Controllers list page with no data available and a Create ReplicationController button](../images/cluster-workload/replication-controllers-list.png)
 
 ---
 
@@ -60,7 +60,7 @@ For apps where each Pod needs a stable identity and its own storage — database
 
 Lists every Stateful Set with its Namespace, Pods, Images, and Age.
 
-![Stateful Sets list page showing namespace, pods, images, and age columns](images/cluster-workload/stateful-sets-list.png)
+![Stateful Sets list page showing namespace, pods, images, and age columns](../images/cluster-workload/stateful-sets-list.png)
 
 ---
 
@@ -70,7 +70,7 @@ Runs one copy of a Pod on every node automatically — typically used for cluste
 
 Lists every Daemon Set with its Namespace, Pods, Dsired, Current-Scheduled, Up-to-date, Node Selector, Images, and Age — the Desired/Current/Up-to-date columns show rollout progress at a glance.
 
-![Daemon Sets list page showing desired, current-scheduled, and up-to-date columns](images/cluster-workload/daemon-sets-list.png)
+![Daemon Sets list page showing desired, current-scheduled, and up-to-date columns](../images/cluster-workload/daemon-sets-list.png)
 
 ---
 
@@ -80,7 +80,7 @@ A Job runs a task once until it completes — a backup, a migration script, a on
 
 Lists every Job with its Namespace, Annotations, Completions, Duration, Images, and Age.
 
-![Jobs list page showing completions, duration, images, and age columns](images/cluster-workload/jobs-list.png)
+![Jobs list page showing completions, duration, images, and age columns](../images/cluster-workload/jobs-list.png)
 
 ---
 
@@ -90,7 +90,7 @@ A Cron Job runs a Job on a repeating schedule — like a nightly backup or a rec
 
 Lists every Cron Job with its Namespace, Annotations, Schedule, Suspend, Active, Last Schedule, Images, and Age — the Schedule column shows the cron expression.
 
-![Cron Jobs list page showing schedule, suspend, active, and last schedule columns](images/cluster-workload/cron-jobs-list.png)
+![Cron Jobs list page showing schedule, suspend, active, and last schedule columns](../images/cluster-workload/cron-jobs-list.png)
 
 ---
 
@@ -100,7 +100,7 @@ A Pod is the actual running container(s) — the smallest unit in Kubernetes. Ev
 
 Lists every Pod with its Namespace, Ready, Status, Restarts, IP, Images, and Age — the only Workloads item with these extra live-state columns, useful for spotting crashing or restarting containers.
 
-![Pods list page showing Ready, Status, Restarts, and IP columns](images/cluster-workload/pods-list.png)
+![Pods list page showing Ready, Status, Restarts, and IP columns](../images/cluster-workload/pods-list.png)
 
 ---
 

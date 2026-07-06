@@ -15,7 +15,7 @@ section_menu_id: guides
 
 This page covers the configuration specific to **MongoDB** — its **Database Mode** and any engine-specific settings shown below. The rest of the creation flow —
 opening the wizard, namespace and name, version, machine profile, storage, and optional
-features — is the same for every engine and is documented in [Common Steps](common-steps.md).
+features — is the same for every engine and is documented in [Common Steps](../common-steps.md).
 
 ## Database Mode
 
@@ -29,7 +29,7 @@ Select the topology under **Database Mode**. Three modes are available:
 
 When **Replicated Cluster** is selected, two additional fields appear:
 
-![Replicated Cluster mode selected showing Replicaset Name (rs0) and Replicaset Number (3) fields](../images/db-create/mongodb/replicaset-mode.png)
+![Replicated Cluster mode selected showing Replicaset Name (rs0) and Replicaset Number (3) fields](../../images/db-create/mongodb/replicaset-mode.png)
 
 | Field | Description |
 |---|---|
@@ -41,11 +41,11 @@ When **Replicated Cluster** is selected, two additional fields appear:
 
 When **Sharded Cluster** is selected, three subsections appear — **Shard Nodes**, **Config Server**, and **Mongos** — each configurable independently.
 
-![Sharded Cluster mode selected showing Shard Nodes, Config Server, and Mongos collapsible panels](../images/db-create/mongodb/shard-mode.png)
+![Sharded Cluster mode selected showing Shard Nodes, Config Server, and Mongos collapsible panels](../../images/db-create/mongodb/shard-mode.png)
 
 **Shard Nodes** — Configure how MongoDB data is partitioned, replicated, and resourced across your cluster.
 
-![Shard Nodes panel showing Shards, Replicaset Number, Storage size, Machine, CPU, and Memory fields](../images/db-create/mongodb/shard-nodes.png)
+![Shard Nodes panel showing Shards, Replicaset Number, Storage size, Machine, CPU, and Memory fields](../../images/db-create/mongodb/shard-nodes.png)
 
 | Field | Description |
 |---|---|
@@ -58,7 +58,7 @@ When **Sharded Cluster** is selected, three subsections appear — **Shard Nodes
 
 **Config Server** — Stores metadata about the sharded cluster including chunk distribution and shard configuration. Must run as a replica set.
 
-![Config Server panel showing Replicaset Number, Storage size, Machine, CPU, and Memory fields](../images/db-create/mongodb/config-server.png)
+![Config Server panel showing Replicaset Number, Storage size, Machine, CPU, and Memory fields](../../images/db-create/mongodb/config-server.png)
 
 | Field | Description |
 |---|---|
@@ -70,7 +70,7 @@ When **Sharded Cluster** is selected, three subsections appear — **Shard Nodes
 
 **Mongos** — Acts as the query router for the sharded cluster, directing client requests to the appropriate shards based on metadata from Config Servers.
 
-![Mongos panel showing Replicaset number, Machine, CPU, and Memory fields](../images/db-create/mongodb/mongos-mode.png)
+![Mongos panel showing Replicaset number, Machine, CPU, and Memory fields](../../images/db-create/mongodb/mongos-mode.png)
 
 | Field | Description |
 |---|---|
@@ -81,8 +81,6 @@ When **Sharded Cluster** is selected, three subsections appear — **Shard Nodes
 
 ## Additional MongoDB Options
 
-![MongoDB arbiter and hidden node options](../images/db-create/mongodb/extra-options.png)
-
 | Field | Description |
 |---|---|
 | **Arbiter** | Toggle on to add an arbiter member (votes in elections but stores no data). Configure its pod resources. |
@@ -91,8 +89,8 @@ When **Sharded Cluster** is selected, three subsections appear — **Shard Nodes
 
 ## Create a MongoDB Database
 
-1. Open the wizard and select **MongoDB** — see [Getting Started](common-steps.md#1-getting-started) and [Select a Database Type](common-steps.md#2-select-a-database-type).
-1. Set the [namespace and name](common-steps.md#3-choose-namespace-and-name).
-1. Pick the database version and the **Database Mode** described above, then set the machine profile and storage — see [Configure the Database](common-steps.md#4-configure-the-database).
-1. Optionally configure [Advanced Configuration](common-steps.md#5-advanced-configuration) (labels, deletion policy, credentials, point-in-time recovery) and [Additional Options](common-steps.md#6-additional-options) (monitoring, backup, TLS, gateway).
-1. Click [**Deploy**](common-steps.md#7-deploy).
+1. Open the wizard and select **MongoDB** — see [Getting Started](../common-steps.md#1-getting-started) and [Select a Database Type](../common-steps.md#2-select-a-database-type).
+1. Set the [namespace and name](../common-steps.md#3-choose-namespace-and-name).
+1. Pick the database version and the **Database Mode** described above, then set the machine profile and storage — see [Configure the Database](../common-steps.md#4-configure-the-database).
+1. Optionally configure [Advanced Configuration](../common-steps.md#5-advanced-configuration) (labels, deletion policy, credentials, point-in-time recovery) and [Additional Options](../common-steps.md#6-additional-options) (monitoring, backup, TLS, gateway).
+1. Click [**Deploy**](../common-steps.md#7-deploy).
