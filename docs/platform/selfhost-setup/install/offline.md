@@ -18,7 +18,7 @@ In offline mode, AppsCode never receives any of your KubeDB usage data. AppsCode
 
 ### Prerequisites
 
-See [Prerequisites](../common-config.md#prerequisites) in the Common Configuration guide for the minimum cluster requirements and the optional k3s setup note.
+See [Prerequisites](../common-config/#prerequisites) in the Common Configuration guide for the minimum cluster requirements and the optional k3s setup note.
 
 ### 1. Visit the KubeDB Platform Self-Hosted Page
 
