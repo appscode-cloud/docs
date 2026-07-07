@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-ignite
     name: Ignite
     parent: database-management-create
-    weight: 160
+    weight: 90
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

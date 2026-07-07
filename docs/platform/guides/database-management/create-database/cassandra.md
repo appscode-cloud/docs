@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-cassandra
     name: Cassandra
     parent: database-management-create
-    weight: 210
+    weight: 20
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

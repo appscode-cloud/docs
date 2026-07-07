@@ -26,31 +26,31 @@ it, then follow the common steps for everything else.
 ## Supported Engines
 
 ### Relational
-- [PostgreSQL](../postgres.md)
-- [MySQL](../mysql.md)
-- [MariaDB](../mariadb.md)
-- [Percona XtraDB](../perconaxtradb.md)
-- [Microsoft SQL Server](../mssqlserver.md)
-- [Oracle](../oracle.md)
-- [SingleStore](../singlestore.md)
 - [IBM Db2](../db2.md)
+- [MariaDB](../mariadb.md)
+- [Microsoft SQL Server](../mssqlserver.md)
+- [MySQL](../mysql.md)
+- [Oracle](../oracle.md)
+- [Percona XtraDB](../perconaxtradb.md)
+- [PostgreSQL](../postgres.md)
 - [SAP HANA](../hanadb.md)
+- [SingleStore](../singlestore.md)
 
 ### Document & Search
-- [MongoDB](../mongodb.md)
-- [Elasticsearch](../elasticsearch.md)
-- [Solr](../solr.md)
 - [DocumentDB](../documentdb.md)
+- [Elasticsearch](../elasticsearch.md)
+- [MongoDB](../mongodb.md)
+- [Solr](../solr.md)
 
 ### Key-Value & Cache
-- [Redis](../redis.md)
-- [Memcached](../memcached.md)
-- [Ignite](../ignite.md)
 - [Hazelcast](../hazelcast.md)
+- [Ignite](../ignite.md)
+- [Memcached](../memcached.md)
+- [Redis](../redis.md)
 
 ### Vector
-- [Qdrant](../qdrant.md)
 - [Milvus](../milvus.md)
+- [Qdrant](../qdrant.md)
 - [Weaviate](../weaviate.md)
 
 ### Wide-column & Time-series

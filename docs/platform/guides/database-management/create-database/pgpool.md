@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-pgpool
     name: Pgpool
     parent: database-management-create
-    weight: 290
+    weight: 210
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-mongodb
     name: MongoDB
     parent: database-management-create
-    weight: 10
+    weight: 150
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

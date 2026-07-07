@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-redis
     name: Redis
     parent: database-management-create
-    weight: 140
+    weight: 260
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

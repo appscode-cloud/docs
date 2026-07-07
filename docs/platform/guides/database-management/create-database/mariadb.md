@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-mariadb
     name: MariaDB
     parent: database-management-create
-    weight: 40
+    weight: 110
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---
