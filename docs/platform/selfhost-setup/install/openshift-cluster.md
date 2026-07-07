@@ -21,7 +21,7 @@ Regardless of the mode, an OpenShift deployment always requires you to toggle th
 
 ### Prerequisites
 
-See [Prerequisites](../common-config.md#prerequisites) in the Common Configuration guide for the minimum cluster requirements and the optional k3s setup note.
+See [Prerequisites](../common-config/#prerequisites) in the Common Configuration guide for the minimum cluster requirements and the optional k3s setup note.
 
 ### 1. Visit the KubeDB Platform Self-Hosted Page
 

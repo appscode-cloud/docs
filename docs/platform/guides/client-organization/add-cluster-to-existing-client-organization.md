@@ -45,7 +45,7 @@ Click **Next** to continue.
 
 After selecting the cluster, the wizard continues with the same **Gateway Configuration** and **Telemetry Configuration** steps used when creating a client organization:
 
-- [Gateway Configuration](../create-client-organization.md#step-3-gateway-configuration) — choose a shared or dedicated gateway.
-- [Telemetry Configuration](../create-client-organization.md#step-4-telemetry-configuration) — configure log and metrics retention.
+- [Gateway Configuration](../create-client-organization/#step-3-gateway-configuration) — choose a shared or dedicated gateway.
+- [Telemetry Configuration](../create-client-organization/#step-4-telemetry-configuration) — configure log and metrics retention.
 
 Configure them as needed, then finish to add the cluster to the organization. The new cluster then appears in the **Clusters** section of the organization's details page.
