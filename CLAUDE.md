@@ -30,14 +30,3 @@ liche -p -h -l -s <file.md>
 ```
 Never validate without `-s` and conclude links are broken — that check
 deliberately ignores the site's real routing.
-
-## README.md vs _index.md — do not let both exist in one directory
-
-Hugo uses `_index.md` as a section's real index page. A few directories still
-had a leftover `README.md` from the VitePress days, front-matter-spoofing the
-same URL (or aliasing to it) — the two pages silently collided and broke
-navigation only on those pages, even though every relative-link rule above
-was followed correctly. If you find a directory with both, merge `README.md`'s
-body into `_index.md` (keep `_index.md`'s frontmatter, port any `aliases:`),
-then delete `README.md`. `docs/platform/`, `docs/platform/guides/`, and
-`docs/platform/selfhost-setup/` already went through this fix.
