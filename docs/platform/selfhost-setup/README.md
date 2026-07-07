@@ -19,7 +19,7 @@ Welcome to KubeDB Platform's Self-Hosted deployment! Whether you're looking for 
 
 Navigate to [KubeDB Platform Self-Hosted](https://appscode.com/selfhost). Here you will find your previously generated self-hosted installers.
 
-![Installer Home](../images/installer-home.png)
+![Installer Home](../selfhost-setup/images/installer-home.png)
 <br/>
 
 <br/>
@@ -29,9 +29,9 @@ Click on the `Create New Installer` button to get started. You can choose variou
 
 <br/>
 
-To get detailed documentation on `Cloud Demo` installer, head over to [Demo Deployment](../install/cloud-demo.md).
+To get detailed documentation on `Cloud Demo` installer, head over to [Demo Deployment](../selfhost-setup/install/cloud-demo.md).
 <br/>
 
 <br/>
 
-To get detailed documentation on `Self Hosted Production` installer, head over to [Production Deployment](../install/selfhosted-production.md).
+To get detailed documentation on `Self Hosted Production` installer, head over to [Production Deployment](../selfhost-setup/install/selfhosted-production.md).

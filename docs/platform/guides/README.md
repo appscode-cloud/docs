@@ -19,14 +19,14 @@ This section contains practical, task-oriented guides for operating and managing
 
 ## Guide categories
 
-- [Account Management](../account-management/)
-- [Billing and Usage Guide](../billing-and-usage-guide/)
-- [Cluster Management](../cluster-management/)
-- [Database Management](../database-management/)
-- [Get Started](../get-started/)
-- [Integrations](../integrations/)
-- [License Management](../license-management/)
+- [Account Management](../guides/account-management/manage-profile/)
+- [Billing and Usage Guide](../guides/billing-and-usage-guide/overview)
+- [Cluster Management](../guides/cluster-management/cluster-overview)
+- [Database Management](../guides/database-management/overview)
+- [Get Started](../guides/get-started/architecture)
+- [Integrations](../guides/integrations/rancher-extension)
+- [License Management](../guides/license-management/overview)
 
 ## Recommended path
 
-For first-time users, start with [Get Started](../get-started/) and then move to the specific management areas relevant to your workflow.
+For first-time users, start with [Get Started](../guides/get-started/architecture) and then move to the specific management areas relevant to your workflow.
