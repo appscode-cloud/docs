@@ -35,7 +35,7 @@ When **Replicated Cluster** is selected, two additional fields appear:
 |---|---|
 | **Replicaset Name** | The name for the replica set (e.g., `rs0`). Required. |
 | **Replicaset Number** | The number of replica members (e.g., `3`). Required. |
-| **mongodb+srv style DNS** | Toggle on to enable `mongodb+srv` connection string support for this replica set. |
+| **mongodb+srv style DNS** | Toggle on to advertise externally reachable per-pod endpoints so clients can connect with a `mongodb+srv` connection string. Available only for **Replicated Cluster** mode, and only when the database has TLS and gateway exposure enabled — see [mongodb+srv Style DNS](#mongodbsrv-style-dns-replicated-cluster-only). |
 
 #### Sharded Cluster
 
@@ -79,6 +79,27 @@ When **Sharded Cluster** is selected, three subsections appear — **Shard Nodes
 | **CPU** | CPU request (e.g., `500m`). |
 | **Memory** | Memory request (e.g., `1Gi`). |
 
+## mongodb+srv Style DNS (Replicated Cluster Only)
+
+> **What this is for.** A `mongodb+srv://` connection string lets a client discover every replica set member from a single DNS SRV record instead of listing each host. To make that work from outside the cluster, every member must advertise an externally reachable address (this is MongoDB's *horizon* mechanism). The **mongodb+srv style DNS** toggle on the **Replicated Cluster** form configures those per-pod addresses.
+
+This applies **only** when you intend to reach a **Replicated Cluster** MongoDB from outside Kubernetes with a `mongodb+srv` connection string. If you only connect from within the cluster, use **Standalone**/**Sharded Cluster** mode, or connect with a standard `mongodb://` string, leave it off.
+
+**Prerequisites** — the toggle only takes effect when both are enabled (see [Additional Options](../common-steps/#6-additional-options)):
+
+- **TLS** on the database (upstream TLS). MongoDB requires TLS for SRV-based horizon connections.
+- **Expose via Gateway**, so the members are reachable from outside the cluster.
+
+Turn on **mongodb+srv style DNS** to reveal the endpoints panel:
+
+![mongodb+srv style DNS toggle with SRV DNS Endpoints inputs](../../images/db-create/mongodb/horizon.png)
+
+| Field | Description |
+|---|---|
+| **SRV DNS Endpoints** | One entry per replica set member, in pod order (member 0, member 1, …). Each entry is the externally reachable endpoint that pod should advertise. The number of entries must match the **Replicaset Number** set above. Use **+ Add new** to add an entry. |
+
+The endpoints you enter must resolve to the externally reachable address of the exposed database and must be covered by the TLS certificate's SANs.
+
 ## Additional MongoDB Options
 
 | Field | Description |
@@ -91,6 +112,6 @@ When **Sharded Cluster** is selected, three subsections appear — **Shard Nodes
 
 1. Open the wizard and select **MongoDB** — see [Getting Started](../common-steps/#1-getting-started) and [Select a Database Type](../common-steps/#2-select-a-database-type).
 1. Set the [namespace and name](../common-steps/#3-choose-namespace-and-name).
-1. Pick the database version and the **Database Mode** described above, then set the machine profile and storage — see [Configure the Database](../common-steps/#4-configure-the-database).
+1. Pick the database version and the **Database Mode** described above, then set the machine profile and storage — see [Configure the Database](../common-steps/#4-configure-the-database). For **Replicated Cluster** mode, configure [mongodb+srv style DNS](#mongodbsrv-style-dns-replicated-cluster-only) if you'll connect with a `mongodb+srv` string from outside the cluster.
 1. Optionally configure [Advanced Configuration](../common-steps/#5-advanced-configuration) (labels, deletion policy, credentials, point-in-time recovery) and [Additional Options](../common-steps/#6-additional-options) (monitoring, backup, TLS, gateway).
 1. Click [**Deploy**](../common-steps/#7-deploy).
