@@ -20,7 +20,7 @@ OpenTelemetry. This guide covers the two import-time tasks:
 2. Enabling the OpenTelemetry feature on the spoke clusters you want to monitor.
 
 For the full end-to-end setup — MinIO, the `telemetry` bucket, and the
-TelemetryStack — see [OpenTelemetry Monitoring](../otel-monitoring.md).
+TelemetryStack — see [OpenTelemetry Monitoring](../../otel-monitoring.md).
 
 ## Import the Observability Cluster
 

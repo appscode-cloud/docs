@@ -190,6 +190,6 @@ either during import or on an existing spoke. See
 
 Create a client organization and point it at the monitoring cluster so its
 telemetry is stored in the shared TelemetryStack. See
-[Create a Client Organization](../client-organization/create-client-organization.md)
+[Create a Client Organization](../../client-organization/create-client-organization.md)
 — the **Telemetry Configuration** step is where you select the monitoring
 cluster and set retention.
