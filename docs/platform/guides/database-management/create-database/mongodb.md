@@ -100,6 +100,18 @@ Turn on **mongodb+srv style DNS** to reveal the endpoints panel:
 
 The endpoints you enter must resolve to the externally reachable address of the exposed database and must be covered by the TLS certificate's SANs.
 
+### DNS records you must create
+
+The `mongodb+srv://` scheme is pure DNS discovery — the platform advertises the endpoints, but you must create the matching records in your DNS zone (for a replica set `rs0` on domain `example.com`):
+
+| Record | Example | Why it's needed |
+|---|---|---|
+| **A** / **CNAME** — one per member | `mongo-0.example.com → <endpoint>` (repeat for each member) | Each **SRV DNS Endpoint** you entered must resolve to the member's externally reachable address. Use **A** for a fixed IP, **CNAME** to alias a managed hostname. |
+| **SRV** — one per member, same name | `_mongodb._tcp.example.com  IN SRV 0 0 <port> mongo-0.example.com.` | This is what the driver queries first: connecting to `mongodb+srv://example.com` returns all members (host + port) so the client discovers the full replica set from one name. |
+| **TXT** — one, same name | `example.com  IN TXT "replicaSet=rs0&authSource=admin"` | The SRV scheme requires a TXT record alongside the SRV to carry options that don't fit in SRV fields; the driver auto-appends `replicaSet`/`authSource` so the app never hardcodes them. |
+
+Verify before relying on it: `dig SRV _mongodb._tcp.example.com` and `dig TXT example.com`.
+
 ## Additional MongoDB Options
 
 | Field | Description |
