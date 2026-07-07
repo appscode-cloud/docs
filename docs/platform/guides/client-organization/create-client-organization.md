@@ -93,7 +93,7 @@ In the final step, configure the telemetry settings that will be applied to the 
 
 ![Create Client Organization wizard — Step 4, Telemetry Configuration with monitoring type, log retention, and metrics retention periods](.././images/telemetry-configuration.png)
 
-- **Select Monitoring Type** — choose the monitoring stack to provision for the organization.
+- **Select Monitoring Cluster** — the observability cluster that will store this organization's telemetry. Its `tenant-operator` provisions a `Tenant` on the cluster's TelemetryStack, isolating the organization's data within the shared stack. See [OpenTelemetry Monitoring](../cluster-management/otel-monitoring.md) for how the monitoring cluster is set up.
 - **Logs** — set the **Retention Period** for collected logs.
 - **Metrics** — set the retention periods for collected metrics:
   - **Yearly Retention** — how long aggregated yearly metrics are kept.
