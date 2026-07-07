@@ -28,8 +28,9 @@ jobs:
 
       - name: Install link checker
         run: |
-          curl -fsSL -o liche https://github.com/appscodelabs/liche/releases/download/v0.2.0/liche-linux-amd64
-          chmod +x liche
+          git clone --depth 1 -b arnob-strip-prefix https://github.com/appscodelabs/liche.git /tmp/liche
+          cd /tmp/liche
+          go build -o liche .
           sudo mv liche /usr/local/bin/liche
 
       - name: Create Kubernetes cluster
