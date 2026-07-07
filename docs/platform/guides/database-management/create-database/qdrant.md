@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-qdrant
     name: Qdrant
     parent: database-management-create
-    weight: 200
+    weight: 240
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-mysql
     name: MySQL
     parent: database-management-create
-    weight: 50
+    weight: 160
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

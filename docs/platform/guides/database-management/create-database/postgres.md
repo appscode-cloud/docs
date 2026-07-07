@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-postgres
     name: PostgreSQL
     parent: database-management-create
-    weight: 80
+    weight: 220
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

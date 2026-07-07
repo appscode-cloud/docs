@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-db2
     name: IBM Db2
     parent: database-management-create
-    weight: 20
+    weight: 80
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

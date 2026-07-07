@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-kafka
     name: Kafka
     parent: database-management-create
-    weight: 250
+    weight: 100
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

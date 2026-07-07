@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-proxysql
     name: ProxySQL
     parent: database-management-create
-    weight: 310
+    weight: 230
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

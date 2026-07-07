@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-hazelcast
     name: Hazelcast
     parent: database-management-create
-    weight: 150
+    weight: 70
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

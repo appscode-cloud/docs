@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-weaviate
     name: Weaviate
     parent: database-management-create
-    weight: 210
+    weight: 300
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---

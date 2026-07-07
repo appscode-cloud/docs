@@ -5,7 +5,7 @@ menu:
     identifier: database-management-create-milvus
     name: Milvus
     parent: database-management-create
-    weight: 190
+    weight: 140
 menu_name: docsplatform_{{.version}}
 section_menu_id: guides
 ---
