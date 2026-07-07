@@ -21,11 +21,12 @@ This section contains practical, task-oriented guides for operating and managing
 
 - [Account Management](../guides/account-management/manage-profile/)
 - [Billing and Usage Guide](../guides/billing-and-usage-guide/overview)
+- [License Management](../guides/license-management/overview)
 - [Cluster Management](../guides/cluster-management/cluster-overview)
 - [Database Management](../guides/database-management/overview)
 - [Get Started](../guides/get-started/architecture)
 - [Integrations](../guides/integrations/rancher-extension)
-- [License Management](../guides/license-management/overview)
+
 
 ## Recommended path
 

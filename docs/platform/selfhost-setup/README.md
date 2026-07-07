@@ -29,9 +29,9 @@ Click on the `Create New Installer` button to get started. You can choose variou
 
 <br/>
 
-To get detailed documentation on `Cloud Demo` installer, head over to [Demo Deployment](../selfhost-setup/install/cloud-demo.md).
+To get detailed documentation on `Cloud Demo` installer, head over to [Demo Deployment](../selfhost-setup/install/cloud-demo).
 <br/>
 
 <br/>
 
-To get detailed documentation on `Self Hosted Production` installer, head over to [Production Deployment](../selfhost-setup/install/selfhosted-production.md).
+To get detailed documentation on `Self Hosted Production` installer, head over to [Production Deployment](../selfhost-setup/install/selfhosted-production).
