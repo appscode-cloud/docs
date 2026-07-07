@@ -19,14 +19,19 @@ form (`#134`), because `.md#anchor` doesn't resolve but `.md` alone does.
 ## liche (CI link checker)
 
 CI uses a custom fork (`appscodelabs/liche`, branch `arnob-strip-prefix`) with
-an extra flag: `-s, --strip-relative-prefix` — strips one leading `../` from
+extra flags: `-s, --strip-relative-prefix` — strips one leading `../` from
 each relative link before checking it against the filesystem. This exists
 *because* of the extra-`../` convention above: it lets the checker validate
 against real on-disk paths without every link failing.
 
+`-i, --skip-filename <regex>` excludes files by base name from being scanned
+entirely — CI passes `-i '^README\.md$'` because leftover `README.md` files
+(see the section below) intentionally use non-standard link paths that
+aren't meant to be checked.
+
 To check a file the same way CI does:
 ```
-liche -p -h -l -s <file.md>
+liche -p -h -l -s -i '^README\.md$' <file.md>
 ```
 Never validate without `-s` and conclude links are broken — that check
 deliberately ignores the site's real routing.
