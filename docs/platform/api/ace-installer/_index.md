@@ -27,6 +27,6 @@ and supports reconfigure/upgrade/versioning and marketplace-installer status.
 
 ## Pages
 
-- [ACE Installer](../ace-installer/ace-installer.md) — schema/model, generate/import,
+- [ACE Installer](../ace-installer.md) — schema/model, generate/import,
   installer metadata and latest version, installers CRUD, reconfigure/upgrade,
   versions/archives, and marketplace installer status.

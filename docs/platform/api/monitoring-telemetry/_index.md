@@ -33,9 +33,9 @@ AppsCode Container Engine (ACE) platform. It has two surfaces:
 
 ## Pages
 
-- [Telemetry Stack](../monitoring-telemetry/telemetry-stack.md) — list monitoring
+- [Telemetry Stack](../telemetry-stack.md) — list monitoring
   clusters, install the telemetry stack, fetch `appscode-otel-stack` Helm values, get the
   stack host, and list tenant owners.
-- [Trickster Auth Proxy](../monitoring-telemetry/trickster.md) — register/unregister
+- [Trickster Auth Proxy](../trickster.md) — register/unregister
   Prometheus backends for Grafana and Perses datasources, and the `prom-authproxy`
   ownership check.

@@ -250,7 +250,7 @@ Issue a full (offline-capable) license for the given contract cluster.
 - **Auth:** site-admin (`issue_license:site_admin`).
 - **Path:** `id` (int64), `ccID` (int64). Both required.
 - **Response:** `200 OK` — a license object (same shape as
-  [`POST /license/issue`](../licensing-contracts/registration.md)): `{ contract { id,
+  [`POST /license/issue`](../registration.md)): `{ contract { id,
   startTimestamp, expiryTimestamp }, license }`. Errors: `401`, `403` (quota exceeded or
   authorization required), `404`, `405` (revoked contract or offline not allowed).
 

@@ -46,13 +46,13 @@ Routes in this group fall into three authorization tiers:
 
 ## Pages
 
-- [Admin Billing Dashboard](../billing-dashboard/admin-dashboard.md) — the
+- [Admin Billing Dashboard](../admin-dashboard.md) — the
   site-admin `/api/v1/dashboard/*` routes: licensed users, their clusters,
   per-cluster licenses and licensed products, resource/event histories, marketplace
   subscriptions, and system-outage records.
-- [User Billing Dashboard](../billing-dashboard/user-dashboard.md) — the
+- [User Billing Dashboard](../user-dashboard.md) — the
   owner-scoped `/api/v1/dashboard/clusters/*` routes (`view:contracts`): an
   organization's own active clusters, licenses, licensed products, and event counts.
-- [Usage Reports](../billing-dashboard/usage-reports.md) — the
+- [Usage Reports](../usage-reports.md) — the
   `/api/v1/dashboard/summary/*` monthly usage-report views and PDF download, plus
   the `/api/v1/dbaas/billing/*` namespace billing reports.

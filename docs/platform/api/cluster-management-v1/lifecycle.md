@@ -239,7 +239,7 @@ Update the named preset in a spoke cluster by applying the supplied FluxCD
 - **Auth:** token.
 - **Path parameters:** `owner`, `cluster`, plus `preset` (string, the preset name).
 - **Request body:** an arbitrary FluxCD `HelmRelease` Kubernetes object. See the
-  [Kubernetes proxy](../cluster-management-v1/kubernetes-proxy.md) page for how
+  [Kubernetes proxy](../kubernetes-proxy.md) page for how
   arbitrary Kubernetes objects are passed through verbatim.
 - **Response:** `200` with an empty body.
 

@@ -29,6 +29,6 @@ scope; without a matching credential these routes fail.
 
 ## Pages
 
-- [Cloud Providers](../cloud-providers/cloud-providers.md) — the public provider
+- [Cloud Providers](../cloud-providers.md) — the public provider
   list, CAPI cluster provisioning, and per-provider discovery for GKE, AKS, EKS,
   DigitalOcean, Linode, Rancher, Hetzner, and KubeVirt.

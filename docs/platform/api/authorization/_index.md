@@ -26,6 +26,6 @@ and membership of that organization are required.
 
 ## Pages
 
-- [Roles & Permissions](../authorization/roles-permissions.md) — object
+- [Roles & Permissions](../roles-permissions.md) — object
   allowed-permissions lookups (single and batch), the available-permissions
   catalog, role CRUD, and role principal listings.

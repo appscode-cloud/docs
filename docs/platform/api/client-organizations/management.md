@@ -218,7 +218,7 @@ the client org as owner.
 | `clientOrg` | `CreateOrgParams` | yes | The organization to create (name, full name, type, visibility, optional Rancher sync token, etc.). |
 | `hubClusterUID` | string | yes | UID of the hub cluster imported by the site admin. |
 | `hubClusterOwnerName` | string | yes | Owner (org slug) of the hub cluster. |
-| `userPermission` | `UserOptions` | yes | The org-admin user to provision and the permissions to grant (see [Cluster User Permissions](../client-organizations/cluster-user-permissions.md#useroptions)). |
+| `userPermission` | `UserOptions` | yes | The org-admin user to provision and the permissions to grant (see [Cluster User Permissions](../cluster-user-permissions.md#useroptions)). |
 | `annotations` | map[string]string | no | Annotations applied to created resources. |
 | `kubeDBConfig` | `KubeDBConfig` | no | KubeDB scheduling config (node selector, tolerations). |
 | `useGateway` | boolean | no | Provision a gateway for the client org. |

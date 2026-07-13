@@ -35,11 +35,11 @@ across two pages:
 
 ## Pages
 
-- [Platform Upgrade](../ace-upgrade/platform-upgrade.md) — the
+- [Platform Upgrade](../platform-upgrade.md) — the
   `/api/v1/upgrade*` endpoints: platform upgrade status, job status, history, and
   current version, plus triggering a platform upgrade. Requires site-admin org
   authorization.
-- [Cluster Upgrade](../ace-upgrade/cluster-upgrade.md) — the
+- [Cluster Upgrade](../cluster-upgrade.md) — the
   `/api/v1/clusters/{owner}/{cluster}/upgrade*` and `.../spoke/upgrade*`
   endpoints: imported-cluster and spoke-cluster upgrade status, history, current
   and latest versions, plus triggering cluster/spoke upgrades. Gated by cluster

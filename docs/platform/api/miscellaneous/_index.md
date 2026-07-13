@@ -23,7 +23,7 @@ root**, not under `/api/v1`; their full paths are documented as-is.
 
 ## Pages
 
-- [Miscellaneous Endpoints](../miscellaneous/miscellaneous.md) — server version
+- [Miscellaneous Endpoints](../miscellaneous.md) — server version
   (`/api/v1/version`), markdown rendering (`/api/v1/markdown`, `/api/v1/markdown/raw`),
   the Swagger UI (`/api/v1/swagger`), the health check (`/healthz`), and OIDC discovery
   (`/.well-known/openid-configuration`).

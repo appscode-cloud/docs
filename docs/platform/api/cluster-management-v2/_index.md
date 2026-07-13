@@ -13,7 +13,7 @@ section_menu_id: api
 # Cluster Management v2
 
 The Cluster Management v2 API is the newer, hub-aware cluster surface served under
-`/api/v1/clustersv2`. It builds on [Cluster Management v1](../cluster-management-v1/)
+`/api/v1/clustersv2`. It builds on [Cluster Management v1](../../cluster-management-v1/)
 and adds:
 
 - **Hub awareness** — list hub clusters, resolve hub connection info, and check hub
@@ -36,8 +36,8 @@ site-admin privileges.
 
 ## Pages
 
-- [Clusters](../cluster-management-v2/clusters.md) — providers, hubs, cluster identity,
+- [Clusters](../clusters.md) — providers, hubs, cluster identity,
   listing, status, import/connect/remove, reconcile, reconfigure, Kubernetes version
   upgrades, gateway configs, feature conversion, and vclusters.
-- [Subscriptions & Inbox](../cluster-management-v2/subscriptions.md) — cluster,
+- [Subscriptions & Inbox](../subscriptions.md) — cluster,
   namespace, and resource notification subscriptions, plus the inbox agent token.

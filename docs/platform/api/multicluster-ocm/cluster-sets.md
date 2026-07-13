@@ -61,7 +61,7 @@ Fields: `clusterSetName`, `clusterSetTitle` (human title, may be empty), `cluste
 ### GET /clusters/{owner}/{cluster}/available-clusters
 
 List managed clusters available for use by the owner. (Documented in full on the
-[Hubs & Spokes](../multicluster-ocm/hubs-spokes.md) page; returns
+[Hubs & Spokes](../hubs-spokes.md) page; returns
 `ManagedClusterInfo[]`.)
 
 > **Verified:** `GET` returned `200` against `appscode/ace` (hub) on 2026-07-14.

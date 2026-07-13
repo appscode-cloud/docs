@@ -31,13 +31,13 @@ organization/user and map the cluster before running; failures surface as `401`
 
 ## Pages
 
-- [Hubs & Spokes](../multicluster-ocm/hubs-spokes.md) — list hub clusters, inspect
+- [Hubs & Spokes](../hubs-spokes.md) — list hub clusters, inspect
   spoke inventories (managed / accepted / not-accepted / available), accept spoke
   join requests, generate the spoke install command, import or convert a cluster to
   a spoke, remove a managed cluster, validate profiles, and sync account objects.
-- [Cluster Sets & Feature Sets](../multicluster-ocm/cluster-sets.md) — create,
+- [Cluster Sets & Feature Sets](../cluster-sets.md) — create,
   delete, and populate cluster sets; install/disable/update feature sets; check
   feature sync status and auto-update; and bind namespaces to cluster sets.
-- [OCM Users](../multicluster-ocm/ocm-users.md) — list, create, inspect, update, and
+- [OCM Users](../ocm-users.md) — list, create, inspect, update, and
   delete OCM users and their per-cluster / per-cluster-set permissions, and fetch a
   user's kubeconfig for a spoke cluster.

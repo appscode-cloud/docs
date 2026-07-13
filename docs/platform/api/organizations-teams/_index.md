@@ -25,10 +25,10 @@ out per endpoint.
 
 ## Pages
 
-- [Organizations](../organizations-teams/organizations.md) — the `/api/v1/orgs/*`
+- [Organizations](../organizations.md) — the `/api/v1/orgs/*`
   endpoints: create/claim organizations, get/edit/delete an org, ownership and
   membership checks, member management, avatars, Rancher sync/user tokens, and org
   access/NATS tokens.
-- [Teams](../organizations-teams/teams.md) — the `/api/v1/orgs/{orgname}/teams` and
+- [Teams](../teams.md) — the `/api/v1/orgs/{orgname}/teams` and
   `/api/v1/teams/{teamid}/*` endpoints: list/create teams, team actions, and team
   member management.

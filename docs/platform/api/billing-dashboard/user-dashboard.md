@@ -83,7 +83,7 @@ Returns cluster information for a cluster owned by the request owner.
 | `cid` | string | Cluster UID. |
 
 - **Response:** `200 OK` — a single `ClusterInfo` object (the same shape documented
-  on the [Admin Billing Dashboard](../billing-dashboard/admin-dashboard.md) page;
+  on the [Admin Billing Dashboard](../admin-dashboard.md) page;
   `status` is a free-form Kubernetes-style object). `404` if the cluster is unknown
   or not owned by the org.
 

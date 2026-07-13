@@ -183,7 +183,7 @@ List available cluster profiles.
 
 **Response:** `200` — an `UnstructuredList` of `clusterprofiles`
 (`meta.k8s.appscode.com/v1alpha1`). This is an arbitrary Kubernetes list object; see the
-[cluster features guide](../../guides/cluster-management/cluster-features.md) for how
+[cluster features guide](../../../guides/cluster-management/cluster-features.md) for how
 profiles are used.
 
 > **Verified:** `GET` returned `200` against `appscode` on 2026-07-14.

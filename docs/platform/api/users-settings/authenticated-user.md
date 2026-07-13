@@ -62,7 +62,7 @@ Get the authenticated user.
 ```
 
 The `User` fields are documented in the
-[Public & Basic-auth User APIs](../users-settings/public-user-apis.md#user-object)
+[Public & Basic-auth User APIs](../public-user-apis.md#user-object)
 page.
 
 > **Verified:** `GET /user` returned `200` against `appscode` on 2026-07-14.
@@ -341,7 +341,7 @@ List all teams the authenticated user belongs to.
 > **Verified:** `GET /user/teams` returned `200` against `appscode` on 2026-07-14.
 
 Organization list endpoints for the authenticated user live under settings — see
-[GET /user/settings/organizations](../users-settings/user-settings.md#get-usersettingsorganizations).
+[GET /user/settings/organizations](../user-settings.md#get-usersettingsorganizations).
 
 ---
 

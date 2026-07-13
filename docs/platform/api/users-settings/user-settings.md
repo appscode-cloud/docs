@@ -149,7 +149,7 @@ Get the authenticated user's email-address records. Returns the raw
 
 **Response:** `200 OK` — an array of opaque email-address records.
 
-> **Verified:** the sibling [`GET /user/emails`](../users-settings/authenticated-user.md#get-useremails) returned `200`; this settings variant returns the same underlying records in raw form.
+> **Verified:** the sibling [`GET /user/emails`](../authenticated-user.md#get-useremails) returned `200`; this settings variant returns the same underlying records in raw form.
 
 ### POST /user/settings/account/email
 
@@ -507,7 +507,7 @@ List the authenticated user's organizations.
 - **Auth:** Token.
 
 **Response:** `200 OK` — an array of `Organization` objects (fields documented on the
-[Public & Basic-auth User APIs](../users-settings/public-user-apis.md#organization-object)
+[Public & Basic-auth User APIs](../public-user-apis.md#organization-object)
 page).
 
 > **Verified:** `GET /user/settings/organizations` returned `200` against `appscode` on 2026-07-14.

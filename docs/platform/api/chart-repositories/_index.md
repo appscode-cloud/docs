@@ -25,6 +25,6 @@ role is required. Only `GET` requests are exposed here.
 
 ## Pages
 
-- [Chart Repositories](../chart-repositories/chart-repositories.md) — list the
+- [Chart Repositories](../chart-repositories.md) — list the
   known chart repositories, list the charts inside a repository, and list the
   versions of a named chart.

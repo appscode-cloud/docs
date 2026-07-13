@@ -24,13 +24,13 @@ public (no auth) or use HTTP Basic auth — this is called out per endpoint.
 
 ## Pages
 
-- [Public & Basic-auth User APIs](../users-settings/public-user-apis.md) — public
+- [Public & Basic-auth User APIs](../public-user-apis.md) — public
   user lookup/search, a user's organizations, social follow info, HTTP Basic-auth
   token management, and sign-in.
-- [Authenticated User](../users-settings/authenticated-user.md) — the
+- [Authenticated User](../authenticated-user.md) — the
   `/api/v1/user/*` endpoints: the current user, emails, NATS credentials, cloud
   credentials, clusters, teams, organizations, and name/email validation.
-- [User Settings](../users-settings/user-settings.md) — the
+- [User Settings](../user-settings.md) — the
   `/api/v1/user/settings/*` endpoints: profile and avatar, password and account
   emails, 2FA and WebAuthn security, sessions, personal access and NATS tokens, and
   OAuth2 applications.

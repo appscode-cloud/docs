@@ -31,6 +31,6 @@ required.
 
 ## Pages
 
-- [Administrative-Org Admin](../administration/admin-org.md) — `/api/v1/admin/*`: manage users and their organizations.
-- [Site Admin Console](../administration/site-admin-console.md) — `/api/v1/accounts/admin/*`: dashboard, users, orgs, clusters, auth sources.
-- [Site Settings](../administration/site-settings.md) — `/allowed-domains`, `/disable-registration`, `/branding`.
+- [Administrative-Org Admin](../admin-org.md) — `/api/v1/admin/*`: manage users and their organizations.
+- [Site Admin Console](../site-admin-console.md) — `/api/v1/accounts/admin/*`: dashboard, users, orgs, clusters, auth sources.
+- [Site Settings](../site-settings.md) — `/allowed-domains`, `/disable-registration`, `/branding`.

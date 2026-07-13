@@ -30,7 +30,7 @@ The per-provider discovery routes talk to the cloud provider's API using a
 scope. If no matching credential is stored for the owner (or the provider needs
 extra configuration, such as a configured Rancher client), the route returns an
 error. Cloud credentials are managed via the
-[user/organization credentials APIs](../users-settings/authenticated-user.md).
+[user/organization credentials APIs](../../users-settings/authenticated-user.md).
 
 ## Common path parameter
 

@@ -32,11 +32,11 @@ All routes are served under the `/api/v1` prefix.
 
 ## Pages
 
-- [License Registration](../licensing-contracts/registration.md) — `POST /register`,
+- [License Registration](../registration.md) — `POST /register`,
   `POST /license/issue`, `POST /user/license-proxy`.
-- [Contracts — Admin](../licensing-contracts/contracts-admin.md) — `/contracts/*`
+- [Contracts — Admin](../contracts-admin.md) — `/contracts/*`
   (AppsCode-hosted, site-admin).
-- [Contracts — User](../licensing-contracts/contracts-user.md) — `/user/contracts/*`
+- [Contracts — User](../contracts-user.md) — `/user/contracts/*`
   (AppsCode-hosted, token).
 
 ## Common concepts

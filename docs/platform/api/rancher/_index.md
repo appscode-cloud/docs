@@ -31,5 +31,5 @@ token.
 
 ## Pages
 
-- [Rancher Integration](../rancher/rancher.md) — user sync, acerproxy install
+- [Rancher Integration](../rancher.md) — user sync, acerproxy install
   command, CA download, proxy-server token, and NATS credentials.

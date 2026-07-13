@@ -23,7 +23,7 @@ and issue offline licenses. All routes on this page are rooted at
   scope the target account; when omitted the caller's account is used.
 
 The `Contract` and `ContractClusterStatus` object shapes are the same as documented on
-the [Contracts — Admin](../licensing-contracts/contracts-admin.md) page (user responses
+the [Contracts — Admin](../contracts-admin.md) page (user responses
 sanitize admin-only email fields).
 
 > **Deployment note.** These routes are AppsCode-hosted-only and are **not registered on
@@ -272,7 +272,7 @@ Issue a full (offline-capable) license for one of the caller's contract clusters
 - **Path:** `id` (int64), `ccID` (int64). Both required. **Query:** `org` (optional).
 - **Response:** `200 OK` — a license object (`{ contract { id, startTimestamp,
   expiryTimestamp }, license }`, same shape as
-  [`POST /license/issue`](../licensing-contracts/registration.md)). Errors: `401`, `403`
+  [`POST /license/issue`](../registration.md)). Errors: `401`, `403`
   (quota exceeded or authorization denied), `404`, `405` (revoked contract or offline
   not allowed).
 

@@ -38,5 +38,5 @@ GET endpoints, the observed behaviour on a non-marketplace deployment.
 
 ## Pages
 
-- [Webhook Service](../marketplace/webhook-service.md) — `/marketplace/api/v1/*`: claimable check, AWS/Azure/GCP subscription notifications, and version (separate listener).
-- [Metered Billing](../marketplace/metered-billing.md) — `/api/v1/proxy/metered-billing/marketplaces/*`: AWS/GCP usage reporting and readiness probes (site-admin, deployment-gated).
+- [Webhook Service](../webhook-service.md) — `/marketplace/api/v1/*`: claimable check, AWS/Azure/GCP subscription notifications, and version (separate listener).
+- [Metered Billing](../metered-billing.md) — `/api/v1/proxy/metered-billing/marketplaces/*`: AWS/GCP usage reporting and readiness probes (site-admin, deployment-gated).
