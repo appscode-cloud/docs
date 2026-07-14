@@ -2,15 +2,12 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-chart-repositories-readme
+    identifier: api-chart-repositories-overview
     name: Overview
     parent: api-chart-repositories
     weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
-url: /docs/platform/{{.version}}/api/chart-repositories/
-aliases:
-- /docs/platform/{{.version}}/api/chart-repositories/overview/
 ---
 
 # Chart Repositories
@@ -36,6 +33,6 @@ role is required. Only `GET` requests are exposed here.
 
 ## Pages
 
-- [Chart Repositories](../chart-repositories.md) — list the
+- [Chart Repositories](../chart-repositories) — list the
   known chart repositories, list the charts inside a repository, and list the
   versions of a named chart.

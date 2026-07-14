@@ -2,15 +2,12 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-cloud-providers-readme
+    identifier: api-cloud-providers-overview
     name: Overview
     parent: api-cloud-providers
     weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
-url: /docs/platform/{{.version}}/api/cloud-providers/
-aliases:
-- /docs/platform/{{.version}}/api/cloud-providers/overview/
 ---
 
 # Cloud Providers
@@ -50,6 +47,6 @@ cloud credentials.
 
 ## Pages
 
-- [Cloud Providers](../cloud-providers.md) — the public provider
+- [Cloud Providers](../cloud-providers) — the public provider
   list, CAPI cluster provisioning, and per-provider discovery for GKE, AKS, EKS,
   DigitalOcean, Linode, Rancher, Hetzner, and KubeVirt.

@@ -2,15 +2,12 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-ace-installer-readme
+    identifier: api-ace-installer-overview
     name: Overview
     parent: api-ace-installer
     weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
-url: /docs/platform/{{.version}}/api/ace-installer/
-aliases:
-- /docs/platform/{{.version}}/api/ace-installer/overview/
 ---
 
 # Platform Installer API
@@ -48,6 +45,6 @@ Generates and manages self-host installer bundles. Token + org context; per-acti
 
 ## Pages
 
-- [Platform Installer](../ace-installer.md) — schema/model, generate/import,
+- [Platform Installer](../ace-installer) — schema/model, generate/import,
   installer metadata and latest version, installers CRUD, reconfigure/upgrade,
   versions/archives, and marketplace installer status.

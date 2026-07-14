@@ -2,15 +2,12 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-miscellaneous-readme
+    identifier: api-miscellaneous-overview
     name: Overview
     parent: api-miscellaneous
     weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
-url: /docs/platform/{{.version}}/api/miscellaneous/
-aliases:
-- /docs/platform/{{.version}}/api/miscellaneous/overview/
 ---
 
 # Miscellaneous
@@ -37,7 +34,7 @@ account activation & recovery, 2FA/WebAuthn login, and static assets.
 
 ## Pages
 
-- [Miscellaneous Endpoints](../miscellaneous.md) — server version
+- [Miscellaneous Endpoints](../miscellaneous) — server version
   (`/api/v1/version`), markdown rendering (`/api/v1/markdown`, `/api/v1/markdown/raw`),
   the Swagger UI (`/api/v1/swagger`), the health check (`/healthz`), and OIDC discovery
   (`/.well-known/openid-configuration`).

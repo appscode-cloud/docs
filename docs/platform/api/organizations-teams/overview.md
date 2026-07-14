@@ -2,15 +2,12 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-organizations-teams-readme
+    identifier: api-organizations-teams-overview
     name: Overview
     parent: api-organizations-teams
     weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
-url: /docs/platform/{{.version}}/api/organizations-teams/
-aliases:
-- /docs/platform/{{.version}}/api/organizations-teams/overview/
 ---
 
 # Identity: Organizations & Teams
@@ -60,10 +57,10 @@ role-based permissions (all checks are OpenFGA-backed).
 
 ## Pages
 
-- [Organizations](../organizations.md) — the `/api/v1/orgs/*`
+- [Organizations](../organizations) — the `/api/v1/orgs/*`
   endpoints: create/claim organizations, get/edit/delete an org, ownership and
   membership checks, member management, avatars, Rancher sync/user tokens, and org
   access/NATS tokens.
-- [Teams](../teams.md) — the `/api/v1/orgs/{orgname}/teams` and
+- [Teams](../teams) — the `/api/v1/orgs/{orgname}/teams` and
   `/api/v1/teams/{teamid}/*` endpoints: list/create teams, team actions, and team
   member management.

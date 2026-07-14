@@ -2,15 +2,12 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-licensing-contracts-readme
+    identifier: api-licensing-contracts-overview
     name: Overview
     parent: api-licensing-contracts
     weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
-url: /docs/platform/{{.version}}/api/licensing-contracts/
-aliases:
-- /docs/platform/{{.version}}/api/licensing-contracts/overview/
 ---
 
 # Licensing & Contracts
@@ -79,11 +76,11 @@ Related: `POST /api/v1/user/license-proxy` — generate the `license-proxyserver
 
 ## Pages
 
-- [License Registration](../registration.md) — `POST /register`,
+- [License Registration](../registration) — `POST /register`,
   `POST /license/issue`, `POST /user/license-proxy`.
-- [Contracts — Admin](../contracts-admin.md) — `/contracts/*`
+- [Contracts — Admin](../contracts-admin) — `/contracts/*`
   (AppsCode-hosted, site-admin).
-- [Contracts — User](../contracts-user.md) — `/user/contracts/*`
+- [Contracts — User](../contracts-user) — `/user/contracts/*`
   (AppsCode-hosted, token).
 
 ## Common concepts

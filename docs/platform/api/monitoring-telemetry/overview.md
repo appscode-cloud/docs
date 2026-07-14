@@ -2,15 +2,12 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-monitoring-telemetry-readme
+    identifier: api-monitoring-telemetry-overview
     name: Overview
     parent: api-monitoring-telemetry
     weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
-url: /docs/platform/{{.version}}/api/monitoring-telemetry/
-aliases:
-- /docs/platform/{{.version}}/api/monitoring-telemetry/overview/
 ---
 
 # Monitoring & Telemetry API
@@ -54,9 +51,9 @@ KubeDB Platform. It has two surfaces:
 
 ## Pages
 
-- [Telemetry Stack](../telemetry-stack.md) — list monitoring
+- [Telemetry Stack](../telemetry-stack) — list monitoring
   clusters, install the telemetry stack, fetch `appscode-otel-stack` Helm values, get the
   stack host, and list tenant owners.
-- [Trickster Auth Proxy](../trickster.md) — register/unregister
+- [Trickster Auth Proxy](../trickster) — register/unregister
   Prometheus backends for Grafana and Perses datasources, and the `prom-authproxy`
   ownership check.
