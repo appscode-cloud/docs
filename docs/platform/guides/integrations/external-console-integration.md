@@ -20,13 +20,13 @@ hosted on a subdomain — with no second login prompt.
 All endpoints referenced here are documented in the
 [KubeDB Platform API Reference](../../../api/). The most relevant pages are:
 
-- [Administrative-Org Admin](../../../api/administration/admin-org.md) — the admin user
+- [Administrative-Org Admin](../../../api/administration/admin-org/) — the admin user
   APIs used to provision and maintain the mirrored user.
-- [Public & Basic-auth User APIs](../../../api/users-settings/public-user-apis.md) — the
+- [Public & Basic-auth User APIs](../../../api/users-settings/public-user-apis/) — the
   public `POST /user/signin` endpoint that establishes the browser session.
-- [Authenticated User APIs](../../../api/users-settings/authenticated-user.md) — `GET
+- [Authenticated User APIs](../../../api/users-settings/authenticated-user/) — `GET
   /user/signout` and other session-scoped calls.
-- [Client Organizations](../../../api/client-organizations/overview.md) — the
+- [Client Organizations](../../../api/client-organizations/overview/) — the
   managed-service-provider model for granting each user scoped access to clusters.
 
 ## 1. Goal
@@ -67,7 +67,7 @@ Because both consoles share the registrable domain `acme.com`, the browser treat
   backend — never shipped to a browser. It is sent as an `Authorization: token <TOKEN>`
   header and authorizes the `/api/v1/admin/*` calls (which require the
   `admin_of_administrative_org` relation). See
-  [Administrative-Org Admin](../../../api/administration/admin-org.md).
+  [Administrative-Org Admin](../../../api/administration/admin-org/).
 - The administrative organization slug (e.g. `appscode`) to pass as the `?org=` context on
   admin calls.
 - TLS on both hosts. All calls below assume `https://`.
@@ -96,7 +96,7 @@ used only for the server-side handoff in Phase 2; the end user never learns it.
 ### 3.1 Create the user
 
 `POST /api/v1/admin/users?org=<slug>` — body is a `CreateUserOption`
-([reference](../../../api/administration/admin-org.md)):
+([reference](../../../api/administration/admin-org/)):
 
 ```bash
 curl -X POST 'https://db.acme.com/api/v1/admin/users?org=appscode' \
@@ -128,7 +128,7 @@ curl -X POST 'https://db.acme.com/api/v1/admin/users?org=appscode' \
 
 When the user edits their name/email in the CSP console, mirror it with `POST
 /api/v1/admin/users/{username}/update?org=<slug>` — body is a `Profile`
-([reference](../../../api/administration/admin-org.md)):
+([reference](../../../api/administration/admin-org/)):
 
 ```bash
 curl -X POST 'https://db.acme.com/api/v1/admin/users/acme-user-42/update?org=appscode' \
@@ -149,7 +149,7 @@ curl -X POST 'https://db.acme.com/api/v1/admin/users/acme-user-42/update?org=app
 If the CSP rotates the stored KubeDB credential, push the new value with `POST
 /api/v1/admin/users/{username}/change-password?org=<slug>` — body is an
 `UpdatePasswordParams`
-([reference](../../../api/administration/admin-org.md)):
+([reference](../../../api/administration/admin-org/)):
 
 ```bash
 curl -X POST 'https://db.acme.com/api/v1/admin/users/acme-user-42/change-password?org=appscode' \
@@ -163,7 +163,7 @@ curl -X POST 'https://db.acme.com/api/v1/admin/users/acme-user-42/change-passwor
 When a CSP user is disabled or deleted, revoke KubeDB access with `DELETE
 /api/v1/admin/users/{username}?org=<slug>` (or `PATCH` the user with `active:false` /
 `prohibit_login:true` to keep the record). See
-[Edit / Delete user](../../../api/administration/admin-org.md).
+[Edit / Delete user](../../../api/administration/admin-org/).
 
 ![Provisioning the mirrored user](../images/csp-provisioning.svg)
 
@@ -174,7 +174,7 @@ When a CSP user is disabled or deleted, revoke KubeDB access with `DELETE
 The public sign-in endpoint **`POST /api/v1/user/signin`** authenticates a username +
 password and, on success, **sets the session, CSRF (`_csrf`), and NATS cookies** — the same
 cookies the web console relies on
-([reference](../../../api/users-settings/public-user-apis.md)). The trick is
+([reference](../../../api/users-settings/public-user-apis/)). The trick is
 that these cookies are obtained by the CSP backend server-to-server, then delivered to the
 user's browser so it holds a valid `db.acme.com` session.
 
@@ -264,18 +264,18 @@ Organizations** — is designed exactly for CSPs. As a site admin, the CSP:
 1. Creates a client organization and imports spoke clusters into it —
    `POST /api/v1/user/client/create` and
    `POST /api/v1/user/client/{orgname}/add-cluster`
-   ([Client Org Management](../../../api/client-organizations/management.md)).
+   ([Client Org Management](../../../api/client-organizations/management/)).
 2. Creates a per-cluster user with scoped permissions and (optionally) fetches a kubeconfig
    for them —
    `POST /api/v1/clusters/{owner}/{cluster}/permission/user/create` and
    `GET  /api/v1/clusters/{owner}/{cluster}/permission/user/{id}/kubeconfig`
-   ([Cluster User Permissions](../../../api/client-organizations/cluster-user-permissions.md)).
+   ([Cluster User Permissions](../../../api/client-organizations/cluster-user-permissions/)).
 
 Map each CSP customer to a client organization and each mirrored user to that org's
 per-cluster permission set, so that when the user lands on the KubeDB console (via the
 handoff above) they see exactly the clusters and databases they are entitled to. The
 equivalent UI walkthrough is in the
-[Client Organization guide](../../client-organization/create-client-organization.md).
+[Client Organization guide](../../client-organization/create-client-organization/).
 
 ---
 
@@ -283,7 +283,7 @@ equivalent UI walkthrough is in the
 
 When the user logs out of the CSP console, also terminate the KubeDB session so a shared
 browser can't keep the console open. Call `GET /api/v1/user/signout` with the user's cookies
-and CSRF token ([reference](../../../api/users-settings/authenticated-user.md)):
+and CSRF token ([reference](../../../api/users-settings/authenticated-user/)):
 
 ```bash
 curl -X GET 'https://db.acme.com/api/v1/user/signout' \
@@ -317,7 +317,7 @@ Explore any of these interactively in the
 
 - **Site-admin token** stays server-side, in a secret manager. Rotate it periodically. Its
   compromise means full control of every mirrored user. Generate/manage tokens via the
-  [access-token APIs](../../../api/users-settings/public-user-apis.md).
+  [access-token APIs](../../../api/users-settings/public-user-apis/).
 - **Stored KubeDB passwords** are internal credentials: generate them randomly (high
   entropy), encrypt at rest, and never expose them to the browser or the end user.
 - **Handoff ticket** must be short-lived (seconds), single-use, signed/encrypted, and bound
