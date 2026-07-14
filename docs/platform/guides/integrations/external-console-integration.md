@@ -13,7 +13,21 @@ section_menu_id: guides
 # Integrating an External Console with the KubeDB Platform
 
 This guide is for **Cloud Service Providers (CSPs)** and ISVs who already operate their
-own web console and want to embed the KubeDB Platform console for their end users.
+own web console and want to embed the KubeDB Platform console for their end users, so that
+a user who signs in to the CSP console is transparently signed in to the KubeDB console
+hosted on a subdomain — with no second login prompt.
+
+All endpoints referenced here are documented in the
+[KubeDB Platform API Reference](../../../api/). The most relevant pages are:
+
+- [Administrative-Org Admin](../../../api/administration/admin-org.md) — the admin user
+  APIs used to provision and maintain the mirrored user.
+- [Public & Basic-auth User APIs](../../../api/users-settings/public-user-apis.md) — the
+  public `POST /user/signin` endpoint that establishes the browser session.
+- [Authenticated User APIs](../../../api/users-settings/authenticated-user.md) — `GET
+  /user/signout` and other session-scoped calls.
+- [Client Organizations](../../../api/client-organizations/overview.md) — the
+  managed-service-provider model for granting each user scoped access to clusters.
 
 ## 1. Goal
 
@@ -27,16 +41,16 @@ the CSP's console**, for example:
 | KubeDB Platform console **and** API server (per-CSP deployment) | `https://db.acme.com` |
 
 The requirement: **when a user logs into the CSP console, the CSP backend should
-seamlessly log that same user into the KubeDB console** — no second username/password
-prompt. The user's identity of record lives in the CSP console; the KubeDB Platform holds a
-*mirror* of that identity that the CSP backend controls.
+seamlessly log that same user into the KubeDB console.** The user's identity of record
+lives in the CSP console; the KubeDB Platform holds a *mirror* of that identity that the
+CSP backend controls.
 
 This is achieved with two flows:
 
 1. **Provisioning (once per user)** — the CSP backend creates a mirrored KubeDB user
-   using an **admin bearer token**. The CSP generates and stores that user's KubeDB
-   password; the end user never sees or types it.
-2. **Session handoff (every CSP login)** — the CSP backend performs a server-side login
+   with the admin API, authenticating with a site-admin **personal access token**. The CSP
+   generates and stores that user's KubeDB password; the end user never sees or types it.
+2. **Session handoff (every CSP login)** — the CSP backend performs a server-side sign-in
    to the KubeDB Platform on the user's behalf, captures the resulting session cookies, and
    hands them to the user's browser scoped to the KubeDB subdomain.
 
@@ -49,17 +63,23 @@ Because both consoles share the registrable domain `acme.com`, the browser treat
 
 - A per-CSP KubeDB Platform deployment reachable at the subdomain (`https://db.acme.com`),
   serving both the web console and the `/api/v1` REST API.
-- An **admin personal access token** (bearer token) issued to the CSP, held **only** by
-  the CSP backend — never shipped to a browser. Used for `/api/v1/admin/*` calls.
+- A site-admin **personal access token** issued to the CSP, held **only** by the CSP
+  backend — never shipped to a browser. It is sent as an `Authorization: token <TOKEN>`
+  header and authorizes the `/api/v1/admin/*` calls (which require the
+  `admin_of_administrative_org` relation). See
+  [Administrative-Org Admin](../../../api/administration/admin-org.md).
+- The administrative organization slug (e.g. `appscode`) to pass as the `?org=` context on
+  admin calls.
 - TLS on both hosts. All calls below assume `https://`.
-- The mirrored KubeDB users must **not** have 2FA enabled — the password login endpoint
-  rejects 2FA-enrolled users (HTTP 405). Since the CSP console is the identity provider,
+- The mirrored KubeDB users must **not** have 2FA enabled — `POST /user/signin` rejects
+  2FA-enrolled accounts with HTTP `405`. Since the CSP console is the identity provider,
   leave 2FA off on the mirror and enforce MFA in the CSP console instead.
 
-Throughout, replace:
+Throughout, replace the placeholders:
 
-- `db.acme.com` → your KubeDB Platform subdomain
-- `2ed08ee9a855b8ff614ef1505b33c75a8836d55d` → your admin bearer token
+- `db.acme.com` → your KubeDB Platform subdomain (shown as `<akp-host>` in the API reference)
+- `$AKP_TOKEN` → your site-admin token
+- `appscode` → your administrative-org slug
 
 ---
 
@@ -67,63 +87,83 @@ Throughout, replace:
 
 When a customer signs up (or is first granted database access) on the CSP console, the
 CSP backend creates the corresponding user in the KubeDB Platform. Do **not** use the public
-signup API — user creation is an admin operation.
+signup flow — user creation is an admin operation.
 
 The CSP backend generates a strong random password for the KubeDB identity and **stores
 it** (encrypted) alongside the CSP user record. This password is an internal credential
 used only for the server-side handoff in Phase 2; the end user never learns it.
 
-**Create user** — `POST /api/v1/admin/users`:
+### 3.1 Create the user
+
+`POST /api/v1/admin/users?org=<slug>` — body is a `CreateUserOption`
+([reference](../../../api/administration/admin-org.md)):
 
 ```bash
-curl -X POST 'https://db.acme.com/api/v1/admin/users' \
-  -H 'Authorization: Bearer 2ed08ee9a855b8ff614ef1505b33c75a8836d55d' \
+curl -X POST 'https://db.acme.com/api/v1/admin/users?org=appscode' \
+  -H "Authorization: token $AKP_TOKEN" \
   -H 'Content-Type: application/json' \
   --data-raw '{
     "username": "acme-user-42",
-    "full_name": "Jane Doe",
     "email": "jane@customer.example.com",
     "password": "<STRONG_RANDOM_PASSWORD_GENERATED_AND_STORED_BY_CSP>",
+    "full_name": "Jane Doe",
     "must_change_password": false,
     "send_notify": false
   }'
 ```
 
-Notes:
+| Field | Type | Required | Notes for CSP integration |
+|-------|------|----------|---------------------------|
+| `username` | string | yes | Stable, collision-free (e.g. prefix with your tenant slug). |
+| `email` | string | yes | The user's email. |
+| `password` | string | yes | CSP-generated random secret; store it encrypted. |
+| `full_name` | string | no | Display name. |
+| `must_change_password` | boolean | no | **Set `false`** — a forced change breaks the automated handoff. |
+| `send_notify` | boolean | no | **Set `false`** — the CSP owns all user communication. |
 
-- Set `must_change_password: false` — a forced password change would break the automated
-  login handoff.
-- Set `send_notify: false` — the KubeDB Platform should not email the user; the CSP owns all
-  user communication.
-- Pick a stable, collision-free `username` (e.g. prefix with your tenant slug). Persist the
-  mapping `CSP user ↔ KubeDB username` in the CSP database.
+**Response:** `201 Created` — the created `User`. Persist the mapping
+`CSP user ↔ KubeDB username` in the CSP database.
 
-**Keep profile in sync (optional)** — when the user edits their name/email in the CSP
-console, mirror it with `POST /api/v1/admin/users/{username}/update`:
+### 3.2 Keep the profile in sync (optional)
+
+When the user edits their name/email in the CSP console, mirror it with `POST
+/api/v1/admin/users/{username}/update?org=<slug>` — body is a `Profile`
+([reference](../../../api/administration/admin-org.md)):
 
 ```bash
-curl -X POST 'https://db.acme.com/api/v1/admin/users/acme-user-42/update' \
-  -H 'Authorization: Bearer 2ed08ee9a855b8ff614ef1505b33c75a8836d55d' \
+curl -X POST 'https://db.acme.com/api/v1/admin/users/acme-user-42/update?org=appscode' \
+  -H "Authorization: token $AKP_TOKEN" \
   -H 'Content-Type: application/json' \
   --data-raw '{
     "name": "acme-user-42",
     "full_name": "Jane A. Doe",
     "email": "jane@customer.example.com",
     "keep_email_private": false,
-    "language": "en",
+    "language": "en-US",
     "description": "Mirrored from CSP console"
   }'
 ```
 
-**Rotate the password (optional)** — if the CSP rotates the stored KubeDB credential,
-push the new value with `POST /api/v1/admin/users/{username}/change-password`:
+### 3.3 Rotate the password (optional)
+
+If the CSP rotates the stored KubeDB credential, push the new value with `POST
+/api/v1/admin/users/{username}/change-password?org=<slug>` — body is an
+`UpdatePasswordParams`
+([reference](../../../api/administration/admin-org.md)):
 
 ```bash
-curl -X POST 'https://db.acme.com/api/v1/admin/users/acme-user-42/change-password' \
-  -H 'Authorization: Bearer 2ed08ee9a855b8ff614ef1505b33c75a8836d55d' \
+curl -X POST 'https://db.acme.com/api/v1/admin/users/acme-user-42/change-password?org=appscode' \
+  -H "Authorization: token $AKP_TOKEN" \
   -H 'Content-Type: application/json' \
-  --data-raw '{ "password": "<NEW_STRONG_RANDOM_PASSWORD>" }'
+  --data-raw '{ "password": "<NEW_STRONG_RANDOM_PASSWORD>", "retype": "<NEW_STRONG_RANDOM_PASSWORD>" }'
 ```
+
+### 3.4 Deprovision (on CSP account deletion)
+
+When a CSP user is disabled or deleted, revoke KubeDB access with `DELETE
+/api/v1/admin/users/{username}?org=<slug>` (or `PATCH` the user with `active:false` /
+`prohibit_login:true` to keep the record). See
+[Edit / Delete user](../../../api/administration/admin-org.md).
 
 ![Provisioning the mirrored user](../images/csp-provisioning.svg)
 
@@ -131,34 +171,52 @@ curl -X POST 'https://db.acme.com/api/v1/admin/users/acme-user-42/change-passwor
 
 ## 4. Phase 2 — Session handoff (every time the user opens the KubeDB console)
 
-The KubeDB Platform's login endpoint sets a **session cookie** plus a `_csrf` cookie. The
-trick is that these cookies are obtained by the CSP backend server-to-server, then delivered
-to the user's browser so it holds a valid `db.acme.com` session.
+The public sign-in endpoint **`POST /api/v1/user/signin`** authenticates a username +
+password and, on success, **sets the session, CSRF (`_csrf`), and NATS cookies** — the same
+cookies the web console relies on
+([reference](../../../api/users-settings/public-user-apis.md)). The trick is
+that these cookies are obtained by the CSP backend server-to-server, then delivered to the
+user's browser so it holds a valid `db.acme.com` session.
 
-### 4.1 The login call
+### 4.1 The sign-in call
+
+`POST /api/v1/user/signin` — body is a `SignInParams`:
 
 ```bash
-curl -X POST 'https://db.acme.com/accounts/user/login' \
-  -H 'content-type: application/x-www-form-urlencoded' \
-  --data-raw 'user_name=acme-user-42&password=<STORED_KUBEDB_PASSWORD>&remember=on' \
+curl -X POST 'https://db.acme.com/api/v1/user/signin' \
+  -H 'Content-Type: application/json' \
+  --data-raw '{
+    "username": "acme-user-42",
+    "password": "<STORED_KUBEDB_PASSWORD>",
+    "remember": true
+  }' \
   -c cookie.txt -D headers.txt
 ```
 
-The response's `Set-Cookie` headers (captured above in `headers.txt`, cookies jarred in
-`cookie.txt`) contain the session cookie and the `_csrf` cookie. Any **subsequent
-server-side API call** made with these cookies must also send the `_csrf` value in the
-`X-Csrf-Token` header:
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `username` | string | yes | The mirrored KubeDB username. |
+| `password` | string | yes | The CSP-stored password for that user. |
+| `remember` | boolean | no | Persist the session across browser restarts. |
 
-```bash
-curl -X GET 'https://db.acme.com/api/v1/user/settings/profile' \
-  -H 'Content-Type: application/json' \
-  -H 'X-Csrf-Token: <VALUE_OF__csrf_COOKIE>' \
-  -b cookie.txt
-```
+**Response:** `200 OK` with no body. The `Set-Cookie` headers (captured in `headers.txt`,
+jarred in `cookie.txt`) carry the session, `_csrf`, and NATS cookies. Non-200 statuses:
+`404` (no such user), `405` (login prohibited / inactive / 2FA enrolled), `422`
+(validation error).
+
+> **CSRF on later calls.** Any subsequent **state-changing** API call made server-side with
+> these cookies must echo the `_csrf` cookie value in an `X-Csrf-Token` header, e.g.:
+>
+> ```bash
+> curl -X POST 'https://db.acme.com/api/v1/user/settings/profile' \
+>   -H 'Content-Type: application/json' \
+>   -H "X-Csrf-Token: <VALUE_OF__csrf_COOKIE>" \
+>   -b cookie.txt --data-raw '{ ... }'
+> ```
 
 ### 4.2 Delivering the cookies to the browser
 
-The CSP backend can log in, but a backend cannot set cookies in the browser for a domain
+The CSP backend can sign in, but a backend cannot set cookies in the browser for a domain
 other than the one that served the response. So the piece that **re-emits** the captured
 cookies must run on the KubeDB host itself. Host a small **launch endpoint on the KubeDB
 subdomain**, e.g. `https://db.acme.com/csp-sso/launch`, in one of two ways:
@@ -177,8 +235,8 @@ The end-to-end handoff:
    TTL) identifying the CSP user, and redirects the browser to
    `https://db.acme.com/csp-sso/launch?ticket=<handoff-token>`.
 3. The launch endpoint validates the ticket, looks up the mapped KubeDB username +
-   stored password, and performs the **server-side login** (§4.1).
-4. The launch endpoint copies the login response's `Set-Cookie` headers onto its **own
+   stored password, and performs the **server-side sign-in** (§4.1).
+4. The launch endpoint copies the sign-in response's `Set-Cookie` headers onto its **own
    redirect response** to the browser, then `302`s to `https://db.acme.com/`.
 5. The browser now holds a valid KubeDB session cookie for `db.acme.com` and loads the
    KubeDB console fully authenticated — no login prompt.
@@ -197,16 +255,39 @@ safe default.
 
 ---
 
-## 5. Logout
+## 5. Granting database access (Client Organizations)
+
+Provisioning a mirrored user establishes an identity, but that user still needs **access to
+clusters and databases**. The KubeDB Platform's managed-service-provider model — **Client
+Organizations** — is designed exactly for CSPs. As a site admin, the CSP:
+
+1. Creates a client organization and imports spoke clusters into it —
+   `POST /api/v1/user/client/create` and
+   `POST /api/v1/user/client/{orgname}/add-cluster`
+   ([Client Org Management](../../../api/client-organizations/management.md)).
+2. Creates a per-cluster user with scoped permissions and (optionally) fetches a kubeconfig
+   for them —
+   `POST /api/v1/clusters/{owner}/{cluster}/permission/user/create` and
+   `GET  /api/v1/clusters/{owner}/{cluster}/permission/user/{id}/kubeconfig`
+   ([Cluster User Permissions](../../../api/client-organizations/cluster-user-permissions.md)).
+
+Map each CSP customer to a client organization and each mirrored user to that org's
+per-cluster permission set, so that when the user lands on the KubeDB console (via the
+handoff above) they see exactly the clusters and databases they are entitled to. The
+equivalent UI walkthrough is in the
+[Client Organization guide](../../client-organization/create-client-organization.md).
+
+---
+
+## 6. Logout
 
 When the user logs out of the CSP console, also terminate the KubeDB session so a shared
-browser can't keep the console open. Call the logout route with the user's cookies and CSRF
-token:
+browser can't keep the console open. Call `GET /api/v1/user/signout` with the user's cookies
+and CSRF token ([reference](../../../api/users-settings/authenticated-user.md)):
 
 ```bash
-curl -X GET 'https://db.acme.com/accounts/user/logout' \
-  -H 'Content-Type: application/json' \
-  -H 'X-Csrf-Token: <VALUE_OF__csrf_COOKIE>' \
+curl -X GET 'https://db.acme.com/api/v1/user/signout' \
+  -H "X-Csrf-Token: <VALUE_OF__csrf_COOKIE>" \
   -b cookie.txt
 ```
 
@@ -214,23 +295,29 @@ If you use shared-domain SSO (§4.3), clear the `.acme.com` cookie on logout as 
 
 ---
 
-## 6. API summary
+## 7. API summary
 
 | Step | When | Method & path | Auth |
 |------|------|---------------|------|
-| Create mirrored user | CSP signup (once) | `POST /api/v1/admin/users` | Admin bearer token |
-| Sync profile | On CSP profile edit | `POST /api/v1/admin/users/{username}/update` | Admin bearer token |
-| Rotate password | On credential rotation | `POST /api/v1/admin/users/{username}/change-password` | Admin bearer token |
-| Server-side login | Each console open | `POST /accounts/user/login` (form-encoded) | Mirror user password → sets cookies |
+| Create mirrored user | CSP signup (once) | `POST /api/v1/admin/users?org=<slug>` | `Authorization: token` (site admin) |
+| Sync profile | On CSP profile edit | `POST /api/v1/admin/users/{username}/update?org=<slug>` | `Authorization: token` (site admin) |
+| Rotate password | On credential rotation | `POST /api/v1/admin/users/{username}/change-password?org=<slug>` | `Authorization: token` (site admin) |
+| Deprovision | On CSP account deletion | `DELETE /api/v1/admin/users/{username}?org=<slug>` | `Authorization: token` (site admin) |
+| Grant cluster access | On entitlement change | Client-org + permission APIs (§5) | `Authorization: token` (site admin / org admin) |
+| Server-side sign-in | Each console open | `POST /api/v1/user/signin` | Mirror user password → sets cookies |
 | Authenticated API call | As needed | any `/api/v1/...` | Session cookie + `X-Csrf-Token: <_csrf>` |
-| Logout | On CSP logout | `GET /accounts/user/logout` | Session cookie + `X-Csrf-Token: <_csrf>` |
+| Logout | On CSP logout | `GET /api/v1/user/signout` | Session cookie + `X-Csrf-Token: <_csrf>` |
+
+Explore any of these interactively in the
+[Interactive API Reference](../../../api/reference/).
 
 ---
 
-## 7. Security checklist
+## 8. Security checklist
 
-- **Admin bearer token** stays server-side, in a secret manager. Rotate periodically. Its
-  compromise means full control of every mirrored user.
+- **Site-admin token** stays server-side, in a secret manager. Rotate it periodically. Its
+  compromise means full control of every mirrored user. Generate/manage tokens via the
+  [access-token APIs](../../../api/users-settings/public-user-apis.md).
 - **Stored KubeDB passwords** are internal credentials: generate them randomly (high
   entropy), encrypt at rest, and never expose them to the browser or the end user.
 - **Handoff ticket** must be short-lived (seconds), single-use, signed/encrypted, and bound
@@ -241,7 +328,6 @@ If you use shared-domain SSO (§4.3), clear the `.acme.com` cookie on logout as 
   is same-site and the handoff is a top-level navigation).
 - **TLS everywhere**.
 - **No 2FA on mirrors** (see §2); enforce MFA in the CSP console instead.
-- **Logout propagation** (§5) so a KubeDB session never outlives the CSP session on a shared
+- **Logout propagation** (§6) so a KubeDB session never outlives the CSP session on a shared
   device.
-- **Deprovisioning**: when a CSP user is disabled/deleted, disable or delete the mirrored
-  KubeDB user via the admin API so access is revoked in both places.
+- **Deprovisioning** (§3.4) so access is revoked in both consoles together.
