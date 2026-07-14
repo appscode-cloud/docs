@@ -2,15 +2,40 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-cluster-management-v2-overview
+    identifier: api-cluster-management-v2-readme
     name: Overview
     parent: api-cluster-management-v2
-    weight: 5
+    weight: -1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
+url: /docs/platform/{{.version}}/api/cluster-management-v2/
+aliases:
+- /docs/platform/{{.version}}/api/cluster-management-v2/overview/
 ---
 
-# Cluster Management v2 — Overview
+# Cluster Management v2
+
+The Cluster Management v2 API is the newer, hub-aware cluster surface served under
+`/api/v1/clustersv2`. It builds on [Cluster Management v1](../../cluster-management-v1/)
+and adds:
+
+- **Hub awareness** — list hub clusters, resolve hub connection info, and check hub
+  presence for an owner (Open Cluster Management, or OCM, integration).
+- **Import & lifecycle** — check/validate/import clusters, connect or re-connect to an
+  already-imported cluster, reconcile Helm releases, reconfigure components, and remove
+  a cluster.
+- **Kubernetes version upgrades** — inspect upgradeable versions and trigger CAPI
+  cluster upgrades.
+- **Gateway configurations** — list gateway configs and update them to the current KubeDB Platform
+  chart version.
+- **vcluster support** — create or import virtual clusters on a host cluster.
+- **Inbox subscriptions** — subscribe the current user to cluster-, namespace-, or
+  resource-level inbox notifications, plus obtain an inbox agent token for a cluster.
+
+All routes require a personal access token (`Authorization: token <t>`). Most routes are
+scoped to an `owner` (organization slug or username) and, for cluster-scoped routes, a
+`cluster` name; a few (skip-credentials, all-hubs, identity, all-clusters) require
+site-admin privileges.
 
 `/api/v1/clustersv2`
 
@@ -44,7 +69,10 @@ vcluster support. All routes require Token.
 
 Related: `GET /api/v1/agent/:clusterName/:clusterID/token` (Token) — inbox agent token for a cluster.
 
-## Reference pages
+## Pages
 
-- [Clusters](../clusters.md)
-- [Subscriptions & Inbox](../subscriptions.md)
+- [Clusters](../clusters.md) — providers, hubs, cluster identity,
+  listing, status, import/connect/remove, reconcile, reconfigure, Kubernetes version
+  upgrades, gateway configs, feature conversion, and vclusters.
+- [Subscriptions & Inbox](../subscriptions.md) — cluster,
+  namespace, and resource notification subscriptions, plus the inbox agent token.
