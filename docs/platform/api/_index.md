@@ -38,6 +38,11 @@ available (`openapi.yaml`) — load it into any OpenAPI tool (Swagger UI, Redoc,
 Swagger UI viewer (`api.html`, with the spec inlined) is available at the repository
 root.
 
+New here? Start with the [Platform Overview](../overview.md) for the high-level
+design — system architecture, the authentication/authorization model, typical
+request flows, and deployment modes. Each API group below also has its own
+**Overview** page describing that group's role before you dive into its endpoints.
+
 ## API groups
 
 | Group | What it covers |
