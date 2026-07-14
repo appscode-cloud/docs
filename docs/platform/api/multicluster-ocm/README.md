@@ -2,15 +2,35 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-multicluster-ocm-overview
+    identifier: api-multicluster-ocm-readme
     name: Overview
     parent: api-multicluster-ocm
-    weight: 5
+    weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
+url: /docs/platform/{{.version}}/api/multicluster-ocm/
+aliases:
+- /docs/platform/{{.version}}/api/multicluster-ocm/overview/
 ---
 
-# Multi-cluster: OCM Hub & Spoke — Overview
+# Multi-cluster (OCM)
+
+APIs for Open Cluster Management (OCM) on the KubeDB Platform: hub clusters, spoke
+(managed) clusters, cluster sets, feature sets, namespace bindings, and OCM users.
+A *hub* cluster runs the OCM control plane; *spoke* clusters register with it and
+are then grouped into *cluster sets* on which feature sets can be installed and kept
+in sync. These endpoints back the multi-cluster / hub screens of the KubeDB Platform web console
+and let you script the same operations against the KubeDB Platform API Server.
+
+All routes are served under the `/api/v1` prefix and are scoped to an owner and a hub
+cluster: `/api/v1/clusters/{owner}/...` (owner-only, e.g. `/hubs`) or
+`/api/v1/clusters/{owner}/{cluster}/...` where `{cluster}` is the hub cluster. The
+`owner` is an organization or user slug; `{cluster}` is the hub cluster name. Every
+endpoint authenticates with a personal access token sent as
+`Authorization: token <YOUR_TOKEN>` (it may also be supplied as a `token` or
+`access_token` query parameter). All routes additionally resolve the owner
+organization/user and map the cluster before running; failures surface as `401`
+(unauthenticated) or `403` (not authorized for the owner/cluster).
 
 `/api/v1/clusters/:owner/...`
 
@@ -42,8 +62,15 @@ All require Token + org/user resolution + cluster mapping.
 | GET | `/:owner/:cluster/user/:id` (+`/access`, `/:spokeName/kubeconfig`) | OCM user info / access / kubeconfig |
 | POST | `/:owner/:cluster/user/:id/{remove,update}`, DELETE `/user/:id/delete` | Manage OCM user permissions |
 
-## Reference pages
+## Pages
 
-- [Hubs & spokes](../hubs-spokes.md)
-- [Cluster sets](../cluster-sets.md)
-- [OCM users](../ocm-users.md)
+- [Hubs & Spokes](../hubs-spokes.md) — list hub clusters, inspect
+  spoke inventories (managed / accepted / not-accepted / available), accept spoke
+  join requests, generate the spoke install command, import or convert a cluster to
+  a spoke, remove a managed cluster, validate profiles, and sync account objects.
+- [Cluster Sets & Feature Sets](../cluster-sets.md) — create,
+  delete, and populate cluster sets; install/disable/update feature sets; check
+  feature sync status and auto-update; and bind namespaces to cluster sets.
+- [OCM Users](../ocm-users.md) — list, create, inspect, update, and
+  delete OCM users and their per-cluster / per-cluster-set permissions, and fetch a
+  user's kubeconfig for a spoke cluster.

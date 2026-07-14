@@ -2,15 +2,28 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-users-settings-overview
+    identifier: api-users-settings-readme
     name: Overview
     parent: api-users-settings
-    weight: 5
+    weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
+url: /docs/platform/{{.version}}/api/users-settings/
+aliases:
+- /docs/platform/{{.version}}/api/users-settings/overview/
 ---
 
-# Identity: Users & Settings — Overview
+# Identity: Users & Settings
+
+APIs for user accounts, profile and security settings, personal access and NATS
+tokens, cloud credentials, and social (follow) relationships. These endpoints back
+the account and settings screens of the KubeDB Platform web console and let you script the same
+operations against the KubeDB Platform API Server.
+
+All routes are served under the `/api/v1` prefix. Most endpoints authenticate with a
+personal access token sent as `Authorization: token <YOUR_TOKEN>` (it may also be
+supplied as a `token` or `access_token` query parameter). A handful of routes are
+public (no auth) or use HTTP Basic auth — this is called out per endpoint.
 
 User accounts, profile/security settings, tokens, credentials, and deploy orders.
 This is the identity foundation the rest of the platform builds on: every
@@ -86,8 +99,15 @@ through these endpoints authenticate the token-guarded REST API.
 | POST | `/applications/oauth2/:id/regenerate_secret`, `/:id/revoke` | Rotate secret / revoke grant |
 | GET | `/applications/oauth2/grants` | List OAuth2 grants |
 
-## Reference pages
+## Pages
 
-- [Public user APIs](../public-user-apis.md)
-- [Authenticated user](../authenticated-user.md)
-- [User settings](../user-settings.md)
+- [Public & Basic-auth User APIs](../public-user-apis.md) — public
+  user lookup/search, a user's organizations, social follow info, HTTP Basic-auth
+  token management, and sign-in.
+- [Authenticated User](../authenticated-user.md) — the
+  `/api/v1/user/*` endpoints: the current user, emails, NATS credentials, cloud
+  credentials, clusters, teams, organizations, and name/email validation.
+- [User Settings](../user-settings.md) — the
+  `/api/v1/user/settings/*` endpoints: profile and avatar, password and account
+  emails, 2FA and WebAuthn security, sessions, personal access and NATS tokens, and
+  OAuth2 applications.

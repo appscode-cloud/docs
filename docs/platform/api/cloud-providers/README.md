@@ -2,15 +2,33 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-cloud-providers-overview
+    identifier: api-cloud-providers-readme
     name: Overview
     parent: api-cloud-providers
-    weight: 5
+    weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
+url: /docs/platform/{{.version}}/api/cloud-providers/
+aliases:
+- /docs/platform/{{.version}}/api/cloud-providers/overview/
 ---
 
-# Cloud Providers — Overview
+# Cloud Providers
+
+Discovery APIs used by the cluster-provisioning wizard. Given stored cloud
+credentials for an owner (organization or user), these endpoints enumerate the
+projects, regions, zones, Kubernetes versions, machine types, and existing
+managed clusters available on each supported cloud provider — so the console can
+offer them as choices when provisioning or importing a cluster. A single public
+endpoint lists the providers the platform supports, and a provisioning endpoint
+creates a new Cluster API (CAPI) cluster on a provider.
+
+All routes are served under the `/api/v1` prefix. Except for the public provider
+list (`GET /clouds`), every endpoint requires a personal access token sent as
+`Authorization: token <YOUR_TOKEN>` (it may also be supplied as a `token` or
+`access_token` query parameter). The per-provider discovery routes additionally
+require **stored cloud credentials** for the referenced provider under the owner
+scope; without a matching credential these routes fail.
 
 `/api/v1/clouds`
 
@@ -30,6 +48,8 @@ cloud credentials.
 | GET | `/:owner/providers/hetzner/{servers,kubernetesversions,regions}` (+ per-region `servers`) | Hetzner discovery |
 | GET | `/:owner/providers/kubevirt/kubernetesversions` | KubeVirt versions |
 
-## Reference pages
+## Pages
 
-- [Cloud providers](../cloud-providers.md)
+- [Cloud Providers](../cloud-providers.md) — the public provider
+  list, CAPI cluster provisioning, and per-provider discovery for GKE, AKS, EKS,
+  DigitalOcean, Linode, Rancher, Hetzner, and KubeVirt.
