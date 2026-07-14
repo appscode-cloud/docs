@@ -2,15 +2,12 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-authorization-readme
+    identifier: api-authorization-overview
     name: Overview
     parent: api-authorization
     weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
-url: /docs/platform/{{.version}}/api/authorization/
-aliases:
-- /docs/platform/{{.version}}/api/authorization/overview/
 ---
 
 # Authorization

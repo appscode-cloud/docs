@@ -2,15 +2,12 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-ace-upgrade-readme
+    identifier: api-ace-upgrade-overview
     name: Overview
     parent: api-ace-upgrade
     weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
-url: /docs/platform/{{.version}}/api/ace-upgrade/
-aliases:
-- /docs/platform/{{.version}}/api/ace-upgrade/overview/
 ---
 
 # Platform Upgrade

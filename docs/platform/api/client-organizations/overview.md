@@ -2,15 +2,12 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-client-organizations-readme
+    identifier: api-client-organizations-overview
     name: Overview
     parent: api-client-organizations
     weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
-url: /docs/platform/{{.version}}/api/client-organizations/
-aliases:
-- /docs/platform/{{.version}}/api/client-organizations/overview/
 ---
 
 # Client Organizations

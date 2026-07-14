@@ -2,15 +2,12 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-marketplace-readme
+    identifier: api-marketplace-overview
     name: Overview
     parent: api-marketplace
     weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
-url: /docs/platform/{{.version}}/api/marketplace/
-aliases:
-- /docs/platform/{{.version}}/api/marketplace/overview/
 ---
 
 # Marketplace

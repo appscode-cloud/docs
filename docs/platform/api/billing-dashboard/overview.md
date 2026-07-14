@@ -2,15 +2,12 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-billing-dashboard-readme
+    identifier: api-billing-dashboard-overview
     name: Overview
     parent: api-billing-dashboard
     weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
-url: /docs/platform/{{.version}}/api/billing-dashboard/
-aliases:
-- /docs/platform/{{.version}}/api/billing-dashboard/overview/
 ---
 
 # Billing Dashboard

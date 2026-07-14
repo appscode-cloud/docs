@@ -2,15 +2,12 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-rancher-readme
+    identifier: api-rancher-overview
     name: Overview
     parent: api-rancher
     weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
-url: /docs/platform/{{.version}}/api/rancher/
-aliases:
-- /docs/platform/{{.version}}/api/rancher/overview/
 ---
 
 # Rancher Integration API

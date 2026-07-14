@@ -2,15 +2,12 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-miscellaneous-readme
+    identifier: api-miscellaneous-overview
     name: Overview
     parent: api-miscellaneous
     weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
-url: /docs/platform/{{.version}}/api/miscellaneous/
-aliases:
-- /docs/platform/{{.version}}/api/miscellaneous/overview/
 ---
 
 # Miscellaneous

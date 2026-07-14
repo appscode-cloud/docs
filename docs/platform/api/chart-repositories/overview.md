@@ -2,15 +2,12 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-chart-repositories-readme
+    identifier: api-chart-repositories-overview
     name: Overview
     parent: api-chart-repositories
     weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
-url: /docs/platform/{{.version}}/api/chart-repositories/
-aliases:
-- /docs/platform/{{.version}}/api/chart-repositories/overview/
 ---
 
 # Chart Repositories

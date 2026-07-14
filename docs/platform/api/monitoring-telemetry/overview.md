@@ -2,15 +2,12 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-monitoring-telemetry-readme
+    identifier: api-monitoring-telemetry-overview
     name: Overview
     parent: api-monitoring-telemetry
     weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
-url: /docs/platform/{{.version}}/api/monitoring-telemetry/
-aliases:
-- /docs/platform/{{.version}}/api/monitoring-telemetry/overview/
 ---
 
 # Monitoring & Telemetry API

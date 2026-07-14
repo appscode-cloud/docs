@@ -2,15 +2,12 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-users-settings-readme
+    identifier: api-users-settings-overview
     name: Overview
     parent: api-users-settings
     weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
-url: /docs/platform/{{.version}}/api/users-settings/
-aliases:
-- /docs/platform/{{.version}}/api/users-settings/overview/
 ---
 
 # Identity: Users & Settings

@@ -2,15 +2,12 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-cluster-management-v2-readme
+    identifier: api-cluster-management-v2-overview
     name: Overview
     parent: api-cluster-management-v2
     weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
-url: /docs/platform/{{.version}}/api/cluster-management-v2/
-aliases:
-- /docs/platform/{{.version}}/api/cluster-management-v2/overview/
 ---
 
 # Cluster Management v2

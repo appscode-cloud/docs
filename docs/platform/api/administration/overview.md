@@ -2,15 +2,12 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-administration-readme
+    identifier: api-administration-overview
     name: Overview
     parent: api-administration
     weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
-url: /docs/platform/{{.version}}/api/administration/
-aliases:
-- /docs/platform/{{.version}}/api/administration/overview/
 ---
 
 # Administration

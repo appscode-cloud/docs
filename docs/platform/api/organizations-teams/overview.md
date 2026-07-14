@@ -2,15 +2,12 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-organizations-teams-readme
+    identifier: api-organizations-teams-overview
     name: Overview
     parent: api-organizations-teams
     weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
-url: /docs/platform/{{.version}}/api/organizations-teams/
-aliases:
-- /docs/platform/{{.version}}/api/organizations-teams/overview/
 ---
 
 # Identity: Organizations & Teams

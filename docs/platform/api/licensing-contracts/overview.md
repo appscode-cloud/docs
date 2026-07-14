@@ -2,15 +2,12 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-licensing-contracts-readme
+    identifier: api-licensing-contracts-overview
     name: Overview
     parent: api-licensing-contracts
     weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
-url: /docs/platform/{{.version}}/api/licensing-contracts/
-aliases:
-- /docs/platform/{{.version}}/api/licensing-contracts/overview/
 ---
 
 # Licensing & Contracts

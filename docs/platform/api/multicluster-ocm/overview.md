@@ -2,15 +2,12 @@
 layout: docs
 menu:
   docsplatform_{{.version}}:
-    identifier: api-multicluster-ocm-readme
+    identifier: api-multicluster-ocm-overview
     name: Overview
     parent: api-multicluster-ocm
     weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
-url: /docs/platform/{{.version}}/api/multicluster-ocm/
-aliases:
-- /docs/platform/{{.version}}/api/multicluster-ocm/overview/
 ---
 
 # Multi-cluster (OCM)
