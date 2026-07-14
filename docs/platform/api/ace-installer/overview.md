@@ -45,6 +45,6 @@ Generates and manages self-host installer bundles. Token + org context; per-acti
 
 ## Pages
 
-- [Platform Installer](../ace-installer.md) — schema/model, generate/import,
+- [Platform Installer](../ace-installer) — schema/model, generate/import,
   installer metadata and latest version, installers CRUD, reconfigure/upgrade,
   versions/archives, and marketplace installer status.

@@ -98,13 +98,13 @@ through these endpoints authenticate the token-guarded REST API.
 
 ## Pages
 
-- [Public & Basic-auth User APIs](../public-user-apis.md) — public
+- [Public & Basic-auth User APIs](../public-user-apis) — public
   user lookup/search, a user's organizations, social follow info, HTTP Basic-auth
   token management, and sign-in.
-- [Authenticated User](../authenticated-user.md) — the
+- [Authenticated User](../authenticated-user) — the
   `/api/v1/user/*` endpoints: the current user, emails, NATS credentials, cloud
   credentials, clusters, teams, organizations, and name/email validation.
-- [User Settings](../user-settings.md) — the
+- [User Settings](../user-settings) — the
   `/api/v1/user/settings/*` endpoints: profile and avatar, password and account
   emails, 2FA and WebAuthn security, sessions, personal access and NATS tokens, and
   OAuth2 applications.

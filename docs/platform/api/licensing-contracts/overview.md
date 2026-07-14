@@ -76,11 +76,11 @@ Related: `POST /api/v1/user/license-proxy` — generate the `license-proxyserver
 
 ## Pages
 
-- [License Registration](../registration.md) — `POST /register`,
+- [License Registration](../registration) — `POST /register`,
   `POST /license/issue`, `POST /user/license-proxy`.
-- [Contracts — Admin](../contracts-admin.md) — `/contracts/*`
+- [Contracts — Admin](../contracts-admin) — `/contracts/*`
   (AppsCode-hosted, site-admin).
-- [Contracts — User](../contracts-user.md) — `/user/contracts/*`
+- [Contracts — User](../contracts-user) — `/user/contracts/*`
   (AppsCode-hosted, token).
 
 ## Common concepts

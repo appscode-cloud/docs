@@ -37,6 +37,6 @@ Custom role management backed by the relationship-based authorization model.
 
 ## Pages
 
-- [Roles & Permissions](../roles-permissions.md) — object
+- [Roles & Permissions](../roles-permissions) — object
   allowed-permissions lookups (single and batch), the available-permissions
   catalog, role CRUD, and role principal listings.

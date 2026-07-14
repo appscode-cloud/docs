@@ -68,8 +68,8 @@ Related: `GET /api/v1/agent/:clusterName/:clusterID/token` (Token) — inbox age
 
 ## Pages
 
-- [Clusters](../clusters.md) — providers, hubs, cluster identity,
+- [Clusters](../clusters) — providers, hubs, cluster identity,
   listing, status, import/connect/remove, reconcile, reconfigure, Kubernetes version
   upgrades, gateway configs, feature conversion, and vclusters.
-- [Subscriptions & Inbox](../subscriptions.md) — cluster,
+- [Subscriptions & Inbox](../subscriptions) — cluster,
   namespace, and resource notification subscriptions, plus the inbox agent token.

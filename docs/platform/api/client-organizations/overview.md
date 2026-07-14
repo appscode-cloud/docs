@@ -19,11 +19,11 @@ user access on behalf of each client.
 
 There are two concerns, split across two pages:
 
-- [Client Org Management](../management.md) — site-admin
+- [Client Org Management](../management) — site-admin
   lifecycle of client organizations: list/get/create/delete client orgs, add or
   remove clusters, and query client-org status. Routes live under
   `/api/v1/user/client*`.
-- [Cluster User Permissions](../cluster-user-permissions.md)
+- [Cluster User Permissions](../cluster-user-permissions)
   — organization-admin management of the OCM users belonging to a client org on
   a specific cluster: list users, create a user with permissions, inspect and
   update permissions, generate a kubeconfig, and remove a user. Routes live
@@ -53,5 +53,5 @@ For managed-service providers: site admins create "client orgs" and manage per-c
 
 ## Pages
 
-- [Management](../management.md)
-- [Cluster user permissions](../cluster-user-permissions.md)
+- [Management](../management)
+- [Cluster user permissions](../cluster-user-permissions)

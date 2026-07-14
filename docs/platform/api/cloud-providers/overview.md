@@ -47,6 +47,6 @@ cloud credentials.
 
 ## Pages
 
-- [Cloud Providers](../cloud-providers.md) — the public provider
+- [Cloud Providers](../cloud-providers) — the public provider
   list, CAPI cluster provisioning, and per-provider discovery for GKE, AKS, EKS,
   DigitalOcean, Linode, Rancher, Hetzner, and KubeVirt.
