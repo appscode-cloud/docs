@@ -12,12 +12,12 @@ section_menu_id: api
 
 # Multi-cluster (OCM)
 
-APIs for Open Cluster Management (OCM) on the ACE platform: hub clusters, spoke
+APIs for Open Cluster Management (OCM) on the KubeDB Platform: hub clusters, spoke
 (managed) clusters, cluster sets, feature sets, namespace bindings, and OCM users.
 A *hub* cluster runs the OCM control plane; *spoke* clusters register with it and
 are then grouped into *cluster sets* on which feature sets can be installed and kept
-in sync. These endpoints back the multi-cluster / hub screens of the ACE web console
-and let you script the same operations against the `b3` backend.
+in sync. These endpoints back the multi-cluster / hub screens of the KubeDB Platform web console
+and let you script the same operations against the KubeDB Platform API Server.
 
 All routes are served under the `/api/v1` prefix and are scoped to an owner and a hub
 cluster: `/api/v1/clusters/{owner}/...` (owner-only, e.g. `/hubs`) or

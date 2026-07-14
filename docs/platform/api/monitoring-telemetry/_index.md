@@ -13,7 +13,7 @@ section_menu_id: api
 # Monitoring & Telemetry API
 
 The Monitoring & Telemetry API provisions and wires up the observability plane of the
-AppsCode Container Engine (ACE) platform. It has two surfaces:
+KubeDB Platform. It has two surfaces:
 
 - **Telemetry stack** (`/api/v1/telemetry/...`) — designates one of an owner's imported
   clusters as a *monitoring cluster*, installs the OpenTelemetry-based telemetry stack

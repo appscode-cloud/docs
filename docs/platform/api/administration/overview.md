@@ -13,7 +13,7 @@ section_menu_id: api
 # Administration — Overview
 
 Two admin surfaces: the legacy `/admin` group (administrative-org admins) and `/accounts/admin`
-(site-admin console powering the ACE admin UI). Both admin groups require Token + org context + authz checks.
+(site-admin console powering the KubeDB Platform admin UI). Both admin groups require Token + org context + authz checks.
 (The site-settings routes below are a separate surface whose read endpoints are public — see that table.)
 
 ## `/api/v1/admin` (administrative-org admins)

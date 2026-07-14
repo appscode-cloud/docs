@@ -32,8 +32,8 @@ Common conventions:
 Example request:
 
 ```
-curl -H "Authorization: token $ACE_TOKEN" \
-  https://<ace-host>/api/v1/clustersv2/appscode/ace/subscriptions/
+curl -H "Authorization: token $AKP_TOKEN" \
+  https://<akp-host>/api/v1/clustersv2/appscode/ace/subscriptions/
 ```
 
 ---

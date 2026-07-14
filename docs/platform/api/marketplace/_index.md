@@ -12,14 +12,14 @@ section_menu_id: api
 
 # Marketplace
 
-The Marketplace APIs integrate ACE with the public cloud marketplaces (AWS, Azure,
+The Marketplace APIs integrate the KubeDB Platform with the public cloud marketplaces (AWS, Azure,
 GCP). They cover two distinct surfaces served by two different processes:
 
 - **Marketplace webhook service** — a **separate listener** rooted at
   `/marketplace/api/v1` (not `/api/v1`). It receives subscription lifecycle
   notifications from the cloud marketplaces, answers the standalone-organization
   claimable check, and serves a version endpoint. These routes only exist when the
-  b3 binary runs its `marketplace` subcommand as part of a marketplace deployment.
+  API Server binary runs its `marketplace` subcommand as part of a marketplace deployment.
 - **Metered-billing proxy** (`/api/v1/proxy/metered-billing/marketplaces/*`) — a
   site-admin proxy on the **main** API server that forwards metered-usage reports
   and readiness probes to the AWS Marketplace Metering / GCP Service Control APIs.
@@ -28,7 +28,7 @@ GCP). They cover two distinct surfaces served by two different processes:
   they do not exist and return `404`.
 
 Because these endpoints are gated by marketplace deployment types, most of them are
-**unavailable on a standard ACE installation**. Each page notes the gating and, for
+**unavailable on a standard KubeDB Platform installation**. Each page notes the gating and, for
 GET endpoints, the observed behaviour on a non-marketplace deployment.
 
 > **Note on the two listeners:** the webhook service listens on its own root

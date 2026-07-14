@@ -10,10 +10,10 @@ menu_name: docsplatform_{{.version}}
 section_menu_id: api
 ---
 
-# ACE Platform Backend (b3) — High-Level Design
+# KubeDB Platform API Server — High-Level Design
 
-High-level design of the AppsCode Cloud Engine (ACE) platform backend (`b3`).
-This page gives you the whole-system picture — what `b3` does, how it is put
+High-level design of the KubeDB Platform API Server.
+This page gives you the whole-system picture — what the KubeDB Platform API Server does, how it is put
 together, how requests are authenticated and authorized, and how the pieces fit
 into typical flows. For the endpoint-by-endpoint reference, use the per-group
 pages linked from the [API Reference index](../_index.md); each group also has
@@ -21,13 +21,13 @@ its own **Overview** page describing that group's role in the platform.
 
 ## 1. Overview
 
-`b3` is the backend server of the **AppsCode Cloud Engine (ACE)** platform. It combines an identity
+The KubeDB Platform API Server is the backend server of the **KubeDB Platform**. It combines an identity
 foundation (users, organizations, teams, authentication) with a multi-cluster Kubernetes
 management platform providing:
 
 - **Identity & access management** — users, organizations, teams, fine-grained authorization.
 - **Cluster management** — import, provision, and operate Kubernetes clusters (hub/spoke via Open Cluster Management, Rancher, cloud providers).
-- **A full Kubernetes API proxy** — the ACE UI talks to member clusters through b3.
+- **A full Kubernetes API proxy** — the KubeDB Platform UI talks to member clusters through the KubeDB Platform API Server.
 - **Licensing & contracts** — issuing and enforcing product licenses (KubeDB, KubeStash, KubeVault, Voyager, ...).
 - **Billing & usage reporting** — usage aggregation, invoices, cloud-marketplace metering (AWS/Azure/GCP).
 - **Monitoring & telemetry** — telemetry stack provisioning, Prometheus/Trickster auth proxying.
@@ -36,7 +36,7 @@ All REST APIs are served under the `/api/v1` prefix.
 
 ## 2. System Architecture
 
-![b3 system architecture](../images/architecture.svg)
+![KubeDB Platform system architecture](../images/architecture.svg)
 
 Key runtime facts:
 
@@ -44,7 +44,7 @@ Key runtime facts:
   `aggregator`, and `summary` run as separate processes for async/billing workloads.
 - **NATS/JetStream** is the event backbone: member clusters push resource/usage events; `monitor` and
   `aggregator` consume them; the API server also uses NATS for its task manager and per-user credentials.
-- **FluxCD (HelmRelease)** and **OCM (ManagedCluster)** are used to deploy ACE features onto clusters and
+- **FluxCD (HelmRelease)** and **OCM (ManagedCluster)** are used to deploy KubeDB Platform features onto clusters and
   to manage hub→spoke relationships.
 - Deployment modes are switched by `DEPLOYMENT_TYPE`: AppsCode-hosted, self-hosted (incl. offline
   installer), or AWS/GCP marketplace deployments. Some API groups only exist in specific modes (noted below).
@@ -56,7 +56,7 @@ Key runtime facts:
 | Session cookie | Web console | Cookie-based sign-in; CSRF-protected |
 | Personal access token / Bearer token | API clients, CLI | `Authorization: token <t>`, `?token=`, `?access_token=` |
 | Basic auth | Token management endpoints | With optional OTP (2FA) |
-| OAuth2 / OIDC | SSO; b3 is both provider and consumer | `/login/oauth/*`, `/.well-known/openid-configuration` |
+| OAuth2 / OIDC | SSO; the KubeDB Platform API Server is both provider and consumer | `/login/oauth/*`, `/.well-known/openid-configuration` |
 | LDAP / PAM | Enterprise sign-in sources | Configured by site admins |
 | 2FA / WebAuthn | User accounts | TOTP, scratch tokens, security keys |
 | License-based auth | Member clusters | Clusters authenticate with issued licenses / cluster tokens |
@@ -89,8 +89,8 @@ The v1 API surface is organized into the following logical groups:
 | 7 | [Multi-cluster (OCM hub/spoke)](../multicluster-ocm/) | `/api/v1/clusters/:owner/:cluster/...` | always |
 | 8 | [Client Organizations](../client-organizations/) | `/api/v1/user/client*`, `/api/v1/clusters/.../permission` | always |
 | 9 | [Cloud Providers](../cloud-providers/) | `/api/v1/clouds` | always |
-| 10 | [ACE Installer](../ace-installer/) | `/api/v1/ace-installer` | AppsCode-hosted only |
-| 11 | [ACE Upgrade](../ace-upgrade/) | `/api/v1/upgrade`, `/api/v1/clusters/.../upgrade` | always |
+| 10 | [Platform Installer](../ace-installer/) | `/api/v1/ace-installer` | AppsCode-hosted only |
+| 11 | [Platform Upgrade](../ace-upgrade/) | `/api/v1/upgrade`, `/api/v1/clusters/.../upgrade` | always |
 | 12 | [Licensing & Contracts](../licensing-contracts/) | `/api/v1/contracts`, `/api/v1/user/contracts`, `/api/v1/register`, `/api/v1/license` | contracts: AppsCode-hosted |
 | 13 | [Billing Dashboard & Usage Reports](../billing-dashboard/) | `/api/v1/dashboard`, `/api/v1/user/dashboard`, `/api/v1/dbaas` | billing-enabled deployments |
 | 14 | [Marketplace](../marketplace/) | `/api/v1/marketplaces` (separate service), `/api/v1/proxy/metered-billing` | marketplace deployments |
@@ -99,7 +99,7 @@ The v1 API surface is organized into the following logical groups:
 | 17 | [Helm Chart Repositories (public)](../chart-repositories/) | `/api/v1/chartrepositories` | always |
 | 18 | [Miscellaneous & Site Settings](../miscellaneous/) | `/api/v1/version`, `/api/v1/markdown`, `/api/v1/branding`, ... | always |
 
-![b3 /api/v1 API group map](../images/api-groups.svg)
+![KubeDB Platform /api/v1 API group map](../images/api-groups.svg)
 
 ## 5. Typical Request Flows
 
@@ -119,7 +119,7 @@ The v1 API surface is organized into the following logical groups:
 
 | Mode | `DEPLOYMENT_TYPE` | Notes |
 |---|---|---|
-| AppsCode-hosted (SaaS) | `Hosted` | Full surface incl. contracts admin, ACE installer, Firebase tokens |
+| AppsCode-hosted (SaaS) | `Hosted` | Full surface incl. contracts admin, installer, Firebase tokens |
 | Self-hosted | `SelfHostedProduction` (offline installs also set the separate `OfflineInstaller` flag) | Runs from a generated installer bundle; `/selfhost` console URL |
 | AWS Marketplace | `AWSMarketplace` | Marketplace webhooks + AWS metering proxy enabled |
 | GCP Marketplace | `GoogleCloudMarketplace` | Marketplace webhooks + GCP metering proxy enabled |
@@ -127,7 +127,7 @@ The v1 API surface is organized into the following logical groups:
 
 Feature gating summary:
 
-- `AppsCodeHosted` → contracts admin APIs, ACE installer APIs, org claim, Firebase token.
+- `AppsCodeHosted` → contracts admin APIs, installer APIs, org claim, Firebase token.
 - `IsBillingEnabled()` → billing dashboard APIs (admin, user, usage reports).
 - `DeploymentType` → which marketplace metering proxy (if any) is registered.
 - License enforcement is compiled in (`ENFORCE_LICENSE=true`); the server validates its own license at startup.

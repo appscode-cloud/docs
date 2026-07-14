@@ -12,10 +12,10 @@ section_menu_id: api
 
 # Miscellaneous
 
-Small utility and infrastructure endpoints exposed by the `b3` backend: the server
+Small utility and infrastructure endpoints exposed by the KubeDB Platform API Server: the server
 version, a markdown-to-HTML renderer, the Swagger UI page, a health check, and the
 OpenID Connect discovery document. These are all public (no authentication) and back
-various parts of the ACE web console and its OIDC provider.
+various parts of the KubeDB Platform web console and its OIDC provider.
 
 Most of these routes live under the `/api/v1` prefix like the rest of the API. Two of
 them — the health check and the OIDC discovery document — are served at the **host
