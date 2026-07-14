@@ -5,7 +5,7 @@ menu:
     identifier: api-ace-upgrade-readme
     name: Overview
     parent: api-ace-upgrade
-    weight: -1
+    weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
 url: /docs/platform/{{.version}}/api/ace-upgrade/

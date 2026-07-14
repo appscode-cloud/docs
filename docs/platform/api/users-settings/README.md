@@ -5,7 +5,7 @@ menu:
     identifier: api-users-settings-readme
     name: Overview
     parent: api-users-settings
-    weight: -1
+    weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
 url: /docs/platform/{{.version}}/api/users-settings/

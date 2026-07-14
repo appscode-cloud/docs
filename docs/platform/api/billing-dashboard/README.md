@@ -5,7 +5,7 @@ menu:
     identifier: api-billing-dashboard-readme
     name: Overview
     parent: api-billing-dashboard
-    weight: -1
+    weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
 url: /docs/platform/{{.version}}/api/billing-dashboard/

@@ -5,7 +5,7 @@ menu:
     identifier: api-multicluster-ocm-readme
     name: Overview
     parent: api-multicluster-ocm
-    weight: -1
+    weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
 url: /docs/platform/{{.version}}/api/multicluster-ocm/

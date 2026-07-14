@@ -5,7 +5,7 @@ menu:
     identifier: api-miscellaneous-readme
     name: Overview
     parent: api-miscellaneous
-    weight: -1
+    weight: 1
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
 url: /docs/platform/{{.version}}/api/miscellaneous/
