@@ -39,7 +39,7 @@ All routes require Token; cluster routes resolve credentials and build a Kuberne
 
 ## Kubernetes API proxy (`/proxy`)
 
-Generic passthrough for any group/version/resource, powering the ACE console's resource pages:
+Generic passthrough for any group/version/resource, powering the KubeDB Platform console's resource pages:
 
 | Method | Path pattern | Description |
 |--------|--------------|-------------|

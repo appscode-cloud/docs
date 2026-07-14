@@ -12,7 +12,7 @@ section_menu_id: api
 
 # Authorization
 
-The Authorization API exposes ACE's custom role management and permission
+The Authorization API exposes the KubeDB Platform's custom role management and permission
 inspection, backed by the platform's relationship-based authorization model
 (OpenFGA-style checks). It lets you list the permissions the caller holds on a
 given object, discover the permissions that can be assigned within an

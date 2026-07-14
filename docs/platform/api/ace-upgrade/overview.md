@@ -10,7 +10,7 @@ menu_name: docsplatform_{{.version}}
 section_menu_id: api
 ---
 
-# ACE Upgrade — Overview
+# Platform Upgrade — Overview
 
 Platform and per-cluster upgrades (FluxCD-driven).
 

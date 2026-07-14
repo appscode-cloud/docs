@@ -10,7 +10,7 @@ menu_name: docsplatform_{{.version}}
 section_menu_id: api
 ---
 
-# ACE Installer — Overview
+# Platform Installer — Overview
 
 `/api/v1/ace-installer` (AppsCode-hosted only)
 
@@ -21,7 +21,7 @@ Generates and manages self-host installer bundles. Token + org context; per-acti
 | GET | `/schema.json`, `/model.json` | Installer JSON schema / default options |
 | POST | `/generate` | Generate an installer |
 | POST | `/import` | Import an installer |
-| GET | `/installer-meta`, `/latest-version` | Installer metadata / latest ACE version |
+| GET | `/installer-meta`, `/latest-version` | Installer metadata / latest KubeDB Platform version |
 | GET | `/installers/` (+`/:name/`, `/:name/:id`) | List / inspect installers |
 | DELETE | `/installers/:name/:id` | Delete a generated installer |
 | POST | `/installers/:name/:id/{reconfigure,upgrade}` | Reconfigure / upgrade an installer |
@@ -32,4 +32,4 @@ Generates and manages self-host installer bundles. Token + org context; per-acti
 
 ## Reference pages
 
-- [ACE installer](../ace-installer.md)
+- [installer](../ace-installer.md)

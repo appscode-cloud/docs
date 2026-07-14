@@ -13,10 +13,9 @@ aliases:
 - /docs/platform/{{.version}}/api/README/
 ---
 
-# ACE Platform API Reference
+# KubeDB Platform API Reference
 
-Low-level reference for the AppsCode Cloud Engine (ACE) platform backend (`b3`)
-REST API. Every endpoint lists its HTTP method, path, authentication, path/query
+Low-level reference for the KubeDB Platform API. Every endpoint lists its HTTP method, path, authentication, path/query
 parameters, and request/response shapes so you can implement a client directly
 against it.
 
@@ -55,8 +54,8 @@ root.
 | [Multi-cluster (OCM)](../api/multicluster-ocm/hubs-spokes/) | Hub/spoke, cluster sets, feature sets |
 | [Client Organizations](../api/client-organizations/management/) | Managed-service client orgs |
 | [Cloud Providers](../api/cloud-providers/cloud-providers/) | Provider discovery for provisioning |
-| [ACE Installer](../api/ace-installer/ace-installer/) | Self-host installer bundles |
-| [ACE Upgrade](../api/ace-upgrade/platform-upgrade/) | Platform & cluster upgrades |
+| [Platform Installer](../api/ace-installer/ace-installer/) | Self-host installer bundles |
+| [Platform Upgrade](../api/ace-upgrade/platform-upgrade/) | Platform & cluster upgrades |
 | [Licensing & Contracts](../api/licensing-contracts/registration/) | Contracts, licenses, registration |
 | [Billing Dashboard](../api/billing-dashboard/admin-dashboard/) | Usage reports & billing dashboards |
 | [Marketplace](../api/marketplace/webhook-service/) | Cloud-marketplace webhooks & metering |

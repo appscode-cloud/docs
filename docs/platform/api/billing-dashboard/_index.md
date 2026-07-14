@@ -12,7 +12,7 @@ section_menu_id: api
 
 # Billing Dashboard
 
-APIs that power the license, usage, and billing screens of the ACE web console.
+APIs that power the license, usage, and billing screens of the KubeDB Platform web console.
 They report on licensed users and their clusters, per-cluster licenses and licensed
 products, resource event histories, marketplace subscriptions, system-outage
 records, and month-by-month usage summaries (KubeDB, KubeStash, KubeVault, Voyager)
@@ -23,7 +23,7 @@ authenticates with a personal access token sent as `Authorization: token <YOUR_T
 (it may also be supplied as a `token` or `access_token` query parameter).
 
 > **Billing-enabled deployments only.** This entire group is registered only when
-> the `b3` backend runs with billing enabled. On a deployment without billing, all
+> the KubeDB Platform API Server runs with billing enabled. On a deployment without billing, all
 > of these routes return `404 Not Found` — even with a valid token. The
 > owner-scoped and usage-report routes additionally resolve the acting organization
 > from the `org` query parameter, so include `?org=<org-slug>` on those calls.

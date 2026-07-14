@@ -14,8 +14,8 @@ section_menu_id: api
 
 APIs for user accounts, profile and security settings, personal access and NATS
 tokens, cloud credentials, and social (follow) relationships. These endpoints back
-the account and settings screens of the ACE web console and let you script the same
-operations against the `b3` backend.
+the account and settings screens of the KubeDB Platform web console and let you script the same
+operations against the KubeDB Platform API Server.
 
 All routes are served under the `/api/v1` prefix. Most endpoints authenticate with a
 personal access token sent as `Authorization: token <YOUR_TOKEN>` (it may also be

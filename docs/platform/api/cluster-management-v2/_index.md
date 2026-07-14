@@ -23,7 +23,7 @@ and adds:
   a cluster.
 - **Kubernetes version upgrades** — inspect upgradeable versions and trigger CAPI
   cluster upgrades.
-- **Gateway configurations** — list gateway configs and update them to the current ACE
+- **Gateway configurations** — list gateway configs and update them to the current KubeDB Platform
   chart version.
 - **vcluster support** — create or import virtual clusters on a host cluster.
 - **Inbox subscriptions** — subscribe the current user to cluster-, namespace-, or

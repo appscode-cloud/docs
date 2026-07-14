@@ -12,7 +12,7 @@ section_menu_id: api
 
 # Rancher Integration API
 
-The Rancher Integration API wires ACE together with a Rancher management cluster.
+The Rancher Integration API wires the KubeDB Platform together with a Rancher management cluster.
 It lets a site administrator sync Rancher users into a Rancher-managed
 organization, obtain the `acerproxy` Helm installation command, download the
 platform CA certificate, and mint Rancher proxy-server tokens. It also exposes an

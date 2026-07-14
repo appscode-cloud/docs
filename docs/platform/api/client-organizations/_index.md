@@ -13,7 +13,7 @@ section_menu_id: api
 # Client Organizations
 
 These endpoints support the **managed-service-provider** model. A platform site
-admin creates dedicated "client organizations" (a specialized kind of ACE
+admin creates dedicated "client organizations" (a specialized kind of KubeDB Platform
 organization), imports spoke clusters into them, and then manages per-cluster
 user access on behalf of each client.
 

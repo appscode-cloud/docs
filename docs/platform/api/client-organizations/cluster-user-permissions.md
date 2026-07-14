@@ -34,7 +34,7 @@ Authorization: token <YOUR_TOKEN>
 client org. Every other endpoint additionally requires **organization-admin**
 authorization on `owner` (`Organization_Admin`).
 
-Illustrative curl calls use a placeholder host `<ace-host>` and `$ACE_TOKEN`.
+Illustrative curl calls use a placeholder host `<akp-host>` and `$AKP_TOKEN`.
 
 ---
 
@@ -63,8 +63,8 @@ on this cluster.
 ```
 
 ```
-curl -H "Authorization: token $ACE_TOKEN" \
-  https://<ace-host>/api/v1/clusters/acme-client/acme-prod/permission/users
+curl -H "Authorization: token $AKP_TOKEN" \
+  https://<akp-host>/api/v1/clusters/acme-client/acme-prod/permission/users
 ```
 
 > **Verified:** returned `500` against `appscode/ace` — `appscode` is not a client
@@ -186,8 +186,8 @@ client-org cluster.
 ```
 
 ```
-curl -H "Authorization: token $ACE_TOKEN" \
-  https://<ace-host>/api/v1/clusters/acme-client/acme-prod/permission/user/101/kubeconfig
+curl -H "Authorization: token $AKP_TOKEN" \
+  https://<akp-host>/api/v1/clusters/acme-client/acme-prod/permission/user/101/kubeconfig
 ```
 
 > **Verified:** not called live — requires a real client-org user ID, which does

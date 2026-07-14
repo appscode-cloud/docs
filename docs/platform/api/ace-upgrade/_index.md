@@ -3,16 +3,16 @@ layout: docs
 menu:
   docsplatform_{{.version}}:
     identifier: api-ace-upgrade
-    name: ACE Upgrade
+    name: Platform Upgrade
     parent: api
     weight: 110
 menu_name: docsplatform_{{.version}}
 section_menu_id: api
 ---
 
-# ACE Upgrade
+# Platform Upgrade
 
-APIs for upgrading the ACE platform itself and for upgrading the ACE feature
+APIs for upgrading the KubeDB Platform itself and for upgrading the KubeDB Platform feature
 stack running inside imported and spoke clusters. Upgrades are FluxCD/Helm-driven
 and run asynchronously; progress and history are tracked in upgrader `ConfigMap`
 data, which these endpoints surface as dynamic key/value maps.
@@ -24,7 +24,7 @@ also be supplied as a `token` or `access_token` query parameter).
 There are two distinct authorization models, which is why the endpoints are split
 across two pages:
 
-- **Platform upgrade** routes (`/api/v1/upgrade*`) act on the ACE platform as a
+- **Platform upgrade** routes (`/api/v1/upgrade*`) act on the KubeDB Platform as a
   whole. They require an organization context (`?org=<slug>`) and **site-admin
   organization authorization** — `view_upgrade_history:org` for the read routes
   and `upgrade_platform:org` for the trigger route.

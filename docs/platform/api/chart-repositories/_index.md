@@ -12,7 +12,7 @@ section_menu_id: api
 
 # Chart Repositories
 
-The Chart Repositories API exposes ACE's read-only view over the public Helm Hub
+The Chart Repositories API exposes the KubeDB Platform's read-only view over the public Helm Hub
 chart repository index. It lets you enumerate the known Helm chart repositories,
 load an individual repository and list the charts it contains, and inspect the
 available versions of a specific chart.
