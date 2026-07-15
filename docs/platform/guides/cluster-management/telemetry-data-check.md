@@ -96,15 +96,9 @@ kubectl exec -n monitoring <thanos-receive-ingester-pod> -- wget -qO- http://loc
 ```
 
 If this timestamp is stale (not advancing over successive checks), metrics are not being
-ingested. Check that Prometheus (or your agent) has `remoteWrite` configured to point at
-the Thanos receive router:
-
-```bash
-kubectl get prometheus -n monitoring <prometheus-name> -o jsonpath='{.spec.remoteWrite}'
-```
-
-An empty result means nothing is shipping samples to Thanos, regardless of whether
-Prometheus itself is scraping normally.
+ingested. Metrics are shipped from each connected cluster by the OpenTelemetry stack
+(`appscode-otel-stack`). See the [Troubleshooting](#troubleshooting-metrics-stale-but-logs-healthy)
+section below for how to trace that pipeline.
 
 ---
 
@@ -191,28 +185,123 @@ matching your retention/compaction schedule.
 
 ## Troubleshooting: metrics stale but logs healthy
 
-Logs and metrics are independent paths through the same `TelemetryStack` — one being
-healthy says nothing about the other, so always run both checks above rather than
-assuming one implies the other.
+There is no Prometheus doing remote-write in this setup. Telemetry is shipped from each
+connected cluster by the **`appscode-otel-stack`** chart (built on `opentelemetry-kube-stack`),
+which runs two OpenTelemetry collectors in the `monitoring` namespace of the *connected*
+cluster:
 
-If the metrics checks show a stale `maxTime`/head timestamp that isn't advancing, the
-most common cause is that nothing is configured to remote-write samples into Thanos.
-Check the `Prometheus` CR's remote-write config:
+- **Daemonset (agent) collector**: runs on every node. Its `prometheus` receiver scrapes
+  targets assigned by the **Target Allocator** (which discovers `ServiceMonitor`/`PodMonitor`
+  CRs), and its `filelog` receiver collects container logs. Everything is forwarded over
+  OTLP to the gateway collector.
+- **Gateway collector** (deployment): receives OTLP and exports to the monitoring cluster
+  through `prom-label-proxy`:
+  - **Metrics** → `prometheusremotewrite` exporter → `https://<ingest-endpoint>:10001/api/v1/receive`
+    → Thanos receive. The `THANOS-TENANT` header is injected per batch by the
+    `headers_setter` extension.
+  - **Logs** → `clickhouse` exporter → the same `prom-label-proxy` endpoint → ClickHouse
+    (`otel_logs` table).
+
+The `<ingest-endpoint>` depends on how the platform is deployed:
+
+- **DNS mode**: the exporters point at the monitoring cluster's domain name.
+- **IP mode**: the exporters use the fixed hostname `prom-label-proxy.monitoring.svc.cluster.local`,
+  which is mapped to the monitoring cluster's IP via a `hostAliases` entry on the gateway
+  collector pod (required for TLS certificate verification against a bare IP).
+
+Confirm the endpoint actually in use from the gateway collector's config:
 
 ```bash
-kubectl get prometheus -n monitoring <prometheus-name> -o jsonpath='{.spec.remoteWrite}'
+kubectl get opentelemetrycollectors -n monitoring -o yaml | grep -B2 -A2 'endpoint:'
 ```
 
-An empty result means Prometheus may be scraping fine locally, but nothing is shipping
-samples to the Thanos receive router. Also check for a `PrometheusAgent` resource that
-might be expected to do remote-write instead:
+Logs and metrics share the daemon → gateway OTLP hop and the mTLS client cert
+(`otel-client-cert`), but split into different exporters at the gateway. So if logs are
+healthy and metrics are stale, connectivity and certs are fine; the problem is specific
+to the metrics path: either **scraping** (daemon collector / Target Allocator) or the
+**remote-write export** (gateway → Thanos). Run these checks **on the connected cluster**:
+
+### a. Collector pods are running
 
 ```bash
-kubectl get prometheusagents -A
+kubectl get pods -n monitoring -l otel-collector-type=daemonset
+kubectl get pods -n monitoring -l otel-collector-type=deployment
 ```
 
-**Fix:** add `spec.remoteWrite` to the `Prometheus` CR, pointing at the Thanos receive
-router's remote-write endpoint (`http://thanos-receive-router-<stack>.monitoring.svc:19291/api/v1/receive`)
-with the tenant header the router's hashring expects (e.g. `THANOS-TENANT: <tenant>`).
-After applying, re-run the `prometheus_tsdb_head_max_time` check above over a couple of
-minutes to confirm the timestamp starts advancing.
+The daemonset collector must have one Running pod per node; a node without an agent pod
+silently drops that node's scrape targets (allocation is per-node).
+
+### b. Gateway is exporting metrics without errors
+
+Check the gateway collector's own telemetry for sent vs. failed metric points. The
+collector image is minimal (no shell or `wget` inside), so `kubectl exec` will not work;
+port-forward its internal telemetry port (8888) and query it from your machine instead:
+
+```bash
+kubectl port-forward -n monitoring <gateway-collector-pod> 8888:8888 &
+sleep 2   # give the port-forward a moment to establish
+curl -s http://localhost:8888/metrics \
+  | grep -E 'otelcol_exporter_(sent|send_failed|enqueue_failed).*metric_points'
+```
+
+These counters are cumulative since the pod started, so a single reading proves nothing:
+a large `send_failed` value may just be leftover from a past incident (for example a
+monitoring-cluster restart) while everything is healthy now. Run the `curl` again after
+30 seconds or so and compare the two readings; only the counters that are still
+*advancing* matter. There are three possible outcomes:
+
+1. **`sent_metric_points{exporter="prometheusremotewrite"}` is increasing and
+   `send_failed`/`enqueue_failed` stay flat.** The gateway is exporting successfully, so
+   this cluster's pipeline is healthy. The problem is downstream (prom-label-proxy or
+   Thanos receive on the monitoring cluster) or a tenant mismatch; continue with step (d).
+2. **`send_failed_metric_points` is climbing.** Exports are failing. Read the gateway logs
+   for the actual `prometheusremotewrite` error (HTTP status codes, TLS failures) against
+   the `prom-label-proxy` endpoint:
+
+   ```bash
+   kubectl logs -n monitoring <gateway-collector-pod> --tail=100 | grep -iE "error|prometheusremotewrite"
+   ```
+
+   TLS or certificate errors point at the `otel-client-cert` secret (check it exists and
+   is not expired). Connection refused or timeout points at a wrong or unreachable ingest
+   endpoint. HTTP 4xx/5xx responses point at the prom-label-proxy / Thanos receive side
+   on the monitoring cluster.
+3. **All counters are flat or zero.** The gateway has nothing to export, which means the
+   daemon collectors are not scraping anything. Continue with step (c).
+
+A growing `enqueue_failed_metric_points` means the exporter's sending queue is
+overflowing because sends are too slow or failing, and those points are dropped; treat
+it the same as outcome 2.
+
+Note the exporter retries for a bounded time (`max_elapsed_time: 120s`) and then drops the
+batch, so persistent export errors mean permanent data loss, not delayed delivery.
+
+When finished, stop the background port-forward with `kill %1`.
+
+### c. Scrape targets exist and are being allocated
+
+If the gateway shows nothing to export (`sent` flat, no errors), the daemon collectors
+aren't scraping anything. Check that the Target Allocator is running and that
+`ServiceMonitor`/`PodMonitor` resources exist for your workloads:
+
+```bash
+kubectl get pods -n monitoring -l app.kubernetes.io/component=opentelemetry-targetallocator
+kubectl get servicemonitors,podmonitors -A
+```
+
+The Target Allocator watches these CRs and distributes their scrape targets across the
+daemonset collectors. No matching monitors (or an unhealthy allocator) means the
+`prometheus` receiver has nothing to scrape: no data flows and no errors are logged
+anywhere, which is exactly the "silently stale" symptom.
+
+### d. Data flowing under the wrong tenant
+
+Metrics may be arriving in Thanos but under a different tenant than the one you're
+querying. The gateway derives the tenant from resource attributes: it defaults to
+`default`, and is set to the source namespace name only for namespaces labeled
+`ace.appscode.com/client-org: "true"`; batches with no tenant attribute fall back to
+`anonymous`. Re-run the store/query checks from section 2 with `THANOS-TENANT: default`
+(and `anonymous`) before concluding data is missing.
+
+After fixing whichever stage was broken, re-run the `prometheus_tsdb_head_max_time` check
+from section 2 over a couple of minutes to confirm the timestamp starts advancing.
