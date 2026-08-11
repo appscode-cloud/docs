@@ -42,16 +42,17 @@ Use the **Monitoring** section to configure Alertmanager notifications for platf
   * **Password:** The SMTP password. For Gmail, use an App Password generated from `https://myaccount.google.com/apppasswords`.
   * **Require TLS:** Enables TLS for the SMTP connection. Leave this enabled for Gmail.
   * **Send Resolved:** Sends a follow-up notification when an alert returns to a healthy state.
-* **Alert Manager Webhook:** Send alerts to an endpoint that accepts Alertmanager's generic webhook payload.
+* **Alert Manager Webhook:** Send alerts to supported chat platforms using provider-specific webhook URLs.
   * **Enable Webhook:** Turns webhook delivery on or off.
-  * **URL:** The destination webhook URL. Some systems embed the secret directly in the URL.
   * **Send Resolved:** Sends a follow-up notification when an alert returns to a healthy state.
+  * **Google Chat URL:** The incoming webhook URL for a Google Chat space.
+  * **Mattermost URL:** The incoming webhook URL for a Mattermost channel.
+  * **MS Teams URL:** The incoming webhook URL for a Microsoft Teams channel.
+  * **Slack URL:** The incoming webhook URL for a Slack channel.
 
 <br/>
 
 ![Monitoring Alertmanager](../../images/monitoring-alertmanager.png)
-
-> **Tip:** For Google Chat, a supported workaround is to generate a space email address in Google Chat settings and use that address in the **To** field.
 
 ## TLS
 
