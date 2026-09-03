@@ -169,6 +169,57 @@ The empty-string key (`""`) is the legacy Kubernetes core group.
 
 > **Verified:** `GET` returned `200` against `appscode/ace` (hub) and `appscode/arnob-dev` (spoke) on 2026-07-14.
 
+### GET /clusters/{owner}/{cluster}/namespaces/{namespace}/resources
+
+List the objects that exist in one namespace, for a chosen set of API groups. Uses
+server-preferred namespaced resources, and only resources that support `list`; group
+discovery failures for individual groups are skipped rather than failing the request.
+Objects the caller cannot list (`403`), resources that are not found (`404`), and
+resources that do not support listing (`405`) are silently omitted. The whole request
+is bounded by a 30-second timeout, with at most 5 resource types listed concurrently.
+
+- **Auth:** token.
+
+**Path parameters:**
+
+| Name | Type | Description |
+|---|---|---|
+| `namespace` | string | Namespace to list. |
+
+**Query parameters:**
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| `groups` | string | yes | Comma-separated API groups to include. Use `core` for the legacy Kubernetes core group (sent to the cluster as the empty group). Duplicates and blanks are ignored. |
+
+**Response:** `200` — a flat array of objects:
+
+```json
+[
+  {
+    "group": "kubedb.com",
+    "version": "v1",
+    "resource": "mongodbs",
+    "kind": "MongoDB",
+    "name": "mgo",
+    "namespace": "demo"
+  },
+  {
+    "group": "",
+    "version": "v1",
+    "resource": "configmaps",
+    "kind": "ConfigMap",
+    "name": "kube-root-ca.crt",
+    "namespace": "demo"
+  }
+]
+```
+
+Errors: `400` when `namespace` is empty or `groups` resolves to no groups.
+
+Use [`GET .../available-types`](#get-clustersownerclusteravailable-types) first to see
+which groups the cluster actually serves.
+
 ### GET /clusters/{owner}/{cluster}/is-server
 
 Check whether this cluster is the KubeDB Platform hub cluster.

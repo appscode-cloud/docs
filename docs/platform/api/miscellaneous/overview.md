@@ -26,8 +26,8 @@ root**, not under `/api/v1`; their full paths are documented as-is.
 | GET | `/api/v1/version` | Public | Server version |
 | GET | `/api/v1/swagger` | Public (if enabled) | Swagger UI |
 | POST | `/api/v1/markdown`, `/api/v1/markdown/raw` | Public | Render markdown to HTML |
-| GET | `/healthz` | Public | Health check (non-API root) |
-| GET | `/.well-known/openid-configuration` | Public | OIDC discovery (non-API root) |
+| GET | `/accounts/healthz` | Public | Health check (accounts router, not `/api/v1`) |
+| GET | `/accounts/.well-known/openid-configuration` | Public | OIDC discovery (accounts router, not `/api/v1`) |
 
 Web (non-API) routes also exist for the sign-in/sign-up UI, OAuth2 authorize/token/userinfo endpoints,
 account activation & recovery, 2FA/WebAuthn login, and static assets.
@@ -36,5 +36,5 @@ account activation & recovery, 2FA/WebAuthn login, and static assets.
 
 - [Miscellaneous Endpoints](../miscellaneous) — server version
   (`/api/v1/version`), markdown rendering (`/api/v1/markdown`, `/api/v1/markdown/raw`),
-  the Swagger UI (`/api/v1/swagger`), the health check (`/healthz`), and OIDC discovery
-  (`/.well-known/openid-configuration`).
+  the Swagger UI (`/api/v1/swagger`), the health check (`/accounts/healthz`), and OIDC
+  discovery (`/accounts/.well-known/openid-configuration`).

@@ -80,7 +80,7 @@ The server supports several authentication mechanisms:
 | Session cookie | Web console | Cookie-based sign-in; CSRF-protected |
 | Personal access token / Bearer token | API clients, CLI | `Authorization: token <t>`, `?token=`, `?access_token=` |
 | Basic auth | Token management endpoints | With optional OTP (2FA) |
-| OAuth2 / OIDC | SSO; the KubeDB Platform API Server is both provider and consumer | `/login/oauth/*`, `/.well-known/openid-configuration` |
+| OAuth2 / OIDC | SSO; the KubeDB Platform API Server is both provider and consumer | `/accounts/login/oauth/*`, `/accounts/.well-known/openid-configuration` |
 | LDAP / PAM | Enterprise sign-in sources | Configured by site admins |
 | 2FA / WebAuthn | User accounts | TOTP, scratch tokens, security keys |
 | License-based auth | Member clusters | Clusters authenticate with issued licenses / cluster tokens |

@@ -28,6 +28,16 @@ Common conventions:
 - Each subscription resource supports three verbs on the same path: `POST` to subscribe,
   `GET` to check the subscription, and `DELETE` to unsubscribe. All return `200` on
   success (with no body).
+- Beyond the token, every subscription route runs an authorization check on the cluster:
+  `POST` and `DELETE` need the **editor** relation, `GET` only the **viewer** relation.
+  The permission string names the scope — `subscribe:cluster`, `subscribe:namespace`, or
+  `subscribe:resource`.
+- All of them additionally require the cluster to be connected and the platform's inbox
+  service to be reachable; when the inbox backend is missing the routes return `500`.
+- Organization-level subscriptions live on the
+  [Organizations](../../organizations-teams/organizations.md) page, and
+  [`GET /user/inbox/subscriptions`](../../users-settings/authenticated-user.md) lists
+  everything the caller is subscribed to across all scopes.
 
 Example request:
 
@@ -55,13 +65,13 @@ Path: `/clustersv2/{owner}/{cluster}/subscriptions/`
 
 Subscribe the current user to cluster-level inbox notifications.
 
-**Auth:** token. **Response:** `200` — subscription created (no body).
+**Auth:** token + `authzCheck(subscribe:cluster)` (`Cluster_Editor`). **Response:** `200` — subscription created (no body).
 
 ### GET /clustersv2/{owner}/{cluster}/subscriptions/
 
 Check the current user's cluster-level inbox subscription.
 
-**Auth:** token. **Response:** `200` — subscription exists (no body).
+**Auth:** token + `authzCheck(subscribe:cluster)` (`Cluster_Viewer`). **Response:** `200` — subscription exists (no body).
 
 > **Verified:** `GET` returned `500` against `appscode/ace` on 2026-07-14 — checking a
 > subscription requires the inbox/notification backend, which is not provisioned on this
@@ -71,7 +81,7 @@ Check the current user's cluster-level inbox subscription.
 
 Remove the cluster-level inbox subscription.
 
-**Auth:** token. **Response:** `200` — subscription removed (no body).
+**Auth:** token + `authzCheck(subscribe:cluster)` (`Cluster_Editor`). **Response:** `200` — subscription removed (no body).
 
 ---
 
@@ -93,19 +103,19 @@ Path: `/clustersv2/{owner}/{cluster}/subscriptions/namespaces/{namespace}/`
 
 Subscribe the current user to namespace-level inbox notifications.
 
-**Auth:** token. **Response:** `200` — subscription created (no body).
+**Auth:** token + `authzCheck(subscribe:namespace)` (`Cluster_Editor`). **Response:** `200` — subscription created (no body).
 
 ### GET /clustersv2/{owner}/{cluster}/subscriptions/namespaces/{namespace}/
 
 Check the current user's namespace-level inbox subscription.
 
-**Auth:** token. **Response:** `200` — subscription exists (no body).
+**Auth:** token + `authzCheck(subscribe:namespace)` (`Cluster_Viewer`). **Response:** `200` — subscription exists (no body).
 
 ### DELETE /clustersv2/{owner}/{cluster}/subscriptions/namespaces/{namespace}/
 
 Remove the namespace-level inbox subscription.
 
-**Auth:** token. **Response:** `200` — subscription removed (no body).
+**Auth:** token + `authzCheck(subscribe:namespace)` (`Cluster_Editor`). **Response:** `200` — subscription removed (no body).
 
 ---
 
@@ -135,23 +145,23 @@ Example path for a KubeDB MongoDB named `mg-shard` in namespace `demo`:
 /clustersv2/appscode/arnob-dev/subscriptions/namespaces/demo/kubedb.com/v1/mongodbs/mg-shard
 ```
 
-### POST .../{group}/{version}/{resource}/{resourceName}
+### POST /clustersv2/{owner}/{cluster}/subscriptions/namespaces/{namespace}/{group}/{version}/{resource}/{resourceName}
 
 Subscribe the current user to resource-level inbox notifications.
 
-**Auth:** token. **Response:** `200` — subscription created (no body).
+**Auth:** token + `authzCheck(subscribe:resource)` (`Cluster_Editor`). **Response:** `200` — subscription created (no body).
 
-### GET .../{group}/{version}/{resource}/{resourceName}
+### GET /clustersv2/{owner}/{cluster}/subscriptions/namespaces/{namespace}/{group}/{version}/{resource}/{resourceName}
 
 Check the current user's resource-level inbox subscription.
 
-**Auth:** token. **Response:** `200` — subscription exists (no body).
+**Auth:** token + `authzCheck(subscribe:resource)` (`Cluster_Viewer`). **Response:** `200` — subscription exists (no body).
 
-### DELETE .../{group}/{version}/{resource}/{resourceName}
+### DELETE /clustersv2/{owner}/{cluster}/subscriptions/namespaces/{namespace}/{group}/{version}/{resource}/{resourceName}
 
 Remove the resource-level inbox subscription.
 
-**Auth:** token. **Response:** `200` — subscription removed (no body).
+**Auth:** token + `authzCheck(subscribe:resource)` (`Cluster_Editor`). **Response:** `200` — subscription removed (no body).
 
 ---
 

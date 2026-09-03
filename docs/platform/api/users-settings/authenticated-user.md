@@ -82,6 +82,52 @@ Sign out the authenticated user (clears session and auth cookies).
 
 **Response:** `200 OK` with no body.
 
+### GET /user/login-method
+
+Report how a user or organization should sign in — password, or redirect to the
+organization's SSO provider. Called by the sign-in UI **before** the password field is
+shown, so it takes no token.
+
+- **Auth:** Public (no authentication).
+
+**Query parameters:** at least one of the two is required.
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `orgname` | string | no | Organization slug. Looks up that org's auth source; an inactive source is ignored. |
+| `username` | string | no | Email or username. Fallback for returning users who skip the org field; only orgs whose auth source has `enforceForMembers` set are considered. |
+
+**Response:** `200 OK` (`LoginMethodResponse`). With no SSO source in play:
+
+```json
+{ "method": "password" }
+```
+
+When SSO applies, the remaining fields are set:
+
+```json
+{
+  "method": "sso",
+  "orgAuthSourceID": 7,
+  "providerName": "openidConnect",
+  "oauthCallbackPath": "/user/oauth2/org-3",
+  "displayName": "Acme SSO"
+}
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `method` | string | `password` or `sso`. |
+| `orgAuthSourceID` | integer (int64) | The org's own auth source ID (not a global `login_source`). Only for `sso`. |
+| `providerName` | string | goth/OAuth2 provider name, e.g. `openidConnect`. Only for `sso`. |
+| `oauthCallbackPath` | string | Path the frontend should redirect to, of the form `/user/oauth2/org-<orgID>`. Only for `sso`. |
+| `displayName` | string | Human-readable auth source name. Only for `sso`. |
+
+Errors: `400` when neither `orgname` nor `username` is supplied.
+
+The auth source itself is managed through the
+[organization auth-source endpoints](../../organizations-teams/organizations.md).
+
 ### GET /user/firebase-token
 
 Get a Firebase custom auth token for the authenticated user. Only registered on
@@ -340,6 +386,19 @@ List all teams the authenticated user belongs to.
 
 > **Verified:** `GET /user/teams` returned `200` against `appscode` on 2026-07-14.
 
+### GET /user/orgs
+
+List the organizations the authenticated user belongs to, including private
+memberships.
+
+- **Auth:** Token.
+
+**Response:** `200 OK` — an array of `Organization` objects (same shape as
+[GET /orgs/{orgname}](../../organizations-teams/organizations.md)).
+
+For another user's *public* memberships, use
+[GET /users/{username}/orgs](../public-user-apis.md).
+
 Organization list endpoints for the authenticated user live under settings — see
 [GET /user/settings/organizations](../user-settings.md#get-usersettingsorganizations).
 
@@ -562,10 +621,163 @@ Validate email availability.
 
 ---
 
+## Inbox subscriptions
+
+### GET /user/inbox/subscriptions
+
+List the inbox subscriptions of the authenticated user, across every scope
+(organization, cluster, namespace, resource). The caller is always the subscriber —
+there is no way to list someone else's subscriptions.
+
+- **Auth:** Token.
+
+**Query parameters:** every parameter is an optional exact-match filter; omit them all
+to get every subscription the caller has.
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `scope` | string | no | `org`, `cluster`, `namespace`, or `resource`. |
+| `orgID` | string | no | Organization ID. |
+| `orgName` | string | no | Organization slug. |
+| `clusterName` | string | no | Cluster name. |
+| `clusterUID` | string | no | Cluster UID. |
+| `namespaceName` | string | no | Namespace name. |
+| `namespaceUID` | string | no | Namespace UID. |
+| `apiGroup` | string | no | Resource API group. |
+| `version` | string | no | Resource API version. |
+| `resource` | string | no | Plural resource name. |
+| `resourceName` | string | no | Object name. |
+| `resourceUID` | string | no | Object UID. |
+
+**Response:** `200 OK` — an array of `InboxSubscription`:
+
+```json
+[
+  {
+    "id": 12,
+    "subscriberID": 4,
+    "subscriberType": "individual",
+    "scope": "resource",
+    "orgID": "3",
+    "orgName": "appscode",
+    "clusterOwnerID": 3,
+    "clusterUID": "<cluster-uid>",
+    "clusterName": "arnob-dev",
+    "namespaceUID": "<namespace-uid>",
+    "namespaceName": "demo",
+    "apiGroup": "kubedb.com",
+    "version": "v1",
+    "resource": "mongodbs",
+    "resourceName": "mgo",
+    "resourceUID": "<object-uid>",
+    "createdAt": "2026-07-14T09:12:01Z",
+    "updatedAt": "2026-07-14T09:12:01Z"
+  }
+]
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | integer (int64) | Subscription ID. |
+| `subscriberID` | integer (int64) | Subscriber (the calling user) ID. |
+| `subscriberType` | string | Subscriber account type. |
+| `scope` | string | `org`, `cluster`, `namespace`, or `resource`. |
+| `orgID` / `orgName` | string | Organization the subscription belongs to. |
+| `clusterOwnerID` | integer (int64) | Owner account ID of the cluster. |
+| `clusterUID` / `clusterName` | string | Target cluster. Empty for org-scoped rows. |
+| `namespaceUID` / `namespaceName` | string | Target namespace, for namespace- and resource-scoped rows. |
+| `apiGroup` / `version` / `resource` / `resourceName` / `resourceUID` | string | Target object, for resource-scoped rows. |
+| `createdAt` / `updatedAt` | string (date-time) | Row timestamps. |
+
+Subscriptions are created and removed through the scope-specific endpoints:
+[organization](../../organizations-teams/organizations.md) and
+[cluster / namespace / resource](../../cluster-management-v2/subscriptions.md).
+
+---
+
 ## Deployment orders
 
-The high-level design also lists deployment-order endpoints under the authenticated
-user (`POST /user/deploy/orders` and the `/user/deploy/orders/{id}/render/*` preview
-routes). These are not part of the machine-readable OpenAPI specification for this
-group and are therefore not documented in detail here; consult the KubeDB Platform API Server source
-(`routers/api/v1`) for their current request/response shapes.
+A **deployment order** captures a chart selection (a `releases.x-helm.dev/v1alpha1`
+`Order`) so it can be previewed and then applied. Creating an order stores it as
+`order.yaml` in the platform's package blob store under the generated order UID; the
+preview routes read it back and render it. The order UID is the `{id}` path parameter
+of every route below, and the render routes additionally require the platform's Helm
+chart registry to be reachable.
+
+### POST /user/deploy/orders
+
+Create a deployment order.
+
+- **Auth:** Token.
+
+**Request body:** an `Order` (`releases.x-helm.dev/v1alpha1`). `spec.packages` must be
+non-empty. `metadata.uid` and `metadata.creationTimestamp` are assigned by the server;
+`metadata.name` defaults to the release name of the first package.
+
+**Response:** `200 OK` — the stored `Order`, with the server-assigned `metadata.uid`.
+Use that UID as `{id}` below.
+
+Errors: `400` when `spec.packages` is empty.
+
+### GET /user/deploy/orders/{id}/render/manifest
+
+Render the order into a single concatenated manifest.
+
+- **Auth:** Token.
+
+**Path parameters:**
+
+| Name | Type | Description |
+|------|------|-------------|
+| `id` | string | Order UID returned by `POST /user/deploy/orders`. |
+
+**Response:** `200 OK` — the rendered manifest as a raw response body (not JSON).
+
+### GET /user/deploy/orders/{id}/render/resources
+
+Render the order into per-chart resource lists.
+
+- **Auth:** Token.
+
+**Path parameters:**
+
+| Name | Type | Description |
+|------|------|-------------|
+| `id` | string | Order UID. |
+
+**Query parameters:**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `skipCRDs` | boolean | no | When `true`, drop each chart's CRDs from the output. |
+| `format` | string | no | Output data format for the rendered templates. Defaults to YAML. |
+
+**Response:** `200 OK` — the converted chart templates.
+
+### GET /user/deploy/orders/{id}/helm3
+
+Generate a Helm 3 installation script for the order.
+
+- **Auth:** Token.
+
+**Path parameters:**
+
+| Name | Type | Description |
+|------|------|-------------|
+| `id` | string | Order UID. |
+
+**Response:** `200 OK` — the generated script.
+
+### GET /user/deploy/orders/{id}/yaml
+
+Generate a `kubectl`-oriented YAML installation script for the order.
+
+- **Auth:** Token.
+
+**Path parameters:**
+
+| Name | Type | Description |
+|------|------|-------------|
+| `id` | string | Order UID. |
+
+**Response:** `200 OK` — the generated script.
