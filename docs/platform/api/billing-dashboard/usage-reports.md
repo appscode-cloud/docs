@@ -45,6 +45,73 @@ Common path parameters for the `summary` routes:
 | `year` | string | Four-digit report year (e.g. `2026`). |
 | `month` | string | Report month (e.g. `06` or `June`, per the generated-months list). |
 
+## Monthly summary
+
+### GET /dashboard/monthly-summary/{resourceType}
+
+Returns the per-month usage totals for one product, newest month first, with
+month-over-month change percentages.
+
+- **Auth:** token; site-admin (`view_usage_analytics:site_admin`). Requires `?org=`.
+- **Path parameters:**
+
+| Name | Type | Description |
+|---|---|---|
+| `resourceType` | string | Product alias: `kubedb`, `stash`, `vault`, or `voyager`. |
+
+- **Query parameters:**
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| `org` | string | yes | Organization slug. |
+| `period_start` | string | no | First month to include, `YYYY-MM`. Defaults to five months before the current month (a six-month window). |
+| `period_end` | string | no | Last month to include, `YYYY-MM`. Only read when `period_start` is given; defaults to the current month. |
+
+  When an explicit period is given it is clamped to the months that actually have a
+  generated summary; if it overlaps none, the response comes back with an empty
+  `months` array. The requested range must not exceed **24 months**.
+
+- **Response:** `200 OK` — a `MonthlySummaryResponse`:
+
+```json
+{
+  "resourceType": "kubedb",
+  "months": [
+    {
+      "year": 2026,
+      "month": 6,
+      "cpuCoreMonth": 12.5,
+      "memoryGiBMonth": 48.25,
+      "instances": 7,
+      "cpuChangeFromPrev": 4.2,
+      "memoryChangeFromPrev": -1.8
+    },
+    {
+      "year": 2026,
+      "month": 5,
+      "cpuCoreMonth": 12.0,
+      "memoryGiBMonth": 49.1,
+      "instances": 7
+    }
+  ]
+}
+```
+
+| Field | Type | Description |
+|---|---|---|
+| `resourceType` | string | Echo of the path parameter. |
+| `months` | array | Monthly rows, most recent first. |
+| `months[].year` | integer | Calendar year. |
+| `months[].month` | integer | Calendar month, `1`–`12`. |
+| `months[].cpuCoreMonth` | number | CPU core-months consumed. |
+| `months[].memoryGiBMonth` | number | Memory GiB-months consumed. |
+| `months[].instances` | integer | Instance count for the month. |
+| `months[].cpuChangeFromPrev` | number | Percentage change vs. the previous (older) month; omitted on the oldest row. |
+| `months[].memoryChangeFromPrev` | number | Percentage change vs. the previous (older) month; omitted on the oldest row. |
+
+Errors: `400` for an unknown `resourceType`, a `period_start`/`period_end` that is not
+`YYYY-MM`, a `period_start` after `period_end`, or a range longer than 24 months.
+
 ## Generated months
 
 ### GET /dashboard/summary/generated-months

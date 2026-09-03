@@ -12,21 +12,20 @@ section_menu_id: api
 
 # User Billing Dashboard
 
-Owner-scoped endpoints under `/api/v1/dashboard/clusters` that back the self-service
+Owner-scoped endpoints under `/api/v1/user/dashboard/clusters` that back the self-service
 billing dashboard an organization sees for its **own** clusters: active clusters,
 their licenses and licensed products, and per-cluster / per-license / per-resource
 event counts.
 
 All paths on this page are relative to `/api/v1`. Every endpoint requires
 `Authorization: token <YOUR_TOKEN>`, resolves the owner from the `org` query
-parameter (`?org=<org-slug>`), and requires the `view:contracts` permission on that
-organization (this is the org's "hosted mode / view contracts" grant — not
+parameter (`?org=<org-slug>`), and requires the `view:licensed_clusters` permission on that
+organization (the org's "hosted mode / view licensed clusters" grant — not
 site-admin). This group is available only on **billing-enabled deployments**.
 
-> **Verified:** every endpoint on this page returned `404 Not Found` against
-> `appscode` on `<akp-host>` on 2026-07-14 — this deployment is not billing-enabled,
-> so the `/dashboard/clusters/*` routes are not registered. (Sanity: `GET /version`
-> and `GET /user` returned `200` with the same token.)
+> **Note.** These paths were previously documented without the `/user` prefix.
+> `registerBillingDashboardUserAPIs` registers `/dashboard/clusters` from inside the
+> `/user` group, so the served prefix is `/api/v1/user/dashboard/clusters`.
 
 Shared conventions on this page:
 
@@ -37,12 +36,12 @@ Shared conventions on this page:
 
 ## Clusters
 
-### GET /dashboard/clusters/active
+### GET /user/dashboard/clusters/active
 
 Lists clusters that reported within the `limit` window for the owner resolved from
 the query.
 
-- **Auth:** token; owner-scoped (`view:contracts`). Requires `?org=`.
+- **Auth:** token; owner-scoped (`view:licensed_clusters`). Requires `?org=`.
 - **Query parameters:**
 
 | Name | Type | Required | Description |
@@ -66,16 +65,16 @@ the query.
 
 ```
 curl -H "Authorization: token $AKP_TOKEN" \
-  "https://<akp-host>/api/v1/dashboard/clusters/active?org=appscode"
+  "https://<akp-host>/api/v1/user/dashboard/clusters/active?org=appscode"
 ```
 
 > **Verified:** returned `404` against `appscode` — billing not enabled on this deployment.
 
-### GET /dashboard/clusters/{cid}
+### GET /user/dashboard/clusters/{cid}
 
 Returns cluster information for a cluster owned by the request owner.
 
-- **Auth:** token; owner-scoped (`view:contracts`). Requires `?org=`.
+- **Auth:** token; owner-scoped (`view:licensed_clusters`). Requires `?org=`.
 - **Path parameters:**
 
 | Name | Type | Description |
@@ -89,11 +88,11 @@ Returns cluster information for a cluster owned by the request owner.
 
 > **Verified:** returned `404` against `appscode` — billing not enabled.
 
-### GET /dashboard/clusters/{cid}/events-count
+### GET /user/dashboard/clusters/{cid}/events-count
 
 Returns today's event count for the cluster.
 
-- **Auth:** token; owner-scoped (`view:contracts`). Requires `?org=`.
+- **Auth:** token; owner-scoped (`view:licensed_clusters`). Requires `?org=`.
 - **Path parameters:** `cid` (string) — cluster UID.
 - **Response:** `200 OK` — an `EventsCounterResponse`.
 
@@ -113,11 +112,11 @@ the license/resource-scoped counter endpoints below; `error` is set instead of
 
 ## Licenses
 
-### GET /dashboard/clusters/{cid}/licenses/
+### GET /user/dashboard/clusters/{cid}/licenses/
 
 Lists licensed plans associated with the request owner and cluster.
 
-- **Auth:** token; owner-scoped (`view:contracts`). Requires `?org=`.
+- **Auth:** token; owner-scoped (`view:licensed_clusters`). Requires `?org=`.
 - **Path parameters:** `cid` (string) — cluster UID.
 - **Response:** `200 OK` — an array of `LicensedPlan` (see the Admin Billing
   Dashboard page for the full shape).
@@ -138,11 +137,11 @@ Lists licensed plans associated with the request owner and cluster.
 
 > **Verified:** returned `404` against `appscode` — billing not enabled.
 
-### GET /dashboard/clusters/{cid}/licenses/{lid}
+### GET /user/dashboard/clusters/{cid}/licenses/{lid}
 
 Returns a licensed plan (API form) associated with the request owner.
 
-- **Auth:** token; owner-scoped (`view:contracts`). Requires `?org=`.
+- **Auth:** token; owner-scoped (`view:licensed_clusters`). Requires `?org=`.
 - **Path parameters:** `cid` (string), `lid` (string) — license ID.
 - **Response:** `200 OK` — a `LicensePlanApiForm`.
 
@@ -166,22 +165,22 @@ Returns a licensed plan (API form) associated with the request owner.
 
 ## Event counts and events
 
-### GET /dashboard/clusters/{cid}/licenses/{lid}/products/{product}/events-count
+### GET /user/dashboard/clusters/{cid}/licenses/{lid}/products/{product}/events-count
 
 Returns today's event count for a license/product.
 
-- **Auth:** token; owner-scoped (`view:contracts`). Requires `?org=`.
+- **Auth:** token; owner-scoped (`view:licensed_clusters`). Requires `?org=`.
 - **Path parameters:** `cid` (string), `lid` (string), `product` (string).
 - **Response:** `200 OK` — an `EventsCounterResponse` (with `product` and
   `licenseID` populated).
 
 > **Verified:** returned `404` against `appscode` — billing not enabled.
 
-### GET /dashboard/clusters/{cid}/licenses/{lid}/products/{product}/groups/{group}/resources/{resource}/{rid}/events-count
+### GET /user/dashboard/clusters/{cid}/licenses/{lid}/products/{product}/groups/{group}/resources/{resource}/{rid}/events-count
 
 Returns today's event count for a specific resource object.
 
-- **Auth:** token; owner-scoped (`view:contracts`). Requires `?org=`.
+- **Auth:** token; owner-scoped (`view:licensed_clusters`). Requires `?org=`.
 - **Path parameters:**
 
 | Name | Type | Description |
@@ -211,11 +210,11 @@ Returns today's event count for a specific resource object.
 
 > **Verified:** returned `404` against `appscode` — billing not enabled.
 
-### GET /dashboard/clusters/{cid}/licenses/{lid}/products/{product}/events/
+### GET /user/dashboard/clusters/{cid}/licenses/{lid}/products/{product}/events/
 
 Returns the tabular event list for the caller's cluster/license/product.
 
-- **Auth:** token; owner-scoped (`view:contracts`). Requires `?org=`.
+- **Auth:** token; owner-scoped (`view:licensed_clusters` plus `view:event_resources`). Requires `?org=`.
 - **Path parameters:** `cid` (string), `lid` (string), `product` (string).
 - **Query parameters:**
 
@@ -240,11 +239,11 @@ Returns the tabular event list for the caller's cluster/license/product.
 
 > **Verified:** returned `404` against `appscode` — billing not enabled.
 
-### GET /dashboard/clusters/{cid}/licenses/{lid}/products/{product}/events/raw-event
+### GET /user/dashboard/clusters/{cid}/licenses/{lid}/products/{product}/events/raw-event
 
 Returns the raw badger value for a specific event key/version.
 
-- **Auth:** token; owner-scoped (`view:contracts`). Requires `?org=`.
+- **Auth:** token; owner-scoped (`view:licensed_clusters` plus `view:event_resources`). Requires `?org=`.
 - **Path parameters:** `cid` (string), `lid` (string), `product` (string).
 - **Query parameters:**
 

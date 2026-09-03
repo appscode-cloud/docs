@@ -14,8 +14,8 @@ section_menu_id: api
 
 Utility endpoints of the KubeDB Platform API Server. Unless noted otherwise, paths on this page are
 relative to `/api/v1` — the full base path is `https://<akp-host>/api/v1`. Two
-endpoints (`/healthz` and `/.well-known/openid-configuration`) are served at the
-**host root** and are shown with their full path.
+endpoints (`/accounts/healthz` and `/accounts/.well-known/openid-configuration`) are
+served by the **accounts router** instead and are shown with their full path.
 
 All endpoints on this page are **public** — no authentication is required.
 
@@ -130,12 +130,16 @@ curl https://<akp-host>/api/v1/swagger
 
 > **Verified:** `GET` returned `200` (Swagger UI HTML page) against the platform on 2026-07-14; Swagger is enabled on this deployment.
 
-## Health & OIDC discovery (host root)
+## Health & OIDC discovery (accounts router)
 
-The following two endpoints are **not** under the `/api/v1` prefix — they are served
-at the host root. Use their full paths.
+The following two endpoints are **not** under the `/api/v1` prefix. They are
+registered on the accounts (web console) router, which the server mounts under
+`/accounts` (`AccountsSubURL`), so the served paths are `/accounts/healthz` and
+`/accounts/.well-known/openid-configuration`. A deployment may additionally expose
+them at the host root through its ingress; the paths below are the ones the server
+itself registers.
 
-### GET /healthz
+### GET /accounts/healthz
 
 Liveness/health check for the server.
 
@@ -146,12 +150,17 @@ Liveness/health check for the server.
 Example:
 
 ```
-curl https://<akp-host>/healthz
+curl https://<akp-host>/accounts/healthz
 ```
 
-> **Verified:** `GET https://<akp-host>/healthz` returned `200` on 2026-07-14. On this deployment the host root serves the KubeDB Platform web console single-page app, so the response body was the console HTML (catch-all) rather than a plain health payload; the `200` still confirms the server is reachable and healthy.
+The handler writes the literal body `OK`.
 
-### GET /.well-known/openid-configuration
+> **Note.** An earlier version of this page documented this endpoint at
+> `/healthz` and recorded a `200` for it. That response was the web console's
+> single-page-app catch-all, not this handler — the host root serves the console on a
+> typical deployment. The registered path is the one above.
+
+### GET /accounts/.well-known/openid-configuration
 
 Standard OpenID Connect discovery document. The KubeDB Platform API Server is itself an OIDC provider (for SSO),
 and this endpoint advertises its issuer and the authorization/token/userinfo/JWKS
@@ -162,23 +171,39 @@ endpoints so OIDC clients can auto-configure.
 **Response:** `200 OK` with the OIDC discovery JSON (issuer, endpoint URLs, supported
 scopes, response types, and signing algorithms), for example:
 
+All endpoint URLs are built from the deployment's accounts base URL, so on a default
+install they sit under `/accounts/`:
+
 ```json
 {
-  "issuer": "https://<akp-host>",
-  "authorization_endpoint": "https://<akp-host>/login/oauth/authorize",
-  "token_endpoint": "https://<akp-host>/login/oauth/access_token",
-  "userinfo_endpoint": "https://<akp-host>/login/oauth/userinfo",
-  "jwks_uri": "https://<akp-host>/login/oauth/keys",
-  "response_types_supported": ["code"],
+  "issuer": "https://<akp-host>/accounts/",
+  "authorization_endpoint": "https://<akp-host>/accounts/login/oauth/authorize",
+  "token_endpoint": "https://<akp-host>/accounts/login/oauth/access_token",
+  "jwks_uri": "https://<akp-host>/accounts/login/oauth/keys",
+  "userinfo_endpoint": "https://<akp-host>/accounts/login/oauth/userinfo",
+  "introspection_endpoint": "https://<akp-host>/accounts/login/oauth/introspect",
+  "response_types_supported": ["code", "id_token"],
+  "id_token_signing_alg_values_supported": ["RS256"],
   "subject_types_supported": ["public"],
-  "id_token_signing_alg_values_supported": ["RS256"]
+  "scopes_supported": ["openid", "profile", "email", "groups"],
+  "claims_supported": [
+    "aud", "exp", "iat", "iss", "sub", "name", "preferred_username", "profile",
+    "picture", "website", "locale", "updated_at", "email", "email_verified", "groups"
+  ],
+  "code_challenge_methods_supported": ["plain", "S256"],
+  "grant_types_supported": ["authorization_code", "refresh_token"]
 }
 ```
+
+`id_token_signing_alg_values_supported` reports the algorithm of the server's actual
+signing key, so it can differ from `RS256`.
 
 Example:
 
 ```
-curl https://<akp-host>/.well-known/openid-configuration
+curl https://<akp-host>/accounts/.well-known/openid-configuration
 ```
 
-> **Verified:** `GET https://<akp-host>/.well-known/openid-configuration` returned `200` on 2026-07-14. On this deployment the host root serves the KubeDB Platform web console single-page app, so the request was answered by the console catch-all (HTML) rather than the OIDC discovery JSON documented above. The example above reflects the endpoint's documented shape; the exact endpoint URLs vary by deployment.
+> **Note.** An earlier version of this page documented this endpoint at
+> `/.well-known/openid-configuration` and recorded a `200` for it; that response came
+> from the web console's single-page-app catch-all, not from this handler.

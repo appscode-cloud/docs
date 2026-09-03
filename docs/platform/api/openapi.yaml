@@ -17080,13 +17080,13 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
-  /dashboard/clusters/active:
+  /user/dashboard/clusters/active:
     get:
       tags:
       - Billing Dashboard
       summary: List the caller's active clusters
       description: Lists clusters that reported within the `limit` window for the owner resolved from
-        the query. Requires `view:contracts` authorization and a billing-enabled deployment.
+        the query. Requires `view:licensed_clusters` authorization and a billing-enabled deployment.
       operationId: dashboard_ListActiveClusters
       security:
       - AuthorizationHeaderToken: []
@@ -17112,12 +17112,12 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
-  /dashboard/clusters/{cid}:
+  /user/dashboard/clusters/{cid}:
     get:
       tags:
       - Billing Dashboard
       summary: Get cluster information (caller)
-      description: Returns cluster information for a cluster owned by the request owner. Requires `view:contracts`
+      description: Returns cluster information for a cluster owned by the request owner. Requires `view:licensed_clusters`
         authorization and a billing-enabled deployment.
       operationId: dashboard_GetClusterInformation
       security:
@@ -17144,12 +17144,12 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-  /dashboard/clusters/{cid}/events-count:
+  /user/dashboard/clusters/{cid}/events-count:
     get:
       tags:
       - Billing Dashboard
       summary: Get cluster events count (caller)
-      description: Returns today's event count for the cluster. Requires `view:contracts` authorization
+      description: Returns today's event count for the cluster. Requires `view:licensed_clusters` authorization
         and a billing-enabled deployment.
       operationId: dashboard_GetClusterEventsCount
       security:
@@ -17174,12 +17174,12 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
-  /dashboard/clusters/{cid}/licenses:
+  /user/dashboard/clusters/{cid}/licenses:
     get:
       tags:
       - Billing Dashboard
       summary: List licenses on a cluster (caller)
-      description: Lists licensed plans associated with the request owner and cluster. Requires `view:contracts`
+      description: Lists licensed plans associated with the request owner and cluster. Requires `view:licensed_clusters`
         authorization and a billing-enabled deployment.
       operationId: dashboard_ListLicenses
       security:
@@ -17206,12 +17206,12 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
-  /dashboard/clusters/{cid}/licenses/{lid}:
+  /user/dashboard/clusters/{cid}/licenses/{lid}:
     get:
       tags:
       - Billing Dashboard
       summary: Get a license (caller)
-      description: Returns a licensed plan (API form) associated with the request owner. Requires `view:contracts`
+      description: Returns a licensed plan (API form) associated with the request owner. Requires `view:licensed_clusters`
         authorization and a billing-enabled deployment.
       operationId: dashboard_GetLicense
       security:
@@ -17242,12 +17242,12 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
-  /dashboard/clusters/{cid}/licenses/{lid}/products/{product}/events-count:
+  /user/dashboard/clusters/{cid}/licenses/{lid}/products/{product}/events-count:
     get:
       tags:
       - Billing Dashboard
       summary: Get license events count (caller)
-      description: Returns today's event count for a license/product. Requires `view:contracts` authorization
+      description: Returns today's event count for a license/product. Requires `view:licensed_clusters` authorization
         and a billing-enabled deployment.
       operationId: dashboard_GetLicenseEventsCount
       security:
@@ -17284,12 +17284,12 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
-  /dashboard/clusters/{cid}/licenses/{lid}/products/{product}/groups/{group}/resources/{resource}/{rid}/events-count:
+  /user/dashboard/clusters/{cid}/licenses/{lid}/products/{product}/groups/{group}/resources/{resource}/{rid}/events-count:
     get:
       tags:
       - Billing Dashboard
       summary: Get resource events count (caller)
-      description: Returns today's event count for a specific resource object. Requires `view:contracts`
+      description: Returns today's event count for a specific resource object. Requires `view:licensed_clusters`
         authorization and a billing-enabled deployment.
       operationId: dashboard_GetResourceEventsCount
       security:
@@ -17344,12 +17344,12 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
-  /dashboard/clusters/{cid}/licenses/{lid}/products/{product}/events:
+  /user/dashboard/clusters/{cid}/licenses/{lid}/products/{product}/events:
     get:
       tags:
       - Billing Dashboard
       summary: List events for a license (caller)
-      description: Returns the tabular event list for the caller's cluster/license/product. Requires `view:contracts`
+      description: Returns the tabular event list for the caller's cluster/license/product. Requires `view:licensed_clusters`
         authorization and a billing-enabled deployment.
       operationId: dashboard_GetEventsListForLicenseUser
       security:
@@ -17394,12 +17394,12 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
-  /dashboard/clusters/{cid}/licenses/{lid}/products/{product}/events/raw-event:
+  /user/dashboard/clusters/{cid}/licenses/{lid}/products/{product}/events/raw-event:
     get:
       tags:
       - Billing Dashboard
       summary: Get raw event data (caller)
-      description: Returns the raw badger value for a specific event key/version. Requires `view:contracts`
+      description: Returns the raw badger value for a specific event key/version. Requires `view:licensed_clusters`
         authorization and a billing-enabled deployment.
       operationId: dashboard_GetRawEventDataUser
       security:
@@ -19214,6 +19214,645 @@ paths:
             text/html:
               schema:
                 type: string
+  /orgs/{orgname}/auth-source:
+    get:
+      tags:
+      - Identity - Organizations & Teams
+      summary: Get the organization's SSO auth source
+      description: Returns the authentication source configured for the organization. The client secret
+        is never returned. Requires a token and viewer authorization (Organization_Viewer / view:auth-source).
+      operationId: orgs_GetOrgAuthSource
+      security:
+      - AuthorizationHeaderToken: []
+      - Token: []
+      - AccessToken: []
+      parameters:
+      - $ref: '#/components/parameters/orgnameParam'
+      responses:
+        '200':
+          description: The organization's auth source.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrgAuthSourceResponse'
+        '401':
+          $ref: '#/components/responses/unauthorized'
+        '403':
+          $ref: '#/components/responses/forbidden'
+        '404':
+          $ref: '#/components/responses/notFound'
+    post:
+      tags:
+      - Identity - Organizations & Teams
+      summary: Create the organization's SSO auth source
+      description: Creates the organization's authentication source and marks it active. Fails with 409
+        when one already exists. Requires a token and edit-org authorization (Organization_CanEditOrg
+        / create:auth-source).
+      operationId: orgs_CreateOrgAuthSource
+      security:
+      - AuthorizationHeaderToken: []
+      - Token: []
+      - AccessToken: []
+      parameters:
+      - $ref: '#/components/parameters/orgnameParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrgAuthSourceOption'
+      responses:
+        '201':
+          description: Auth source created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrgAuthSourceResponse'
+        '401':
+          $ref: '#/components/responses/unauthorized'
+        '403':
+          $ref: '#/components/responses/forbidden'
+        '409':
+          description: An auth source already exists for this organization.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+    put:
+      tags:
+      - Identity - Organizations & Teams
+      summary: Update the organization's SSO auth source
+      description: Replaces the organization's authentication source settings. An empty or omitted clientSecret
+        keeps the stored secret. Requires a token and edit-org authorization (Organization_CanEditOrg
+        / update:auth-source).
+      operationId: orgs_UpdateOrgAuthSource
+      security:
+      - AuthorizationHeaderToken: []
+      - Token: []
+      - AccessToken: []
+      parameters:
+      - $ref: '#/components/parameters/orgnameParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrgAuthSourceUpdateOption'
+      responses:
+        '200':
+          description: Auth source updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrgAuthSourceResponse'
+        '401':
+          $ref: '#/components/responses/unauthorized'
+        '403':
+          $ref: '#/components/responses/forbidden'
+        '404':
+          $ref: '#/components/responses/notFound'
+    delete:
+      tags:
+      - Identity - Organizations & Teams
+      summary: Delete the organization's SSO auth source
+      description: Removes the organization's authentication source; members fall back to password login.
+        Requires a token and edit-org authorization (Organization_CanEditOrg / delete:auth-source).
+      operationId: orgs_DeleteOrgAuthSource
+      security:
+      - AuthorizationHeaderToken: []
+      - Token: []
+      - AccessToken: []
+      parameters:
+      - $ref: '#/components/parameters/orgnameParam'
+      responses:
+        '204':
+          description: Auth source removed.
+        '401':
+          $ref: '#/components/responses/unauthorized'
+        '403':
+          $ref: '#/components/responses/forbidden'
+  /orgs/{orgname}/subscription:
+    get:
+      tags:
+      - Identity - Organizations & Teams
+      summary: Check the caller's organization inbox subscription
+      description: Reports whether the calling user is subscribed to the organization's inbox notification
+        group. Only individual users may subscribe. Requires a token and organization membership, and
+        the platform inbox service must be reachable.
+      operationId: orgs_CheckOrgSubscription
+      security:
+      - AuthorizationHeaderToken: []
+      - Token: []
+      - AccessToken: []
+      parameters:
+      - $ref: '#/components/parameters/orgnameParam'
+      responses:
+        '200':
+          description: The subscription exists (empty body).
+        '400':
+          description: The path does not resolve to an organization.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '401':
+          $ref: '#/components/responses/unauthorized'
+        '403':
+          $ref: '#/components/responses/forbidden'
+    post:
+      tags:
+      - Identity - Organizations & Teams
+      summary: Subscribe the caller to the organization inbox
+      description: Subscribes the calling user to the organization's inbox notification group. Only individual
+        users may subscribe. Takes no request body.
+      operationId: orgs_CreateOrgSubscription
+      security:
+      - AuthorizationHeaderToken: []
+      - Token: []
+      - AccessToken: []
+      parameters:
+      - $ref: '#/components/parameters/orgnameParam'
+      responses:
+        '200':
+          description: Subscribed (empty body).
+        '400':
+          description: The path does not resolve to an organization.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '401':
+          $ref: '#/components/responses/unauthorized'
+        '403':
+          $ref: '#/components/responses/forbidden'
+    delete:
+      tags:
+      - Identity - Organizations & Teams
+      summary: Unsubscribe the caller from the organization inbox
+      description: Removes the calling user from the organization's inbox notification group and deletes
+        the subscription record.
+      operationId: orgs_RemoveOrgSubscription
+      security:
+      - AuthorizationHeaderToken: []
+      - Token: []
+      - AccessToken: []
+      parameters:
+      - $ref: '#/components/parameters/orgnameParam'
+      responses:
+        '200':
+          description: Unsubscribed (empty body).
+        '400':
+          description: The path does not resolve to an organization.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '401':
+          $ref: '#/components/responses/unauthorized'
+        '403':
+          $ref: '#/components/responses/forbidden'
+  /user/login-method:
+    get:
+      tags:
+      - Identity - Users & Settings
+      summary: Resolve how a user or organization should sign in
+      description: 'Reports whether sign-in should use a password or be redirected to the organization''s
+        SSO provider. Public: no authentication. Supply at least one of orgname or username; an inactive
+        org auth source is ignored, and the username fallback only considers organizations whose auth
+        source enforces SSO for members.'
+      operationId: user_GetLoginMethod
+      security: []
+      parameters:
+      - name: orgname
+        in: query
+        required: false
+        description: Organization slug whose auth source should be looked up.
+        schema:
+          type: string
+      - name: username
+        in: query
+        required: false
+        description: Email or username, used as a fallback when orgname is not supplied.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The resolved login method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginMethodResponse'
+        '400':
+          description: Neither orgname nor username was supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+  /user/orgs:
+    get:
+      tags:
+      - Identity - Organizations & Teams
+      summary: List the caller's organizations
+      description: Lists the organizations the authenticated user belongs to, including private memberships.
+      operationId: orgs_ListMyOrgs
+      security:
+      - AuthorizationHeaderToken: []
+      - Token: []
+      - AccessToken: []
+      responses:
+        '200':
+          description: Organizations the caller belongs to.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Organization'
+        '401':
+          $ref: '#/components/responses/unauthorized'
+  /user/inbox/subscriptions:
+    get:
+      tags:
+      - Identity - Users & Settings
+      summary: List the caller's inbox subscriptions
+      description: Lists the authenticated user's inbox subscriptions across every scope (organization,
+        cluster, namespace, resource). All query parameters are optional exact-match filters. The subscriber
+        is always the caller.
+      operationId: user_ListInboxSubscriptions
+      security:
+      - AuthorizationHeaderToken: []
+      - Token: []
+      - AccessToken: []
+      parameters:
+      - name: scope
+        in: query
+        required: false
+        description: Subscription scope - org, cluster, namespace, or resource.
+        schema:
+          type: string
+      - name: orgID
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: orgName
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: clusterName
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: clusterUID
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: namespaceName
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: namespaceUID
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: apiGroup
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: resource
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: resourceName
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: resourceUID
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The caller's inbox subscriptions.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InboxSubscription'
+        '401':
+          $ref: '#/components/responses/unauthorized'
+  /user/deploy/orders:
+    post:
+      tags:
+      - Identity - Users & Settings
+      summary: Create a deployment order
+      description: Stores a releases.x-helm.dev/v1alpha1 Order in the platform package store so it can
+        be previewed and rendered. spec.packages must be non-empty. metadata.uid and metadata.creationTimestamp
+        are assigned by the server; metadata.name defaults to the release name of the first package.
+      operationId: user_CreateDeployOrder
+      security:
+      - AuthorizationHeaderToken: []
+      - Token: []
+      - AccessToken: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/K8sObject'
+      responses:
+        '200':
+          description: The stored Order, including the server-assigned metadata.uid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/K8sObject'
+        '400':
+          description: spec.packages is empty.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '401':
+          $ref: '#/components/responses/unauthorized'
+  /user/deploy/orders/{id}/render/manifest:
+    get:
+      tags:
+      - Identity - Users & Settings
+      summary: Render a deployment order to a manifest
+      description: Renders the stored order into a single concatenated manifest, returned as a raw response
+        body rather than JSON. Requires the platform Helm chart registry to be reachable.
+      operationId: user_PreviewOrderManifest
+      security:
+      - AuthorizationHeaderToken: []
+      - Token: []
+      - AccessToken: []
+      parameters:
+      - $ref: '#/components/parameters/orderIDParam'
+      responses:
+        '200':
+          description: The rendered manifest.
+          content:
+            text/plain:
+              schema:
+                type: string
+        '401':
+          $ref: '#/components/responses/unauthorized'
+  /user/deploy/orders/{id}/render/resources:
+    get:
+      tags:
+      - Identity - Users & Settings
+      summary: Render a deployment order to resource lists
+      description: Renders the stored order into per-chart resource lists. Requires the platform Helm
+        chart registry to be reachable.
+      operationId: user_PreviewOrderResources
+      security:
+      - AuthorizationHeaderToken: []
+      - Token: []
+      - AccessToken: []
+      parameters:
+      - $ref: '#/components/parameters/orderIDParam'
+      - name: skipCRDs
+        in: query
+        required: false
+        description: Drop each chart's CRDs from the output.
+        schema:
+          type: boolean
+      - name: format
+        in: query
+        required: false
+        description: Output data format for the rendered templates. Defaults to YAML.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The converted chart templates.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/K8sObject'
+        '401':
+          $ref: '#/components/responses/unauthorized'
+  /user/deploy/orders/{id}/helm3:
+    get:
+      tags:
+      - Identity - Users & Settings
+      summary: Generate a Helm 3 script for a deployment order
+      description: Generates a Helm 3 installation script for the stored order. Requires the platform
+        Helm chart registry to be reachable.
+      operationId: user_GetOrderHelm3Script
+      security:
+      - AuthorizationHeaderToken: []
+      - Token: []
+      - AccessToken: []
+      parameters:
+      - $ref: '#/components/parameters/orderIDParam'
+      responses:
+        '200':
+          description: The generated script.
+          content:
+            application/json:
+              schema:
+                type: string
+        '401':
+          $ref: '#/components/responses/unauthorized'
+  /user/deploy/orders/{id}/yaml:
+    get:
+      tags:
+      - Identity - Users & Settings
+      summary: Generate a YAML script for a deployment order
+      description: Generates a kubectl-oriented YAML installation script for the stored order. Requires
+        the platform Helm chart registry to be reachable.
+      operationId: user_GetOrderYAMLScript
+      security:
+      - AuthorizationHeaderToken: []
+      - Token: []
+      - AccessToken: []
+      parameters:
+      - $ref: '#/components/parameters/orderIDParam'
+      responses:
+        '200':
+          description: The generated script.
+          content:
+            application/json:
+              schema:
+                type: string
+        '401':
+          $ref: '#/components/responses/unauthorized'
+  /clusters/{owner}/{cluster}/namespaces/{namespace}/resources:
+    get:
+      tags:
+      - Cluster Management v1
+      summary: List the objects in a namespace for selected API groups
+      description: Lists objects in one namespace across the requested API groups, using server-preferred
+        namespaced resources and only those that support list. Objects the caller cannot list, resources
+        that are not found, and resources that do not support listing are omitted rather than failing
+        the request. Bounded by a 30 second timeout with at most 5 resource types listed concurrently.
+      operationId: clusters_ListNamespaceResources
+      security:
+      - AuthorizationHeaderToken: []
+      - Token: []
+      - AccessToken: []
+      parameters:
+      - $ref: '#/components/parameters/ownerParam'
+      - $ref: '#/components/parameters/clusterParam'
+      - name: namespace
+        in: path
+        required: true
+        description: Namespace to list.
+        schema:
+          type: string
+      - name: groups
+        in: query
+        required: true
+        description: Comma-separated API groups to include. Use `core` for the legacy Kubernetes core
+          group.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The objects found in the namespace.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NamespaceResource'
+        '400':
+          description: The namespace is empty or groups resolved to no groups.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '401':
+          $ref: '#/components/responses/unauthorized'
+        '403':
+          $ref: '#/components/responses/forbidden'
+  /clusters/{owner}/{cluster}/proxy/ui.kubedb.com/v1alpha1/namespaces/{namespace}/databaseconfigurations/{name}:
+    get:
+      tags:
+      - Kubernetes Proxy
+      summary: Get a DatabaseConfiguration
+      description: Gets a ui.kubedb.com/v1alpha1 DatabaseConfiguration through a raw REST passthrough
+        rather than the dynamic client, so the extended apiserver's own get options (for example `keys`)
+        survive. Every query parameter is forwarded verbatim except `filter` and `convertToTable`, which
+        the platform consumes itself. The response carries an ETag and Cache-Control header and `resourceVersion`
+        is cleared so the ETag stays stable. A 401 from the member cluster is reported as 403.
+      operationId: proxy_GetDatabaseConfiguration
+      security:
+      - AuthorizationHeaderToken: []
+      - Token: []
+      - AccessToken: []
+      parameters:
+      - $ref: '#/components/parameters/ownerParam'
+      - $ref: '#/components/parameters/clusterParam'
+      - name: namespace
+        in: path
+        required: true
+        description: Namespace of the database object.
+        schema:
+          type: string
+      - name: name
+        in: path
+        required: true
+        description: Name of the database object.
+        schema:
+          type: string
+      - name: filter
+        in: query
+        required: false
+        description: Content filter applied by the platform; not forwarded to the cluster.
+        schema:
+          type: string
+      - name: convertToTable
+        in: query
+        required: false
+        description: Return table output instead of the object; not forwarded to the cluster.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The DatabaseConfiguration object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/K8sObject'
+        '304':
+          description: Not modified - the request's If-None-Match matched the current ETag.
+        '401':
+          $ref: '#/components/responses/unauthorized'
+        '403':
+          $ref: '#/components/responses/forbidden'
+        '404':
+          $ref: '#/components/responses/notFound'
+  /dashboard/monthly-summary/{resourceType}:
+    get:
+      tags:
+      - Billing Dashboard
+      summary: Get per-month usage totals for a product
+      description: Returns per-month usage totals for one product, newest month first, with month-over-month
+        change percentages. Defaults to a six-month window ending at the current month. An explicit period
+        is clamped to the months that have a generated summary and must not span more than 24 months.
+        Site-admin only (view_usage_analytics:site_admin). Requires a billing-enabled deployment.
+      operationId: dashboard_GetMonthlySummary
+      security:
+      - AuthorizationHeaderToken: []
+      - Token: []
+      - AccessToken: []
+      parameters:
+      - name: resourceType
+        in: path
+        required: true
+        description: Product alias - kubedb, stash, vault, or voyager.
+        schema:
+          type: string
+      - $ref: '#/components/parameters/orgnameQuery'
+      - name: period_start
+        in: query
+        required: false
+        description: First month to include, as YYYY-MM.
+        schema:
+          type: string
+      - name: period_end
+        in: query
+        required: false
+        description: Last month to include, as YYYY-MM. Only read when period_start is given.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Monthly usage totals for the product.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MonthlySummaryResponse'
+        '400':
+          description: Unknown resourceType, malformed period, or a range longer than 24 months.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '401':
+          $ref: '#/components/responses/unauthorized'
+        '403':
+          $ref: '#/components/responses/forbidden'
 components:
   securitySchemes:
     AuthorizationHeaderToken:
@@ -19253,6 +19892,13 @@ components:
       name: Sudo
       description: Site-admin impersonation of the named user.
   parameters:
+    orderIDParam:
+      name: id
+      in: path
+      required: true
+      description: Deployment order UID returned by POST /user/deploy/orders.
+      schema:
+        type: string
     ownerParam:
       name: owner
       in: path
@@ -23064,3 +23710,200 @@ components:
       properties:
         version:
           type: string
+
+    OrgAuthSourceOption:
+      type: object
+      description: Request body for creating an organization's SSO auth source.
+      required:
+      - name
+      - provider
+      - clientID
+      - clientSecret
+      properties:
+        name:
+          type: string
+          description: Display name of the auth source, e.g. "Acme SSO".
+        provider:
+          type: string
+          description: goth/OAuth2 provider type, e.g. "openidConnect".
+        clientID:
+          type: string
+          description: OAuth2 client ID.
+        clientSecret:
+          type: string
+          description: OAuth2 client secret. Write-only; never returned in a response.
+        discoveryURL:
+          type: string
+          description: OIDC discovery document URL. Required in practice for OIDC providers.
+        enforceForMembers:
+          type: boolean
+          description: When true, blocks password login for every member of the organization.
+    OrgAuthSourceUpdateOption:
+      type: object
+      description: Request body for updating an organization's SSO auth source. An omitted or empty clientSecret
+        keeps the stored secret.
+      required:
+      - name
+      - provider
+      - clientID
+      properties:
+        name:
+          type: string
+        provider:
+          type: string
+          description: goth/OAuth2 provider type, e.g. "openidConnect".
+        clientID:
+          type: string
+        clientSecret:
+          type: string
+          description: New OAuth2 client secret. Omit or send empty to keep the current secret.
+        discoveryURL:
+          type: string
+        enforceForMembers:
+          type: boolean
+    OrgAuthSourceResponse:
+      type: object
+      description: An organization's SSO auth source. The client secret is intentionally omitted.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Auth source ID (the organization's own ID, not a global login_source).
+        orgID:
+          type: integer
+          format: int64
+          description: Owning organization ID.
+        name:
+          type: string
+        provider:
+          type: string
+        clientID:
+          type: string
+        discoveryURL:
+          type: string
+        isActive:
+          type: boolean
+          description: Whether the source is active. Set to true on create.
+        enforceForMembers:
+          type: boolean
+    LoginMethodResponse:
+      type: object
+      description: How a user or organization should sign in.
+      properties:
+        method:
+          type: string
+          description: Either "password" or "sso".
+        orgAuthSourceID:
+          type: integer
+          format: int64
+          description: The organization's own auth source ID. Only set when method is "sso".
+        providerName:
+          type: string
+          description: goth/OAuth2 provider name, e.g. "openidConnect". Only set when method is "sso".
+        oauthCallbackPath:
+          type: string
+          description: Path the frontend should redirect to, of the form /user/oauth2/org-<orgID>. Only
+            set when method is "sso".
+        displayName:
+          type: string
+          description: Human-readable auth source name. Only set when method is "sso".
+    InboxSubscription:
+      type: object
+      description: One inbox notification subscription of a user.
+      properties:
+        id:
+          type: integer
+          format: int64
+        subscriberID:
+          type: integer
+          format: int64
+          description: Subscriber (user) ID.
+        subscriberType:
+          type: string
+          description: Subscriber account type.
+        scope:
+          type: string
+          description: One of org, cluster, namespace, resource.
+        orgID:
+          type: string
+        orgName:
+          type: string
+        clusterOwnerID:
+          type: integer
+          format: int64
+        clusterUID:
+          type: string
+        clusterName:
+          type: string
+        namespaceUID:
+          type: string
+        namespaceName:
+          type: string
+        apiGroup:
+          type: string
+        version:
+          type: string
+        resource:
+          type: string
+        resourceName:
+          type: string
+        resourceUID:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    NamespaceResource:
+      type: object
+      description: One object found in a namespace, identified by its GVR and name.
+      properties:
+        group:
+          type: string
+          description: API group. Empty string for the Kubernetes core group.
+        version:
+          type: string
+        resource:
+          type: string
+          description: Plural resource name.
+        kind:
+          type: string
+        name:
+          type: string
+        namespace:
+          type: string
+    MonthlyUsageSummary:
+      type: object
+      description: Billing totals for one product in one month, with month-over-month change percentages.
+      properties:
+        year:
+          type: integer
+        month:
+          type: integer
+          description: Calendar month, 1-12.
+        cpuCoreMonth:
+          type: number
+          description: CPU core-months consumed.
+        memoryGiBMonth:
+          type: number
+          description: Memory GiB-months consumed.
+        instances:
+          type: integer
+        cpuChangeFromPrev:
+          type: number
+          description: Percentage change vs. the previous (older) month. Omitted on the oldest row.
+        memoryChangeFromPrev:
+          type: number
+          description: Percentage change vs. the previous (older) month. Omitted on the oldest row.
+    MonthlySummaryResponse:
+      type: object
+      description: Per-month usage totals for one product, ordered from the most recent month to the oldest.
+      properties:
+        resourceType:
+          type: string
+          description: Product alias the summary covers.
+        months:
+          type: array
+          items:
+            $ref: '#/components/schemas/MonthlyUsageSummary'

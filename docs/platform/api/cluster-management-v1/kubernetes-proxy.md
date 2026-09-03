@@ -479,6 +479,45 @@ Produce a `policy.k8s.appscode.com` `PolicyReport`.
 
 ---
 
+## Database configurations (ui.kubedb.com)
+
+### GET /clusters/{owner}/{cluster}/proxy/ui.kubedb.com/v1alpha1/namespaces/{namespace}/databaseconfigurations/{name}
+
+Get a `ui.kubedb.com/v1alpha1` `DatabaseConfiguration` for one database object.
+
+This route exists separately from the generic namespaced get because it is served by a
+**raw REST passthrough** rather than the dynamic client: `DatabaseConfiguration` is
+backed by an extended apiserver with its own get options (for example `?keys=`), and
+the dynamic client can only carry `metav1.GetOptions` and would drop them. Every query
+parameter is therefore forwarded to the member cluster verbatim, **except** `filter`
+and `convertToTable`, which the KubeDB Platform API Server consumes itself.
+
+- **Auth:** token.
+
+**Path parameters:**
+
+| Name | Type | Description |
+|---|---|---|
+| `namespace` | string | Namespace of the database object. |
+| `name` | string | Name of the database object. |
+
+**Query parameters:**
+
+| Name | Type | Required | Description |
+|---|---|---|---|
+| `filter` | string | no | Content filter applied to the response by the platform (not forwarded). |
+| `convertToTable` | string | no | Return table output instead of the object (not forwarded). |
+| *(anything else)* | string | no | Forwarded verbatim to the extended apiserver, e.g. `keys`. |
+
+**Response:** `200` with the `DatabaseConfiguration` object, an `ETag` header, and a
+`Cache-Control` header; `304 Not Modified` when the request's `If-None-Match` matches.
+`resourceVersion` is cleared from the response so the ETag stays stable.
+
+Errors: the member cluster's status code is passed through, except that a `401` from
+the cluster is reported as `403`.
+
+---
+
 ## Batch delete
 
 ### POST /clusters/{owner}/{cluster}/proxy/batch-delete

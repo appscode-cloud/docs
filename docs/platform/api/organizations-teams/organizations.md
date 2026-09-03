@@ -706,3 +706,190 @@ Revoke a NATS user-type token of the organization's system admin.
 
 **Response:** `200 OK` on success. `400` if the organization system admin is missing
 or the NATS user is not found.
+
+## Organization SSO auth source
+
+An organization may own **one** authentication source, used to sign its members in
+through an external OAuth2/OIDC provider instead of a password. When
+`enforceForMembers` is set, password login is blocked for every member of the org and
+`GET /user/login-method` reports `sso` for them (see
+[Authenticated User](../../users-settings/authenticated-user.md)).
+
+The client secret is write-only: it is never returned by any of these endpoints.
+
+`OrgAuthSourceResponse` — the shape returned by `GET`, `POST`, and `PUT`:
+
+| Field | Type | Description |
+|---|---|---|
+| `id` | integer (int64) | Auth source ID (the org's own ID, not a global `login_source`). |
+| `orgID` | integer (int64) | Owning organization ID. |
+| `name` | string | Human-readable name, e.g. `Acme SSO`. |
+| `provider` | string | goth/OAuth2 provider type, e.g. `openidConnect`. |
+| `clientID` | string | OAuth2 client ID. |
+| `discoveryURL` | string | OIDC discovery document URL; omitted when empty. |
+| `isActive` | boolean | Whether the source is active. Set to `true` on create. |
+| `enforceForMembers` | boolean | When `true`, blocks password login for all org members. |
+
+### GET /orgs/{orgname}/auth-source
+
+Get the organization's authentication source.
+
+- **Auth:** token + `authzCheck(view:auth-source)` (`Organization_Viewer`).
+
+**Path parameters:**
+
+| Name | Type | Description |
+|---|---|---|
+| `orgname` | string | Organization slug. |
+
+**Response:** `200 OK` (`OrgAuthSourceResponse`):
+
+```json
+{
+  "id": 7,
+  "orgID": 3,
+  "name": "Acme SSO",
+  "provider": "openidConnect",
+  "clientID": "<client-id>",
+  "discoveryURL": "https://sso.example.com/.well-known/openid-configuration",
+  "isActive": true,
+  "enforceForMembers": true
+}
+```
+
+`404` when the organization has no authentication source.
+
+### POST /orgs/{orgname}/auth-source
+
+Create the organization's authentication source. Fails with `409 Conflict` if one
+already exists — use `PUT` to change it.
+
+- **Auth:** token + `authzCheck(create:auth-source)` (`Organization_CanEditOrg`).
+
+**Path parameters:**
+
+| Name | Type | Description |
+|---|---|---|
+| `orgname` | string | Organization slug. |
+
+**Request body** (`OrgAuthSourceOption`):
+
+```json
+{
+  "name": "Acme SSO",
+  "provider": "openidConnect",
+  "clientID": "<client-id>",
+  "clientSecret": "<client-secret>",
+  "discoveryURL": "https://sso.example.com/.well-known/openid-configuration",
+  "enforceForMembers": true
+}
+```
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `name` | string | yes | Display name of the source. |
+| `provider` | string | yes | goth/OAuth2 provider type, e.g. `openidConnect`. |
+| `clientID` | string | yes | OAuth2 client ID. |
+| `clientSecret` | string | yes | OAuth2 client secret. Never returned in a response. |
+| `discoveryURL` | string | no | Required in practice for OIDC providers. |
+| `enforceForMembers` | boolean | no | Block password login for all org members. |
+
+**Response:** `201 Created` (`OrgAuthSourceResponse`, with `isActive: true`).
+
+`409` if a source already exists for the organization.
+
+### PUT /orgs/{orgname}/auth-source
+
+Replace the organization's authentication source settings.
+
+- **Auth:** token + `authzCheck(update:auth-source)` (`Organization_CanEditOrg`).
+
+**Path parameters:**
+
+| Name | Type | Description |
+|---|---|---|
+| `orgname` | string | Organization slug. |
+
+**Request body** (`OrgAuthSourceUpdateOption`) — same fields as the create body, except
+that `clientSecret` is optional: **omit it or send an empty string to keep the stored
+secret**.
+
+**Response:** `200 OK` (`OrgAuthSourceResponse`).
+
+`404` when the organization has no authentication source to update.
+
+### DELETE /orgs/{orgname}/auth-source
+
+Remove the organization's authentication source. Members fall back to password login.
+
+- **Auth:** token + `authzCheck(delete:auth-source)` (`Organization_CanEditOrg`).
+
+**Path parameters:**
+
+| Name | Type | Description |
+|---|---|---|
+| `orgname` | string | Organization slug. |
+
+**Response:** `204 No Content` on success.
+
+## Organization inbox subscription
+
+Subscribe the calling user to the organization's inbox notification group. Only
+**individual** users can subscribe; a request made as an organization account returns
+`403`. All three endpoints require the platform's inbox service to be reachable.
+
+Cluster-, namespace-, and resource-scoped subscriptions live on the
+[Cluster Subscriptions](../../cluster-management-v2/subscriptions.md) page; the list of
+everything the caller is subscribed to is
+[`GET /user/inbox/subscriptions`](../../users-settings/authenticated-user.md).
+
+### GET /orgs/{orgname}/subscription
+
+Check whether the calling user is subscribed to the organization.
+
+- **Auth:** token + org membership.
+
+**Path parameters:**
+
+| Name | Type | Description |
+|---|---|---|
+| `orgname` | string | Organization slug. |
+
+**Response:** `200 OK` with an empty body when the subscription exists.
+
+`403` if the caller is not an individual user; `400` if `orgname` does not resolve to an
+organization.
+
+### POST /orgs/{orgname}/subscription
+
+Subscribe the calling user to the organization.
+
+- **Auth:** token + org membership.
+
+**Path parameters:**
+
+| Name | Type | Description |
+|---|---|---|
+| `orgname` | string | Organization slug. |
+
+**Response:** `200 OK` with an empty body. Takes no request body.
+
+`403` if the caller is not an individual user; `400` if `orgname` does not resolve to an
+organization.
+
+### DELETE /orgs/{orgname}/subscription
+
+Unsubscribe the calling user from the organization.
+
+- **Auth:** token + org membership.
+
+**Path parameters:**
+
+| Name | Type | Description |
+|---|---|---|
+| `orgname` | string | Organization slug. |
+
+**Response:** `200 OK` with an empty body.
+
+`403` if the caller is not an individual user; `400` if `orgname` does not resolve to an
+organization.
