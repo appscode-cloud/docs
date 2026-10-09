@@ -42,28 +42,7 @@ Choose the type by how many clusters you manage and whether they should share co
 
 Trade-off: a hub is an extra cluster to run, and spokes depend on it for feature changes. For a single cluster, a general cluster is simpler.
 
-## Which cluster should I enable the feature on?
-
-Once you have a hub and spokes, use this table to pick where to enable a feature.
-
-| If the feature... | Enable it on | Why |
-|---|---|---|
-| Is needed on a cluster that is not connected to a hub | **That general cluster** | Hub and spoke settings do not reach it |
-| Is needed by the central management cluster itself | **Hub** | Hub feature sets affect only the hub cluster |
-| Must be present on the clusters that run your workloads | **Spokes** (via a ClusterSet) | One change is applied to every spoke in the ClusterSet |
-| Is needed on some spokes but not others | **Spokes**, using separate ClusterSets | The scope is the whole ClusterSet, so group spokes by the features they need |
-| Is needed on both the hub and the spokes | **Both**, separately | Enabling it on one does not enable it on the other |
-
-Examples:
-
-* A single standalone cluster that needs Databases: enable it on that **general cluster**, as in [Manage Feature Sets](../cluster-features.md).
-* Backup & Recovery for the hub's own data: enable on the **hub**.
-* Config Syncer on every spoke in `prod-set`: enable on the **`prod-set` ClusterSet**.
-* Config Syncer only on `prod-set` and not on `dev-set`: enable it on `prod-set` and leave `dev-set` unchanged.
-
-> **Tip:** Keep spokes in a ClusterSet that share the same feature needs, for example one set for production and one for development. Enabling a feature then never turns it on for a cluster that should not have it.
-
-## Compared at a glance
+## Where should I enable the feature on?
 
 | | General cluster | Hub feature sets | Spoke feature sets |
 |---|---|---|---|
@@ -134,5 +113,3 @@ A `-` in both columns means the spoke matches the hub. **No Data Available** (as
 | Enable a feature on the hub | Hub cluster → Overview → Feature Sets → *feature set* |
 | Enable a feature on all spokes in a group | Hub UI → hub Overview → Cluster Sets → *ClusterSet* → *feature set* → Enable |
 | Check whether spokes match the hub | ClusterSet → *feature set* → Out of sync & Unaligned clusters table |
-
-
