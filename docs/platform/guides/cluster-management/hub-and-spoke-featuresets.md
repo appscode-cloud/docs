@@ -11,19 +11,44 @@ section_menu_id: guides
 ---
 
 
-
 # Hub & Spoke Feature Sets
 
-A **Feature Set** is a group of product capabilities (for example Backup & Recovery or Databases) that you can enable on a cluster. In a Hub UI setup, the same feature set can be enabled in two different scopes, so first decide **which cluster should get the feature**, then follow the matching steps below.
+A **Feature Set** is a group of product capabilities (for example Backup & Recovery or Databases) that you can enable on a cluster. Where you enable it depends on what kind of cluster you are working with, so first identify the cluster type, then follow the matching steps below.
 
-* **Hub cluster**: the central cluster that manages the others. See [Introduction](../hub-ui/introduction.md).
-* **Spoke cluster**: a cluster connected to the hub and managed from it. Spokes run your workloads.
+## Cluster types
+
+Every cluster you add to the platform is one of three types.
+
+| | General cluster | Hub cluster | Spoke cluster |
+|---|---|---|---|
+| What it is | A standalone cluster managed on its own | The central cluster that manages other clusters | A cluster connected to a hub and managed from it |
+| Connected to a hub? | No | It is the hub | Yes |
+| Typical role | Runs workloads; managed individually | Control plane for the fleet; stores cluster state and distributes applications and policies | Runs workloads; receives configuration from the hub |
+| How it is created | Import a cluster without selecting a hub | Enable the **Multicluster Hub** feature set. See [Hub UI](../hub-ui/introduction.md) | Import with a hub selected, or enable **Multicluster Spoke**. See [Create a Spoke Cluster](../hub-ui/spoke.md) |
+| Feature sets are enabled | On that cluster, one cluster at a time | On the hub only | From the hub, per ClusterSet |
+| Scope of one change | That cluster | The hub only | Every spoke in the ClusterSet |
+
 * **ClusterSet**: a named group of spoke clusters. Spoke feature sets are enabled per ClusterSet, not per individual spoke. See [Cluster & Clusterset](../hub-ui/cluster-and-clusterset.md).
 
-## Which cluster should I enable it on?
+## Which cluster type should I use?
+
+Choose the type by how many clusters you manage and whether they should share configuration.
+
+| If your situation is... | Use | Why |
+|---|---|---|
+| One cluster, or a few unrelated clusters you manage separately | **General cluster** | No hub to run or maintain; each cluster is configured on its own |
+| Many clusters that should get the same features and policies | **Hub + spokes** | Configure once on the hub and it applies to every spoke in a ClusterSet |
+| Clusters that need different feature sets (for example production and development) | **Hub + spokes in separate ClusterSets** | Each ClusterSet has its own feature sets |
+
+Trade-off: a hub is an extra cluster to run, and spokes depend on it for feature changes. For a single cluster, a general cluster is simpler.
+
+## Which cluster should I enable the feature on?
+
+Once you have a hub and spokes, use this table to pick where to enable a feature.
 
 | If the feature... | Enable it on | Why |
 |---|---|---|
+| Is needed on a cluster that is not connected to a hub | **That general cluster** | Hub and spoke settings do not reach it |
 | Is needed by the central management cluster itself | **Hub** | Hub feature sets affect only the hub cluster |
 | Must be present on the clusters that run your workloads | **Spokes** (via a ClusterSet) | One change is applied to every spoke in the ClusterSet |
 | Is needed on some spokes but not others | **Spokes**, using separate ClusterSets | The scope is the whole ClusterSet, so group spokes by the features they need |
@@ -31,19 +56,20 @@ A **Feature Set** is a group of product capabilities (for example Backup & Recov
 
 Examples:
 
+* A single standalone cluster that needs Databases: enable it on that **general cluster**, as in [Manage Feature Sets](../cluster-features.md).
 * Backup & Recovery for the hub's own data: enable on the **hub**.
 * Config Syncer on every spoke in `prod-set`: enable on the **`prod-set` ClusterSet**.
 * Config Syncer only on `prod-set` and not on `dev-set`: enable it on `prod-set` and leave `dev-set` unchanged.
 
 > **Tip:** Keep spokes in a ClusterSet that share the same feature needs, for example one set for production and one for development. Enabling a feature then never turns it on for a cluster that should not have it.
 
-## Hub vs Spoke at a glance
+## Compared at a glance
 
-| | Hub feature sets | Spoke feature sets |
-|---|---|---|
-| Applies to | The hub cluster only | Every spoke in the selected ClusterSet |
-| Where to open it | Hub cluster → **Overview** → **Feature Sets** | Hub UI → hub **Overview** → **Cluster Sets** → *ClusterSet* → *feature set* |
-| Example | Enable Backup & Recovery on the hub | Enable Config Syncer on all spokes in `prod-set` |
+| | General cluster | Hub feature sets | Spoke feature sets |
+|---|---|---|---|
+| Applies to | That cluster only | The hub cluster only | Every spoke in the selected ClusterSet |
+| Where to open it | Cluster → **Overview** → **Feature Sets** | Hub cluster → **Overview** → **Feature Sets** | Hub UI → hub **Overview** → **Cluster Sets** → *ClusterSet* → *feature set* |
+| Example | Enable Databases on a standalone cluster | Enable Backup & Recovery on the hub | Enable Config Syncer on all spokes in `prod-set` |
 
 ---
 
@@ -102,8 +128,9 @@ A `-` in both columns means the spoke matches the hub. **No Data Available** (as
 
 ## Quick reference
 
-| I want to... | Go to |
+| Task | How to do it |
 |---|---|
+| Enable a feature on a standalone (general) cluster | Cluster → Overview → Feature Sets → *feature set* |
 | Enable a feature on the hub | Hub cluster → Overview → Feature Sets → *feature set* |
 | Enable a feature on all spokes in a group | Hub UI → hub Overview → Cluster Sets → *ClusterSet* → *feature set* → Enable |
 | Check whether spokes match the hub | ClusterSet → *feature set* → Out of sync & Unaligned clusters table |
