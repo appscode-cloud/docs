@@ -3,7 +3,7 @@ layout: docs
 menu:
   docsplatform_{{.version}}:
     identifier: hub-ui-featuresets
-    name: Hub & Spoke Feature Sets
+    name: Cluster Types & Feature Sets
     parent: hub-ui
     weight: 75
 menu_name: docsplatform_{{.version}}
@@ -11,7 +11,7 @@ section_menu_id: guides
 ---
 
 
-# Hub & Spoke Feature Sets
+# Enable Feature Sets on General, Hub, and Spoke Clusters
 
 A **Feature Set** is a group of product capabilities (for example Backup & Recovery or Databases) that you can enable on a cluster. Where you enable it depends on what kind of cluster you are working with, so first identify the cluster type, then follow the matching steps below.
 
