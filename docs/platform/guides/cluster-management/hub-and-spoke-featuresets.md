@@ -44,6 +44,8 @@ Trade-off: a hub is an extra cluster to run, and spokes depend on it for feature
 
 ## Where should I enable the feature on?
 
+This docs refers two wordings : cluster-ui & hub-ui for the cluster views. So, Applying something on hub cluster means accessing ![Cluster-ui](../images/cluster_and_clusterset/cluster-ui.png), But Applying something on hub ui (for its spokes obviously) means accessing ![Hub-ui](../images/cluster_and_clusterset/hub-ui.png). See the switcher, that is the most important thing in this page.
+
 | | General cluster | Hub feature sets | Spoke feature sets |
 |---|---|---|---|
 | Applies to | That cluster only | The hub cluster only | Every spoke in the selected ClusterSet |
