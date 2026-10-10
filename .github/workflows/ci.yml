@@ -16,13 +16,13 @@ concurrency:
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
       - name: Install kubectl
         run: |
-          curl -LO https://dl.k8s.io/release/v1.32.1/bin/linux/amd64/kubectl
+          curl -LO https://dl.k8s.io/release/v1.37.0/bin/linux/amd64/kubectl
           chmod +x ./kubectl
           sudo mv ./kubectl /usr/local/bin/kubectl
 
@@ -37,7 +37,7 @@ jobs:
         id: kind
         uses: helm/kind-action@ef37e7f390d99f746eb8b610417061a60e82a6cc # v1.14.0
         with:
-          version: v0.31.0
+          version: v0.33.0
 
       - name: Prepare cluster for testing
         id: local-path
