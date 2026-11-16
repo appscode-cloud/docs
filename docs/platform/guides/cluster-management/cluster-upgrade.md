@@ -41,18 +41,38 @@ Each tier is upgraded separately; the order matters.
 
 ## Pre-checks
 
-Before starting, verify your current installer version and target release.
+Complete every item before starting. Do not upgrade while any item fails — an upgrade on top
+of an unhealthy cluster is much harder to troubleshoot.
 
-1. Log in to [appscode.com](https://appscode.com) and switch to your organization.
-2. Navigate to your installer and click **View Details**.
-3. Note the **current version** (e.g., `2025.5.16`) and confirm the **target version**
-   (e.g., `2025.6.x`).
+- [ ] **Versions known.** Log in to [appscode.com](https://appscode.com), switch to your
+  organization, open your installer, click **View Details**, and note the **current** and
+  **target** versions. Read the target release's CHANGELOG.
+- [ ] **Tested on non-prod.** The same upgrade was applied to a QA / non-prod environment and
+  passed the [Post-checks](#post-checks).
+- [ ] **AppsCode notified.** At least 72 hours ahead, with the maintenance window and the
+  clusters involved.
+- [ ] **All HelmReleases Ready** on the management cluster and every spoke / imported cluster:
+  ```bash
+  # Prints nothing when every HelmRelease is Ready
+  kubectl get helmreleases -A --no-headers | grep -v True
+  ```
+- [ ] **Flux controllers running:**
+  ```bash
+  kubectl get pods -n flux-system
+  ```
+- [ ] **All spokes connected.** On the hub, every `ManagedCluster` shows `JOINED=True` and
+  `AVAILABLE=True`:
+  ```bash
+  kubectl get managedclusters
+  ```
+  Remove or fix inactive clusters first (see
+  [Removing an Inactive Cluster](../troubleshooting.md#removing-an-inactive-cluster)).
+- [ ] **No cluster import or removal in progress.** Every cluster reports phase `Active`
+  through the API (see [Using the API](#using-the-api)).
+
+Keep a watch open during the upgrade:
 
 ```bash
-# Confirm current Helm release versions on the management cluster
-helm list -A | grep opscenter-features
-
-# Watch releases during upgrade
 kubectl get helmreleases -A -w
 ```
 
@@ -157,18 +177,75 @@ kubectl get clusterset -A
 
 ### Step 6 — Verify
 
-```bash
-# Check every Helm release is at the new version across all clusters
-for ctx in management spoke imported; do
-  echo "=== $ctx ==="
-  helm list -A --kube-context $ctx | grep -v DEPLOYED
-done
+Run the [Post-checks](#post-checks).
 
-# Spot-check the search manager (may self-update from the cluster side)
-kubectl get deployment search-manager -n ace -o jsonpath='{.spec.template.spec.containers[0].image}'
+---
+
+## Post-checks
+
+Run on the management cluster and on every spoke / imported cluster. The upgrade is complete
+only when every item passes.
+
+- [ ] **All HelmReleases Ready:**
+  ```bash
+  # Prints nothing when every HelmRelease is Ready
+  kubectl get helmreleases -A --no-headers | grep -v True
+  ```
+- [ ] **All HelmReleases on the target chart version:**
+  ```bash
+  kubectl get helmreleases -A \
+    -o custom-columns=NAMESPACE:.metadata.namespace,NAME:.metadata.name,REVISION:.status.lastAttemptedRevision
+  ```
+- [ ] **No Helm release stuck in a pending state:**
+  ```bash
+  # Prints nothing when every release is deployed
+  helm list -A --all --no-headers | grep -v deployed
+  ```
+- [ ] **All pods healthy:**
+  ```bash
+  kubectl get pods -A --no-headers | grep -vE 'Running|Completed'
+  ```
+- [ ] **All spokes connected.** On the hub, every `ManagedCluster` shows `JOINED=True` and
+  `AVAILABLE=True`:
+  ```bash
+  kubectl get managedclusters
+  ```
+- [ ] **Cluster set updated** (Step 5) and no longer shown as unaligned.
+- [ ] **Every cluster `Active`** through the API (see [Using the API](#using-the-api)).
+
+If any check fails, see [Troubleshooting](../troubleshooting.md).
+
+---
+
+## Using the API
+
+The same checks can be scripted against the
+[Clusters (v2) API](../../../api/cluster-management-v2/clusters.md). Paths are relative to
+`https://<akp-host>/api/v1`; send `Authorization: token <YOUR_TOKEN>`.
+
+| Purpose | Call |
+|---|---|
+| List clusters | `GET /clustersv2/{owner}` |
+| Status of one cluster | `GET /clustersv2/{owner}/{cluster}/status` |
+| Import a cluster | `POST /clustersv2/{owner}/import` |
+| Remove a cluster | `POST /clustersv2/{owner}/{cluster}/remove` |
+| Force a reconcile of a feature's HelmReleases | `GET /clustersv2/{owner}/{cluster}/reconcile?features=<feature>` |
+
+Check the phase of every cluster:
+
+```bash
+api=https://<akp-host>/api/v1/clustersv2/<owner>
+for c in $(curl -s -H "Authorization: token $TOKEN" "$api" | jq -r '.[].name'); do
+  curl -s -H "Authorization: token $TOKEN" "$api/$c/status" \
+    | jq -r '"\(.name)\t\(.status.response.phase)"'
+done
 ```
 
-All clusters should report version `6.6.16` (or your target release).
+`Active` means healthy. `Inactive` means the platform cannot reach the cluster (see
+[Removing an Inactive Cluster](../troubleshooting.md#removing-an-inactive-cluster)).
+
+`remove` is asynchronous: call it once and poll `status`. See
+[Removing through the API](../troubleshooting.md#removing-through-the-api).
 
 ---
 
