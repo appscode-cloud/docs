@@ -170,6 +170,8 @@ kubectl get deployment search-manager -n ace -o jsonpath='{.spec.template.spec.c
 
 All clusters should report version `6.6.16` (or your target release).
 
+If a HelmRelease does not become Ready, see [Troubleshooting](../troubleshooting.md).
+
 ---
 
 ## Lessons Learned
