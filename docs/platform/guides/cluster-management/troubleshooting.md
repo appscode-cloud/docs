@@ -142,6 +142,61 @@ kubectl patch helmrelease <name> -n <namespace> --type merge -p '{"spec":{"suspe
 kubectl patch helmrelease <name> -n <namespace> --type merge -p '{"spec":{"suspend":false}}'
 ```
 
+If the upgrade job reported a release as failed but the HelmRelease is already on the target
+chart version with `Ready=True`, a later reconciliation succeeded. No action is needed.
+
+---
+
+## Spoke Version Does Not Change
+
+### Symptom
+
+After upgrading a spoke from the Hub UI, `CURRENT VERSION` in
+`kubectl get managedclusterprofilebinding -A` shows the target version, but the HelmReleases on
+the spoke stay on the old version.
+
+### Check
+
+1. On the hub cluster, check that the spoke is connected:
+   ```bash
+   kubectl get managedclusters
+   ```
+   The spoke must show `JOINED=True` and `AVAILABLE=True`.
+2. On the spoke cluster, check the HelmReleases:
+   ```bash
+   kubectl get helmreleases -A | grep -v True
+   ```
+
+### Fix
+
+- **`AVAILABLE=Unknown`** — the hub cannot deliver the new version to the spoke. Restore the
+  spoke's connectivity, or remove it (see [Removing an Inactive Cluster](#removing-an-inactive-cluster)).
+- **Spoke connected, HelmReleases not Ready** — follow [Stuck Reconciliation](#stuck-reconciliation)
+  and [HelmRelease Progress Issues](#helmrelease-progress-issues) on the spoke.
+
+---
+
+## ClusterSet Stays Unaligned
+
+### Symptom
+
+After **Update Cluster Set**, the ClusterSet still shows the old **Current version** or a cluster
+labelled **unaligned**.
+
+### Check
+
+On the hub cluster, find the spoke that is not on the target version:
+
+```bash
+kubectl get managedclusterprofilebinding -A
+```
+
+### Fix
+
+1. Upgrade that spoke (see [Upgrade ACE Clusters](../cluster-upgrade.md#step-3--upgrade-spoke-clusters)),
+   or remove it if it is no longer in use (see [Removing a Cluster](#removing-a-cluster)).
+2. Click **Update Cluster Set** again.
+
 ---
 
 ## Removing a Cluster
