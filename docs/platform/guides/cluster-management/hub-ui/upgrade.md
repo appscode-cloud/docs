@@ -36,4 +36,6 @@ Use this page to upgrade a single spoke cluster from the Hub UI. Upgrade the man
 
 5. After every spoke in the ClusterSet is upgraded, open the ClusterSet and click **Update Cluster Set**.
 
+If the spoke's version does not change or the ClusterSet stays unaligned, see [Troubleshooting](../../troubleshooting.md).
+
 <!-- SCREENSHOT: images/upgrade/clusterset-update.png — ClusterSet page showing the Update Cluster Set button -->
