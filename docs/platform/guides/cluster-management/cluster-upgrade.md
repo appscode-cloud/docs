@@ -253,15 +253,11 @@ Update a ClusterSet only after **every** cluster in it is on the target version.
 
 <!-- SCREENSHOT: images/upgrade/clusterset-update.png — ClusterSet page showing the old Current version and the Update Cluster Set button -->
 
-```bash
-# Confirm cluster set version
-kubectl get clusterset -A
-```
-
+Now, confirm cluster set version.
 After the update, **Current version** shows the target version and no cluster is labelled
 **unaligned**.
 
-![Showing an unaligned cluster before the ClusterSet is updated](../images/cluster_and_clusterset/unaligned.png)
+![ClusterSet All cluster overview after the update, showing the current version and every cluster on it](../images/upgrade/clusterset-updated.png)
 
 ---
 
